@@ -1,3 +1,13 @@
+# MorPhiC Metadata Schema
+
+This repository contains a modified version of the Human Cell Atlas Metadata Schema, obtained from their repository.
+
+This is a tentative first approach at metadata standardisation and validation for the MorPhiC consortia.
+
+As such, it will be constantly evolving and adapting to the community needs.
+
+Feel free to [open an issue!](https://github.com/morphic-bio/metadata-schema/issues/new)
+
 # Adaptations HCA --> Morphic
 
 ## Technical changes
