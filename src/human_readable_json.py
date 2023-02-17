@@ -50,7 +50,7 @@ class MarkdownGenerator:
 
             # module and core entities need an anchor tag in their title so they can't be linked to from the type entities
             if (entity_type == "module" or entity_type == "core"):
-                file.write("## " + schema["title"] + "<a name='" + schema["title"] + "'></a>\n")
+                file.write("## " + schema["title"] + "\n")
                 self.required_file.write("### " + schema["title"] + "<a name='" + schema["title"] + "'></a>\n")
 
             else:
@@ -88,6 +88,8 @@ class MarkdownGenerator:
                                 dir = "core"
                             elif "module" in ref:
                                 dir = "module"
+                            elif "system" in ref:
+                                dir = "system"
                             else:
                                 dir = ""
                             mod = ref.split("/")[-1]
@@ -168,7 +170,12 @@ if __name__ == '__main__':
     core_schema_path = base_schema_path + '/core'
     type_schema_path = base_schema_path + '/type'
     module_schema_path = base_schema_path + '/module'
+    system_schema_path = base_schema_path + '/system'
     # bundle_schema_path = base_schema_path + '/bundle'
+
+    system_schemas = [os.path.join(dirpath, f)
+                      for dirpath, dirnames, files in os.walk(system_schema_path)
+                      for f in files if f.endswith('.json')]
 
     core_schemas = [os.path.join(dirpath, f)
                for dirpath, dirnames, files in os.walk(core_schema_path)
@@ -184,6 +191,7 @@ if __name__ == '__main__':
     #                 for dirpath, dirnames, files in os.walk(bundle_schema_path)
     #                 for f in files if f.endswith('.json')]
 
+    generator.generateMarkdown(system_schemas, 'system')
     generator.generateMarkdown(core_schemas, "core")
     generator.generateMarkdown(type_schemas, "type")
     generator.generateMarkdown(module_schemas, "module")
