@@ -161,6 +161,20 @@
             "type": "object", 
             "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/timecourse.json", 
             "user_friendly": "Timecourse"
+        },
+        "genbank_assembly_accession": {
+            "description": "A GenBank assembly accession identifier for the cell line.",
+            "type": "string",
+            "pattern": "^GCA_\\d{9}(\\.\\d+){,1}$",
+            "example": "GCA_000001405.29",
+            "user_friendly": "Genbank assembly accession"
+        },
+        "cellosaurus_accession": {
+            "description": "A Cellosaurus ID from Expasy",
+            "type": "string",
+            "pattern": "^CVCL_\\d{4}$",
+            "example": "CVCL_0132",
+            "user_friendly": "Cellosaurus accession"
         }
     }, 
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/biomaterial/cell_line.json"

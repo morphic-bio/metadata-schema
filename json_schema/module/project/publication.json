@@ -55,13 +55,6 @@
             "type": "string", 
             "user_friendly": "Publication URL", 
             "example": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5667944/"
-        }, 
-        "official_hca_publication": {
-            "description": "Has the publication been accepted as an official HCA publication, according to the process described in https://www.humancellatlas.org/publications/ ?", 
-            "type": "boolean", 
-            "user_friendly": "Official HCA Publication", 
-            "guidelines": "Should be one of: yes, or no.", 
-            "example": "yes; no"
         }
     }, 
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/publication.json"

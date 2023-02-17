@@ -151,11 +151,14 @@
             }, 
             "user_friendly": "Funding source(s)"
         }, 
-        "estimated_cell_count": {
-            "description": "An estimated number of cells in this project", 
-            "type": "integer", 
-            "example": "10000; 2100000", 
-            "user_friendly": "Estimated cell count"
+        "target_genes_symbols": {
+            "description": "Gene(s) that were studied in this project.",
+            "type": "array",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/target_gene_ontology.json"
+            },
+            "user_friendly": "Target gene(s) symbol(s)",
+            "guidelines": "Enter the list of genes targetted for this project. Please use the gene symbols."
         }
     }, 
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/project.json"
