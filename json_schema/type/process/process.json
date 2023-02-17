@@ -14,7 +14,7 @@
          "describedBy":  {
             "description": "The URL reference to the schema.",
             "type": "string",
-            "pattern" : "^(http|https)://schema.(.*?)humancellatlas.org/type/process/(([0-9]{1,}.[0-9]{1,}.[0-9]{1,})|([a-zA-Z]*?))/process"
+            "pattern" : "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/process/process.json"
         },
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.",
@@ -32,12 +32,12 @@
         "provenance" : {
             "description": "Provenance information provided by the system.",
             "type": "object",
-            "$ref": "system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
         },
         "process_core" : {
             "description": "Core process-level information.",
             "type": "object",
-            "$ref": "core/process/process_core.json",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/process/process_core.json",
             "user_friendly": "Process core"
         },
         "start_time": {
@@ -81,13 +81,13 @@
         "length_of_time_unit": {
             "description": "The unit in which Length of time is expressed.",
             "type": "object",
-            "$ref": "module/ontology/time_unit_ontology.json",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/time_unit_ontology.json",
             "user_friendly": "Length of time unit"
         },
         "type": {
             "description": "The type of process.",
             "type": "object",
-            "$ref": "module/ontology/process_type_ontology.json",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/process_type_ontology.json",
             "user_friendly": "Process type"
         },
         "deviation_from_protocol": {
@@ -99,7 +99,7 @@
         "insdc_experiment" : {
             "description": "An International Nucleotide Sequence Database Collaboration (INSDC) experiment accession.",
             "type": "object",
-            "$ref": "module/process/sequencing/insdc_experiment.json",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/insdc_experiment.json",
             "user_friendly": "INSDC experiment accession"
         }
     }
