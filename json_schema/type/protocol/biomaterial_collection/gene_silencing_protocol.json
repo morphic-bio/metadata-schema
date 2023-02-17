@@ -15,7 +15,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/treatment_protocol.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/gene_silencing_protocol.json"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -83,5 +83,5 @@
             "user_friendly": "Silenced Gene(s)"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/treatment_protocol.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/gene_silencing_protocol.json"
 }
