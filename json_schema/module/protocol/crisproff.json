@@ -20,7 +20,7 @@
         "sgrna_target": {
             "description": "Target of the Single Guide RNAs (sgRNAs)",
             "type": "string",
-            "user_friendly": "sgRNA target",
+            "user_friendly": "sgRNA target"
         }
     }, 
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/crisproff.json"
