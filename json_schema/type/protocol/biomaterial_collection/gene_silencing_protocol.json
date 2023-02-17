@@ -68,7 +68,7 @@
             "description": "CRISPRoff specific fields",
             "type": "array", 
             "items": {
-                "type": "object"
+                "type": "object",
                 "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/crisproff.json"
             }, 
             "user_friendly": "CRISPRoff"
