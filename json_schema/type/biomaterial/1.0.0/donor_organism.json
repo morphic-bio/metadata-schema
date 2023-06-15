@@ -36,18 +36,18 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
         }, 
         "biomaterial_core": {
             "description": "Core biomaterial-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/biomaterial_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/biomaterial_core.json", 
             "user_friendly": "Biomaterial core"
         }, 
         "organ": {
             "description": "The organ that the biomaterial came from.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/organ_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/organ_ontology.json", 
             "guidelines": "Blood and connective tissue are considered organs.", 
             "user_friendly": "Organ"
         }, 
@@ -55,7 +55,7 @@
             "description": "The scientific binomial name for the species of the organism.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/species_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/species_ontology.json"
             }, 
             "user_friendly": "Genus species"
         }, 
@@ -95,20 +95,20 @@
         "organism_age_unit": {
             "description": "The unit in which Age is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/time_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/time_unit_ontology.json", 
             "user_friendly": "Age unit"
         }, 
         "development_stage": {
             "description": "A classification of the developmental stage of the organism.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/development_stage_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/development_stage_ontology.json", 
             "user_friendly": "Development stage"
         }, 
         "diseases": {
             "description": "Short description of known disease(s) of the organism.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/disease_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/disease_ontology.json"
             }, 
             "user_friendly": "Known disease(s)", 
             "guidelines": "Enter 'normal' if no known disease."
@@ -116,21 +116,21 @@
         "death": {
             "description": "Information about conditions of death of the organism.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/death.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/death.json", 
             "user_friendly": "Death conditions"
         }, 
         "familial_relationships": {
             "description": "Information about other organisms related to this organism.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/familial_relationship.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/familial_relationship.json"
             }, 
             "user_friendly": "Familial relationship"
         }, 
         "medical_history": {
             "description": "Information about the medical history of the organism.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/medical_history.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/medical_history.json", 
             "user_friendly": "Medical history"
         }, 
         "gestational_age": {
@@ -144,7 +144,7 @@
         "gestational_age_unit": {
             "description": "The unit in which Gestational age is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/time_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/time_unit_ontology.json", 
             "user_friendly": "Gestational age unit"
         }, 
         "height": {
@@ -158,7 +158,7 @@
         "height_unit": {
             "description": "The unit in which Height is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/length_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/length_unit_ontology.json", 
             "user_friendly": "Height unit"
         }, 
         "weight": {
@@ -172,13 +172,13 @@
         "weight_unit": {
             "description": "The unit in which Weight is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/mass_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/mass_unit_ontology.json", 
             "user_friendly": "Weight unit"
         }, 
         "timecourse": {
             "description": "Information relating to a timecourse associated with this biomaterial.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/timecourse.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/timecourse.json", 
             "user_friendly": "Timecourse"
         }
     }, 

@@ -33,19 +33,19 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
         }, 
         "protocol_core": {
             "description": "Core protocol-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/protocol_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/protocol_core.json", 
             "user_friendly": "Protocol core"
         }, 
         "method": {
             "description": "Method applied to the biomaterial to induce a LOF on the gene/allele of interest.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/gene_silencing_method_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/gene_silencing_method_ontology.json"
             }, 
             "user_friendly": "Treatment method"
         }, 
@@ -54,7 +54,7 @@
             "type": "array", 
             "items": {
                 "type": "object", 
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/crisproff.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/crisproff.json"
             }, 
             "user_friendly": "CRISPRoff"
         }, 
@@ -63,7 +63,7 @@
             "type": "array", 
             "items": {
                 "type": "object", 
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/target_gene_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/target_gene_ontology.json"
             }, 
             "user_friendly": "Silenced Gene(s)"
         }

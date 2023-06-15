@@ -33,18 +33,18 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
         }, 
         "protocol_core": {
             "description": "Core protocol-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/protocol_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/protocol_core.json", 
             "user_friendly": "Protocol core"
         }, 
         "type": {
             "description": "The type of protocol.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/process_type_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/process_type_ontology.json", 
             "user_friendly": "Protocol type"
         }, 
         "computational_method": {
@@ -56,7 +56,7 @@
         "matrix": {
             "description": "Information related to protocols that output a matrix.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/matrix.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/matrix.json", 
             "user_friendly": "Matrix"
         }
     }, 

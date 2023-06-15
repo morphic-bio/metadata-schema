@@ -33,18 +33,18 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
         }, 
         "protocol_core": {
             "description": "Core protocol-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/protocol_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/protocol_core.json", 
             "user_friendly": "Protocol core"
         }, 
         "method": {
             "description": "How cells or organelles were dissociated.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/process_type_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/process_type_ontology.json", 
             "user_friendly": "Dissociation method"
         }, 
         "reagents": {
@@ -52,7 +52,7 @@
             "type": "array", 
             "items": {
                 "type": "object", 
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/purchased_reagents.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/purchased_reagents.json"
             }, 
             "user_friendly": "Protocol reagents"
         }

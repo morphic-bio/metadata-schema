@@ -34,7 +34,7 @@
         "cell_size_unit": {
             "description": "The unit in which the Cell size is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/length_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/length_unit_ontology.json", 
             "user_friendly": "Cell size unit"
         }, 
         "percent_cell_viability": {
