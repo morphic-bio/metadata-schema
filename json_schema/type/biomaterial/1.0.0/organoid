@@ -33,32 +33,32 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
         }, 
         "biomaterial_core": {
             "description": "Core biomaterial-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core", 
             "user_friendly": "Biomaterial core"
         }, 
         "genus_species": {
             "description": "The scientific binomial name for the species of the organoid.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/species_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/species_ontology"
             }, 
             "user_friendly": "Genus species"
         }, 
         "model_organ": {
             "description": "Organ for which this organoid is a model system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_ontology", 
             "user_friendly": "Organ model"
         }, 
         "model_organ_part": {
             "description": "Organ part for which this organoid is a model system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_part_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_part_ontology", 
             "user_friendly": "Organ part model"
         }, 
         "age": {
@@ -70,7 +70,7 @@
         "age_unit": {
             "description": "The unit in which Organoid age is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/time_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/time_unit_ontology", 
             "user_friendly": "Organoid age unit"
         }, 
         "size": {
@@ -82,7 +82,7 @@
         "size_unit": {
             "description": "The unit in which the Organoid size is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/length_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/length_unit_ontology", 
             "user_friendly": "Organoid size unit"
         }, 
         "morphology": {

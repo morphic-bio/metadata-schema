@@ -76,7 +76,7 @@
         "project_role": {
             "description": "Primary role of the individual in the project.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/contributor_role_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/contributor_role_ontology", 
             "example": "principal investigator; computational scientist", 
             "user_friendly": "Project role"
         }, 

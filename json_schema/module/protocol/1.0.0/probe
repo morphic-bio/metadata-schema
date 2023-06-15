@@ -59,20 +59,20 @@
         "subcellular_structure": {
             "description": "Target subcellular structure.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cellular_component_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cellular_component_ontology", 
             "user_friendly": "Target subcellular structure", 
             "guidelines": "This should be a term from the GO cell component ontology."
         }, 
         "probe_reagents": {
             "description": "Name of reagents used to construct the probe.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/purchased_reagents.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/purchased_reagents", 
             "user_friendly": "Probe construction reagents"
         }, 
         "assay_type": {
             "description": "Type of assay used to detect target.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/process_type_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/process_type_ontology", 
             "example": "MERFISH; in situ sequencing", 
             "user_friendly": "Assay type"
         }, 
