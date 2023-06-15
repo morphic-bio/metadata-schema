@@ -175,18 +175,18 @@ if __name__ == '__main__':
 
     system_schemas = [os.path.join(dirpath, f)
                       for dirpath, dirnames, files in os.walk(system_schema_path)
-                      for f in files if f.endswith('.json')]
+                      for f in files]
 
     core_schemas = [os.path.join(dirpath, f)
                for dirpath, dirnames, files in os.walk(core_schema_path)
-               for f in files if f.endswith('.json')]
+               for f in files]
 
     type_schemas = [os.path.join(dirpath, f)
                     for dirpath, dirnames, files in os.walk(type_schema_path)
-                    for f in files if f.endswith('.json')]
+                    for f in files]
     module_schemas = [os.path.join(dirpath, f)
                     for dirpath, dirnames, files in os.walk(module_schema_path)
-                    for f in files if f.endswith('.json')]
+                    for f in files]
     # bundle_schemas = [os.path.join(dirpath, f)
     #                 for dirpath, dirnames, files in os.walk(bundle_schema_path)
     #                 for f in files if f.endswith('.json')]

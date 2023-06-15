@@ -11,7 +11,13 @@ def refs_to_hyperlink(schema_content):
     if not isinstance(schema_content, dict):
         return schema_content
     for key, value in schema_content.items():
+
         if key == "$ref":
+            value = value.split('json_schema/')[-1]
+            value = value.split('/')  # Add version. TODO: improve versioning
+            value = [v for v in value if v != '1.0.0']
+            value.insert(-1, '1.0.0')
+            value = "/".join(value).replace(".json", "")
             schema_content[key] = f"https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/{value}"
         elif isinstance(value, dict):
             schema_content[key] = refs_to_hyperlink(schema_content[key])
@@ -32,8 +38,7 @@ def update_references(schema_path):
 
 def main():
     cwd = os.getcwd()
-    schemas_dir = f"{'../' if 'setup_tilities' in cwd else ''}json_schema"
-
+    schemas_dir = f"{'../' if 'setup_utilities' in cwd else ''}json_schema"
     for base_path, directories, files in os.walk(schemas_dir):
         if directories:
             continue  # Only leaf directories
