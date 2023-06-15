@@ -95,12 +95,6 @@
             "type": "string", 
             "user_friendly": "Deviation from protocol", 
             "example": "Skipped ACK lysis step; Used 100um filter instead of 40um filter"
-        }, 
-        "insdc_experiment": {
-            "description": "An International Nucleotide Sequence Database Collaboration (INSDC) experiment accession.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/insdc_experiment.json", 
-            "user_friendly": "INSDC experiment accession"
         }
     }, 
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/process/1.0.0/process.json"
