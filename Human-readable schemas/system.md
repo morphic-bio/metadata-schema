@@ -10,7 +10,7 @@ schema_version | The version number of the schema in major.minor.patch format. |
 ## Provenance
 _Provenance information added or generated at time of ingest._
 
-Location: system/provenance.json
+Location: system/1.0.0/provenance
 
 Property name | Description | Type | Required? | Object reference? | User friendly name | Allowed values | Example 
 --- | --- | --- | --- | --- | --- | --- | --- 
