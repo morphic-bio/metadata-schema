@@ -32,31 +32,31 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
         }, 
         "biomaterial_core": {
             "description": "Core biomaterial-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/biomaterial_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core.json", 
             "user_friendly": "Biomaterial core"
         }, 
         "cell_morphology": {
             "description": "Features relating to the morphology of cells in a biomaterial.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/cell_morphology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/cell_morphology.json", 
             "user_friendly": "Cell morphology"
         }, 
         "growth_conditions": {
             "description": "Features relating to the growth and/or maintenance of a biomaterial.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/growth_conditions.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/growth_conditions.json", 
             "user_friendly": "Growth conditions"
         }, 
         "genus_species": {
             "description": "The scientific binomial name for the species of the suspension.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/species_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/species_ontology.json"
             }, 
             "user_friendly": "Genus species"
         }, 
@@ -64,7 +64,7 @@
             "description": "The cell type(s) selected to be present in the suspension.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/cell_type_ontology.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cell_type_ontology.json"
             }, 
             "user_friendly": "Selected cell type(s)", 
             "guidelines": "Enter the cell type(s) selected for, not the cell type(s) determined to be present post-analysis."
@@ -81,13 +81,13 @@
         "plate_based_sequencing": {
             "description": "Fields specific for plate-based sequencing experiments.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/plate_based_sequencing.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/1.0.0/plate_based_sequencing.json", 
             "user_friendly": "Plate-based sequencing"
         }, 
         "timecourse": {
             "description": "Information relating to a timecourse associated with this cell suspension.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/timecourse.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/timecourse.json", 
             "user_friendly": "Timecourse"
         }
     }, 

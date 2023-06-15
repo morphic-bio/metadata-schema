@@ -32,7 +32,7 @@
         "unit": {
             "description": "The unit in which the Timecourse value is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/time_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/time_unit_ontology.json", 
             "user_friendly": "Timecourse unit"
         }, 
         "relevance": {

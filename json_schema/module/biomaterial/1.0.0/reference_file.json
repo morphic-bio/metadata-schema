@@ -36,7 +36,7 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
         }, 
         "ncbi_taxon_id": {
             "description": "A taxonomy ID (taxonID) from NCBI.", 
@@ -48,7 +48,7 @@
         "genus_species": {
             "description": "The scientific binomial name for the species of this reference.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/species_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/species_ontology.json", 
             "user_friendly": "Genus species"
         }, 
         "reference_type": {
