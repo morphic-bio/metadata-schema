@@ -14,7 +14,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/probe.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/probe"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -59,20 +59,20 @@
         "subcellular_structure": {
             "description": "Target subcellular structure.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cellular_component_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/1.0.0/cellular_component_ontology.json", 
             "user_friendly": "Target subcellular structure", 
             "guidelines": "This should be a term from the GO cell component ontology."
         }, 
         "probe_reagents": {
             "description": "Name of reagents used to construct the probe.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/purchased_reagents.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/1.0.0/purchased_reagents.json", 
             "user_friendly": "Probe construction reagents"
         }, 
         "assay_type": {
             "description": "Type of assay used to detect target.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/process_type_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/1.0.0/process_type_ontology.json", 
             "example": "MERFISH; in situ sequencing", 
             "user_friendly": "Assay type"
         }, 
@@ -96,5 +96,5 @@
             "guidelines": "Should be the same as in Channel tab."
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/probe.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/probe"
 }

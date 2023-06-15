@@ -12,7 +12,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/1.0.0/plate_based_sequencing.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/1.0.0/plate_based_sequencing"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -47,5 +47,5 @@
             "example": "Should be one of: 'OK', 'control, 2-cell well', 'control, empty well', or 'low quality cell'."
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/1.0.0/plate_based_sequencing.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/sequencing/1.0.0/plate_based_sequencing"
 }

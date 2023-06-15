@@ -15,7 +15,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/file/1.0.0/sequence_file.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/file/1.0.0/sequence_file"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -33,12 +33,12 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/1.0.0/provenance.json"
         }, 
         "file_core": {
             "description": "Core file-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/file/1.0.0/file_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/file/1.0.0/1.0.0/file_core.json", 
             "user_friendly": "File core"
         }, 
         "read_index": {
@@ -88,5 +88,5 @@
             "guidelines": "Indicate which samples are from the same library preparation by providing a unique identifier for each library preparation."
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/file/1.0.0/sequence_file.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/file/1.0.0/sequence_file"
 }

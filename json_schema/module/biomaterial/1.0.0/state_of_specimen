@@ -9,7 +9,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/state_of_specimen.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/state_of_specimen"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -89,5 +89,5 @@
             "guidelines": "Enter time in seconds."
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/state_of_specimen.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/state_of_specimen"
 }

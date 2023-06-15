@@ -13,7 +13,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/contact.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/contact"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -76,7 +76,7 @@
         "project_role": {
             "description": "Primary role of the individual in the project.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/contributor_role_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/1.0.0/contributor_role_ontology.json", 
             "example": "principal investigator; computational scientist", 
             "user_friendly": "Project role"
         }, 
@@ -87,5 +87,5 @@
             "user_friendly": "ORCID ID"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/contact.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/contact"
 }

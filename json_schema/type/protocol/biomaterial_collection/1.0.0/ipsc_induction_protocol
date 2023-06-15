@@ -15,7 +15,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/ipsc_induction_protocol.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/ipsc_induction_protocol"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -33,12 +33,12 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/1.0.0/provenance.json"
         }, 
         "protocol_core": {
             "description": "Core protocol-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/1.0.0/protocol_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/1.0.0/1.0.0/protocol_core.json", 
             "user_friendly": "Protocol core"
         }, 
         "method": {
@@ -68,7 +68,7 @@
         "ipsc_induction_kit": {
             "description": "Kit used to induce pluripotent stem cell generation.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/purchased_reagents.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/1.0.0/purchased_reagents.json", 
             "user_friendly": "Induction kit"
         }, 
         "pluripotency_test": {
@@ -99,10 +99,10 @@
             "type": "array", 
             "items": {
                 "type": "object", 
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/purchased_reagents.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/process/1.0.0/1.0.0/purchased_reagents.json"
             }, 
             "user_friendly": "Additional reagents"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/ipsc_induction_protocol.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/ipsc_induction_protocol"
 }

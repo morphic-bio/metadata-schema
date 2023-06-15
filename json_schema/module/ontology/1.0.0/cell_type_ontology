@@ -11,7 +11,7 @@
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cell_type_ontology.json", 
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cell_type_ontology", 
             "type": "string"
         }, 
         "schema_version": {
@@ -53,5 +53,5 @@
             "example": "bone marrow hematopoietic cell; cardiac muscle cell"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cell_type_ontology.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/cell_type_ontology"
 }

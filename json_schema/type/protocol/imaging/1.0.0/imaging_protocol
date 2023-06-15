@@ -16,7 +16,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/imaging/1.0.0/imaging_protocol.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/imaging/1.0.0/imaging_protocol"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -34,12 +34,12 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/1.0.0/provenance.json"
         }, 
         "protocol_core": {
             "description": "Core protocol-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/1.0.0/protocol_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/1.0.0/1.0.0/protocol_core.json", 
             "user_friendly": "Protocol core"
         }, 
         "microscope_setup_description": {
@@ -52,7 +52,7 @@
         "microscopy_technique": {
             "description": "The type of microscopy.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/microscopy_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/1.0.0/microscopy_ontology.json", 
             "user_friendly": "Microscopy technique"
         }, 
         "magnification": {
@@ -129,7 +129,7 @@
             "description": "Information about each channel used in the imaging protocol.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/channel.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/1.0.0/channel.json"
             }, 
             "user_friendly": "Channel"
         }, 
@@ -137,10 +137,10 @@
             "description": "Information about each probe in the imaging experiment.", 
             "type": "array", 
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/probe.json"
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/1.0.0/probe.json"
             }, 
             "user_friendly": "Probe"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/imaging/1.0.0/imaging_protocol.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/imaging/1.0.0/imaging_protocol"
 }

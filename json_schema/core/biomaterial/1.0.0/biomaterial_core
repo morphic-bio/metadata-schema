@@ -13,7 +13,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -70,5 +70,5 @@
             "guidelines": "Enter accession if sample has been obtained from the Human Developmental Biology Resource (HDBR)."
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core"
 }

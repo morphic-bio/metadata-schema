@@ -11,7 +11,7 @@
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/microscopy_ontology.json", 
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/microscopy_ontology", 
             "type": "string"
         }, 
         "schema_version": {
@@ -53,5 +53,5 @@
             "user_friendly": "Microscopy ontology label"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/microscopy_ontology.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/microscopy_ontology"
 }

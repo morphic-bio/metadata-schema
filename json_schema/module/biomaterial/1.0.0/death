@@ -12,7 +12,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.", 
             "type": "string", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/death.json"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/death"
         }, 
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.", 
@@ -90,5 +90,5 @@
             "guidelines": "Enter yes if entire body (but not limbs) was perfused with warm oxygenated blood. Otherwise, enter no."
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/death.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/death"
 }

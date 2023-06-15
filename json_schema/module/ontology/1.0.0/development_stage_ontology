@@ -11,7 +11,7 @@
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/development_stage_ontology.json", 
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/development_stage_ontology", 
             "type": "string"
         }, 
         "schema_version": {
@@ -55,5 +55,5 @@
             "example": "human adult stage; Theiler stage 28"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/development_stage_ontology.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/development_stage_ontology"
 }

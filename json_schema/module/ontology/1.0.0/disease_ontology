@@ -11,7 +11,7 @@
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.", 
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/disease_ontology.json", 
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/disease_ontology", 
             "type": "string"
         }, 
         "schema_version": {
@@ -56,5 +56,5 @@
             "example": "type 2 diabetes mellitus; normal"
         }
     }, 
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/disease_ontology.json"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/disease_ontology"
 }
