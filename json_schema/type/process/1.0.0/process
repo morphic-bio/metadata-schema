@@ -32,12 +32,12 @@
         "provenance": {
             "description": "Provenance information provided by the system.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/1.0.0/provenance.json"
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance.json"
         }, 
         "process_core": {
             "description": "Core process-level information.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/process/1.0.0/1.0.0/process_core.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/process/1.0.0/process_core.json", 
             "user_friendly": "Process core"
         }, 
         "start_time": {
@@ -81,13 +81,13 @@
         "length_of_time_unit": {
             "description": "The unit in which Length of time is expressed.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/1.0.0/time_unit_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/time_unit_ontology.json", 
             "user_friendly": "Length of time unit"
         }, 
         "type": {
             "description": "The type of process.", 
             "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/1.0.0/process_type_ontology.json", 
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/process_type_ontology.json", 
             "user_friendly": "Process type"
         }, 
         "deviation_from_protocol": {
