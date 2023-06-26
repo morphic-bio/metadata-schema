@@ -1,0 +1,2 @@
+hca-ingest==2.8.0
+pyyaml
