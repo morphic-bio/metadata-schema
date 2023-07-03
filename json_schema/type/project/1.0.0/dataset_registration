@@ -1,0 +1,144 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "A dataset registration entity defines the fields needed for registration.",
+    "additionalProperties": false,
+    "required": [
+        "describedBy",
+        "schema_type",
+        "project_core",
+        "institute",
+        "cell_line_names",
+        "sequencing_platforms",
+        "readout_assays",
+        "contact_names",
+        "contact_emails",
+        "expected_release_date",
+        "target_genes_hgnc_ids"
+    ],
+    "title": "Dataset registration",
+    "name": "dataset_registration",
+    "type": "object",
+    "dependentRequired": {
+    	"contact_names": ["contact_emails"],
+    	"contact_emails": ["contact_names"]
+    }
+    "properties": {
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "type": "string",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "example": "4.6.1"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "type": "string",
+            "enum": [
+                "project"
+            ]
+        },
+        "provenance": {
+            "description": "Provenance information provided by the system.",
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
+        },
+        "project_core": {
+            "description": "Core project-level information.",
+            "type": "object",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/project_core",
+            "user_friendly": "Project core"
+        },
+        "institute": {
+            "description": "Institute associated with the registered dataset.",
+            "type": "string",
+            "enum": [
+            	"JAX",
+            	"MSK",
+            	"UCSF",
+            	"NWU"
+            ],
+            "user_friendly": "Institute"
+        },
+        "cell_line_names": {
+        	"description": "Name(s) of the cell lines used for this dataset.",
+        	"type": "string",
+        	"enum": [
+        		"KOLF2.2J"
+        	],
+			"user_friendly": "Cell line name(s)"
+        },
+        "sequencing_platforms": {
+        	"description": "Sequencing platform(s) being used to sequence the samples.",
+        	"type": "array",
+        	"items": {
+        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/sequencing_ontology"
+        	},
+        	"user_friendly": "Sequencing platform(s)"
+        },
+        "readout_assays": {
+        	"description": "High throughput readout assay(s) used in the generation of the dataset.",
+        	"type": "array",
+        	"items": {
+        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology"
+        	},
+        	"user_friendly": "Readout assay(s)"
+        },
+        "contact_names": {
+			"description": "Name of the person/people to contact for queries about this dataset.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+			"user_friendly": "Contact name(s)"
+        },
+        "contact_emails": {
+			"description": "Email of the person/people to contact for queries about this dataset.",
+			"type": "array",
+			"items": {
+					"type": "string",
+					"pattern": "^.+@.+\\..+$"
+			},
+			"user_friendly": "Contact email(s)"
+        },
+        "expected_release_date": {
+        	"description": "Expected date for the release of the dataset.",
+			"type": "string",
+			"enum": [
+				"2023 Q3",
+				"2023 Q4",
+				"2024 Q1",
+				"2024 Q2",
+				"2024 Q3",
+				"2024 Q4"
+			]
+        },
+        "target_genes_hgnc_ids": {
+            "description": "HGNC ID(s) of the gene(s) that were studied in this dataset.",
+            "type": "array",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/target_gene_ontology"
+            },
+            "user_friendly": "Target gene(s) HGNC ID(s)",
+            "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
+                }
+        "supplementary_links": {
+            "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the project which will not be uploaded.",
+            "type": "array",
+            "example": "https://github.com/czbiohub/tabula-muris; http://celltag.org/",
+            "items": {
+                "type": "string"
+            },
+            "user_friendly": "Supplementary link(s)"
+		},
+		"other_comments": {
+        	"description": "Other comments from the contributor regarding this dataset.",
+        	"type": "string",
+        	"user_friendly": "Other comments"
+                }
+    },
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/project"
+}
