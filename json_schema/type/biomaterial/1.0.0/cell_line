@@ -41,31 +41,13 @@
             "type": "object", 
             "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/biomaterial/1.0.0/biomaterial_core", 
             "user_friendly": "Biomaterial core"
-        }, 
-        "supplier": {
-            "description": "The supplier of the cell line.", 
-            "type": "string", 
-            "example": "HipSci; ATCC", 
-            "user_friendly": "Supplier"
-        }, 
-        "catalog_number": {
-            "description": "The supplier catalogue number for the cell line.", 
-            "type": "string", 
-            "example": "77650057", 
-            "user_friendly": "Catalog number"
-        }, 
-        "lot_number": {
-            "description": "The supplier lot or batch number for the cell line.", 
-            "type": "string", 
-            "example": "24.10.14", 
-            "user_friendly": "Lot/batch number"
-        }, 
-        "catalog_url": {
-            "description": "The supplier catalogue URL for the cell line.", 
-            "type": "string", 
-            "user_friendly": "Catalog URL", 
-            "example": "www.phe-culturecollections.org.uk/products/celllines/ipsc/detail.jsp?refId=77650057&collection=ecacc_ipsc"
-        }, 
+        },
+        "retail_details": {
+        	"description": "Details about the provenance of the cell line.",
+        	"type": "object",
+        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/cell_line_retail",
+        	"user_friendly": "Retail details"
+        },
         "cell_cycle": {
             "description": "The cell cycle phase if the cell line is synchronized growing cells or the phase is known.", 
             "type": "object", 

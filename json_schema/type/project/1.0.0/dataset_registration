@@ -21,7 +21,7 @@
     "dependentRequired": {
     	"contact_names": ["contact_emails"],
     	"contact_emails": ["contact_names"]
-    }
+    },
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.",
@@ -92,7 +92,7 @@
 			"type": "array",
 			"items": {
 				"type": "string"
-			}
+			},
 			"user_friendly": "Contact name(s)"
         },
         "contact_emails": {
@@ -122,9 +122,8 @@
             "items": {
                 "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/target_gene_ontology"
             },
-            "user_friendly": "Target gene(s) HGNC ID(s)",
             "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
-                }
+        },
         "supplementary_links": {
             "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the project which will not be uploaded.",
             "type": "array",
@@ -140,5 +139,5 @@
         	"user_friendly": "Other comments"
                 }
     },
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/project"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
 }
