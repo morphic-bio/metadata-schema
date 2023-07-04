@@ -104,6 +104,9 @@
             ], 
             "example": "feeder-free; feeder-dependent, mouse embryonic fibroblast cells", 
             "user_friendly": "Feeder layer type"
+        },
+        "growth_testing": {
+
         }
     }, 
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/growth_conditions"

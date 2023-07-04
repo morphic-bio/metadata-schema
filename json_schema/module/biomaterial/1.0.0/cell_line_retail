@@ -1,6 +1,6 @@
 
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Information about retail details of the cell lines, including non-commercial shipments.",
+    "description": "Information about provenance of the cell lines, including non-commercial shipments.",
     "additionalProperties": false,
     "title": "Cell line retail",
     "name": "cell_line_retail",
@@ -36,18 +36,6 @@
 			"type": "string",
 			"example": "77650057",
 			"user_friendly": "Catalog number"
-		},
-		"lot_number": {
-			"description": "The supplier lot or batch number for the cell line.",
-			"type": "string",
-			"example": "24.10.14",
-			"user_friendly": "Lot/batch number"
-		},
-		"catalog_url": {
-			"description": "The supplier catalogue URL for the cell line.",
-			"type": "string",
-			"user_friendly": "Catalog URL",
-			"example": "www.phe-culturecollections.org.uk/products/celllines/ipsc/detail.jsp?refId=77650057&collection=ecacc_ipsc"
 		}
     },
     "if": {

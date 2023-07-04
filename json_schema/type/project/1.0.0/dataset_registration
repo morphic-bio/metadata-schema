@@ -38,7 +38,7 @@
             "description": "The type of the metadata schema entity.",
             "type": "string",
             "enum": [
-                "project"
+                "dataset_registration"
             ]
         },
         "provenance": {
@@ -61,6 +61,7 @@
             	"UCSF",
             	"NWU"
             ],
+            "examples": ["JAX", "MSK", "UCSF", "NWU"],
             "user_friendly": "Institute"
         },
         "cell_line_names": {
@@ -69,7 +70,8 @@
         	"enum": [
         		"KOLF2.2J"
         	],
-			"user_friendly": "Cell line name(s)"
+			"user_friendly": "Cell line name(s)",
+			"examples": ["KOLF2.2K"]
         },
         "sequencing_platforms": {
         	"description": "Sequencing platform(s) being used to sequence the samples.",
@@ -137,7 +139,18 @@
         	"description": "Other comments from the contributor regarding this dataset.",
         	"type": "string",
         	"user_friendly": "Other comments"
-                }
+        },
+        "perturbation_type": {
+       		"description": "Type of perturbation introduced by the gene expression alteration assay.",
+       		"type": "array",
+       		"items": [
+       			{
+       				"type": "string"
+       			}
+       		],
+       		"user_friendly": "Perturbation type(s)",
+       		"example": "reversible gene knockdown; irreversible gene knockout"
+        }
     },
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
 }
