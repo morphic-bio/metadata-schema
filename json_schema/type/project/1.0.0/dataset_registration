@@ -62,7 +62,8 @@
             	"UCSF",
             	"NWU"
             ],
-            "examples": ["JAX", "MSK", "UCSF", "NWU"],
+            "example": "JAX;MSK;UCSF;NWU"
+            "guidelines": "Must be one of: JAX, MSK, UCSF or NWU"
             "user_friendly": "Institute"
         },
         "cell_line_names": {
@@ -73,6 +74,7 @@
         	],
 			"user_friendly": "Cell line name(s)",
 			"examples": ["KOLF2.2K"]
+			"guidelines": "Please indicate the name of the cell line."
         },
         "sequencing_platforms": {
         	"description": "Sequencing platform(s) being used to sequence the samples.",
@@ -119,7 +121,9 @@
 				"2024 Q3",
 				"2024 Q4"
 			],
-			"user_friendly": "Expected release date"
+			"user_friendly": "Expected release date",
+			"guidelines": "Please indicate the expected release date, using the format 'YYYY QX', replacing Y with the year and X with the quarter.",
+			"example": "2024 Q4;2023 Q3"
         },
         "target_genes_hgnc_ids": {
             "description": "HGNC ID(s) of the gene(s) that were studied in this dataset.",
@@ -172,7 +176,7 @@
         	"description": "Model organ system(s) being studied or modelled in this dataset.",
         	"type": "array",
         	"items": {
-        		"type": "object"
+        		"type": "object",
         		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_ontology"
         	},
         	"user_friendly": "Model organ system(s)"
