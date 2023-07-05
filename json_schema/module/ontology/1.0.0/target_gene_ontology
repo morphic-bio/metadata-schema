@@ -23,8 +23,8 @@
         "text": {
             "description": "The gene symbol of the gene that was studied in this project.", 
             "type": "string", 
-            "user_friendly": "Target gene", 
-            "example": "ITGB1 Gene; CD81 Gene"
+            "user_friendly": "Target gene(s)",
+            "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
         }, 
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession.", 
