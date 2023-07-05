@@ -110,39 +110,19 @@
             "user_friendly": "Date established", 
             "example": "2017-03-19; 2002/03; 1995", 
             "guidelines": "Enter the date established in date format: yyyy-mm-dd. Supplying partial date is allowed."
-        }, 
-        "disease": {
-            "description": "Short description of any disease association to the cell type.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/disease_ontology", 
-            "user_friendly": "Disease"
-        }, 
-        "genus_species": {
-            "description": "The scientific binomial name for the species of the cell line.", 
-            "type": "array", 
-            "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/species_ontology"
-            }, 
-            "user_friendly": "Genus species"
-        }, 
+        },
         "publication": {
             "description": "A publication that cites the cell line creation.", 
             "type": "object", 
             "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/publication", 
             "user_friendly": "Publication"
-        }, 
-        "timecourse": {
-            "description": "Information relating to a timecourse associated with this cell line.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/timecourse", 
-            "user_friendly": "Timecourse"
-        }, 
-        "genbank_assembly_accession": {
+        },
+        "genotyping_accessions": {
             "description": "A GenBank assembly accession identifier for the cell line.", 
             "type": "string", 
             "pattern": "^GCA_\\d{9}(\\.\\d+){,1}$", 
             "example": "GCA_000001405.29", 
-            "user_friendly": "Genbank assembly accession"
+            "user_friendly": "Genotyping accession(s)"
         }, 
         "cellosaurus_accession": {
             "description": "A Cellosaurus ID from Expasy", 

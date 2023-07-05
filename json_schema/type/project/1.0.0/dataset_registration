@@ -72,7 +72,7 @@
         		"KOLF2.2J"
         	],
 			"user_friendly": "Cell line name(s)",
-			"examples": ["KOLF2.2K"],
+			"examples": ["KOLF2.2J"],
 			"guidelines": "Please indicate the name of the cell line."
         },
         "sequencing_platforms": {
@@ -83,22 +83,22 @@
         	},
         	"user_friendly": "Sequencing platform(s)"
         },
-        "readout_assays": {
+        "readout_assay": {
         	"description": "High throughput readout assay(s) used in the generation of the dataset.",
-        	"type": "array",
-        	"items": {
-        		"type": "object",
-        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology"
-        	},
-        	"user_friendly": "Readout assay(s)"
+        	"type": "object",
+        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology"
+        	"user_friendly": "Readout assay"
         },
-        "contact_names": {
-			"description": "Name of the person/people to contact for queries about this dataset.",
-			"type": "array",
-			"items": {
-				"type": "string"
-			},
-			"user_friendly": "Contact name(s)"
+        "contact_first_names": {
+			"description": "First name of the person/people to contact for queries about this dataset.",
+			"type": "string",
+			"user_friendly": "Contact first name(s)",
+			"example": "Enrique;Gabs"
+        },
+        "contact_surnames": {
+			"description": "Surname of the person/people to contact for queries about this dataset.",
+			"type": "string",
+			"user_friendly": "Contact surname(s)",
         },
         "contact_emails": {
 			"description": "Email of the person/people to contact for queries about this dataset.",
@@ -109,7 +109,7 @@
 			},
 			"user_friendly": "Contact email(s)"
         },
-        "expected_release_date": {
+        "dracc_data_sharing_date": {
         	"description": "Expected date for the release of the dataset.",
 			"type": "string",
 			"enum": [
@@ -179,6 +179,15 @@
         		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_ontology"
         	},
         	"user_friendly": "Model organ system(s)"
+        },
+        "duo_codes": {
+        	"description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this dataset.",
+        	"type": "array",
+        	"items": {
+        		"type": "object",
+        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/duos_code_ontology"
+        	},
+        	"user_friendly": "Data Usage Ontology Service(DUOS) code(s)"
         }
     },
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
