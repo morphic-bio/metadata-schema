@@ -62,8 +62,7 @@
             	"UCSF",
             	"NWU"
             ],
-            "example": "JAX;MSK;UCSF;NWU"
-            "guidelines": "Must be one of: JAX, MSK, UCSF or NWU"
+            "guidelines": "Must be one of: JAX, MSK, UCSF or NWU.",
             "user_friendly": "Institute"
         },
         "cell_line_names": {
@@ -73,7 +72,7 @@
         		"KOLF2.2J"
         	],
 			"user_friendly": "Cell line name(s)",
-			"examples": ["KOLF2.2K"]
+			"examples": ["KOLF2.2K"],
 			"guidelines": "Please indicate the name of the cell line."
         },
         "sequencing_platforms": {
@@ -157,7 +156,7 @@
        		"user_friendly": "Perturbation type(s)",
        		"example": "reversible gene knockdown; irreversible gene knockout"
         },
-        "biomaterial_types": {
+        "biological_sample_types": {
 			"description": "Does the dataset contain data extracted from cell lines, organoids and/or embryoid bodies?",
 			"type": "array",
 			"items": {
@@ -170,7 +169,7 @@
 			},
 			"uniqueItems": true,
 			"guidelines": "Must be one, or more, of: cell line, organoid, embryoid body",
-			"user_friendly": "Biomaterial type(s)"
+			"user_friendly": "Biological sample type(s)"
         },
         "model_organ_systems": {
         	"description": "Model organ system(s) being studied or modelled in this dataset.",
