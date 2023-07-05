@@ -13,7 +13,8 @@
         "contact_names",
         "contact_emails",
         "expected_release_date",
-        "target_genes_hgnc_ids"
+        "target_genes_hgnc_ids",
+        "perturbation_type"
     ],
     "title": "Dataset registration",
     "name": "dataset_registration",
@@ -85,6 +86,7 @@
         	"description": "High throughput readout assay(s) used in the generation of the dataset.",
         	"type": "array",
         	"items": {
+        		"type": "object",
         		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology"
         	},
         	"user_friendly": "Readout assay(s)"
@@ -116,12 +118,14 @@
 				"2024 Q2",
 				"2024 Q3",
 				"2024 Q4"
-			]
+			],
+			"user_friendly": "Expected release date"
         },
         "target_genes_hgnc_ids": {
             "description": "HGNC ID(s) of the gene(s) that were studied in this dataset.",
             "type": "array",
             "items": {
+            	"type": "object",
                 "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/target_gene_ontology"
             },
             "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
@@ -143,13 +147,35 @@
         "perturbation_type": {
        		"description": "Type of perturbation introduced by the gene expression alteration assay.",
        		"type": "array",
-       		"items": [
-       			{
+       		"items": {
        				"type": "string"
-       			}
-       		],
+       		},
        		"user_friendly": "Perturbation type(s)",
        		"example": "reversible gene knockdown; irreversible gene knockout"
+        },
+        "biomaterial_types": {
+			"description": "Does the dataset contain data extracted from cell lines, organoids and/or embryoid bodies?",
+			"type": "array",
+			"items": {
+				"type": "str",
+				"enum": [
+					"cell line",
+					"organoid",
+					"embryoid body"
+				]
+			},
+			"uniqueItems": true,
+			"guidelines": "Must be one, or more, of: cell line, organoid, embryoid body",
+			"user_friendly": "Biomaterial type(s)"
+        },
+        "model_organ_systems": {
+        	"description": "Model organ system(s) being studied or modelled in this dataset.",
+        	"type": "array",
+        	"items": {
+        		"type": "object"
+        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_ontology"
+        	},
+        	"user_friendly": "Model organ system(s)"
         }
     },
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
