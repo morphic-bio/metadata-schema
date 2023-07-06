@@ -1,0 +1,32 @@
+tabs:
+  - dataset:
+      columns:
+        - dataset.dataset_core.dataset_short_name
+        - dataset.dataset_core.dataset_title
+        - dataset.dataset_core.dataset_description
+        - dataset.target_genes_hgnc_ids.text
+        - dataset.target_genes_hgnc_ids.ontology
+        - dataset.target_genes_hgnc_ids.ontology_label
+        - dataset.perturbation_type
+        - dataset.model_organ_systems.text
+        - dataset.model_organ_systems.ontology
+        - dataset.model_organ_systems.ontology_label
+        - dataset.biological_sample_types
+        - dataset.cell_line_names
+        - dataset.duo_codes.text
+        - dataset.duo_codes.ontology
+        - dataset.duo_codes.ontology_label
+        - dataset.sequencing_platforms.text
+        - dataset.sequencing_platforms.ontology
+        - dataset.sequencing_platforms.ontology_label
+        - dataset.readout_assay.text
+        - dataset.readout_assay.ontology
+        - dataset.readout_assay.ontology_label
+        - dataset.contact_first_name
+        - dataset.contact_surname
+        - dataset.contact_email
+        - dataset.institute
+        - dataset.registration_details.dracc_data_sharing_date
+        - dataset.supplementary_links
+        - dataset.other_comments
+      display_name: "Dataset"
