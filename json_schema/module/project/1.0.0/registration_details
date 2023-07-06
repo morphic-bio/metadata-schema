@@ -1,9 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Information about the registration of a dataset",
+    "description": "Information about the registration of a dataset to the DRACC.",
     "additionalProperties": false,
     "required": [
-        dracc_data_sharing_date
+        "dracc_data_sharing_date"
     ],
     "title": "Registration details",
     "name": "registration_details",
@@ -34,7 +34,7 @@
 			"user_friendly": "Expected DRACC data release date",
 			"guidelines": "Please indicate the expected date of data release to the DRACC, using the format 'YYYY QX', replacing Y with the year and X with the quarter.",
 			"example": "2024 Q4;2023 Q3"
-		},
+		}
     },
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/registration_details"
 }
