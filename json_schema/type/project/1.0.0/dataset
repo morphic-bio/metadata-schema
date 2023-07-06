@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "A dataset registration entity defines the fields needed for registration.",
+    "description": "A dataset entity defines the fields needed for representing a dataset.",
     "additionalProperties": false,
     "required": [
         "describedBy",
@@ -10,8 +10,9 @@
         "cell_line_names",
         "sequencing_platforms",
         "readout_assays",
-        "contact_names",
-        "contact_emails",
+        "contact_first_name",
+        "contact_surname",
+        "contact_email",
         "expected_release_date",
         "target_genes_hgnc_ids",
         "perturbation_type"
@@ -27,7 +28,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.",
             "type": "string",
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset"
         },
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.",
@@ -47,10 +48,10 @@
             "type": "object",
             "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
         },
-        "project_core": {
+        "dataset_core": {
             "description": "Core project-level information.",
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/project_core",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/dataset_core",
             "user_friendly": "Project core"
         },
         "institute": {
@@ -86,21 +87,21 @@
         "readout_assay": {
         	"description": "High throughput readout assay(s) used in the generation of the dataset.",
         	"type": "object",
-        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology"
+        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology",
         	"user_friendly": "Readout assay"
         },
-        "contact_first_names": {
-			"description": "First name of the person/people to contact for queries about this dataset.",
+        "contact_first_name": {
+			"description": "First name of the main person to contact for queries about this dataset.",
 			"type": "string",
-			"user_friendly": "Contact first name(s)",
+			"user_friendly": "Contact first name",
 			"example": "Enrique;Gabs"
         },
-        "contact_surnames": {
-			"description": "Surname of the person/people to contact for queries about this dataset.",
+        "contact_surname": {
+			"description": "Surname of the main person to contact for queries about this dataset.",
 			"type": "string",
-			"user_friendly": "Contact surname(s)",
+			"user_friendly": "Contact surname"
         },
-        "contact_emails": {
+        "contact_email": {
 			"description": "Email of the person/people to contact for queries about this dataset.",
 			"type": "array",
 			"items": {
@@ -109,20 +110,10 @@
 			},
 			"user_friendly": "Contact email(s)"
         },
-        "dracc_data_sharing_date": {
-        	"description": "Expected date for the release of the dataset.",
-			"type": "string",
-			"enum": [
-				"2023 Q3",
-				"2023 Q4",
-				"2024 Q1",
-				"2024 Q2",
-				"2024 Q3",
-				"2024 Q4"
-			],
-			"user_friendly": "Expected release date",
-			"guidelines": "Please indicate the expected release date, using the format 'YYYY QX', replacing Y with the year and X with the quarter.",
-			"example": "2024 Q4;2023 Q3"
+        "registration_details": {
+        	"description": "Details exclusive to the registration of a dataset.",
+        	"type": "object",
+        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/registration_details"
         },
         "target_genes_hgnc_ids": {
             "description": "HGNC ID(s) of the gene(s) that were studied in this dataset.",
@@ -187,8 +178,8 @@
         		"type": "object",
         		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/duos_code_ontology"
         	},
-        	"user_friendly": "Data Usage Ontology Service(DUOS) code(s)"
+        	"user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
         }
     },
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset_registration"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset"
 }

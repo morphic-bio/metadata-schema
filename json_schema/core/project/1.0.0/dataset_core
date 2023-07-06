@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#", 
+    "description": "Information about the dataset.",
+    "additionalProperties": false, 
+    "required": [
+        "dataset_short_name",
+        "dataset_title",
+        "dataset_description"
+    ], 
+    "title": "Dataset core",
+    "name": "dataset_core",
+    "type": "object", 
+    "properties": {
+        "describedBy": {
+            "description": "The URL reference to the schema.", 
+            "type": "string", 
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/dataset_core"
+        }, 
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.", 
+            "type": "string", 
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$", 
+            "example": "4.6.1"
+        }, 
+        "dataset_short_name": {
+            "description": "A short name for the dataset.",
+            "type": "string", 
+            "example": "CoolOrganDataset.",
+            "user_friendly": "Dataset label",
+            "maxLen": 50,
+            "guidelines": "Dataset label is a short label by which you refer to the dataset. It should have no spaces and should be fewer than 50 characters."
+        }, 
+        "dataset_title": {
+            "description": "An official title for the dataset.",
+            "type": "string", 
+            "example": "Study of single cells in the human body.", 
+            "user_friendly": "Dataset title",
+            "guidelines": "Dataset title should be fewer than 30 words, such as a title of a grant proposal or a publication."
+        }, 
+        "dataset_description": {
+            "description": "A longer description of the dataset which includes research goals and experimental approach.",
+            "type": "string", 
+            "user_friendly": "Dataset description",
+            "guidelines": "Dataset description should be fewer than 300 words, such as an abstract from a grant application or publication."
+        }
+    }, 
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/dataset_core"
+}
