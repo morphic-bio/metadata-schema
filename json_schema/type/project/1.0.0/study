@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "A dataset entity defines the fields needed for representing a dataset.",
+    "description": "A study entity defines the fields needed for representing a study.",
     "additionalProperties": false,
     "required": [
         "describedBy",
@@ -17,8 +17,8 @@
         "target_genes_hgnc_ids",
         "perturbation_type"
     ],
-    "title": "Dataset registration",
-    "name": "dataset_registration",
+    "title": "Study",
+    "name": "study",
     "type": "object",
     "dependentRequired": {
     	"contact_names": ["contact_emails"],
@@ -28,7 +28,7 @@
         "describedBy": {
             "description": "The URL reference to the schema.",
             "type": "string",
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset"
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/study"
         },
         "schema_version": {
             "description": "The version number of the schema in major.minor.patch format.",
@@ -40,7 +40,7 @@
             "description": "The type of the metadata schema entity.",
             "type": "string",
             "enum": [
-                "dataset_registration"
+                "study_registration"
             ]
         },
         "provenance": {
@@ -48,14 +48,14 @@
             "type": "object",
             "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
         },
-        "dataset_core": {
+        "study_core": {
             "description": "Core project-level information.",
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/dataset_core",
+            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/study_core",
             "user_friendly": "Project core"
         },
         "institute": {
-            "description": "Institute associated with the registered dataset.",
+            "description": "Institute associated with the registered study.",
             "type": "string",
             "enum": [
             	"JAX",
@@ -67,7 +67,7 @@
             "user_friendly": "Institute"
         },
         "cell_line_names": {
-        	"description": "Name(s) of the cell lines used for this dataset.",
+        	"description": "Name(s) of the cell lines used for this study.",
         	"type": "string",
         	"enum": [
         		"KOLF2.2J"
@@ -85,24 +85,24 @@
         	"user_friendly": "Sequencing platform(s)"
         },
         "readout_assay": {
-        	"description": "High throughput readout assay(s) used in the generation of the dataset.",
+        	"description": "High throughput readout assay(s) used in the generation of the study.",
         	"type": "object",
         	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology",
         	"user_friendly": "Readout assay"
         },
         "contact_first_name": {
-			"description": "First name of the main person to contact for queries about this dataset.",
+			"description": "First name of the main person to contact for queries about this study.",
 			"type": "string",
 			"user_friendly": "Contact first name",
 			"example": "Enrique;Gabs"
         },
         "contact_surname": {
-			"description": "Surname of the main person to contact for queries about this dataset.",
+			"description": "Surname of the main person to contact for queries about this study.",
 			"type": "string",
 			"user_friendly": "Contact surname"
         },
         "contact_email": {
-			"description": "Email of the person/people to contact for queries about this dataset.",
+			"description": "Email of the person/people to contact for queries about this study.",
 			"type": "array",
 			"items": {
 					"type": "string",
@@ -111,12 +111,12 @@
 			"user_friendly": "Contact email(s)"
         },
         "registration_details": {
-        	"description": "Details exclusive to the registration of a dataset.",
+        	"description": "Details exclusive to the registration of a study.",
         	"type": "object",
         	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/registration_details"
         },
         "target_genes_hgnc_ids": {
-            "description": "HGNC ID(s) of the gene(s) that were studied in this dataset.",
+            "description": "HGNC ID(s) of the gene(s) that were studied in this study.",
             "type": "array",
             "items": {
             	"type": "object",
@@ -125,7 +125,7 @@
             "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
         },
         "supplementary_links": {
-            "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the project which will not be uploaded.",
+            "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
             "type": "array",
             "example": "https://github.com/czbiohub/tabula-muris; http://celltag.org/",
             "items": {
@@ -134,7 +134,7 @@
             "user_friendly": "Supplementary link(s)"
 		},
 		"other_comments": {
-        	"description": "Other comments from the contributor regarding this dataset.",
+        	"description": "Other comments from the contributor regarding this study.",
         	"type": "string",
         	"user_friendly": "Other comments"
         },
@@ -148,7 +148,7 @@
        		"example": "reversible gene knockdown; irreversible gene knockout"
         },
         "biological_sample_types": {
-			"description": "Does the dataset contain data extracted from cell lines, organoids and/or embryoid bodies?",
+			"description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
 			"type": "array",
 			"items": {
 				"type": "str",
@@ -163,7 +163,7 @@
 			"user_friendly": "Biological sample type(s)"
         },
         "model_organ_systems": {
-        	"description": "Model organ system(s) being studied or modelled in this dataset.",
+        	"description": "Model organ system(s) being studied or modelled in this study.",
         	"type": "array",
         	"items": {
         		"type": "object",
@@ -172,7 +172,7 @@
         	"user_friendly": "Model organ system(s)"
         },
         "duo_codes": {
-        	"description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this dataset.",
+        	"description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
         	"type": "array",
         	"items": {
         		"type": "object",
@@ -181,5 +181,5 @@
         	"user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
         }
     },
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/dataset"
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/study"
 }
