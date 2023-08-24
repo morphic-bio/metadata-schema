@@ -97,6 +97,7 @@ A full path is considered a whole s3 path (e.g. `s3://morphic-bio-jax/<study_nam
 
 
 
+
 # Potential improvements list
 - Adapt to Json Schema draft 09
 - Add cellosaurus ontology
