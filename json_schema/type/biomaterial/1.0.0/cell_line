@@ -51,11 +51,8 @@
         "duos_code": {
         	"description": "Information about the Data Usage for the cell line.",
         	"type": "object",
-        	"$ref": OBJECT,
+        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/duos_code_ontology",
         	"user_friendly": "DUOS code"
-        },
-        "material_transfer_agreement": {
-        	"description": "filloutlater"
         },
         "type": {
             "description": "The type of cell line.", 
@@ -70,7 +67,13 @@
             ], 
             "example": "Should be one of: primary, immortalized, stem cell, stem cell-derived, induced pluripotent, or synthetic.", 
             "user_friendly": "Cell line type"
-        }, 
+        },
+        "hipsc_derivation": {
+        	"description": "Information on the derivation techniques used to obtain a Human Induced Pluripotent Stem Cell.",
+        	"type": "object",
+        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/biomaterial/1.0.0/hipsc_derivation"
+        	"user_friendly": "hIPSc derivation"
+        }
         "model_organ": {
             "description": "Organ for which this cell line is a model.", 
             "type": "object", 
@@ -96,12 +99,6 @@
             "type": "object", 
             "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_part_ontology", 
             "user_friendly": "Tissue"
-        },
-        "source_cell_type": {
-
-        },
-        "reprogramming": {
-
         },
         "date_established": {
             "description": "Date when the cell line was established.", 
