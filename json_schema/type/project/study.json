@@ -46,12 +46,12 @@
         "provenance": {
             "description": "Provenance information provided by the system.",
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
+            "$ref": "system/provenance.json"
         },
         "study_core": {
             "description": "Core project-level information.",
             "type": "object",
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/project/1.0.0/study_core",
+            "$ref": "core/project/study_core.json",
             "user_friendly": "Project core"
         },
         "institute": {
@@ -80,14 +80,14 @@
         	"description": "Sequencing platform(s) being used to sequence the samples.",
         	"type": "array",
         	"items": {
-        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/sequencing_ontology"
+        		"$ref": "module/ontology/sequencing_ontology.json"
         	},
         	"user_friendly": "Sequencing platform(s)"
         },
         "readout_assay": {
         	"description": "High throughput readout assay(s) used in the generation of the study.",
         	"type": "object",
-        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/library_construction_ontology",
+        	"$ref": "module/ontology/library_construction_ontology.json",
         	"user_friendly": "Readout assay"
         },
         "contact_first_name": {
@@ -113,15 +113,16 @@
         "registration_details": {
         	"description": "Details exclusive to the registration of a study.",
         	"type": "object",
-        	"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/project/1.0.0/registration_details"
+        	"$ref": "module/project/registration_details.json"
         },
         "target_genes_hgnc_ids": {
             "description": "HGNC ID(s) of the gene(s) that were studied in this study.",
             "type": "array",
             "items": {
             	"type": "object",
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/target_gene_ontology"
+                "$ref": "module/ontology/target_gene_ontology.json"
             },
+            "user_friendly": "Target Genes HGNC IDs",
             "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
         },
         "supplementary_links": {
@@ -151,7 +152,7 @@
 			"description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
 			"type": "array",
 			"items": {
-				"type": "str",
+				"type": "string",
 				"enum": [
 					"cell line",
 					"organoid",
@@ -167,7 +168,7 @@
         	"type": "array",
         	"items": {
         		"type": "object",
-        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/organ_ontology"
+        		"$ref": "module/ontology/organ_ontology.json"
         	},
         	"user_friendly": "Model organ system(s)"
         },
@@ -176,7 +177,7 @@
         	"type": "array",
         	"items": {
         		"type": "object",
-        		"$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/duos_code_ontology"
+        		"$ref": "module/ontology/duos_code_ontology.json"
         	},
         	"user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
         }
