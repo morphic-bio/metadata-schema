@@ -27,7 +27,7 @@
       },
       "ontology": {
         "organ_part_ontology": "1.0.0",
-        "fileformat_ontology": "1.0.0",
+        "file_format_ontology": "1.0.0",
         "disease_ontology": "1.0.0",
         "contributor_role_ontology": "1.0.0",
         "microscopy_ontology": "1.0.0",
