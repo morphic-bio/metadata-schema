@@ -1,64 +1,64 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#", 
-    "description": "Information about the analysis protocol.", 
-    "additionalProperties": false, 
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Information about the analysis protocol.",
+    "additionalProperties": false,
     "required": [
-        "describedBy", 
-        "schema_type", 
-        "protocol_core", 
+        "describedBy",
+        "schema_type",
+        "protocol_core",
         "type"
-    ], 
-    "title": "Analysis protocol", 
-    "name": "analysis_protocol", 
-    "type": "object", 
+    ],
+    "title": "Analysis protocol",
+    "name": "analysis_protocol",
+    "type": "object",
     "properties": {
         "describedBy": {
-            "description": "The URL reference to the schema.", 
-            "type": "string", 
+            "description": "The URL reference to the schema.",
+            "type": "string",
             "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/analysis/1.0.0/analysis_protocol"
-        }, 
+        },
         "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.", 
-            "type": "string", 
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$", 
+            "description": "The version number of the schema in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
             "example": "4.6.1"
-        }, 
+        },
         "schema_type": {
-            "description": "The type of the metadata schema entity.", 
-            "type": "string", 
+            "description": "The type of the metadata schema entity.",
+            "type": "string",
             "enum": [
                 "protocol"
             ]
-        }, 
+        },
         "provenance": {
-            "description": "Provenance information provided by the system.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
-        }, 
+            "description": "Provenance information provided by the system.",
+            "type": "object",
+            "$ref": "system/provenance.json"
+        },
         "protocol_core": {
-            "description": "Core protocol-level information.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/1.0.0/protocol_core", 
+            "description": "Core protocol-level information.",
+            "type": "object",
+            "$ref": "core/protocol/protocol_core.json",
             "user_friendly": "Protocol core"
-        }, 
+        },
         "type": {
-            "description": "The type of protocol.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/process_type_ontology", 
+            "description": "The type of protocol.",
+            "type": "object",
+            "$ref": "module/ontology/process_type_ontology.json",
             "user_friendly": "Protocol type"
-        }, 
+        },
         "computational_method": {
-            "description": "A URI to a versioned workflow and versioned execution environment in a GA4GH-compliant repository.", 
-            "type": "string", 
-            "user_friendly": "Computational method", 
+            "description": "A URI to a versioned workflow and versioned execution environment in a GA4GH-compliant repository.",
+            "type": "string",
+            "user_friendly": "Computational method",
             "example": "SmartSeq2SingleCell; 10x"
-        }, 
+        },
         "matrix": {
-            "description": "Information related to protocols that output a matrix.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/matrix", 
+            "description": "Information related to protocols that output a matrix.",
+            "type": "object",
+            "$ref": "module/protocol/matrix.json",
             "user_friendly": "Matrix"
         }
-    }, 
+    },
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/analysis/1.0.0/analysis_protocol"
 }

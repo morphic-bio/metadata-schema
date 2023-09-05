@@ -7,7 +7,7 @@
     "type": "object",
     "required": [
     	"is_dcp_supplier"
-    ]
+    ],
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.",
@@ -24,7 +24,7 @@
         	"description": "Is the supplier another Data Production Centre?",
         	"type": "boolean",
         	"guidelines": "Please indicate 'yes' if true, else 'no'"
-        }
+        },
         "supplier": {
 			"description": "The supplier of the cell line. If the supplier is a DPC, please indicate",
 			"type": "string",

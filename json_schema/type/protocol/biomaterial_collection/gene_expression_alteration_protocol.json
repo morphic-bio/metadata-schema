@@ -1,72 +1,72 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#", 
-    "description": "Information about how cells are subjected to a treatment or stimulus, such as an immune activator or a drug.", 
-    "additionalProperties": false, 
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Information about how cells are subjected to a treatment or stimulus, such as an immune activator or a drug.",
+    "additionalProperties": false,
     "required": [
-        "describedBy", 
-        "schema_type", 
-        "protocol_core", 
+        "describedBy",
+        "schema_type",
+        "protocol_core",
         "method"
-    ], 
-    "title": "Gene expression alteration protocol", 
-    "name": "gene_expression_alteration_protocol", 
-    "type": "object", 
+    ],
+    "title": "Gene expression alteration protocol",
+    "name": "gene_expression_alteration_protocol",
+    "type": "object",
     "properties": {
         "describedBy": {
-            "description": "The URL reference to the schema.", 
-            "type": "string", 
+            "description": "The URL reference to the schema.",
+            "type": "string",
             "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/gene_expression_alteration_protocol"
-        }, 
+        },
         "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.", 
-            "type": "string", 
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$", 
+            "description": "The version number of the schema in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
             "example": "4.6.1"
-        }, 
+        },
         "schema_type": {
-            "description": "The type of the metadata schema entity.", 
-            "type": "string", 
+            "description": "The type of the metadata schema entity.",
+            "type": "string",
             "enum": [
                 "protocol"
             ]
-        }, 
+        },
         "provenance": {
-            "description": "Provenance information provided by the system.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/system/1.0.0/provenance"
-        }, 
+            "description": "Provenance information provided by the system.",
+            "type": "object",
+            "$ref": "system/provenance.json"
+        },
         "protocol_core": {
-            "description": "Core protocol-level information.", 
-            "type": "object", 
-            "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/core/protocol/1.0.0/protocol_core", 
+            "description": "Core protocol-level information.",
+            "type": "object",
+            "$ref": "core/protocol/protocol_core.json",
             "user_friendly": "Protocol core"
-        }, 
+        },
         "method": {
-            "description": "Method applied to the biomaterial to induce a LOF on the gene/allele of interest.", 
-            "type": "array", 
+            "description": "Method applied to the biomaterial to induce a LOF on the gene/allele of interest.",
+            "type": "array",
             "items": {
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/gene_silencing_method_ontology"
-            }, 
+                "$ref": "module/ontology/gene_silencing_method_ontology.json"
+            },
             "user_friendly": "Treatment method"
-        }, 
+        },
         "crisproff": {
-            "description": "CRISPRoff specific fields", 
-            "type": "array", 
+            "description": "CRISPRoff specific fields",
+            "type": "array",
             "items": {
-                "type": "object", 
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/protocol/1.0.0/crisproff"
-            }, 
+                "type": "object",
+                "$ref": "module/protocol/crisproff.json"
+            },
             "user_friendly": "CRISPRoff"
-        }, 
+        },
         "silenced_genes": {
-            "description": "Genes that were silenced by this protocol", 
-            "type": "array", 
+            "description": "Genes that were silenced by this protocol",
+            "type": "array",
             "items": {
-                "type": "object", 
-                "$ref": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/module/ontology/1.0.0/target_gene_ontology"
-            }, 
+                "type": "object",
+                "$ref": "module/ontology/target_gene_ontology.json"
+            },
             "user_friendly": "Silenced Gene(s)"
         }
-    }, 
+    },
     "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/gene_expression_alteration_protocol"
 }
