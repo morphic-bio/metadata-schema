@@ -211,7 +211,7 @@
           "examples": [
             "2018-11-13T20:20:39+00:00",
             "2019-11-13T20:20:39+00:00"
-            ]
+          ]
         },
         "target_genes_hgnc": {
           "description": "HGNC identifier(s) of the gene(s) that were studied in this study.",
@@ -222,7 +222,9 @@
               "id"
             ],
             "dependentRequired": {
-              "symbol": ["id"]
+              "symbol": [
+                "id"
+              ]
             },
             "properties:": {
               "id": {
@@ -331,8 +333,9 @@
                   "UBERON:0002405"
                 ]
               }
-          },
-          "user_friendly": "Model organ system(s)"
+            },
+            "user_friendly": "Model organ system(s)"
+          }
         },
         "duo_codes": {
           "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
@@ -373,8 +376,9 @@
                   "DUO:0000046"
                 ]
               }
-          },
-          "user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
+            },
+            "user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
+          }
         }
       }
     },
