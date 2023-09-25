@@ -4,13 +4,12 @@
   "additionalProperties": false,
   "required": [
     "content",
-    "describedBy",
+    "described_by",
     "schema_version",
     "uuid",
     "schema_type",
-    "submission_date",
-    "update_dates",
-    "user_id"
+    "submitted_at",
+    "submitted_by"
   ],
   "title": "Study",
   "name": "study",
@@ -385,7 +384,8 @@
     "described_by": {
       "description": "The URL reference to the schema.",
       "type": "string",
-      "pattern": ".*"
+      "format": "uri",
+      "pattern": "^.*/type/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/project/study"
     },
     "schema_version": {
       "description": "The version number of the schema in major.minor.patch format.",
