@@ -1,186 +1,441 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "A study entity defines the fields needed for representing a study.",
-    "additionalProperties": false,
-    "required": [
-        "describedBy",
-        "schema_type",
-        "project_core",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A study entity defines the fields needed for representing a study.",
+  "additionalProperties": false,
+  "required": [
+    "content",
+    "described_by",
+    "schema_version",
+    "uuid",
+    "schema_type",
+    "submitted_at",
+    "submitted_by"
+  ],
+  "title": "Study",
+  "name": "study",
+  "type": "object",
+  "properties": {
+    "content": {
+      "description": "A study entity defines the fields needed for representing a study.",
+      "additionalProperties": false,
+      "required": [
+        "study_short_name",
+        "study_title",
+        "study_description",
         "institute",
+        "duo_codes",
         "cell_line_names",
         "sequencing_platforms",
-        "readout_assays",
+        "readout_assay",
         "contact_first_name",
         "contact_surname",
         "contact_email",
-        "expected_release_date",
         "target_genes_hgnc_ids",
         "perturbation_type"
-    ],
-    "title": "Study",
-    "name": "study",
-    "type": "object",
-    "dependentRequired": {
-    	"contact_names": ["contact_emails"],
-    	"contact_emails": ["contact_names"]
-    },
-    "properties": {
-        "describedBy": {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/study"
+      ],
+      "title": "Study",
+      "name": "study",
+      "type": "object",
+      "dependentRequired": {
+        "contact_names": [
+          "contact_emails"
+        ],
+        "contact_emails": [
+          "contact_names"
+        ]
+      },
+      "properties": {
+        "study_short_name": {
+          "description": "A short name for the study.",
+          "type": "string",
+          "examples": [
+            "CoolOrganStudy",
+            "PAX2KOLFStudy"
+          ],
+          "user_friendly": "Study label",
+          "maxLength": 50,
+          "guidelines": "Study label is a short label by which you refer to the study. It should have no spaces and should be fewer than 50 characters."
         },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
+        "study_title": {
+          "description": "An official title for the study.",
+          "type": "string",
+          "examples": [
+            "Study of single cells in the human body.",
+            "Study of the effect of PAX2 in the KOLF2.2J cell line."
+          ],
+          "user_friendly": "Study title",
+          "guidelines": "Study title should be fewer than 30 words, such as a title of a grant proposal or a publication."
         },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "study_registration"
-            ]
-        },
-        "provenance": {
-            "description": "Provenance information provided by the system.",
-            "type": "object",
-            "$ref": "system/provenance.json"
-        },
-        "study_core": {
-            "description": "Core project-level information.",
-            "type": "object",
-            "$ref": "core/project/study_core.json",
-            "user_friendly": "Project core"
+        "study_description": {
+          "description": "A longer description of the study which includes research goals and experimental approach.",
+          "type": "string",
+          "user_friendly": "Study description",
+          "guidelines": "Study description should be fewer than 300 words, such as an abstract from a grant application or publication."
         },
         "institute": {
-            "description": "Institute associated with the registered study.",
-            "type": "string",
-            "enum": [
-            	"JAX",
-            	"MSK",
-            	"UCSF",
-            	"NWU"
-            ],
-            "guidelines": "Must be one of: JAX, MSK, UCSF or NWU.",
-            "user_friendly": "Institute"
+          "description": "Institute associated with the registered study.",
+          "type": "string",
+          "enum": [
+            "JAX",
+            "MSK",
+            "UCSF",
+            "NWU"
+          ],
+          "user_friendly": "Institute"
         },
         "cell_line_names": {
-        	"description": "Name(s) of the cell lines used for this study.",
-        	"type": "string",
-        	"enum": [
-        		"KOLF2.2J"
-        	],
-			"user_friendly": "Cell line name(s)",
-			"examples": ["KOLF2.2J"],
-			"guidelines": "Please indicate the name of the cell line."
+          "description": "Name(s) of the cell lines used for this study.",
+          "type": "string",
+          "enum": [
+            "KOLF2.2J"
+          ],
+          "user_friendly": "Cell line name(s)",
+          "examples": [
+            "KOLF2.2J"
+          ]
         },
         "sequencing_platforms": {
-        	"description": "Sequencing platform(s) being used to sequence the samples.",
-        	"type": "array",
-        	"items": {
-        		"$ref": "module/ontology/sequencing_ontology.json"
-        	},
-        	"user_friendly": "Sequencing platform(s)"
+          "description": "Sequencing platform(s) being used to sequence the samples.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "ontology"
+            ],
+            "properties": {
+              "text": {
+                "description": "The name of the sequencing approach being used.",
+                "type": "string",
+                "examples": [
+                  "Illumina HiSeq 4000",
+                  "Illumina NovaSeq 600"
+                ],
+                "user_friendly": "Sequencing platform"
+              },
+              "ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "type": "string",
+                "graph_restriction": {
+                  "ontologies": [
+                    "obo:efo"
+                  ],
+                  "classes": [
+                    "OBI:0000070"
+                  ],
+                  "relations": [
+                    "rdfs:subClassOf"
+                  ],
+                  "direct": false,
+                  "include_self": false
+                },
+                "examples": [
+                  "EFO:0008440",
+                  "EFO:0008441"
+                ],
+                "user_friendly": "Sequencing platform - ontology ID"
+              }
+            }
+          },
+          "user_friendly": "Sequencing platform(s)"
         },
         "readout_assay": {
-        	"description": "High throughput readout assay(s) used in the generation of the study.",
-        	"type": "object",
-        	"$ref": "module/ontology/library_construction_ontology.json",
-        	"user_friendly": "Readout assay"
+          "description": "High throughput readout assay used in the generation of the study.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "text",
+            "ontology"
+          ],
+          "properties": {
+            "text": {
+              "description": "The name of the readout assay approach being used.",
+              "type": "string",
+              "user_friendly": "Readout assay",
+              "examples": [
+                "10X v2 sequencing",
+                "Smart-seq2"
+              ]
+            },
+            "ontology": {
+              "description": "An ontology term identifier in the form prefix:accession.",
+              "type": "string",
+              "graph_restriction": {
+                "ontologies": [
+                  "obo:efo"
+                ],
+                "classes": [
+                  "EFO:0002772"
+                ],
+                "relations": [
+                  "rdfs:subClassOf"
+                ],
+                "direct": false,
+                "include_self": false
+              },
+              "user_friendly": "Readout assay - Ontology ID",
+              "example": "EFO:0009310; EFO:0008931"
+            }
+          }
         },
         "contact_first_name": {
-			"description": "First name of the main person to contact for queries about this study.",
-			"type": "string",
-			"user_friendly": "Contact first name",
-			"example": "Enrique;Gabs"
+          "description": "First name of the main person to contact for queries about this study.",
+          "type": "string",
+          "user_friendly": "Contact first name",
+          "examples": [
+            "Enrique",
+            "Anu",
+            "Galabina"
+          ]
         },
         "contact_surname": {
-			"description": "Surname of the main person to contact for queries about this study.",
-			"type": "string",
-			"user_friendly": "Contact surname"
+          "description": "Surname of the main person to contact for queries about this study.",
+          "type": "string",
+          "user_friendly": "Contact surname"
         },
         "contact_email": {
-			"description": "Email of the person/people to contact for queries about this study.",
-			"type": "array",
-			"items": {
-					"type": "string",
-					"pattern": "^.+@.+\\..+$"
-			},
-			"user_friendly": "Contact email(s)"
+          "description": "Email of the person/people to contact for queries about this study.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^.+@.+\\..+$"
+          },
+          "user_friendly": "Contact email(s)"
         },
-        "registration_details": {
-        	"description": "Details exclusive to the registration of a study.",
-        	"type": "object",
-        	"$ref": "module/project/registration_details.json"
+        "dracc_data_sharing_date": {
+          "description": "Estimated date of data release to the DRACC.",
+          "type": "string",
+          "format": "date-time",
+          "user_friendly": "Estimated DRACC data release date",
+          "examples": [
+            "2018-11-13T20:20:39+00:00",
+            "2019-11-13T20:20:39+00:00"
+          ]
         },
-        "target_genes_hgnc_ids": {
-            "description": "HGNC ID(s) of the gene(s) that were studied in this study.",
-            "type": "array",
-            "items": {
-            	"type": "object",
-                "$ref": "module/ontology/target_gene_ontology.json"
+        "target_genes_hgnc": {
+          "description": "HGNC identifier(s) of the gene(s) that were studied in this study.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "dependentRequired": {
+              "symbol": [
+                "id"
+              ]
             },
-            "user_friendly": "Target Genes HGNC IDs",
-            "guidelines": "Enter the list of genes targetted for this project. Please use the HUGO Genome Nomenclature Committee ID."
+            "properties:": {
+              "id": {
+                "description": "HGNC identifier for the targetted gene, in the form of prefix:number",
+                "user_friendly": "Target Gene HGNC ID",
+                "isValidIdentifier": {
+                  "prefix": "hgnc"
+                },
+                "examples": [
+                  "HGNC:8616",
+                  "HGNC:8620"
+                ]
+              },
+              "symbol": {
+                "description": "HGNC symbol for the targetted gene",
+                "user_friendly": "Target Gene HGNC symbol",
+                "examples": [
+                  "PAX2",
+                  "PAX6"
+                ]
+              }
+            }
+          }
         },
         "supplementary_links": {
-            "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
-            "type": "array",
-            "example": "https://github.com/czbiohub/tabula-muris; http://celltag.org/",
-            "items": {
-                "type": "string"
-            },
-            "user_friendly": "Supplementary link(s)"
-		},
-		"other_comments": {
-        	"description": "Other comments from the contributor regarding this study.",
-        	"type": "string",
-        	"user_friendly": "Other comments"
+          "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
+          "type": "array",
+          "examples": [
+            "https://github.com/czbiohub/tabula-muris",
+            "http://celltag.org/"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "user_friendly": "Supplementary link(s)"
+        },
+        "other_comments": {
+          "description": "Other comments from the contributor regarding this study.",
+          "type": "string",
+          "user_friendly": "Other comments"
         },
         "perturbation_type": {
-       		"description": "Type of perturbation introduced by the gene expression alteration assay.",
-       		"type": "array",
-       		"items": {
-       				"type": "string"
-       		},
-       		"user_friendly": "Perturbation type(s)",
-       		"example": "reversible gene knockdown; irreversible gene knockout"
+          "description": "Type of perturbation introduced by the gene expression alteration assay.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "user_friendly": "Perturbation type(s)",
+          "examples": [
+            "reversible gene knockdown",
+            "irreversible gene knockout"
+          ]
         },
         "biological_sample_types": {
-			"description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
-			"type": "array",
-			"items": {
-				"type": "string",
-				"enum": [
-					"cell line",
-					"organoid",
-					"embryoid body"
-				]
-			},
-			"uniqueItems": true,
-			"guidelines": "Must be one, or more, of: cell line, organoid, embryoid body",
-			"user_friendly": "Biological sample type(s)"
+          "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "cell line",
+              "organoid",
+              "embryoid body"
+            ]
+          },
+          "uniqueItems": true,
+          "user_friendly": "Biological sample type(s)"
         },
         "model_organ_systems": {
-        	"description": "Model organ system(s) being studied or modelled in this study.",
-        	"type": "array",
-        	"items": {
-        		"type": "object",
-        		"$ref": "module/ontology/organ_ontology.json"
-        	},
-        	"user_friendly": "Model organ system(s)"
+          "description": "Model organ system(s) being studied or modelled in this study.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "description": "The text for the term as the user provides it.",
+                "type": "string",
+                "user_friendly": "Model organ system",
+                "examples": [
+                  "heart",
+                  "immune system"
+                ]
+              },
+              "ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "type": "string",
+                "graph_restriction": {
+                  "ontologies": [
+                    "obo:hcao",
+                    "obo:uberon"
+                  ],
+                  "classes": [
+                    "UBERON:0000465"
+                  ],
+                  "relations": [
+                    "rdfs:subClassOf"
+                  ],
+                  "direct": false,
+                  "include_self": true
+                },
+                "user_friendly": "Model organ system - ontology ID",
+                "examples": [
+                  "UBERON:0000948",
+                  "UBERON:0002405"
+                ]
+              }
+            },
+            "user_friendly": "Model organ system(s)"
+          }
         },
         "duo_codes": {
-        	"description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
-        	"type": "array",
-        	"items": {
-        		"type": "object",
-        		"$ref": "module/ontology/duos_code_ontology.json"
-        	},
-        	"user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
+          "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "ontology"
+            ],
+            "properties": {
+              "text": {
+                "description": "The label of the data usage restriction.",
+                "type": "string",
+                "user_friendly": "DUOS code",
+                "examples": [
+                  "non-commercial use only"
+                ]
+              },
+              "ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "type": "string",
+                "graph_restriction": {
+                  "ontologies": [
+                    "obo:duo"
+                  ],
+                  "classes": [
+                    "DUO:0000017"
+                  ],
+                  "relations": [
+                    "rdfs:subClassOf"
+                  ],
+                  "direct": false,
+                  "include_self": false
+                },
+                "user_friendly": "DUOS code - ontology ID",
+                "examples": [
+                  "DUO:0000046"
+                ]
+              }
+            },
+            "user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
+          }
         }
+      }
     },
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/project/1.0.0/study"
+    "described_by": {
+      "description": "The URL reference to the schema.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^.*/type/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/project/study"
+    },
+    "schema_version": {
+      "description": "The version number of the schema in major.minor.patch format.",
+      "type": "string",
+      "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+      "examples": [
+        "4.6.1",
+        "1.0.1"
+      ]
+    },
+    "schema_type": {
+      "description": "The type of the metadata schema entity.",
+      "type": "string",
+      "const": "study",
+      "default": "study"
+    },
+    "uuid": {
+      "description": "Universal Unique Identifier (UUID) for this document in the database.",
+      "type": "string",
+      "format": "uuid",
+      "examples": [
+        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+      ]
+    },
+    "submitted_at": {
+      "description": "Date the document was submitted, in ISO8601 format.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2018-11-13T20:20:39+00:00",
+        "2019-11-13T20:20:39+00:00"
+      ]
+    },
+    "updated_at": {
+      "description": "Date the document was updated, in ISO8601 format.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2018-11-13T20:20:39+00:00",
+        "2019-11-13T20:20:39+00:00"
+      ]
+    },
+    "submitted_by": {
+      "description": "User that submitted this document.",
+      "type": "string"
+    },
+    "updated_by": {
+      "description": "User that updated this document.",
+      "type": "string"
+    }
+  }
 }
