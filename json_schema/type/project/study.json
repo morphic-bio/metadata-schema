@@ -33,8 +33,6 @@
         "target_genes_hgnc_ids",
         "perturbation_type"
       ],
-      "title": "Study",
-      "name": "study",
       "type": "object",
       "dependentRequired": {
         "contact_names": [
@@ -52,7 +50,7 @@
             "CoolOrganStudy",
             "PAX2KOLFStudy"
           ],
-          "user_friendly": "Study label",
+          "title": "Study label",
           "maxLength": 50,
           "guidelines": "Study label is a short label by which you refer to the study. It should have no spaces and should be fewer than 50 characters."
         },
@@ -63,13 +61,13 @@
             "Study of single cells in the human body.",
             "Study of the effect of PAX2 in the KOLF2.2J cell line."
           ],
-          "user_friendly": "Study title",
+          "title": "Study title",
           "guidelines": "Study title should be fewer than 30 words, such as a title of a grant proposal or a publication."
         },
         "study_description": {
           "description": "A longer description of the study which includes research goals and experimental approach.",
           "type": "string",
-          "user_friendly": "Study description",
+          "title": "Study description",
           "guidelines": "Study description should be fewer than 300 words, such as an abstract from a grant application or publication."
         },
         "institute": {
@@ -81,7 +79,7 @@
             "UCSF",
             "NWU"
           ],
-          "user_friendly": "Institute"
+          "title": "Institute"
         },
         "cell_line_names": {
           "description": "Name(s) of the cell lines used for this study.",
@@ -89,7 +87,7 @@
           "enum": [
             "KOLF2.2J"
           ],
-          "user_friendly": "Cell line name(s)",
+          "title": "Cell line name(s)",
           "examples": [
             "KOLF2.2J"
           ]
@@ -111,7 +109,7 @@
                   "Illumina HiSeq 4000",
                   "Illumina NovaSeq 600"
                 ],
-                "user_friendly": "Sequencing platform"
+                "title": "Sequencing platform"
               },
               "ontology": {
                 "description": "An ontology term identifier in the form prefix:accession.",
@@ -133,11 +131,11 @@
                   "EFO:0008440",
                   "EFO:0008441"
                 ],
-                "user_friendly": "Sequencing platform - ontology ID"
+                "title": "Sequencing platform - ontology ID"
               }
             }
           },
-          "user_friendly": "Sequencing platform(s)"
+          "title": "Sequencing platform(s)"
         },
         "readout_assay": {
           "description": "High throughput readout assay used in the generation of the study.",
@@ -151,7 +149,7 @@
             "text": {
               "description": "The name of the readout assay approach being used.",
               "type": "string",
-              "user_friendly": "Readout assay",
+              "title": "Readout assay",
               "examples": [
                 "10X v2 sequencing",
                 "Smart-seq2"
@@ -173,7 +171,7 @@
                 "direct": false,
                 "include_self": false
               },
-              "user_friendly": "Readout assay - Ontology ID",
+              "title": "Readout assay - Ontology ID",
               "example": "EFO:0009310; EFO:0008931"
             }
           }
@@ -181,7 +179,7 @@
         "contact_first_name": {
           "description": "First name of the main person to contact for queries about this study.",
           "type": "string",
-          "user_friendly": "Contact first name",
+          "title": "Contact first name",
           "examples": [
             "Enrique",
             "Anu",
@@ -191,7 +189,7 @@
         "contact_surname": {
           "description": "Surname of the main person to contact for queries about this study.",
           "type": "string",
-          "user_friendly": "Contact surname"
+          "title": "Contact surname"
         },
         "contact_email": {
           "description": "Email of the person/people to contact for queries about this study.",
@@ -200,13 +198,13 @@
             "type": "string",
             "pattern": "^.+@.+\\..+$"
           },
-          "user_friendly": "Contact email(s)"
+          "title": "Contact email(s)"
         },
         "dracc_data_sharing_date": {
           "description": "Estimated date of data release to the DRACC.",
           "type": "string",
           "format": "date-time",
-          "user_friendly": "Estimated DRACC data release date",
+          "title": "Estimated DRACC data release date",
           "examples": [
             "2018-11-13T20:20:39+00:00",
             "2019-11-13T20:20:39+00:00"
@@ -228,7 +226,7 @@
             "properties:": {
               "id": {
                 "description": "HGNC identifier for the targetted gene, in the form of prefix:number",
-                "user_friendly": "Target Gene HGNC ID",
+                "title": "Target Gene HGNC ID",
                 "isValidIdentifier": {
                   "prefix": "hgnc"
                 },
@@ -239,7 +237,7 @@
               },
               "symbol": {
                 "description": "HGNC symbol for the targetted gene",
-                "user_friendly": "Target Gene HGNC symbol",
+                "title": "Target Gene HGNC symbol",
                 "examples": [
                   "PAX2",
                   "PAX6"
@@ -258,12 +256,12 @@
           "items": {
             "type": "string"
           },
-          "user_friendly": "Supplementary link(s)"
+          "title": "Supplementary link(s)"
         },
         "other_comments": {
           "description": "Other comments from the contributor regarding this study.",
           "type": "string",
-          "user_friendly": "Other comments"
+          "title": "Other comments"
         },
         "perturbation_type": {
           "description": "Type of perturbation introduced by the gene expression alteration assay.",
@@ -271,7 +269,7 @@
           "items": {
             "type": "string"
           },
-          "user_friendly": "Perturbation type(s)",
+          "title": "Perturbation type(s)",
           "examples": [
             "reversible gene knockdown",
             "irreversible gene knockout"
@@ -289,7 +287,7 @@
             ]
           },
           "uniqueItems": true,
-          "user_friendly": "Biological sample type(s)"
+          "title": "Biological sample type(s)"
         },
         "model_organ_systems": {
           "description": "Model organ system(s) being studied or modelled in this study.",
@@ -303,7 +301,7 @@
               "text": {
                 "description": "The text for the term as the user provides it.",
                 "type": "string",
-                "user_friendly": "Model organ system",
+                "title": "Model organ system",
                 "examples": [
                   "heart",
                   "immune system"
@@ -326,14 +324,14 @@
                   "direct": false,
                   "include_self": true
                 },
-                "user_friendly": "Model organ system - ontology ID",
+                "title": "Model organ system - ontology ID",
                 "examples": [
                   "UBERON:0000948",
                   "UBERON:0002405"
                 ]
               }
             },
-            "user_friendly": "Model organ system(s)"
+            "title": "Model organ system(s)"
           }
         },
         "duo_codes": {
@@ -349,7 +347,7 @@
               "text": {
                 "description": "The label of the data usage restriction.",
                 "type": "string",
-                "user_friendly": "DUOS code",
+                "title": "DUOS code",
                 "examples": [
                   "non-commercial use only"
                 ]
@@ -370,13 +368,13 @@
                   "direct": false,
                   "include_self": false
                 },
-                "user_friendly": "DUOS code - ontology ID",
+                "title": "DUOS code - ontology ID",
                 "examples": [
                   "DUO:0000046"
                 ]
               }
             },
-            "user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
+            "title": "Data Usage Ontology Service (DUOS) code(s)"
           }
         }
       }
