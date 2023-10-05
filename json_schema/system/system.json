@@ -1,0 +1,77 @@
+{
+  "type": "object",
+  "title": "system",
+  "required": [
+    "described_by",
+    "uuid",
+    "submitted_at",
+    "submitted_by",
+    "schema_type",
+    "schema_version"
+  ],
+  "properties": {
+    "described_by": {
+      "description": "The URL reference to the schema.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/project/study$"
+    },
+    "schema_type": {
+      "description": "The type of the metadata schema entity.",
+      "type": "string",
+      "const": "study",
+      "default": "study"
+    },
+    "schema_version": {
+      "description": "The version number of the schema in major.minor.patch format.",
+      "type": "string",
+      "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+      "examples": [
+        "4.6.1",
+        "1.0.1"
+      ]
+    },
+    "submitted_at": {
+      "description": "Date the document was submitted, in ISO8601 format.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2018-11-13T20:20:39+00:00",
+        "2019-11-13T20:20:39+00:00"
+      ]
+    },
+    "submitted_by": {
+      "description": "User that submitted this document.",
+      "type": "string"
+    },
+    "updated_at": {
+      "description": "Date the document was updated, in ISO8601 format.",
+      "type": "string",
+      "format": "date-time",
+      "examples": [
+        "2018-11-13T20:20:39+00:00",
+        "2019-11-13T20:20:39+00:00"
+      ]
+    },
+    "updated_by": {
+      "description": "User that updated this document.",
+      "type": "string"
+    },
+    "uuid": {
+      "description": "Universal Unique Identifier (UUID) for this document in the database.",
+      "type": "string",
+      "format": "uuid",
+      "examples": [
+        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+      ]
+    },
+    "accession": {
+      "type": "string",
+      "isValidIdentifier": {
+        "prefixes": ["invalidPrefix"],
+        "$comment": "the value for 'prefixes' must be overriden by the schemas that load this system module."
+      }
+    }
+  }
+}
