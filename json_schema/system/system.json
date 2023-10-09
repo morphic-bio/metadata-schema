@@ -19,8 +19,7 @@
     "schema_type": {
       "description": "The type of the metadata schema entity.",
       "type": "string",
-      "const": "notValidType",
-      "$comment": "Please override this property's const definition when you load this module as a reference."
+      "$comment": "Please add enum to this property definition when you load this module as a reference."
     },
     "schema_version": {
       "description": "The version number of the schema in major.minor.patch format.",
