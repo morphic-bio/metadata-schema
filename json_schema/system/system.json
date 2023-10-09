@@ -67,9 +67,7 @@
     },
     "accession": {
       "type": "string",
-      "isValidIdentifier": {
-        "prefixes": ["invalidPrefix"],
-        "$comment": "the value for 'prefixes' must be overriden by the schemas that load this system module."
+      "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
       }
     }
   }
