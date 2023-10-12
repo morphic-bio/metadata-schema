@@ -1,441 +1,427 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "A study entity defines the fields needed for representing a study.",
-  "additionalProperties": false,
-  "required": [
-    "content",
-    "described_by",
-    "schema_version",
-    "uuid",
-    "schema_type",
-    "submitted_at",
-    "submitted_by"
-  ],
-  "title": "Study",
-  "name": "study",
-  "type": "object",
-  "properties": {
-    "content": {
-      "description": "A study entity defines the fields needed for representing a study.",
-      "additionalProperties": false,
-      "required": [
-        "study_short_name",
-        "study_title",
-        "study_description",
-        "institute",
-        "duo_codes",
-        "cell_line_names",
-        "sequencing_platforms",
-        "readout_assay",
-        "contact_first_name",
-        "contact_surname",
-        "contact_email",
-        "target_genes_hgnc_ids",
-        "perturbation_type"
-      ],
-      "title": "Study",
-      "name": "study",
-      "type": "object",
-      "dependentRequired": {
-        "contact_names": [
-          "contact_emails"
-        ],
-        "contact_emails": [
-          "contact_names"
-        ]
-      },
-      "properties": {
-        "study_short_name": {
-          "description": "A short name for the study.",
-          "type": "string",
-          "examples": [
-            "CoolOrganStudy",
-            "PAX2KOLFStudy"
-          ],
-          "user_friendly": "Study label",
-          "maxLength": 50,
-          "guidelines": "Study label is a short label by which you refer to the study. It should have no spaces and should be fewer than 50 characters."
-        },
-        "study_title": {
-          "description": "An official title for the study.",
-          "type": "string",
-          "examples": [
-            "Study of single cells in the human body.",
-            "Study of the effect of PAX2 in the KOLF2.2J cell line."
-          ],
-          "user_friendly": "Study title",
-          "guidelines": "Study title should be fewer than 30 words, such as a title of a grant proposal or a publication."
-        },
-        "study_description": {
-          "description": "A longer description of the study which includes research goals and experimental approach.",
-          "type": "string",
-          "user_friendly": "Study description",
-          "guidelines": "Study description should be fewer than 300 words, such as an abstract from a grant application or publication."
-        },
-        "institute": {
-          "description": "Institute associated with the registered study.",
-          "type": "string",
-          "enum": [
-            "JAX",
-            "MSK",
-            "UCSF",
-            "NWU"
-          ],
-          "user_friendly": "Institute"
-        },
-        "cell_line_names": {
-          "description": "Name(s) of the cell lines used for this study.",
-          "type": "string",
-          "enum": [
-            "KOLF2.2J"
-          ],
-          "user_friendly": "Cell line name(s)",
-          "examples": [
-            "KOLF2.2J"
-          ]
-        },
-        "sequencing_platforms": {
-          "description": "Sequencing platform(s) being used to sequence the samples.",
-          "type": "array",
-          "items": {
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "description": "A study entity defines the fields needed for representing a study.",
+    "unevaluatedProperties": false,
+    "title": "Study",
+    "name": "study",
+    "required": [
+        "content"
+    ],
+    "allOf": [
+        {
             "type": "object",
-            "required": [
-              "text",
-              "ontology"
-            ],
+            "$ref": "/system/system",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
-              "text": {
-                "description": "The name of the sequencing approach being used.",
-                "type": "string",
-                "examples": [
-                  "Illumina HiSeq 4000",
-                  "Illumina NovaSeq 600"
-                ],
-                "user_friendly": "Sequencing platform"
-              },
-              "ontology": {
-                "description": "An ontology term identifier in the form prefix:accession.",
-                "type": "string",
-                "graph_restriction": {
-                  "ontologies": [
-                    "obo:efo"
-                  ],
-                  "classes": [
-                    "OBI:0000070"
-                  ],
-                  "relations": [
-                    "rdfs:subClassOf"
-                  ],
-                  "direct": false,
-                  "include_self": false
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biostudies"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "ena.embl"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "geo"
+                                }
+                            }
+                        ]
+                    }
                 },
-                "examples": [
-                  "EFO:0008440",
-                  "EFO:0008441"
-                ],
-                "user_friendly": "Sequencing platform - ontology ID"
-              }
+                "schema_type": {
+                    "const": "study",
+                    "default": "study"
+                }
             }
-          },
-          "user_friendly": "Sequencing platform(s)"
-        },
-        "readout_assay": {
-          "description": "High throughput readout assay used in the generation of the study.",
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "text",
-            "ontology"
-          ],
-          "properties": {
-            "text": {
-              "description": "The name of the readout assay approach being used.",
-              "type": "string",
-              "user_friendly": "Readout assay",
-              "examples": [
-                "10X v2 sequencing",
-                "Smart-seq2"
-              ]
-            },
-            "ontology": {
-              "description": "An ontology term identifier in the form prefix:accession.",
-              "type": "string",
-              "graph_restriction": {
-                "ontologies": [
-                  "obo:efo"
-                ],
-                "classes": [
-                  "EFO:0002772"
-                ],
-                "relations": [
-                  "rdfs:subClassOf"
-                ],
-                "direct": false,
-                "include_self": false
-              },
-              "user_friendly": "Readout assay - Ontology ID",
-              "example": "EFO:0009310; EFO:0008931"
-            }
-          }
-        },
-        "contact_first_name": {
-          "description": "First name of the main person to contact for queries about this study.",
-          "type": "string",
-          "user_friendly": "Contact first name",
-          "examples": [
-            "Enrique",
-            "Anu",
-            "Galabina"
-          ]
-        },
-        "contact_surname": {
-          "description": "Surname of the main person to contact for queries about this study.",
-          "type": "string",
-          "user_friendly": "Contact surname"
-        },
-        "contact_email": {
-          "description": "Email of the person/people to contact for queries about this study.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^.+@.+\\..+$"
-          },
-          "user_friendly": "Contact email(s)"
-        },
-        "dracc_data_sharing_date": {
-          "description": "Estimated date of data release to the DRACC.",
-          "type": "string",
-          "format": "date-time",
-          "user_friendly": "Estimated DRACC data release date",
-          "examples": [
-            "2018-11-13T20:20:39+00:00",
-            "2019-11-13T20:20:39+00:00"
-          ]
-        },
-        "target_genes_hgnc": {
-          "description": "HGNC identifier(s) of the gene(s) that were studied in this study.",
-          "type": "array",
-          "items": {
+        }
+    ],
+    "properties": {
+        "content": {
             "type": "object",
+            "title": "Content",
             "required": [
-              "id"
+                "biological_sample_types",
+                "cell_line_name",
+                "contact_email",
+                "contact_first_name",
+                "contact_surname",
+                "duo_codes",
+                "institute",
+                "perturbation_type",
+                "readout_assay",
+                "sequencing_platforms",
+                "study_description",
+                "study_short_name",
+                "study_title",
+                "target_genes_hgnc"
             ],
             "dependentRequired": {
-              "symbol": [
-                "id"
-              ]
+                "contact_first_name": [
+                    "contact_email"
+                ],
+                "contact_emails": [
+                    "contact_first_name",
+                    "contact_surname"
+                ]
             },
-            "properties:": {
-              "id": {
-                "description": "HGNC identifier for the targetted gene, in the form of prefix:number",
-                "user_friendly": "Target Gene HGNC ID",
-                "isValidIdentifier": {
-                  "prefix": "hgnc"
+            "properties": {
+                "biological_sample_types": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
+                    "title": "Biological sample type(s)",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "enum": [
+                            "cell line",
+                            "organoid",
+                            "embryoid body"
+                        ]
+                    },
+                    "examples": [
+                        "cell line",
+                        "embryoid body",
+                        "organoid"
+                    ]
                 },
-                "examples": [
-                  "HGNC:8616",
-                  "HGNC:8620"
-                ]
-              },
-              "symbol": {
-                "description": "HGNC symbol for the targetted gene",
-                "user_friendly": "Target Gene HGNC symbol",
-                "examples": [
-                  "PAX2",
-                  "PAX6"
-                ]
-              }
+                "cell_line_name": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Name of the cell lines used for this study.",
+                    "title": "Cell line name",
+                    "enum": [
+                        "KOLF2.2J"
+                    ],
+                    "examples": [
+                        "KOLF2.2J"
+                    ]
+                },
+                "contact_email": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Email of the person/people to contact for queries about this study.",
+                    "title": "Contact email(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "format": "email"
+                    },
+                    "examples": [
+                        "anotherfakemail@med.miami.edu",
+                        "fakemail@ebi.ac.uk"
+                    ]
+                },
+                "contact_first_name": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "First name of the main person to contact for queries about this study.",
+                    "title": "Contact first name",
+                    "examples": [
+                        "Anu",
+                        "Enrique",
+                        "Galabina"
+                    ]
+                },
+                "contact_surname": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Surname of the main person to contact for queries about this study.",
+                    "title": "Contact surname",
+                    "examples": [
+                        "Koci",
+                        "Zucchi"
+                    ]
+                },
+                "dracc_data_sharing_date": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "date-time",
+                    "description": "Estimated date of data release to the DRACC.",
+                    "title": "Estimated DRACC data release date",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "duo_codes": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
+                    "items": {
+                        "type": "object",
+                        "$ref": "/system/ontology",
+                        "title": "DUO label - Ontology ID",
+                        "properties": {
+                            "ontology": {
+                                "title": "DUOS code - ontology ID",
+                                "graphRestriction": {
+                                    "ontologies": [
+                                        "obo:duo"
+                                    ],
+                                    "classes": [
+                                        "DUO:0000017"
+                                    ],
+                                    "relations": [
+                                        "rdfs:subClassOf"
+                                    ],
+                                    "direct": false,
+                                    "include_self": false
+                                },
+                                "examples": [
+                                    "DUO:0000046"
+                                ]
+                            },
+                            "text": {
+                                "title": "DUO label",
+                                "examples": [
+                                    "non-commercial use only"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "institute": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Institute associated with the registered study.",
+                    "title": "Institute",
+                    "enum": [
+                        "JAX",
+                        "MSK",
+                        "UCSF",
+                        "NWU"
+                    ],
+                    "examples": [
+                        "JAX",
+                        "MSK"
+                    ]
+                },
+                "model_organ_systems": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Model organ system(s) being studied or modelled in this study.",
+                    "items": {
+                        "type": "object",
+                        "$ref": "/system/ontology",
+                        "properties": {
+                            "ontology": {
+                                "title": "Model organ system - ontology ID",
+                                "graphRestriction": {
+                                    "ontologies": [
+                                        "obo:uberon"
+                                    ],
+                                    "classes": [
+                                        "UBERON:0000465"
+                                    ],
+                                    "relations": [
+                                        "rdfs:subClassOf"
+                                    ],
+                                    "direct": false,
+                                    "include_self": true
+                                },
+                                "examples": [
+                                    "UBERON:0000948",
+                                    "UBERON:0002405"
+                                ]
+                            },
+                            "text": {
+                                "title": "Model organ system",
+                                "examples": [
+                                    "heart",
+                                    "immune system"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "other_comments": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Other comments from the contributor regarding this study.",
+                    "title": "Other comments",
+                    "examples": [
+                        "This study is in early access and is yet to be peer-reviewed",
+                        "This study was conducted under very specific conditions and may not apply to all ex vivo cases"
+                    ]
+                },
+                "perturbation_type": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Type of perturbation introduced by the gene expression alteration assay.",
+                    "title": "Perturbation type(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "examples": [
+                        "irreversible gene knockout",
+                        "reversible gene knockdown"
+                    ]
+                },
+                "readout_assay": {
+                    "type": "object",
+                    "$ref": "/system/ontology",
+                    "description": "High throughput readout assay used in the generation of the study.",
+                    "properties": {
+                        "ontology": {
+                            "title": "Readout assay - Ontology ID",
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:efo"
+                                ],
+                                "classes": [
+                                    "EFO:0002772"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": false
+                            },
+                            "examples": [
+                                "EFO:0008931",
+                                "EFO:0009310"
+                            ]
+                        },
+                        "text": {
+                            "title": "Readout assay",
+                            "examples": [
+                                "10X v2 sequencing",
+                                "Smart-seq2"
+                            ]
+                        }
+                    }
+                },
+                "sequencing_platforms": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Sequencing platform(s) being used to sequence the samples.",
+                    "items": {
+                        "type": "object",
+                        "$ref": "/system/ontology",
+                        "properties": {
+                            "ontology": {
+                                "title": "Sequencing platform - ontology ID",
+                                "graphRestriction": {
+                                    "ontologies": [
+                                        "obo:efo"
+                                    ],
+                                    "classes": [
+                                        "OBI:0000070"
+                                    ],
+                                    "relations": [
+                                        "rdfs:subClassOf"
+                                    ],
+                                    "direct": false,
+                                    "include_self": false
+                                },
+                                "examples": [
+                                    "EFO:0008440",
+                                    "EFO:0008441"
+                                ]
+                            },
+                            "text": {
+                                "title": "Sequencing platform",
+                                "examples": [
+                                    "Illumina HiSeq 4000",
+                                    "Illumina NovaSeq 600"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "study_description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "maxLength": 1500,
+                    "description": "A longer description of the study which includes research goals and experimental approach.",
+                    "$comment": "1500 characters is, generally, between 214 and 375 words https://capitalizemytitle.com/character-count/1500-characters/",
+                    "title": "Study description",
+                    "examples": [
+                        "A longer description with highlights of your experiment goes here, up to 300 words."
+                    ]
+                },
+                "study_short_name": {
+                    "$ref": "#/definitions/entity_id",
+                    "maxLength": 50,
+                    "description": "A short name for the study. It should have no spaces and should be fewer than 50 characters.",
+                    "title": "Study label",
+                    "examples": [
+                        "CoolOrganStudy",
+                        "PAX2KOLFStudy"
+                    ]
+                },
+                "study_title": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "maxLength": 150,
+                    "description": "An official title for the study. Should be fewer than 30 words.",
+                    "$comment": "150 characters is, generally, between 21 and 38 words https://capitalizemytitle.com/character-count/150-characters/",
+                    "title": "Study title",
+                    "examples": [
+                        "Study of single cells in the human body.",
+                        "Study of the effect of PAX2 in the KOLF2.2J cell line."
+                    ]
+                },
+                "supplementary_links": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
+                    "title": "Supplementary link(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "format": "uri"
+                    },
+                    "examples": [
+                        "http://celltag.org/",
+                        "https://github.com/czbiohub/tabula-muris"
+                    ]
+                },
+                "target_genes_hgnc": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "HGNC identifier(s) of the gene(s) that were studied in this study.",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id"
+                        ],
+                        "dependentRequired": {
+                            "symbol": [
+                                "id"
+                            ]
+                        },
+                        "properties": {
+                            "id": {
+                                "$ref": "#/definitions/non_empty_string",
+                                "description": "HGNC identifier for the targetted gene, in the form of prefix:number",
+                                "title": "Target Gene HGNC ID",
+                                "isValidIdentifier": {
+                                    "prefix": "hgnc"
+                                },
+                                "examples": [
+                                    "HGNC:8616",
+                                    "HGNC:8620"
+                                ]
+                            },
+                            "symbol": {
+                                "$ref": "#/definitions/non_empty_string",
+                                "description": "HGNC symbol for the targetted gene",
+                                "title": "Target Gene HGNC symbol",
+                                "examples": [
+                                    "PAX2",
+                                    "PAX6"
+                                ]
+                            }
+                        }
+                    }
+                }
             }
-          }
-        },
-        "supplementary_links": {
-          "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
-          "type": "array",
-          "examples": [
-            "https://github.com/czbiohub/tabula-muris",
-            "http://celltag.org/"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "user_friendly": "Supplementary link(s)"
-        },
-        "other_comments": {
-          "description": "Other comments from the contributor regarding this study.",
-          "type": "string",
-          "user_friendly": "Other comments"
-        },
-        "perturbation_type": {
-          "description": "Type of perturbation introduced by the gene expression alteration assay.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "user_friendly": "Perturbation type(s)",
-          "examples": [
-            "reversible gene knockdown",
-            "irreversible gene knockout"
-          ]
-        },
-        "biological_sample_types": {
-          "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "cell line",
-              "organoid",
-              "embryoid body"
-            ]
-          },
-          "uniqueItems": true,
-          "user_friendly": "Biological sample type(s)"
-        },
-        "model_organ_systems": {
-          "description": "Model organ system(s) being studied or modelled in this study.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "text"
-            ],
-            "properties": {
-              "text": {
-                "description": "The text for the term as the user provides it.",
-                "type": "string",
-                "user_friendly": "Model organ system",
-                "examples": [
-                  "heart",
-                  "immune system"
-                ]
-              },
-              "ontology": {
-                "description": "An ontology term identifier in the form prefix:accession.",
-                "type": "string",
-                "graph_restriction": {
-                  "ontologies": [
-                    "obo:hcao",
-                    "obo:uberon"
-                  ],
-                  "classes": [
-                    "UBERON:0000465"
-                  ],
-                  "relations": [
-                    "rdfs:subClassOf"
-                  ],
-                  "direct": false,
-                  "include_self": true
-                },
-                "user_friendly": "Model organ system - ontology ID",
-                "examples": [
-                  "UBERON:0000948",
-                  "UBERON:0002405"
-                ]
-              }
-            },
-            "user_friendly": "Model organ system(s)"
-          }
-        },
-        "duo_codes": {
-          "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "text",
-              "ontology"
-            ],
-            "properties": {
-              "text": {
-                "description": "The label of the data usage restriction.",
-                "type": "string",
-                "user_friendly": "DUOS code",
-                "examples": [
-                  "non-commercial use only"
-                ]
-              },
-              "ontology": {
-                "description": "An ontology term identifier in the form prefix:accession.",
-                "type": "string",
-                "graph_restriction": {
-                  "ontologies": [
-                    "obo:duo"
-                  ],
-                  "classes": [
-                    "DUO:0000017"
-                  ],
-                  "relations": [
-                    "rdfs:subClassOf"
-                  ],
-                  "direct": false,
-                  "include_self": false
-                },
-                "user_friendly": "DUOS code - ontology ID",
-                "examples": [
-                  "DUO:0000046"
-                ]
-              }
-            },
-            "user_friendly": "Data Usage Ontology Service (DUOS) code(s)"
-          }
         }
-      }
     },
-    "described_by": {
-      "description": "The URL reference to the schema.",
-      "type": "string",
-      "format": "uri",
-      "pattern": "^.*/type/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/project/study"
-    },
-    "schema_version": {
-      "description": "The version number of the schema in major.minor.patch format.",
-      "type": "string",
-      "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-      "examples": [
-        "4.6.1",
-        "1.0.1"
-      ]
-    },
-    "schema_type": {
-      "description": "The type of the metadata schema entity.",
-      "type": "string",
-      "const": "study",
-      "default": "study"
-    },
-    "uuid": {
-      "description": "Universal Unique Identifier (UUID) for this document in the database.",
-      "type": "string",
-      "format": "uuid",
-      "examples": [
-        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
-        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
-      ]
-    },
-    "submitted_at": {
-      "description": "Date the document was submitted, in ISO8601 format.",
-      "type": "string",
-      "format": "date-time",
-      "examples": [
-        "2018-11-13T20:20:39+00:00",
-        "2019-11-13T20:20:39+00:00"
-      ]
-    },
-    "updated_at": {
-      "description": "Date the document was updated, in ISO8601 format.",
-      "type": "string",
-      "format": "date-time",
-      "examples": [
-        "2018-11-13T20:20:39+00:00",
-        "2019-11-13T20:20:39+00:00"
-      ]
-    },
-    "submitted_by": {
-      "description": "User that submitted this document.",
-      "type": "string"
-    },
-    "updated_by": {
-      "description": "User that updated this document.",
-      "type": "string"
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
     }
-  }
 }
