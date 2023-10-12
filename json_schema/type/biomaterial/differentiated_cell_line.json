@@ -1,0 +1,202 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Information about the differentiated cell line.",
+    "unevaluatedProperties": false,
+    "title": "Cell line",
+    "name": "cell_line",
+    "type": "object",
+    "allOf": [
+        {
+            "type": "object",
+            "$ref": "/system/system",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biosample"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "schema_type": {
+                    "const": "study",
+                    "default": "study"
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$"
+                }
+            }
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "required": [
+                "differentiated_cell_line_id",
+                "terminally_differentiated",
+                "timepoint_unit",
+                "timepoint_value"
+            ],
+            "title": "Content",
+            "properties": {
+                "differentiated_cell_line_description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "A general description of the differentiated cell line.",
+                    "title": "Differentiated cell line description",
+                    "examples": [
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+                    ]
+                },
+                "differentiated_cell_line_id": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique ID for the differentiated cell line.",
+                    "title": "Differentiated cell line ID",
+                    "examples": [
+                        "kolf2_2j_knockout_1_trophoblast"
+                    ]
+                },
+                "organ_model_system": {
+                    "$ref": "/system/ontology",
+                    "title": "Model system",
+                    "description": "To which organ model system this differentiated cell line has been derived into",
+                    "properties": {
+                        "ontology": {
+                            "title": "Organ model system - ontology ID",
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:uberon"
+                                ],
+                                "classes": [
+                                    "UBERON:0000465"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": true
+                            },
+                            "examples": [
+                                "UBERON:0000006",
+                                "UBERON:0002371"
+                            ]
+                        },
+                        "text": {
+                            "title": "Organ model system",
+                            "examples": [
+                                "Neuroectoderm"
+                            ]
+                        }
+                    }
+                },
+                "induction_method": {
+                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
+                    "$ref": "#/definitions/non_empty_string",
+                    "enum": [
+                        "sendai virus",
+                        "Gun particle",
+                        "piggyBac transposon",
+                        "miRNA viral",
+                        "adenovirus",
+                        "cre-loxP",
+                        "plasmid",
+                        "retroviral"
+                    ],
+                    "examples": [
+                        "sendai virus",
+                        "Gun particle"
+                    ],
+                    "user_friendly": "Induction method"
+                },
+                "terminally_differentiated": {
+                    "description": "Is the cell line terminally differentiated.",
+                    "type": "string",
+                    "enum": [
+                        "yes",
+                        "no",
+                        "unknown"
+                    ],
+                    "examples": [
+                        "yes",
+                        "no",
+                        "unknown"
+                    ],
+                    "user_friendly": "Terminally differentiated?"
+                },
+                "timepoint_unit": {
+                    "$ref": "/system/ontology",
+                    "title": "Timepoint unit",
+                    "required": [
+                        "text",
+                        "ontology"
+                    ],
+                    "properties": {
+                        "text": {
+                            "examples": [
+                                "second",
+                                "week"
+                            ],
+                            "title": "Timepoint unit"
+                        },
+                        "ontology": {
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:uo"
+                                ],
+                                "classes": [
+                                    "UO:0000003",
+                                    "UO:0000149"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": false
+                            },
+                            "examples": [
+                                "UO:0000010",
+                                "UO:0000034"
+                            ],
+                            "title": "Timepoint unit - ontology ID"
+                        }
+                    }
+                },
+                "timepoint_value": {
+                    "description": "Value of the timepoint.",
+                    "type": "number",
+                    "guidelines": "Please include the value only as a number.",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ],
+                    "title": "Timepoint value"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
+    }
+}
