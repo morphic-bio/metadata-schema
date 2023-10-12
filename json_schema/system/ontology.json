@@ -1,0 +1,26 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "A term that may be associated with a ontology term.",
+    "required": [
+        "ontology",
+        "text"
+    ],
+    "properties": {
+        "ontology": {
+            "$ref": "#/definitions/non_empty_string",
+            "description": "An ontology term identifier in the form prefix:accession.",
+            "$comment": "For ontology validation, please set up the graphRestriction keyword in the implementation of this subschema"
+        },
+        "text": {
+            "$ref": "#/definitions/non_empty_string",
+            "description": "The text for this ontologized property as supplied by the user."
+        }
+    },
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        }
+    }
+}
