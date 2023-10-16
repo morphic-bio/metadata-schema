@@ -45,6 +45,26 @@
                 "average_fragment_size",
                 "library_preparation_id"
             ],
+          "dependentRequired": {
+            "library_concentration_unit": [
+              "library_concentration_value"
+            ],
+            "library_concentration_value": [
+              "library_concentration_unit"
+            ],
+            "library_final_yield_unit": [
+              "library_final_yield_value"
+            ],
+            "library_final_yield_value": [
+              "library_final_yield_unit"
+            ],
+            "library_input_amount_unit": [
+              "library_input_amount_value"
+            ],
+            "library_input_amount_value": [
+              "library_input_amount_unit"
+            ]
+          },
             "properties": {
                 "average_fragment_size": {
                     "type": "integer",
