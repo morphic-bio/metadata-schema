@@ -65,50 +65,6 @@
                         "kolf2_2j_knockout_1"
                     ]
                 },
-                "cell_type": {
-                    "type": "object",
-                    "$ref": "system/ontology",
-                    "properties": {
-                        "ontology": {
-                            "title": "Cell type ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:cl"
-                                ],
-                                "classes": [
-                                    "CL:0000003"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "CL:0000746",
-                                "CL:1001610"
-                            ]
-                        },
-                        "text": {
-                            "title": "Cell type",
-                            "examples": [
-                                "bone marrow hematopoietic cell",
-                                "cardiac muscle cell"
-                            ]
-                        }
-                    }
-                },
-                "cellosaurus_accession": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "A Cellosaurus ID from Expasy",
-                    "title": "Cellosaurus accession",
-                    "isValidIdentifier": {
-                        "prefix": "cellosaurus"
-                    },
-                    "examples": [
-                        "CVCL_0132"
-                    ]
-                },
                 "culture_environment": {
                     "$ref": "#/definitions/non_empty_string",
                     "description": "Cell culture environment in which cells are grown.",
@@ -180,13 +136,32 @@
                         "GCA_000001405.29"
                     ]
                 },
-                "growth_medium": {
+                "culture_medium": {
                     "$ref": "#/definitions/non_empty_string",
                     "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Growth medium",
+                    "title": "Culture medium",
                     "examples": [
                         "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
                         "human placental cord serum"
+                    ]
+                },
+                "induction_method": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
+                    "title": "Induction method",
+                    "enum": [
+                        "sendai virus",
+                        "Gun particle",
+                        "piggyBac transposon",
+                        "miRNA viral",
+                        "adenovirus",
+                        "cre-loxP",
+                        "plasmid",
+                        "retroviral"
+                    ],
+                    "examples": [
+                        "Gun particle",
+                        "sendai virus"
                     ]
                 },
                 "supplier": {
