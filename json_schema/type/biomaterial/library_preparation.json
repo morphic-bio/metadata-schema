@@ -42,8 +42,7 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id",
-                "average_fragment_size"
+                "_id"
             ],
             "dependentRequired": {
                 "library_concentration_unit": [

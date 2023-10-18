@@ -155,13 +155,13 @@
                         "Optic cup structure"
                     ]
                 },
-                "organ_model_system": {
+                "model_system": {
                     "$ref": "/system/ontology",
-                    "description": "To which organ model system this organoid has been derived into.",
+                    "description": "To which model system this organoid has been derived into.",
                     "title": "Model system",
                     "properties": {
                         "ontology": {
-                            "title": "Organ model system - ontology ID",
+                            "title": "Model system - ontology ID",
                             "graphRestriction": {
                                 "ontologies": [
                                     "obo:uberon"
@@ -181,7 +181,7 @@
                             ]
                         },
                         "text": {
-                            "title": "Organ model system",
+                            "title": "Model system",
                             "examples": [
                                 "Neuroectoderm"
                             ]

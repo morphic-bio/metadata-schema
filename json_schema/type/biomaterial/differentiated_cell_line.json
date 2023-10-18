@@ -64,28 +64,18 @@
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
                     ]
                 },
-                "induction_method": {
+                "culture_medium": {
                     "$ref": "#/definitions/non_empty_string",
-                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
-                    "title": "Induction method",
-                    "enum": [
-                        "sendai virus",
-                        "Gun particle",
-                        "piggyBac transposon",
-                        "miRNA viral",
-                        "adenovirus",
-                        "cre-loxP",
-                        "plasmid",
-                        "retroviral"
-                    ],
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
                     "examples": [
-                        "Gun particle",
-                        "sendai virus"
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
                     ]
                 },
-                "organ_model_system": {
+                "model_system": {
                     "$ref": "/system/ontology",
-                    "description": "To which organ model system this differentiated cell line has been derived into",
+                    "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
                     "properties": {
                         "ontology": {
