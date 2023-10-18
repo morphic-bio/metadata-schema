@@ -1,76 +1,133 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "A file analysis results produced by a secondary analysis pipeline.",
-    "additionalProperties": false,
-    "required": [
-        "describedBy",
-        "schema_type",
-        "file_core",
-        "genome_assembly_version"
-    ],
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "A file analysis results produced by an analysis pipeline.",
+    "unevaluatedProperties": false,
     "title": "Analysis file",
     "name": "analysis_file",
-    "type": "object",
+    "required": [
+        "content"
+    ],
+    "allOf": [
+        {
+            "type": "object",
+            "$ref": "/system/system",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "description": "An accession regarding an analysis file.",
+                    "title": "Analysis file accession",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "ena.embl"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "geo"
+                                }
+                            }
+                        ]
+                    },
+                    "examples": [
+                        "ERR000001",
+                        "SRR111110"
+                    ]
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/file/analysis_file$"
+                },
+                "schema_type": {
+                    "const": "analysis_file",
+                    "default": "analysis_file"
+                }
+            }
+        }
+    ],
     "properties": {
-        "describedBy": {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/file/1.0.0/analysis_file"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "file"
-            ]
-        },
-        "provenance": {
-            "description": "Provenance information provided by the system.",
+        "content": {
             "type": "object",
-            "$ref": "system/provenance.json"
-        },
-        "file_core": {
-            "description": "Core file-level information.",
-            "type": "object",
-            "$ref": "core/file/file_core.json",
-            "user_friendly": "File core"
-        },
-        "matrix_cell_count": {
-            "description": "Number of cells analyzed in a matrix file.",
-            "type": "integer",
-            "maximum": 1000000000,
-            "minimum": 0,
-            "example": "1; 2100",
-            "user_friendly": "Matrix cell count",
-            "guidelines": "If the analysis file is a matrix containing cells, enter the exact number of cells in the matrix."
-        },
-        "genome_assembly_version": {
-            "description": "Name of the genome assembly used to generate this file.",
-            "type": "string",
-            "user_friendly": "Genome version",
-            "enum": [
-                "GRCh38",
-                "GRCh37",
-                "GRCm39",
-                "GRCm38",
-                "GRCm37",
-                "Not Applicable"
+            "title": "Content",
+            "required": [
+                "_id",
+                "extension"
             ],
-            "guidelines": "Please use the name as defined in the Genome Reference Consortium (https://www.ncbi.nlm.nih.gov/grc)",
-            "example": "Should be one of: GRCh38, GRCh37, GRCm39, GRCm38, GRCm37, Not Applicable"
-        },
-        "genome_patch_version": {
-            "description": "Patch version of the genome assembly used to generate this file.",
-            "type": "string",
-            "user_friendly": "Patch version",
-            "example": "p11; p14"
+            "properties": {
+                "_id": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "The name of the file. Please include the file extension in the file name.",
+                    "title": "File name",
+                    "examples": [
+                        "R1.fastq.gz",
+                        "R2.fastq.gz"
+                    ]
+                },
+                "checksum": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "MD5 checksum of the file.",
+                    "title": "Checksum",
+                    "examples": [
+                        "e09a986c2e630130b1849d4bf9a94c06"
+                    ]
+                },
+                "extension": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "pattern": "^[^.].*",
+                    "description": "The extension of the file. Please indicate the full file extension including compression extensions.",
+                    "title": "File extension",
+                    "examples": [
+                        "h5",
+                        "mtx"
+                    ]
+                },
+                "genome_assembly_version": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Name of the genome assembly used to generate this file. Please use the name as defined in the Genome Reference Consortium (https://www.ncbi.nlm.nih.gov/grc).",
+                    "title": "Genome version",
+                    "enum": [
+                        "GRCh38",
+                        "GRCh37",
+                        "Not applicable"
+                    ],
+                    "examples": [
+                        "GRCh37",
+                        "GRCh38",
+                        "Not applicable"
+                    ]
+                },
+                "genome_patch_version": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Patch version of the genome assembly used to generate this file.",
+                    "title": "Patch version",
+                    "examples": [
+                        "p11",
+                        "p14"
+                    ]
+                }
+            }
         }
     },
-    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/file/1.0.0/analysis_file"
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
+    }
 }

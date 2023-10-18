@@ -1,10 +1,10 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
     "description": "Information about the differentiated cell line.",
     "unevaluatedProperties": false,
-    "title": "Cell line",
-    "name": "cell_line",
-    "type": "object",
+    "title": "Differentiated cell line",
+    "name": "differentiated_cell_line",
     "allOf": [
         {
             "type": "object",
@@ -27,12 +27,12 @@
                         ]
                     }
                 },
-                "schema_type": {
-                    "const": "study",
-                    "default": "study"
-                },
                 "described_by": {
                     "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$"
+                },
+                "schema_type": {
+                    "const": "differentiated_cell_line",
+                    "default": "differentiated_cell_line"
                 }
             }
         }
@@ -40,23 +40,15 @@
     "properties": {
         "content": {
             "type": "object",
+            "title": "Content",
             "required": [
-                "differentiated_cell_line_id",
+                "_id",
                 "terminally_differentiated",
                 "timepoint_unit",
                 "timepoint_value"
             ],
-            "title": "Content",
             "properties": {
-                "differentiated_cell_line_description": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "A general description of the differentiated cell line.",
-                    "title": "Differentiated cell line description",
-                    "examples": [
-                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
-                    ]
-                },
-                "differentiated_cell_line_id": {
+                "_id": {
                     "$ref": "#/definitions/entity_id",
                     "description": "A unique ID for the differentiated cell line.",
                     "title": "Differentiated cell line ID",
@@ -64,10 +56,37 @@
                         "kolf2_2j_knockout_1_trophoblast"
                     ]
                 },
+                "description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "A general description of the differentiated cell line.",
+                    "title": "Differentiated cell line description",
+                    "examples": [
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+                    ]
+                },
+                "induction_method": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
+                    "title": "Induction method",
+                    "enum": [
+                        "sendai virus",
+                        "Gun particle",
+                        "piggyBac transposon",
+                        "miRNA viral",
+                        "adenovirus",
+                        "cre-loxP",
+                        "plasmid",
+                        "retroviral"
+                    ],
+                    "examples": [
+                        "Gun particle",
+                        "sendai virus"
+                    ]
+                },
                 "organ_model_system": {
                     "$ref": "/system/ontology",
-                    "title": "Model system",
                     "description": "To which organ model system this differentiated cell line has been derived into",
+                    "title": "Model system",
                     "properties": {
                         "ontology": {
                             "title": "Organ model system - ontology ID",
@@ -97,56 +116,27 @@
                         }
                     }
                 },
-                "induction_method": {
-                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
-                    "$ref": "#/definitions/non_empty_string",
-                    "enum": [
-                        "sendai virus",
-                        "Gun particle",
-                        "piggyBac transposon",
-                        "miRNA viral",
-                        "adenovirus",
-                        "cre-loxP",
-                        "plasmid",
-                        "retroviral"
-                    ],
-                    "examples": [
-                        "sendai virus",
-                        "Gun particle"
-                    ],
-                    "user_friendly": "Induction method"
-                },
                 "terminally_differentiated": {
-                    "description": "Is the cell line terminally differentiated.",
                     "type": "string",
+                    "description": "Is the cell line terminally differentiated.",
+                    "title": "Terminally differentiated?",
                     "enum": [
                         "yes",
                         "no",
                         "unknown"
                     ],
                     "examples": [
-                        "yes",
                         "no",
-                        "unknown"
-                    ],
-                    "user_friendly": "Terminally differentiated?"
+                        "unknown",
+                        "yes"
+                    ]
                 },
                 "timepoint_unit": {
                     "$ref": "/system/ontology",
                     "title": "Timepoint unit",
-                    "required": [
-                        "text",
-                        "ontology"
-                    ],
                     "properties": {
-                        "text": {
-                            "examples": [
-                                "second",
-                                "week"
-                            ],
-                            "title": "Timepoint unit"
-                        },
                         "ontology": {
+                            "title": "Timepoint unit - ontology ID",
                             "graphRestriction": {
                                 "ontologies": [
                                     "obo:uo"
@@ -164,21 +154,26 @@
                             "examples": [
                                 "UO:0000010",
                                 "UO:0000034"
-                            ],
-                            "title": "Timepoint unit - ontology ID"
+                            ]
+                        },
+                        "text": {
+                            "title": "Timepoint unit",
+                            "examples": [
+                                "second",
+                                "week"
+                            ]
                         }
                     }
                 },
                 "timepoint_value": {
-                    "description": "Value of the timepoint.",
                     "type": "number",
-                    "guidelines": "Please include the value only as a number.",
+                    "description": "Value of the timepoint.",
+                    "title": "Timepoint value",
                     "examples": [
                         7.5,
                         8,
                         9.1
-                    ],
-                    "title": "Timepoint value"
+                    ]
                 }
             }
         }

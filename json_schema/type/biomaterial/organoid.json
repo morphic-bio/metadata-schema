@@ -1,10 +1,13 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
-    "description": "Information about the library preparation.",
+    "description": "Information about the organoid.",
     "unevaluatedProperties": false,
-    "title": "Library preparation",
-    "name": "library_preparation",
+    "title": "Organoid",
+    "name": "organoid",
+    "required": [
+        "content"
+    ],
     "allOf": [
         {
             "type": "object",
@@ -12,6 +15,8 @@
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
+                    "description": "An International Nucleotide Sequence Database Collaboration (INSDC) or BioSamples (BSD) sample accession.",
+                    "title": "Sample accession",
                     "items": {
                         "anyOf": [
                             {
@@ -25,14 +30,18 @@
                                 }
                             }
                         ]
-                    }
+                    },
+                    "examples": [
+                        "SAMEA2397676",
+                        "SRS000000"
+                    ]
                 },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/library_preparation$"
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/organoid$"
                 },
                 "schema_type": {
-                    "const": "library_preparation",
-                    "default": "library_preparation"
+                    "const": "organoid",
+                    "default": "organoid"
                 }
             }
         }
@@ -43,66 +52,43 @@
             "title": "Content",
             "required": [
                 "_id",
-                "average_fragment_size"
+                "organ_model_system"
             ],
             "dependentRequired": {
-                "library_concentration_unit": [
-                    "library_concentration_value"
+                "age_value": [
+                    "age_unit"
                 ],
-                "library_concentration_value": [
-                    "library_concentration_unit"
+                "age_unit": [
+                    "age_value"
                 ],
-                "library_final_yield_unit": [
-                    "library_final_yield_value"
+                "size_value": [
+                    "size_unit"
                 ],
-                "library_final_yield_value": [
-                    "library_final_yield_unit"
-                ],
-                "library_input_amount_unit": [
-                    "library_input_amount_value"
-                ],
-                "library_input_amount_value": [
-                    "library_input_amount_unit"
+                "size_unit": [
+                    "size_value"
                 ]
             },
             "properties": {
                 "_id": {
                     "$ref": "#/definitions/entity_id",
-                    "description": "A unique ID for the library preparation.",
-                    "title": "Library preparation ID",
+                    "description": "A unique ID for the organoid.",
+                    "title": "Organoid ID",
                     "examples": [
-                        "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
+                        "kolf2_2j_knockout_1"
                     ]
                 },
-                "average_fragment_size": {
-                    "type": "integer",
-                    "description": "Average fragment size for the transcripts in the library preparation.",
-                    "title": "Average fragment size",
-                    "examples": [
-                        150,
-                        256
-                    ]
-                },
-                "description": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "A general description of the library preparation.",
-                    "title": "Library preparation description",
-                    "examples": [
-                        "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
-                    ]
-                },
-                "library_concentration_unit": {
+                "age_unit": {
                     "$ref": "/system/ontology",
-                    "title": "Library concentration unit",
+                    "title": "Age unit",
                     "properties": {
                         "ontology": {
-                            "title": "Library concentration unit - Ontology ID",
+                            "title": "Age unit - Ontology ID",
                             "graphRestriction": {
                                 "ontologies": [
                                     "obo:uo"
                                 ],
                                 "classes": [
-                                    "UO:0000052"
+                                    "UO:0000003"
                                 ],
                                 "relations": [
                                     "rdfs:subClassOf"
@@ -111,122 +97,146 @@
                                 "include_self": false
                             },
                             "examples": [
-                                "UO:0000275",
-                                "UO:0010050"
-                            ]
-                        },
-                        "text": {
-                            "title": "Library concentration unit",
-                            "examples": [
-                                "microgram per mililiter",
-                                "nanogram per microliter"
-                            ]
-                        }
-                    }
-                },
-                "library_concentration_value": {
-                    "type": "number",
-                    "description": "Value of the library concentration.",
-                    "title": "Library concentration value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
-                    ]
-                },
-                "library_final_yield_unit": {
-                    "$ref": "/system/ontology",
-                    "title": "Library final yield unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Library final yield unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:1000021"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000024",
-                                "UO:0000025"
-                            ]
-                        },
-                        "text": {
-                            "title": "Library final yield unit",
-                            "examples": [
-                                "microgram",
-                                "nanogram"
-                            ]
-                        }
-                    }
-                },
-                "library_final_yield_value": {
-                    "type": "number",
-                    "description": "Value of the library final yield.",
-                    "title": "Library final yield value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
-                    ]
-                },
-                "library_input_amount_unit": {
-                    "$ref": "/system/ontology",
-                    "title": "Library input amount unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Library input amount unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:0000095"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000010",
+                                "UO:0000033",
                                 "UO:0000034"
                             ]
                         },
                         "text": {
-                            "title": "Library input amount unit",
+                            "title": "Age unit",
                             "examples": [
-                                "microliter",
-                                "nanoliter"
+                                "day",
+                                "week"
                             ]
                         }
                     }
                 },
-                "library_input_amount_value": {
+                "age_value": {
                     "type": "number",
-                    "description": "Value of the library input amount.",
-                    "title": "Library input amount value",
+                    "description": "Age of the organoid in Organoid age unit measured from when cell aggregates started differentiating to desired organoid model.",
+                    "title": "Organoid age",
                     "examples": [
-                        7.5,
-                        8,
-                        9.1
+                        55,
+                        67
                     ]
                 },
-                "library_pcr_cycles": {
-                    "type": "integer",
-                    "description": "Number of PCR cycles performed for this library.",
-                    "title": "Library PCR cycles",
+                "description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "A general description of the organoid.",
+                    "title": "Organoid description",
                     "examples": [
-                        150,
-                        256
+                        "Neuroectoderm organoid, derived from kolf2_2j DKO"
+                    ]
+                },
+                "embedded_in_matrigel": {
+                    "type": "boolean",
+                    "description": "Whether the organoid is embedded in a matrigel.",
+                    "title": "Embeddded in matrigel",
+                    "examples": [
+                        false,
+                        true
+                    ]
+                },
+                "growth_environment": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Growth environment in which the organoid is grown.",
+                    "title": "Growth environment",
+                    "examples": [
+                        "adherent",
+                        "liquid suspension",
+                        "matrigel"
+                    ]
+                },
+                "morphology": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "General description of the organoid morphology.",
+                    "title": "Organoid morphology",
+                    "examples": [
+                        "Epithelial monolayer with budding crypt-like domains",
+                        "Optic cup structure"
+                    ]
+                },
+                "organ_model_system": {
+                    "$ref": "/system/ontology",
+                    "description": "To which organ model system this organoid has been derived into.",
+                    "title": "Model system",
+                    "properties": {
+                        "ontology": {
+                            "title": "Organ model system - ontology ID",
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:uberon"
+                                ],
+                                "classes": [
+                                    "UBERON:0000465"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": true
+                            },
+                            "examples": [
+                                "UBERON:0000006",
+                                "UBERON:0002371"
+                            ]
+                        },
+                        "text": {
+                            "title": "Organ model system",
+                            "examples": [
+                                "Neuroectoderm"
+                            ]
+                        }
+                    }
+                },
+                "size_unit": {
+                    "$ref": "/system/ontology",
+                    "title": "Age unit",
+                    "properties": {
+                        "ontology": {
+                            "title": "Age unit - Ontology ID",
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:uo"
+                                ],
+                                "classes": [
+                                    "UO:0000001"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": false
+                            },
+                            "examples": [
+                                "UO:0000015",
+                                "UO:0000016"
+                            ]
+                        },
+                        "text": {
+                            "title": "Age unit",
+                            "examples": [
+                                "centimeter",
+                                "millimeter"
+                            ]
+                        }
+                    }
+                },
+                "size_value": {
+                    "type": "number",
+                    "description": "Size of the organoid in Organoid size unit.",
+                    "title": "Organoid size",
+                    "examples": [
+                        4,
+                        5
+                    ]
+                },
+                "stored_oxygen_levels": {
+                    "type": "number",
+                    "description": "Percent oxygen level organoid was stored in prior to sequencing.",
+                    "title": "Stored oxygen level",
+                    "examples": [
+                        75,
+                        80
                     ]
                 }
             }

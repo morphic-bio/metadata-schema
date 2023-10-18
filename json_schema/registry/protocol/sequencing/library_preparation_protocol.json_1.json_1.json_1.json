@@ -1,0 +1,590 @@
+{
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/sequencing/1.0.0/library_preparation_protocol",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "description": "Information about how a sequencing library was prepared.",
+    "name": "library_preparation_protocol",
+    "properties": {
+        "cdna_library_amplification_method": {
+            "description": "The method used to amplify cDNA library prior to sequencing.",
+            "library_amplification_ontology_ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "example": "OBI:0000415; EFO:0009013",
+                "graph_restriction": {
+                    "classes": [
+                        "EFO:0009107"
+                    ],
+                    "direct": false,
+                    "include_self": false,
+                    "ontologies": [
+                        "obo:efo"
+                    ],
+                    "relations": [
+                        "rdfs:subClassOf"
+                    ]
+                },
+                "type": "string",
+                "user_friendly": "Library amplification ontology ID"
+            },
+            "library_amplification_ontology_ontology_label": {
+                "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                "example": "PCR; in vitro transcription",
+                "type": "string",
+                "user_friendly": "Library amplification ontology label"
+            },
+            "type": "object",
+            "user_friendly": "cDNA library amplification method"
+        },
+        "cell_barcode": {
+            "barcode_length": {
+                "description": "Length of barcode in nucleotides.",
+                "example": 28,
+                "maximum": 50,
+                "minimum": 0,
+                "type": "integer",
+                "user_friendly": "Barcode length"
+            },
+            "barcode_offset": {
+                "description": "The 0-based offset of start of barcode in read.",
+                "example": 0,
+                "guidelines": "Enter 0 for beginning of read.",
+                "maximum": 50,
+                "minimum": 0,
+                "type": "integer",
+                "user_friendly": "Barcode offset"
+            },
+            "barcode_read": {
+                "description": "The read in which the barcode is found.",
+                "enum": [
+                    "Read 1",
+                    "Read 2",
+                    "Read 3",
+                    "Read 4",
+                    "i7 Index",
+                    "i5 Index"
+                ],
+                "example": "Should be one of: Read 1, Read 2, i7 Index, or i5 Index.",
+                "type": "string",
+                "user_friendly": "Barcode-containing read"
+            },
+            "description": "Information about cell identifier barcodes.",
+            "type": "object",
+            "user_friendly": "Cell barcode",
+            "white_list_file": {
+                "description": "Name of file containing legitimate barcode sequences.",
+                "example": "barcode_whitelist_file.txt",
+                "guidelines": "Unused for randomly generated barcodes.",
+                "type": "string",
+                "user_friendly": "White list barcode file"
+            }
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/sequencing/1.0.0/library_preparation_protocol",
+            "type": "string"
+        },
+        "end_bias": {
+            "description": "The type of tag or end bias the library has.",
+            "enum": [
+                "3 prime tag",
+                "3 prime end bias",
+                "5 prime tag",
+                "5 prime end bias",
+                "full length"
+            ],
+            "example": "Should be one of: 3 prime tag, 3 prime end bias, 5 prime tag, 5 prime end bias, or full length.",
+            "guidelines": "Enter 'full length' if there is no tag or end bias.",
+            "type": "string",
+            "user_friendly": "End bias"
+        },
+        "input_nucleic_acid_molecule": {
+            "biological_macromolecule_ontology_ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "example": "OBI:0000869; CHEBI:33699",
+                "graph_restriction": {
+                    "classes": [
+                        "EFO:0004446"
+                    ],
+                    "direct": false,
+                    "include_self": false,
+                    "ontologies": [
+                        "obo:efo",
+                        "obo:chebi",
+                        "obo:obi"
+                    ],
+                    "relations": [
+                        "rdfs:subClassOf"
+                    ]
+                },
+                "type": "string",
+                "user_friendly": "Biological macromolecule ontology ID"
+            },
+            "biological_macromolecule_ontology_ontology_label": {
+                "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                "example": "polyA RNA; messenger RNA",
+                "type": "string",
+                "user_friendly": "Biological macromolecule ontology label"
+            },
+            "description": "Starting nucleic acid molecule isolated for sequencing.",
+            "type": "object",
+            "user_friendly": "Input nucleic acid molecule"
+        },
+        "library_construction_kit": {
+            "catalog_number": {
+                "description": "The catalog number of the kit/reagent.",
+                "example": "20014279",
+                "type": "string",
+                "user_friendly": "Catalog number"
+            },
+            "description": "Name of kit used to construct the sequencing library.",
+            "expiry_date": {
+                "description": "The date of expiration for the kit/reagent.",
+                "example": "2018-01-31; 2018-01",
+                "guidelines": "Enter the date in date format: yyyy-mm-dd. Supplying partial date is allowed.",
+                "pattern": "^((19|20)\\d\\d){1}([- \\./][01]\\d){0,1}([- \\./][0-3]\\d){0,1}$",
+                "type": "string",
+                "user_friendly": "Expiry date"
+            },
+            "kit_titer": {
+                "description": "Appropriate titer and volume recommendations found in kit/reagent Certificate of Analysis.",
+                "example": "3.0x10^7",
+                "type": "string",
+                "user_friendly": "Titer"
+            },
+            "lot_number": {
+                "description": "The batch or lot number of the kit/reagent.",
+                "example": "10001A",
+                "type": "string",
+                "user_friendly": "Batch/lot number"
+            },
+            "manufacturer": {
+                "description": "The manufacturer of the kit/reagent.",
+                "example": "Illumina; ThermoFisher Scientific",
+                "type": "string",
+                "user_friendly": "Manufacturer"
+            },
+            "retail_name": {
+                "description": "The retail name of the kit/reagent.",
+                "example": "SureCell WTA 3' Library Prep Kit; CytoTune iPS 2.0 Sendai Reprogramming Kit",
+                "type": "string",
+                "user_friendly": "Retail name"
+            },
+            "type": "object",
+            "user_friendly": "Library construction kit"
+        },
+        "library_construction_method": {
+            "description": "The general method for sequencing library construction.",
+            "library_construction_ontology_ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "example": "EFO:0009310; EFO:0008931",
+                "graph_restriction": {
+                    "classes": [
+                        "EFO:0002772"
+                    ],
+                    "direct": false,
+                    "include_self": false,
+                    "ontologies": [
+                        "obo:efo"
+                    ],
+                    "relations": [
+                        "rdfs:subClassOf"
+                    ]
+                },
+                "type": "string",
+                "user_friendly": "Library construction ontology ID"
+            },
+            "library_construction_ontology_ontology_label": {
+                "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                "example": "10X v2 sequencing; Smart-seq2",
+                "type": "string",
+                "user_friendly": "Library construction ontology label"
+            },
+            "type": "object",
+            "user_friendly": "Library construction method"
+        },
+        "library_preamplification_method": {
+            "description": "The method used to amplify RNA prior to adaptor ligation.",
+            "library_amplification_ontology_ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "example": "OBI:0000415; EFO:0009013",
+                "graph_restriction": {
+                    "classes": [
+                        "EFO:0009107"
+                    ],
+                    "direct": false,
+                    "include_self": false,
+                    "ontologies": [
+                        "obo:efo"
+                    ],
+                    "relations": [
+                        "rdfs:subClassOf"
+                    ]
+                },
+                "type": "string",
+                "user_friendly": "Library amplification ontology ID"
+            },
+            "library_amplification_ontology_ontology_label": {
+                "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                "example": "PCR; in vitro transcription",
+                "type": "string",
+                "user_friendly": "Library amplification ontology label"
+            },
+            "type": "object",
+            "user_friendly": "Library pre-amplification method"
+        },
+        "nominal_length": {
+            "description": "Average (insert) size of the fragments being sequenced.",
+            "example": 250,
+            "type": "integer",
+            "user_friendly": "Nominal length"
+        },
+        "nominal_sdev": {
+            "description": "Standard deviation of the (insert) size of the fragments being sequenced.",
+            "example": 30,
+            "type": "integer",
+            "user_friendly": "Nominal standard deviation"
+        },
+        "nucleic_acid_conversion_kit": {
+            "catalog_number": {
+                "description": "The catalog number of the kit/reagent.",
+                "example": "20014279",
+                "type": "string",
+                "user_friendly": "Catalog number"
+            },
+            "description": "Name of kit used to convert RNA to DNA for sequencing.",
+            "expiry_date": {
+                "description": "The date of expiration for the kit/reagent.",
+                "example": "2018-01-31; 2018-01",
+                "guidelines": "Enter the date in date format: yyyy-mm-dd. Supplying partial date is allowed.",
+                "pattern": "^((19|20)\\d\\d){1}([- \\./][01]\\d){0,1}([- \\./][0-3]\\d){0,1}$",
+                "type": "string",
+                "user_friendly": "Expiry date"
+            },
+            "kit_titer": {
+                "description": "Appropriate titer and volume recommendations found in kit/reagent Certificate of Analysis.",
+                "example": "3.0x10^7",
+                "type": "string",
+                "user_friendly": "Titer"
+            },
+            "lot_number": {
+                "description": "The batch or lot number of the kit/reagent.",
+                "example": "10001A",
+                "type": "string",
+                "user_friendly": "Batch/lot number"
+            },
+            "manufacturer": {
+                "description": "The manufacturer of the kit/reagent.",
+                "example": "Illumina; ThermoFisher Scientific",
+                "type": "string",
+                "user_friendly": "Manufacturer"
+            },
+            "retail_name": {
+                "description": "The retail name of the kit/reagent.",
+                "example": "SureCell WTA 3' Library Prep Kit; CytoTune iPS 2.0 Sendai Reprogramming Kit",
+                "type": "string",
+                "user_friendly": "Retail name"
+            },
+            "type": "object",
+            "user_friendly": "Nucleic acid conversion kit"
+        },
+        "nucleic_acid_source": {
+            "description": "Source cells or organelles from which nucleic acid molecules were collected.",
+            "enum": [
+                "bulk cell",
+                "single cell",
+                "single nucleus",
+                "bulk nuclei",
+                "mitochondria"
+            ],
+            "example": "Should be one of: single cell, bulk cell, single nucleus, bulk nuclei, or mitochondria.",
+            "type": "string",
+            "user_friendly": "Nucleic acid source"
+        },
+        "primer": {
+            "description": "Primer used for cDNA synthesis from RNA.",
+            "enum": [
+                "poly-dT",
+                "random"
+            ],
+            "example": "Should be one of: poly-dT, or random.",
+            "type": "string",
+            "user_friendly": "Primer"
+        },
+        "protocol_core": {
+            "description": "Core protocol-level information.",
+            "protocol_description": {
+                "description": "A general description of the protocol.",
+                "type": "string",
+                "user_friendly": "Protocol description"
+            },
+            "protocol_id": {
+                "description": "A unique ID for the protocol.",
+                "guidelines": "Protocol ID should have no spaces.",
+                "type": "string",
+                "user_friendly": "Protocol ID"
+            },
+            "protocol_name": {
+                "description": "A short name for the protocol.",
+                "type": "string",
+                "user_friendly": "Protocol name"
+            },
+            "protocols_io_doi": {
+                "description": "The protocols.io digital object identifier (doi) for the protocol.",
+                "example": "10.17504/protocols.io.mgjc3un",
+                "type": "string",
+                "user_friendly": "protocols.io DOI"
+            },
+            "publication_doi": {
+                "description": "The publication digital object identifier (doi) for the protocol.",
+                "example": "10.1101/193219",
+                "type": "string",
+                "user_friendly": "Publication DOI"
+            },
+            "type": "object",
+            "user_friendly": "Protocol core"
+        },
+        "provenance": {
+            "accession": {
+                "description": "A unique accession for this entity, provided by the broker.",
+                "type": "string",
+                "user_friendly": "Accession"
+            },
+            "description": "Provenance information provided by the system.",
+            "document_id": {
+                "comment": "This structure supports the current ingest API. It may change in the future.",
+                "description": "Identifier for document.",
+                "pattern": ".{8}-.{4}-.{4}-.{4}-.{12}",
+                "type": "string",
+                "user_friendly": "Document ID"
+            },
+            "schema_major_version": {
+                "description": "The major version number of the schema.",
+                "example": "4; 10",
+                "pattern": "^[0-9]{1,}$",
+                "type": "integer",
+                "user_friendly": "Schema major version"
+            },
+            "schema_minor_version": {
+                "description": "The minor version number of the schema.",
+                "example": "6; 15",
+                "pattern": "^[0-9]{1,}$",
+                "type": "integer",
+                "user_friendly": "Schema minor version"
+            },
+            "submission_date": {
+                "description": "When project was first submitted to database.",
+                "format": "date-time",
+                "type": "string",
+                "user_friendly": "Submission date"
+            },
+            "submitter_id": {
+                "description": "ID of individual who first submitted project.",
+                "type": "string",
+                "user_friendly": "Submitter ID"
+            },
+            "type": "object",
+            "update_date": {
+                "description": "When project was last updated.",
+                "format": "date-time",
+                "type": "string",
+                "user_friendly": "Update date"
+            },
+            "updater_id": {
+                "description": "ID of individual who last updated project.",
+                "type": "string",
+                "user_friendly": "Updater ID"
+            }
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "protocol"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "spatial_barcode": {
+            "barcode_length": {
+                "description": "Length of barcode in nucleotides.",
+                "example": 28,
+                "maximum": 50,
+                "minimum": 0,
+                "type": "integer",
+                "user_friendly": "Barcode length"
+            },
+            "barcode_offset": {
+                "description": "The 0-based offset of start of barcode in read.",
+                "example": 0,
+                "guidelines": "Enter 0 for beginning of read.",
+                "maximum": 50,
+                "minimum": 0,
+                "type": "integer",
+                "user_friendly": "Barcode offset"
+            },
+            "barcode_read": {
+                "description": "The read in which the barcode is found.",
+                "enum": [
+                    "Read 1",
+                    "Read 2",
+                    "Read 3",
+                    "Read 4",
+                    "i7 Index",
+                    "i5 Index"
+                ],
+                "example": "Should be one of: Read 1, Read 2, i7 Index, or i5 Index.",
+                "type": "string",
+                "user_friendly": "Barcode-containing read"
+            },
+            "description": "Information about spatial barcodes.",
+            "type": "object",
+            "user_friendly": "Spatial barcode",
+            "white_list_file": {
+                "description": "Name of file containing legitimate barcode sequences.",
+                "example": "barcode_whitelist_file.txt",
+                "guidelines": "Unused for randomly generated barcodes.",
+                "type": "string",
+                "user_friendly": "White list barcode file"
+            }
+        },
+        "spike_in_dilution": {
+            "description": "Dilution of spike-in.",
+            "example": 100,
+            "maximum": 1000000,
+            "minimum": 1,
+            "type": "integer",
+            "user_friendly": "Spike-in dilution"
+        },
+        "spike_in_kit": {
+            "catalog_number": {
+                "description": "The catalog number of the kit/reagent.",
+                "example": "20014279",
+                "type": "string",
+                "user_friendly": "Catalog number"
+            },
+            "description": "Information about a spike-in kit.",
+            "expiry_date": {
+                "description": "The date of expiration for the kit/reagent.",
+                "example": "2018-01-31; 2018-01",
+                "guidelines": "Enter the date in date format: yyyy-mm-dd. Supplying partial date is allowed.",
+                "pattern": "^((19|20)\\d\\d){1}([- \\./][01]\\d){0,1}([- \\./][0-3]\\d){0,1}$",
+                "type": "string",
+                "user_friendly": "Expiry date"
+            },
+            "kit_titer": {
+                "description": "Appropriate titer and volume recommendations found in kit/reagent Certificate of Analysis.",
+                "example": "3.0x10^7",
+                "type": "string",
+                "user_friendly": "Titer"
+            },
+            "lot_number": {
+                "description": "The batch or lot number of the kit/reagent.",
+                "example": "10001A",
+                "type": "string",
+                "user_friendly": "Batch/lot number"
+            },
+            "manufacturer": {
+                "description": "The manufacturer of the kit/reagent.",
+                "example": "Illumina; ThermoFisher Scientific",
+                "type": "string",
+                "user_friendly": "Manufacturer"
+            },
+            "retail_name": {
+                "description": "The retail name of the kit/reagent.",
+                "example": "SureCell WTA 3' Library Prep Kit; CytoTune iPS 2.0 Sendai Reprogramming Kit",
+                "type": "string",
+                "user_friendly": "Retail name"
+            },
+            "type": "object",
+            "user_friendly": "Spike-in kit"
+        },
+        "strand": {
+            "description": "Library strandedness.",
+            "enum": [
+                "first",
+                "second",
+                "unstranded",
+                "not provided"
+            ],
+            "example": "Should be one of: first, second, unstranded, or not provided.",
+            "guidelines": "Enter 'first' if sequenced molecule is only the strand generated during first strand synthesis. Enter 'second' if sequenced molecule is only the strand generated during second strand synthesis. Enter 'unstranded' if both strands were sequenced.",
+            "type": "string",
+            "user_friendly": "Strand"
+        },
+        "umi_barcode": {
+            "barcode_length": {
+                "description": "Length of barcode in nucleotides.",
+                "example": 28,
+                "maximum": 50,
+                "minimum": 0,
+                "type": "integer",
+                "user_friendly": "Barcode length"
+            },
+            "barcode_offset": {
+                "description": "The 0-based offset of start of barcode in read.",
+                "example": 0,
+                "guidelines": "Enter 0 for beginning of read.",
+                "maximum": 50,
+                "minimum": 0,
+                "type": "integer",
+                "user_friendly": "Barcode offset"
+            },
+            "barcode_read": {
+                "description": "The read in which the barcode is found.",
+                "enum": [
+                    "Read 1",
+                    "Read 2",
+                    "Read 3",
+                    "Read 4",
+                    "i7 Index",
+                    "i5 Index"
+                ],
+                "example": "Should be one of: Read 1, Read 2, i7 Index, or i5 Index.",
+                "type": "string",
+                "user_friendly": "Barcode-containing read"
+            },
+            "description": "Information about unique molecular identifier (UMI) barcodes.",
+            "type": "object",
+            "user_friendly": "UMI barcode",
+            "white_list_file": {
+                "description": "Name of file containing legitimate barcode sequences.",
+                "example": "barcode_whitelist_file.txt",
+                "guidelines": "Unused for randomly generated barcodes.",
+                "type": "string",
+                "user_friendly": "White list barcode file"
+            }
+        }
+    },
+    "required": [
+        "describedBy",
+        "schema_type",
+        "protocol_core",
+        "library_construction_method",
+        "input_nucleic_acid_molecule",
+        "nucleic_acid_source",
+        "end_bias",
+        "strand",
+        "document_id",
+        "submission_date",
+        "protocol_id",
+        "barcode_offset",
+        "barcode_length",
+        "barcode_read",
+        "barcode_offset",
+        "barcode_length",
+        "barcode_read",
+        "text",
+        "text",
+        "barcode_offset",
+        "barcode_length",
+        "barcode_read",
+        "text",
+        "text"
+    ],
+    "title": "Library preparation protocol",
+    "type": "object"
+}

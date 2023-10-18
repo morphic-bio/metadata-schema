@@ -1,0 +1,115 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Information about how cultured cells are developed into cell aggregates.",
+    "additionalProperties": false,
+    "required": [
+        "protocol_core",
+        "formation_method",
+        "submission_date",
+        "protocol_id"
+    ],
+    "title": "Aggregate generation protocol",
+    "name": "aggregate_generation_protocol",
+    "type": "object",
+    "properties": {
+        "accession": {
+            "description": "A unique accession for this entity, provided by the broker.",
+            "type": "string",
+            "user_friendly": "Accession"
+        },
+        "cell_uniformity": {
+            "description": "Description of the cell aggregates uniformity after formation.",
+            "type": "string",
+            "example": "Mostly homogenous embryoid bodies of variable cell numbers; Low-homogeneity in morphology and size",
+            "user_friendly": "Aggregate cell uniformity"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "type": "string",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/aggregate_generation_protocol"
+        },
+        "formation_method": {
+            "description": "Method used to form cell aggregates.",
+            "type": "string",
+            "example": "rocking; suspension cultures; hanging drops; spinner flasks",
+            "user_friendly": "Aggregate formation method"
+        },
+        "protocol_description": {
+            "description": "A general description of the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol description"
+        },
+        "protocol_id": {
+            "description": "A unique ID for the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol ID",
+            "guidelines": "Protocol ID should have no spaces."
+        },
+        "protocol_name": {
+            "description": "A short name for the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol name"
+        },
+        "protocols_io_doi": {
+            "description": "The protocols.io digital object identifier (doi) for the protocol.",
+            "type": "string",
+            "example": "10.17504/protocols.io.mgjc3un",
+            "user_friendly": "protocols.io DOI"
+        },
+        "publication_doi": {
+            "description": "The publication digital object identifier (doi) for the protocol.",
+            "type": "string",
+            "example": "10.1101/193219",
+            "user_friendly": "Publication DOI"
+        },
+        "schema_major_version": {
+            "description": "The major version number of the schema.",
+            "type": "integer",
+            "pattern": "^[0-9]{1,}$",
+            "user_friendly": "Schema major version",
+            "example": "4; 10"
+        },
+        "schema_minor_version": {
+            "description": "The minor version number of the schema.",
+            "type": "integer",
+            "pattern": "^[0-9]{1,}$",
+            "user_friendly": "Schema minor version",
+            "example": "6; 15"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "type": "string",
+            "enum": [
+                "protocol"
+            ]
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "example": "4.6.1"
+        },
+        "submission_date": {
+            "description": "When project was first submitted to database.",
+            "type": "string",
+            "format": "date-time",
+            "user_friendly": "Submission date"
+        },
+        "submitter_id": {
+            "description": "ID of individual who first submitted project.",
+            "type": "string",
+            "user_friendly": "Submitter ID"
+        },
+        "update_date": {
+            "description": "When project was last updated.",
+            "type": "string",
+            "format": "date-time",
+            "user_friendly": "Update date"
+        },
+        "updater_id": {
+            "description": "ID of individual who last updated project.",
+            "type": "string",
+            "user_friendly": "Updater ID"
+        }
+    }
+}
