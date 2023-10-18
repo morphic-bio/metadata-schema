@@ -1,0 +1,195 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Information about how a cell is differentiated to a desired cell type or organoid.",
+    "additionalProperties": false,
+    "required": [
+        "protocol_core",
+        "method",
+        "submission_date",
+        "protocol_id"
+    ],
+    "title": "Differentiation protocol",
+    "name": "differentiation_protocol",
+    "type": "object",
+    "properties": {
+        "accession": {
+            "description": "A unique accession for this entity, provided by the broker.",
+            "type": "string",
+            "user_friendly": "Accession"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "type": "string",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/differentiation_protocol"
+        },
+        "media": {
+            "description": "Culture media used to induce a specific differentiation response.",
+            "type": "string",
+            "user_friendly": "Differentiation media",
+            "example": "RPMI 1640 + B27; Neurobasal Media; StemPro-34 Serum-Free Medium"
+        },
+        "method": {
+            "description": "Method applied to cell culture to induce a specific differentiation response.",
+            "type": "string",
+            "user_friendly": "Differentiation method",
+            "comment": "Consider making this an ontology in the future.",
+            "example": "Embryoid Body; Monolayer; Inductive Co-Culture"
+        },
+        "protocol_description": {
+            "description": "A general description of the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol description"
+        },
+        "protocol_id": {
+            "description": "A unique ID for the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol ID",
+            "guidelines": "Protocol ID should have no spaces."
+        },
+        "protocol_name": {
+            "description": "A short name for the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol name"
+        },
+        "protocols_io_doi": {
+            "description": "The protocols.io digital object identifier (doi) for the protocol.",
+            "type": "string",
+            "example": "10.17504/protocols.io.mgjc3un",
+            "user_friendly": "protocols.io DOI"
+        },
+        "publication_doi": {
+            "description": "The publication digital object identifier (doi) for the protocol.",
+            "type": "string",
+            "example": "10.1101/193219",
+            "user_friendly": "Publication DOI"
+        },
+        "reagents": {
+            "description": "A list of purchased reagents used in the differentiation protocol.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "retail_name": {
+                        "description": "The retail name of the kit/reagent.",
+                        "type": "string",
+                        "example": "SureCell WTA 3' Library Prep Kit; CytoTune iPS 2.0 Sendai Reprogramming Kit",
+                        "user_friendly": "Retail name"
+                    },
+                    "catalog_number": {
+                        "description": "The catalog number of the kit/reagent.",
+                        "type": "string",
+                        "example": "20014279",
+                        "user_friendly": "Catalog number"
+                    },
+                    "manufacturer": {
+                        "description": "The manufacturer of the kit/reagent.",
+                        "type": "string",
+                        "example": "Illumina; ThermoFisher Scientific",
+                        "user_friendly": "Manufacturer"
+                    },
+                    "lot_number": {
+                        "description": "The batch or lot number of the kit/reagent.",
+                        "type": "string",
+                        "example": "10001A",
+                        "user_friendly": "Batch/lot number"
+                    },
+                    "expiry_date": {
+                        "description": "The date of expiration for the kit/reagent.",
+                        "type": "string",
+                        "example": "2018-01-31; 2018-01",
+                        "user_friendly": "Expiry date",
+                        "pattern": "^((19|20)\\d\\d){1}([- \\./][01]\\d){0,1}([- \\./][0-3]\\d){0,1}$",
+                        "guidelines": "Enter the date in date format: yyyy-mm-dd. Supplying partial date is allowed."
+                    },
+                    "kit_titer": {
+                        "description": "Appropriate titer and volume recommendations found in kit/reagent Certificate of Analysis.",
+                        "type": "string",
+                        "example": "3.0x10^7",
+                        "user_friendly": "Titer"
+                    }
+                }
+            },
+            "user_friendly": "Differentiation reagents"
+        },
+        "schema_major_version": {
+            "description": "The major version number of the schema.",
+            "type": "integer",
+            "pattern": "^[0-9]{1,}$",
+            "user_friendly": "Schema major version",
+            "example": "4; 10"
+        },
+        "schema_minor_version": {
+            "description": "The minor version number of the schema.",
+            "type": "integer",
+            "pattern": "^[0-9]{1,}$",
+            "user_friendly": "Schema minor version",
+            "example": "6; 15"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "type": "string",
+            "enum": [
+                "protocol"
+            ]
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "example": "4.6.1"
+        },
+        "small_molecules": {
+            "description": "Small molecules added to stem cell medium to induce a specific differentiation response.",
+            "type": "string",
+            "user_friendly": "Small molecules",
+            "example": "Retinoic Acid; CHIR99021 (GSK-inhibitor); Activin A; BMP4"
+        },
+        "submission_date": {
+            "description": "When project was first submitted to database.",
+            "type": "string",
+            "format": "date-time",
+            "user_friendly": "Submission date"
+        },
+        "submitter_id": {
+            "description": "ID of individual who first submitted project.",
+            "type": "string",
+            "user_friendly": "Submitter ID"
+        },
+        "target_cell_yield": {
+            "description": "Percent of target cells obtained after directed differentiation of origin cell.",
+            "type": "number",
+            "example": 95,
+            "user_friendly": "Percent target cell yield"
+        },
+        "target_pathway": {
+            "description": "Targeted pathway for specific differentiation response.",
+            "type": "string",
+            "user_friendly": "Target pathway",
+            "example": "Wnt pathway; Hedgehog signaling pathway",
+            "comment": "Consider making this an ontology in the future."
+        },
+        "update_date": {
+            "description": "When project was last updated.",
+            "type": "string",
+            "format": "date-time",
+            "user_friendly": "Update date"
+        },
+        "updater_id": {
+            "description": "ID of individual who last updated project.",
+            "type": "string",
+            "user_friendly": "Updater ID"
+        },
+        "validation_method": {
+            "description": "Method used to validate origin cell successfully differentiated to target cell.",
+            "type": "string",
+            "user_friendly": "Differentiation validation method",
+            "example": "Pancreatic Cell DTZ Detection Assay; qPCR; Flow Cytometry; Immunocytochemistry Staining"
+        },
+        "validation_result": {
+            "description": "Result confirming successful differentiation to target cell type.",
+            "type": "string",
+            "user_friendly": "Validation result",
+            "example": "CD103 Positive; Nestin Positive; HCN4 Positive; CD11C Negative"
+        }
+    }
+}

@@ -1,0 +1,214 @@
+{
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/gene_expression_alteration_protocol",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "description": "Information about how cells are subjected to a treatment or stimulus, such as an immune activator or a drug.",
+    "name": "gene_expression_alteration_protocol",
+    "properties": {
+        "crisproff": {
+            "description": "CRISPRoff specific fields",
+            "items": {
+                "properties": {
+                    "sgrna_target": {
+                        "description": "Target of the Single Guide RNAs (sgRNAs)",
+                        "type": "string",
+                        "user_friendly": "sgRNA target"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array",
+            "user_friendly": "CRISPRoff"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/biomaterial_collection/1.0.0/gene_expression_alteration_protocol",
+            "type": "string"
+        },
+        "method": {
+            "description": "Method applied to the biomaterial to induce a LOF on the gene/allele of interest.",
+            "items": {
+                "properties": {
+                    "gene_silencing_method_ontology_ontology": {
+                        "description": "An ontology term identifier in the form prefix:accession.",
+                        "example": "EFO:0030037",
+                        "graph_restriction": {
+                            "classes": [
+                                "OBI:0000070"
+                            ],
+                            "direct": false,
+                            "include_self": false,
+                            "ontologies": [
+                                "obo:efo",
+                                "obo:obi"
+                            ],
+                            "relations": [
+                                "rdfs:subClassOf"
+                            ]
+                        },
+                        "type": "string",
+                        "user_friendly": "Treatment ontology ID"
+                    },
+                    "gene_silencing_method_ontology_ontology_label": {
+                        "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                        "example": "T cell activation assay",
+                        "type": "string",
+                        "user_friendly": "Treatment ontology label"
+                    }
+                },
+                "required": [
+                    "text"
+                ]
+            },
+            "type": "array",
+            "user_friendly": "Treatment method"
+        },
+        "protocol_core": {
+            "description": "Core protocol-level information.",
+            "protocol_description": {
+                "description": "A general description of the protocol.",
+                "type": "string",
+                "user_friendly": "Protocol description"
+            },
+            "protocol_id": {
+                "description": "A unique ID for the protocol.",
+                "guidelines": "Protocol ID should have no spaces.",
+                "type": "string",
+                "user_friendly": "Protocol ID"
+            },
+            "protocol_name": {
+                "description": "A short name for the protocol.",
+                "type": "string",
+                "user_friendly": "Protocol name"
+            },
+            "protocols_io_doi": {
+                "description": "The protocols.io digital object identifier (doi) for the protocol.",
+                "example": "10.17504/protocols.io.mgjc3un",
+                "type": "string",
+                "user_friendly": "protocols.io DOI"
+            },
+            "publication_doi": {
+                "description": "The publication digital object identifier (doi) for the protocol.",
+                "example": "10.1101/193219",
+                "type": "string",
+                "user_friendly": "Publication DOI"
+            },
+            "type": "object",
+            "user_friendly": "Protocol core"
+        },
+        "provenance": {
+            "accession": {
+                "description": "A unique accession for this entity, provided by the broker.",
+                "type": "string",
+                "user_friendly": "Accession"
+            },
+            "description": "Provenance information provided by the system.",
+            "document_id": {
+                "comment": "This structure supports the current ingest API. It may change in the future.",
+                "description": "Identifier for document.",
+                "pattern": ".{8}-.{4}-.{4}-.{4}-.{12}",
+                "type": "string",
+                "user_friendly": "Document ID"
+            },
+            "schema_major_version": {
+                "description": "The major version number of the schema.",
+                "example": "4; 10",
+                "pattern": "^[0-9]{1,}$",
+                "type": "integer",
+                "user_friendly": "Schema major version"
+            },
+            "schema_minor_version": {
+                "description": "The minor version number of the schema.",
+                "example": "6; 15",
+                "pattern": "^[0-9]{1,}$",
+                "type": "integer",
+                "user_friendly": "Schema minor version"
+            },
+            "submission_date": {
+                "description": "When project was first submitted to database.",
+                "format": "date-time",
+                "type": "string",
+                "user_friendly": "Submission date"
+            },
+            "submitter_id": {
+                "description": "ID of individual who first submitted project.",
+                "type": "string",
+                "user_friendly": "Submitter ID"
+            },
+            "type": "object",
+            "update_date": {
+                "description": "When project was last updated.",
+                "format": "date-time",
+                "type": "string",
+                "user_friendly": "Update date"
+            },
+            "updater_id": {
+                "description": "ID of individual who last updated project.",
+                "type": "string",
+                "user_friendly": "Updater ID"
+            }
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "protocol"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "silenced_genes": {
+            "description": "Genes that were silenced by this protocol",
+            "items": {
+                "properties": {
+                    "target_gene_ontology_ontology": {
+                        "description": "An ontology term identifier in the form prefix:accession.",
+                        "example": "NCIT:C96906; NCIT:C74511",
+                        "graph_restriction": {
+                            "classes": [
+                                "NCIT:C16612"
+                            ],
+                            "direct": false,
+                            "include_self": false,
+                            "ontologies": [
+                                "obo:ncit"
+                            ],
+                            "relations": [
+                                "rdfs:subClassOf"
+                            ]
+                        },
+                        "type": "string",
+                        "user_friendly": "Target gene ontology ID"
+                    },
+                    "target_gene_ontology_ontology_label": {
+                        "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                        "example": "ITGB1 Gene; CD81 Gene",
+                        "type": "string",
+                        "user_friendly": "Target gene ontology label"
+                    }
+                },
+                "required": [
+                    "text"
+                ],
+                "type": "object"
+            },
+            "type": "array",
+            "user_friendly": "Silenced Gene(s)"
+        }
+    },
+    "required": [
+        "describedBy",
+        "schema_type",
+        "protocol_core",
+        "method",
+        "document_id",
+        "submission_date",
+        "protocol_id"
+    ],
+    "title": "Gene expression alteration protocol",
+    "type": "object"
+}

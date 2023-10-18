@@ -1,0 +1,197 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "Information about the differentiated cell line.",
+    "unevaluatedProperties": false,
+    "title": "Differentiated cell line",
+    "name": "differentiated_cell_line",
+    "allOf": [
+        {
+            "type": "object",
+            "$ref": "/system/system",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biosample"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$"
+                },
+                "schema_type": {
+                    "const": "differentiated_cell_line",
+                    "default": "differentiated_cell_line"
+                }
+            }
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "title": "Content",
+            "required": [
+                "_id",
+                "terminally_differentiated",
+                "timepoint_unit",
+                "timepoint_value"
+            ],
+            "properties": {
+                "_id": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique ID for the differentiated cell line.",
+                    "title": "Differentiated cell line ID",
+                    "examples": [
+                        "kolf2_2j_knockout_1_trophoblast"
+                    ]
+                },
+                "description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "A general description of the differentiated cell line.",
+                    "title": "Differentiated cell line description",
+                    "examples": [
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+                    ]
+                },
+                "induction_method": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
+                    "title": "Induction method",
+                    "enum": [
+                        "sendai virus",
+                        "Gun particle",
+                        "piggyBac transposon",
+                        "miRNA viral",
+                        "adenovirus",
+                        "cre-loxP",
+                        "plasmid",
+                        "retroviral"
+                    ],
+                    "examples": [
+                        "Gun particle",
+                        "sendai virus"
+                    ]
+                },
+                "organ_model_system": {
+                    "$ref": "/system/ontology",
+                    "description": "To which organ model system this differentiated cell line has been derived into",
+                    "title": "Model system",
+                    "properties": {
+                        "ontology": {
+                            "title": "Organ model system - ontology ID",
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:uberon"
+                                ],
+                                "classes": [
+                                    "UBERON:0000465"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": true
+                            },
+                            "examples": [
+                                "UBERON:0000006",
+                                "UBERON:0002371"
+                            ]
+                        },
+                        "text": {
+                            "title": "Organ model system",
+                            "examples": [
+                                "Neuroectoderm"
+                            ]
+                        }
+                    }
+                },
+                "terminally_differentiated": {
+                    "type": "string",
+                    "description": "Is the cell line terminally differentiated.",
+                    "title": "Terminally differentiated?",
+                    "enum": [
+                        "yes",
+                        "no",
+                        "unknown"
+                    ],
+                    "examples": [
+                        "no",
+                        "unknown",
+                        "yes"
+                    ]
+                },
+                "timepoint_unit": {
+                    "$ref": "/system/ontology",
+                    "title": "Timepoint unit",
+                    "properties": {
+                        "ontology": {
+                            "title": "Timepoint unit - ontology ID",
+                            "graphRestriction": {
+                                "ontologies": [
+                                    "obo:uo"
+                                ],
+                                "classes": [
+                                    "UO:0000003",
+                                    "UO:0000149"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ],
+                                "direct": false,
+                                "include_self": false
+                            },
+                            "examples": [
+                                "UO:0000010",
+                                "UO:0000034"
+                            ]
+                        },
+                        "text": {
+                            "title": "Timepoint unit",
+                            "examples": [
+                                "second",
+                                "week"
+                            ]
+                        }
+                    }
+                },
+                "timepoint_value": {
+                    "type": "number",
+                    "description": "Value of the timepoint.",
+                    "title": "Timepoint value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                }
+            }
+        }
+    },
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
+    }
+}

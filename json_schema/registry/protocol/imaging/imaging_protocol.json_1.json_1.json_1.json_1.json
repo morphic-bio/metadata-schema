@@ -1,0 +1,466 @@
+{
+    "$id": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/imaging/1.0.0/imaging_protocol",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "description": "Information about the imaging protocol.",
+    "name": "imaging_protocol",
+    "properties": {
+        "channel": {
+            "description": "Information about each channel used in the imaging protocol.",
+            "items": {
+                "properties": {
+                    "channel_id": {
+                        "description": "User given ID.  If there is an accompanying codebook, this name should correspond to the channel id used in the codebook.",
+                        "example": "1; A",
+                        "type": "string",
+                        "user_friendly": "Channel ID"
+                    },
+                    "excitation_wavelength": {
+                        "description": "Excitation wavelength of the lightsource in nanometers.",
+                        "example": "640",
+                        "type": "number",
+                        "user_friendly": "Excitation wavelength"
+                    },
+                    "exposure_time": {
+                        "description": "Acquisition time for a single image per channel, in milliseconds.",
+                        "example": "400",
+                        "guidelines": "Enter value in milliseconds.",
+                        "type": "number",
+                        "user_friendly": "Exposure time"
+                    },
+                    "filter_range": {
+                        "description": "Emission filter in nanometers.",
+                        "example": "461/70",
+                        "guidelines": "Enter in CWL/BW format.",
+                        "type": "string",
+                        "user_friendly": "Filter range"
+                    },
+                    "multiplexed": {
+                        "description": "Whether multiple targets were detected simultaneously in this channel.",
+                        "enum": [
+                            "yes",
+                            "no"
+                        ],
+                        "example": "Should be one of: yes, or no.",
+                        "type": "string",
+                        "user_friendly": "Multiplexed experiment"
+                    },
+                    "target_fluorophore": {
+                        "description": "The name of the fluorophore this channel is designed to assay.",
+                        "example": "Alexa 647",
+                        "type": "string",
+                        "user_friendly": "Target fluorophore"
+                    }
+                },
+                "required": [
+                    "channel_id",
+                    "excitation_wavelength",
+                    "filter_range",
+                    "exposure_time",
+                    "multiplexed"
+                ]
+            },
+            "type": "array",
+            "user_friendly": "Channel"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/imaging/1.0.0/imaging_protocol",
+            "type": "string"
+        },
+        "immersion_medium_refractive_index": {
+            "description": "Refractive index of the immersion medium used for imaging.",
+            "example": "1.5; 1",
+            "type": "number",
+            "user_friendly": "Refractive index of the immersion medium"
+        },
+        "immersion_medium_type": {
+            "description": "Immersion medium used for imaging.",
+            "example": "oil; air",
+            "type": "string",
+            "user_friendly": "Immersion medium"
+        },
+        "magnification": {
+            "description": "Magnification of the objective used for imaging.",
+            "example": "60x; 100x",
+            "type": "string",
+            "user_friendly": "Magnification"
+        },
+        "microscope_setup_description": {
+            "description": "Description of the microscope setup.",
+            "example": "Motorized stage (SCAN IM 112 x 74, Marzhauser), sCMOS camera (Zyla 4.2; Andor), 60x, Plan-Apo, 1.3 NA, silicone oil objective (UPLSAPO60XS2; Olympus).",
+            "guidelines": "Include manufacturer and model information about the stand, camera, and objective.",
+            "type": "string",
+            "user_friendly": "Microscope setup description"
+        },
+        "microscopy_technique": {
+            "description": "The type of microscopy.",
+            "microscopy_ontology_ontology": {
+                "description": "An ontology term identifier in the form prefix:accession.",
+                "example": "FBbi:00000251; FBbi:00000246",
+                "graph_restriction": {
+                    "classes": [
+                        "FBbi:00000241"
+                    ],
+                    "direct": false,
+                    "include_self": false,
+                    "ontologies": [
+                        "obo:hcao",
+                        "obo:fbbi"
+                    ],
+                    "relations": [
+                        "rdfs:subClassOf"
+                    ]
+                },
+                "type": "string",
+                "user_friendly": "Microscopy ontology ID"
+            },
+            "microscopy_ontology_ontology_label": {
+                "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                "example": "confocal microscopy; fluorescence microscopy",
+                "type": "string",
+                "user_friendly": "Microscopy ontology label"
+            },
+            "type": "object",
+            "user_friendly": "Microscopy technique"
+        },
+        "number_of_tiles": {
+            "description": "Number of XY tiles in the experiment.",
+            "example": "2000",
+            "type": "integer",
+            "user_friendly": "Number of tiles"
+        },
+        "number_of_z_steps": {
+            "description": "Number of steps in a Z stack.",
+            "example": "40",
+            "type": "integer",
+            "user_friendly": "Number of Z steps"
+        },
+        "numerical_aperture": {
+            "description": "Numerical aperture of the objective.",
+            "example": "1.3; 0.75",
+            "type": "number",
+            "user_friendly": "Numerical aperture"
+        },
+        "overlapping_tiles": {
+            "description": "Whether tiles were collected with overlap.",
+            "enum": [
+                "yes",
+                "no"
+            ],
+            "example": "Should be one of: yes, or no.",
+            "type": "string",
+            "user_friendly": "Overlapping tiles"
+        },
+        "pixel_size": {
+            "description": "Pixel size in nanometers.",
+            "example": "109",
+            "type": "number",
+            "user_friendly": "Pixel size"
+        },
+        "probe": {
+            "description": "Information about each probe in the imaging experiment.",
+            "items": {
+                "properties": {
+                    "assay_type": {
+                        "description": "Type of assay used to detect target.",
+                        "example": "MERFISH; in situ sequencing",
+                        "process_type_ontology_ontology": {
+                            "description": "An ontology term identifier in the form prefix:accession.",
+                            "example": "EFO:0009128; EFO:0009121",
+                            "graph_restriction": {
+                                "classes": [
+                                    "EFO:0002694"
+                                ],
+                                "direct": false,
+                                "include_self": false,
+                                "ontologies": [
+                                    "obo:efo"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ]
+                            },
+                            "type": "string",
+                            "user_friendly": "Process type ontology ID"
+                        },
+                        "process_type_ontology_ontology_label": {
+                            "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                            "example": "enzymatic dissociation; blood draw",
+                            "type": "string",
+                            "user_friendly": "Process type ontology label"
+                        },
+                        "type": "object",
+                        "user_friendly": "Assay type"
+                    },
+                    "channel_label": {
+                        "description": "Channel label used to assay signal.",
+                        "example": "1; A",
+                        "guidelines": "Should be the same as in Channel tab.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "user_friendly": "Channel"
+                    },
+                    "fluorophore": {
+                        "description": "Fluorophore used to detect target.",
+                        "example": "Cy5; Alexa 488",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "user_friendly": "Fluorophore"
+                    },
+                    "probe_label": {
+                        "description": "The label of a probe used to detect target in this experiment.",
+                        "example": "ACTA1; cFos",
+                        "type": "string",
+                        "user_friendly": "Probe label"
+                    },
+                    "probe_reagents": {
+                        "catalog_number": {
+                            "description": "The catalog number of the kit/reagent.",
+                            "example": "20014279",
+                            "type": "string",
+                            "user_friendly": "Catalog number"
+                        },
+                        "description": "Name of reagents used to construct the probe.",
+                        "expiry_date": {
+                            "description": "The date of expiration for the kit/reagent.",
+                            "example": "2018-01-31; 2018-01",
+                            "guidelines": "Enter the date in date format: yyyy-mm-dd. Supplying partial date is allowed.",
+                            "pattern": "^((19|20)\\d\\d){1}([- \\./][01]\\d){0,1}([- \\./][0-3]\\d){0,1}$",
+                            "type": "string",
+                            "user_friendly": "Expiry date"
+                        },
+                        "kit_titer": {
+                            "description": "Appropriate titer and volume recommendations found in kit/reagent Certificate of Analysis.",
+                            "example": "3.0x10^7",
+                            "type": "string",
+                            "user_friendly": "Titer"
+                        },
+                        "lot_number": {
+                            "description": "The batch or lot number of the kit/reagent.",
+                            "example": "10001A",
+                            "type": "string",
+                            "user_friendly": "Batch/lot number"
+                        },
+                        "manufacturer": {
+                            "description": "The manufacturer of the kit/reagent.",
+                            "example": "Illumina; ThermoFisher Scientific",
+                            "type": "string",
+                            "user_friendly": "Manufacturer"
+                        },
+                        "retail_name": {
+                            "description": "The retail name of the kit/reagent.",
+                            "example": "SureCell WTA 3' Library Prep Kit; CytoTune iPS 2.0 Sendai Reprogramming Kit",
+                            "type": "string",
+                            "user_friendly": "Retail name"
+                        },
+                        "type": "object",
+                        "user_friendly": "Probe construction reagents"
+                    },
+                    "probe_sequence": {
+                        "description": "Sequence of a probe used to detect target.",
+                        "example": "AGGCTATAGCGGAGCTACG; aggctatagcggagctacg",
+                        "guidelines": "Only include transcript-specific hybridization region.",
+                        "pattern": "[ATGCUatgcu]+",
+                        "type": "string",
+                        "user_friendly": "Probe sequence"
+                    },
+                    "subcellular_structure": {
+                        "cellular_component_ontology_ontology": {
+                            "description": "An ontology term identifier in the form prefix:accession.",
+                            "example": "GO:0005737; GO:0005634",
+                            "graph_restriction": {
+                                "classes": [
+                                    "GO:0005575"
+                                ],
+                                "direct": false,
+                                "include_self": false,
+                                "ontologies": [
+                                    "obo:hcao",
+                                    "obo:go"
+                                ],
+                                "relations": [
+                                    "rdfs:subClassOf"
+                                ]
+                            },
+                            "type": "string",
+                            "user_friendly": "Subcellular structure ontology ID"
+                        },
+                        "cellular_component_ontology_ontology_label": {
+                            "description": "The preferred label for the ontology term referred to in the ontology field. This may differ from the user-supplied value in the text field.",
+                            "example": "cytoplasm; nucleus",
+                            "type": "string",
+                            "user_friendly": "Subcellular structure ontology label"
+                        },
+                        "description": "Target subcellular structure.",
+                        "guidelines": "This should be a term from the GO cell component ontology.",
+                        "type": "object",
+                        "user_friendly": "Target subcellular structure"
+                    },
+                    "target_codebook_label": {
+                        "description": "A label used in the codebook for the target.",
+                        "example": "AKT1; CFOS",
+                        "guidelines": "Leave blank if experiment did not use codebook.",
+                        "type": "string",
+                        "user_friendly": "Target label in codebook"
+                    },
+                    "target_label": {
+                        "description": "An identifier for the target molecule.",
+                        "example": "CHEBI:85345; ENSG00000170345",
+                        "guidelines": "For small molecules this should be from the ChEBI ontology. For gene products this should be a standard gene or gene product identifier from e.g. Ensembl or UniProt.",
+                        "type": "string",
+                        "user_friendly": "Target label"
+                    },
+                    "target_name": {
+                        "description": "The name of the target molecule.",
+                        "example": "ACTA1_exon1; nuclear cFos",
+                        "type": "string",
+                        "user_friendly": "Target name"
+                    }
+                },
+                "required": [
+                    "probe_label",
+                    "target_label",
+                    "assay_type",
+                    "text",
+                    "text"
+                ]
+            },
+            "type": "array",
+            "user_friendly": "Probe"
+        },
+        "protocol_core": {
+            "description": "Core protocol-level information.",
+            "protocol_description": {
+                "description": "A general description of the protocol.",
+                "type": "string",
+                "user_friendly": "Protocol description"
+            },
+            "protocol_id": {
+                "description": "A unique ID for the protocol.",
+                "guidelines": "Protocol ID should have no spaces.",
+                "type": "string",
+                "user_friendly": "Protocol ID"
+            },
+            "protocol_name": {
+                "description": "A short name for the protocol.",
+                "type": "string",
+                "user_friendly": "Protocol name"
+            },
+            "protocols_io_doi": {
+                "description": "The protocols.io digital object identifier (doi) for the protocol.",
+                "example": "10.17504/protocols.io.mgjc3un",
+                "type": "string",
+                "user_friendly": "protocols.io DOI"
+            },
+            "publication_doi": {
+                "description": "The publication digital object identifier (doi) for the protocol.",
+                "example": "10.1101/193219",
+                "type": "string",
+                "user_friendly": "Publication DOI"
+            },
+            "type": "object",
+            "user_friendly": "Protocol core"
+        },
+        "provenance": {
+            "accession": {
+                "description": "A unique accession for this entity, provided by the broker.",
+                "type": "string",
+                "user_friendly": "Accession"
+            },
+            "description": "Provenance information provided by the system.",
+            "document_id": {
+                "comment": "This structure supports the current ingest API. It may change in the future.",
+                "description": "Identifier for document.",
+                "pattern": ".{8}-.{4}-.{4}-.{4}-.{12}",
+                "type": "string",
+                "user_friendly": "Document ID"
+            },
+            "schema_major_version": {
+                "description": "The major version number of the schema.",
+                "example": "4; 10",
+                "pattern": "^[0-9]{1,}$",
+                "type": "integer",
+                "user_friendly": "Schema major version"
+            },
+            "schema_minor_version": {
+                "description": "The minor version number of the schema.",
+                "example": "6; 15",
+                "pattern": "^[0-9]{1,}$",
+                "type": "integer",
+                "user_friendly": "Schema minor version"
+            },
+            "submission_date": {
+                "description": "When project was first submitted to database.",
+                "format": "date-time",
+                "type": "string",
+                "user_friendly": "Submission date"
+            },
+            "submitter_id": {
+                "description": "ID of individual who first submitted project.",
+                "type": "string",
+                "user_friendly": "Submitter ID"
+            },
+            "type": "object",
+            "update_date": {
+                "description": "When project was last updated.",
+                "format": "date-time",
+                "type": "string",
+                "user_friendly": "Update date"
+            },
+            "updater_id": {
+                "description": "ID of individual who last updated project.",
+                "type": "string",
+                "user_friendly": "Updater ID"
+            }
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "protocol"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "tile_size_x": {
+            "description": "X size of the tile in micrometers.",
+            "example": "100",
+            "type": "number",
+            "user_friendly": "Tile size X"
+        },
+        "tile_size_y": {
+            "description": "Y size of the tile in micrometers.",
+            "example": "100",
+            "type": "number",
+            "user_friendly": "Tile size Y"
+        },
+        "z_stack_step_size": {
+            "description": "Z-stack step size in nanometers.",
+            "example": "200",
+            "type": "number",
+            "user_friendly": "Z stack step size"
+        }
+    },
+    "required": [
+        "describedBy",
+        "schema_type",
+        "protocol_core",
+        "microscopy_technique",
+        "magnification",
+        "document_id",
+        "submission_date",
+        "protocol_id",
+        "text"
+    ],
+    "title": "Imaging Protocol",
+    "type": "object"
+}

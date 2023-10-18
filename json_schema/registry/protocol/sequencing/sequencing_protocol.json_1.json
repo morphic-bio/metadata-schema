@@ -1,0 +1,194 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Information about the sequencing protocol.",
+    "additionalProperties": false,
+    "required": [
+        "protocol_core",
+        "instrument_manufacturer_model",
+        "paired_end",
+        "method",
+        "submission_date",
+        "protocol_id",
+        "text",
+        "text"
+    ],
+    "title": "Sequencing protocol",
+    "name": "sequencing_protocol",
+    "type": "object",
+    "properties": {
+        "accession": {
+            "description": "A unique accession for this entity, provided by the broker.",
+            "type": "string",
+            "user_friendly": "Accession"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "type": "string",
+            "pattern": "https://raw.githubusercontent.com/morphic-bio/metadata-schema/main/json_schema/type/protocol/sequencing/1.0.0/sequencing_protocol"
+        },
+        "drop_uniformity": {
+            "description": "Whether drop uniformity was achieved as a result of visual inspection of emulsion after a 10x run.",
+            "type": "boolean",
+            "example": "Should be one of: yes, or no.",
+            "user_friendly": "Drop uniformity"
+        },
+        "fastq_method": {
+            "description": "Method used for the generation of fastq files from bcl files.",
+            "type": "string",
+            "example": "Cellranger mkfastq; bcl2fastq2",
+            "user_friendly": "Fastq creation method"
+        },
+        "fastq_method_version": {
+            "description": "Version of the program used for fastq generation.",
+            "type": "string",
+            "example": "Cellranger 2.1.1; v2.20",
+            "user_friendly": "Fastq creation method version"
+        },
+        "instrument_ontology": {
+            "description": "An ontology term identifier in the form prefix:accession.",
+            "type": "string",
+            "graph_restriction": {
+                "ontologies": [
+                    "obo:efo"
+                ],
+                "classes": [
+                    "EFO:0000548"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ],
+                "direct": false,
+                "include_self": false
+            },
+            "user_friendly": "Instrument ontology ID",
+            "example": "EFO:0008565; EFO:0008632"
+        },
+        "instrument_text": {
+            "description": "The full name of the instrument used.",
+            "type": "string",
+            "user_friendly": "Instrument",
+            "example": "Illumina HiSeq 2500; ONT MinION"
+        },
+        "local_machine_name": {
+            "description": "Local name for the particular machine used for sequencing.",
+            "type": "string",
+            "user_friendly": "Local machine name",
+            "example": "Machine1; HSMA-20"
+        },
+        "paired_end": {
+            "description": "Whether the sequenced molecule was sequenced from both ends.",
+            "type": "boolean",
+            "example": "Should be one of: yes, or no.",
+            "guidelines": "If 3' 10x v2 was used, enter no.",
+            "user_friendly": "Paired end"
+        },
+        "pooled_channels": {
+            "description": "The number of channels pooled within a sequencing lane.",
+            "type": "number",
+            "example": 4,
+            "user_friendly": "Pooled channels"
+        },
+        "protocol_description": {
+            "description": "A general description of the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol description"
+        },
+        "protocol_id": {
+            "description": "A unique ID for the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol ID",
+            "guidelines": "Protocol ID should have no spaces."
+        },
+        "protocol_name": {
+            "description": "A short name for the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol name"
+        },
+        "protocols_io_doi": {
+            "description": "The protocols.io digital object identifier (doi) for the protocol.",
+            "type": "string",
+            "example": "10.17504/protocols.io.mgjc3un",
+            "user_friendly": "protocols.io DOI"
+        },
+        "publication_doi": {
+            "description": "The publication digital object identifier (doi) for the protocol.",
+            "type": "string",
+            "example": "10.1101/193219",
+            "user_friendly": "Publication DOI"
+        },
+        "schema_major_version": {
+            "description": "The major version number of the schema.",
+            "type": "integer",
+            "pattern": "^[0-9]{1,}$",
+            "user_friendly": "Schema major version",
+            "example": "4; 10"
+        },
+        "schema_minor_version": {
+            "description": "The minor version number of the schema.",
+            "type": "integer",
+            "pattern": "^[0-9]{1,}$",
+            "user_friendly": "Schema minor version",
+            "example": "6; 15"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "type": "string",
+            "enum": [
+                "protocol"
+            ]
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "example": "4.6.1"
+        },
+        "sequencing_ontology": {
+            "description": "An ontology term identifier in the form prefix:accession.",
+            "type": "string",
+            "graph_restriction": {
+                "ontologies": [
+                    "obo:efo"
+                ],
+                "classes": [
+                    "OBI:0000070"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ],
+                "direct": false,
+                "include_self": false
+            },
+            "example": "EFO:0008440; EFO:0008441",
+            "user_friendly": "Sequencing approach ontology ID"
+        },
+        "sequencing_text": {
+            "description": "The name of a sequencing approach being used.",
+            "type": "string",
+            "example": "tag based single cell RNA sequencing; full length single cell RNA sequencing",
+            "user_friendly": "Sequencing approach"
+        },
+        "submission_date": {
+            "description": "When project was first submitted to database.",
+            "type": "string",
+            "format": "date-time",
+            "user_friendly": "Submission date"
+        },
+        "submitter_id": {
+            "description": "ID of individual who first submitted project.",
+            "type": "string",
+            "user_friendly": "Submitter ID"
+        },
+        "update_date": {
+            "description": "When project was last updated.",
+            "type": "string",
+            "format": "date-time",
+            "user_friendly": "Update date"
+        },
+        "updater_id": {
+            "description": "ID of individual who last updated project.",
+            "type": "string",
+            "user_friendly": "Updater ID"
+        }
+    }
+}
