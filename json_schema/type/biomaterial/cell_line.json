@@ -11,7 +11,7 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/system",
+            "$ref": "/system/document",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
@@ -51,20 +51,12 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id",
                 "derived_from_cell_line",
+                "label",
                 "supplier",
                 "type"
             ],
             "properties": {
-                "_id": {
-                    "$ref": "#/definitions/entity_id",
-                    "description": "A unique ID for the cell line.",
-                    "title": "Cell line ID",
-                    "examples": [
-                        "kolf2_2j_knockout_1"
-                    ]
-                },
                 "culture_environment": {
                     "$ref": "#/definitions/non_empty_string",
                     "description": "Cell culture environment in which cells are grown.",
@@ -72,6 +64,15 @@
                     "examples": [
                         "Adherent cell culture",
                         "Suspension cell culture"
+                    ]
+                },
+                "culture_medium": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
+                    "examples": [
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
                     ]
                 },
                 "date_established": {
@@ -136,15 +137,6 @@
                         "GCA_000001405.29"
                     ]
                 },
-                "culture_medium": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
-                    "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
-                    ]
-                },
                 "induction_method": {
                     "$ref": "#/definitions/non_empty_string",
                     "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
@@ -162,6 +154,14 @@
                     "examples": [
                         "Gun particle",
                         "sendai virus"
+                    ]
+                },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique label for the cell line.",
+                    "title": "Cell line ID",
+                    "examples": [
+                        "kolf2_2j_knockout_1"
                     ]
                 },
                 "supplier": {

@@ -11,7 +11,7 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/system",
+            "$ref": "/system/document",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
@@ -56,19 +56,10 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id",
-                "extension"
+                "extension",
+                "label"
             ],
             "properties": {
-                "_id": {
-                    "$ref": "#/definitions/entity_id",
-                    "description": "The name of the file. Please include the file extension in the file name.",
-                    "title": "File name",
-                    "examples": [
-                        "R1.fastq.gz",
-                        "R2.fastq.gz"
-                    ]
-                },
                 "checksum": {
                     "$ref": "#/definitions/non_empty_string",
                     "description": "MD5 checksum of the file.",
@@ -109,6 +100,15 @@
                     "examples": [
                         "p11",
                         "p14"
+                    ]
+                },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "The name of the file. Please include the file extension in the file name.",
+                    "title": "File name",
+                    "examples": [
+                        "R1.fastq.gz",
+                        "R2.fastq.gz"
                     ]
                 }
             }
