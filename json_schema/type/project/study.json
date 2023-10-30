@@ -49,7 +49,6 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id",
                 "biological_sample_types",
                 "cell_line_name",
                 "contact_email",
@@ -57,6 +56,7 @@
                 "contact_surname",
                 "duo_codes",
                 "institute",
+                "label",
                 "perturbation_type",
                 "readout_assay",
                 "sequencing_platforms",
@@ -74,16 +74,6 @@
                 ]
             },
             "properties": {
-                "_id": {
-                    "$ref": "#/definitions/entity_id",
-                    "maxLength": 50,
-                    "description": "A short name for the study. It should have no spaces and should be fewer than 50 characters.",
-                    "title": "Study label",
-                    "examples": [
-                        "CoolOrganStudy",
-                        "PAX2KOLFStudy"
-                    ]
-                },
                 "biological_sample_types": {
                     "$ref": "#/definitions/non_empty_array",
                     "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
@@ -159,37 +149,28 @@
                 "duo_codes": {
                     "$ref": "#/definitions/non_empty_array",
                     "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
+                    "title": "DUO label(s)",
                     "items": {
-                        "type": "object",
-                        "$ref": "/system/ontology",
+                        "$ref": "#/definitions/non_empty_string",
+                        "description": "Data Usage Ontology code that describe the data sharing restrictions for this study.",
                         "title": "DUO label",
-                        "properties": {
-                            "ontology": {
-                                "title": "DUOS code - ontology ID",
-                                "graphRestriction": {
-                                    "ontologies": [
-                                        "obo:duo"
-                                    ],
-                                    "classes": [
-                                        "DUO:0000017"
-                                    ],
-                                    "relations": [
-                                        "rdfs:subClassOf"
-                                    ],
-                                    "direct": false,
-                                    "include_self": false
-                                },
-                                "examples": [
-                                    "DUO:0000046"
-                                ]
-                            },
-                            "text": {
-                                "title": "DUO label",
-                                "examples": [
-                                    "non-commercial use only"
-                                ]
-                            }
-                        }
+                        "graphRestriction": {
+                            "ontologies": [
+                                "obo:duo"
+                            ],
+                            "classes": [
+                                "DUO:0000017"
+                            ],
+                            "includeSelf": false,
+                            "queryFields": [
+                                "obo_id",
+                                "label"
+                            ]
+                        },
+                        "examples": [
+                            "DUO:0000046",
+                            "non-commercial use only"
+                        ]
                     }
                 },
                 "institute": {
@@ -207,41 +188,41 @@
                         "MSK"
                     ]
                 },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "maxLength": 50,
+                    "description": "A short label for the study. It should have no spaces and should be fewer than 50 characters.",
+                    "title": "Study label",
+                    "examples": [
+                        "CoolOrganStudy",
+                        "PAX2KOLFStudy"
+                    ]
+                },
                 "model_organ_systems": {
                     "$ref": "#/definitions/non_empty_array",
                     "description": "Model organ system(s) being studied or modelled in this study.",
+                    "title": "Model system(s)",
                     "items": {
-                        "type": "object",
-                        "$ref": "/system/ontology",
-                        "properties": {
-                            "ontology": {
-                                "title": "Model organ system - ontology ID",
-                                "graphRestriction": {
-                                    "ontologies": [
-                                        "obo:uberon"
-                                    ],
-                                    "classes": [
-                                        "UBERON:0000465"
-                                    ],
-                                    "relations": [
-                                        "rdfs:subClassOf"
-                                    ],
-                                    "direct": false,
-                                    "include_self": true
-                                },
-                                "examples": [
-                                    "UBERON:0000948",
-                                    "UBERON:0002405"
-                                ]
-                            },
-                            "text": {
-                                "title": "Model organ system",
-                                "examples": [
-                                    "heart",
-                                    "immune system"
-                                ]
-                            }
-                        }
+                        "$ref": "#/definitions/non_empty_string",
+                        "description": "Model organ system being studied or modelled in this study.",
+                        "title": "Model system",
+                        "graphRestriction": {
+                            "ontologies": [
+                                "obo:uberon"
+                            ],
+                            "classes": [
+                                "UBERON:0000465"
+                            ],
+                            "includeSelf": false,
+                            "queryFields": [
+                                "obo_id",
+                                "label"
+                            ]
+                        },
+                        "examples": [
+                            "UBERON:0000006",
+                            "islet of Langerhans"
+                        ]
                     }
                 },
                 "other_comments": {
@@ -266,74 +247,52 @@
                     ]
                 },
                 "readout_assay": {
-                    "type": "object",
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
                     "description": "High throughput readout assay used in the generation of the study.",
-                    "properties": {
-                        "ontology": {
-                            "title": "Readout assay - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:efo"
-                                ],
-                                "classes": [
-                                    "EFO:0002772"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "EFO:0008931",
-                                "EFO:0009310"
-                            ]
-                        },
-                        "text": {
-                            "title": "Readout assay",
-                            "examples": [
-                                "10X v2 sequencing",
-                                "Smart-seq2"
-                            ]
-                        }
-                    }
+                    "title": "Readout assay",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:efo"
+                        ],
+                        "classes": [
+                            "EFO:0002772"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "EFO:0008931",
+                        "EFO:0009310"
+                    ]
                 },
                 "sequencing_platforms": {
                     "$ref": "#/definitions/non_empty_array",
                     "description": "Sequencing platform(s) being used to sequence the samples.",
+                    "title": "Sequencing platform(s)",
                     "items": {
-                        "type": "object",
-                        "$ref": "/system/ontology",
-                        "properties": {
-                            "ontology": {
-                                "title": "Sequencing platform - ontology ID",
-                                "graphRestriction": {
-                                    "ontologies": [
-                                        "obo:efo"
-                                    ],
-                                    "classes": [
-                                        "OBI:0000070"
-                                    ],
-                                    "relations": [
-                                        "rdfs:subClassOf"
-                                    ],
-                                    "direct": false,
-                                    "include_self": false
-                                },
-                                "examples": [
-                                    "EFO:0008440",
-                                    "EFO:0008441"
-                                ]
-                            },
-                            "text": {
-                                "title": "Sequencing platform",
-                                "examples": [
-                                    "Illumina HiSeq 4000",
-                                    "Illumina NovaSeq 600"
-                                ]
-                            }
-                        }
+                        "$ref": "#/definitions/non_empty_string",
+                        "description": "Sequencing platform being used to sequence the samples",
+                        "title": "Sequencing platform",
+                        "graphRestriction": {
+                            "ontologies": [
+                                "obo:efo"
+                            ],
+                            "classes": [
+                                "OBI:0000070"
+                            ],
+                            "includeSelf": false,
+                            "queryFields": [
+                                "obo_id",
+                                "label"
+                            ]
+                        },
+                        "examples": [
+                            "EFO:0008440",
+                            "EFO:0008441"
+                        ]
                     }
                 },
                 "study_description": {
