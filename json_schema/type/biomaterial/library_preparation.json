@@ -8,7 +8,7 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/system",
+            "$ref": "/system/document",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
@@ -42,7 +42,7 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id"
+                "label"
             ],
             "dependentRequired": {
                 "library_concentration_unit": [
@@ -65,14 +65,6 @@
                 ]
             },
             "properties": {
-                "_id": {
-                    "$ref": "#/definitions/entity_id",
-                    "description": "A unique ID for the library preparation.",
-                    "title": "Library preparation ID",
-                    "examples": [
-                        "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
-                    ]
-                },
                 "average_fragment_size": {
                     "type": "integer",
                     "description": "Average fragment size for the transcripts in the library preparation.",
@@ -90,38 +82,35 @@
                         "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
                     ]
                 },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique label for the library preparation.",
+                    "title": "Library preparation label",
+                    "examples": [
+                        "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
+                    ]
+                },
                 "library_concentration_unit": {
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the library concentration was measured.",
                     "title": "Library concentration unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Library concentration unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:0000052"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000275",
-                                "UO:0010050"
-                            ]
-                        },
-                        "text": {
-                            "title": "Library concentration unit",
-                            "examples": [
-                                "microgram per mililiter",
-                                "nanogram per microliter"
-                            ]
-                        }
-                    }
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000052"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000275",
+                        "nanogram per mililiter"
+                    ]
                 },
                 "library_concentration_value": {
                     "type": "number",
@@ -134,37 +123,26 @@
                     ]
                 },
                 "library_final_yield_unit": {
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the final yield of the library preparation was measured.",
                     "title": "Library final yield unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Library final yield unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:1000021"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000024",
-                                "UO:0000025"
-                            ]
-                        },
-                        "text": {
-                            "title": "Library final yield unit",
-                            "examples": [
-                                "microgram",
-                                "nanogram"
-                            ]
-                        }
-                    }
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:1000021"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000024",
+                        "microliter"
+                    ]
                 },
                 "library_final_yield_value": {
                     "type": "number",
@@ -177,37 +155,26 @@
                     ]
                 },
                 "library_input_amount_unit": {
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the value of the library input was measured.",
                     "title": "Library input amount unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Library input amount unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:0000095"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000010",
-                                "UO:0000034"
-                            ]
-                        },
-                        "text": {
-                            "title": "Library input amount unit",
-                            "examples": [
-                                "microliter",
-                                "nanoliter"
-                            ]
-                        }
-                    }
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000095"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000010",
+                        "UO:0000034"
+                    ]
                 },
                 "library_input_amount_value": {
                     "type": "number",

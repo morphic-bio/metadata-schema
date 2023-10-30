@@ -11,7 +11,7 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/system",
+            "$ref": "/system/document",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
@@ -69,46 +69,27 @@
                 ]
             },
             "properties": {
-                "_id": {
-                    "$ref": "#/definitions/entity_id",
-                    "description": "A unique ID for the organoid.",
-                    "title": "Organoid ID",
-                    "examples": [
-                        "kolf2_2j_knockout_1"
-                    ]
-                },
                 "age_unit": {
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the age of the organoid was measured",
                     "title": "Age unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Age unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:0000003"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000033",
-                                "UO:0000034"
-                            ]
-                        },
-                        "text": {
-                            "title": "Age unit",
-                            "examples": [
-                                "day",
-                                "week"
-                            ]
-                        }
-                    }
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000003"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000033",
+                        "week"
+                    ]
                 },
                 "age_value": {
                     "type": "number",
@@ -146,6 +127,36 @@
                         "matrigel"
                     ]
                 },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique label for the organoid.",
+                    "title": "Organoid label",
+                    "examples": [
+                        "kolf2_2j_knockout_1"
+                    ]
+                },
+                "model_system": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "To which model system this differentiated cell line has been derived into",
+                    "title": "Model system",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uberon"
+                        ],
+                        "classes": [
+                            "UBERON:0000465"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UBERON:0000006",
+                        "islet of Langerhans"
+                    ]
+                },
                 "morphology": {
                     "$ref": "#/definitions/non_empty_string",
                     "description": "General description of the organoid morphology.",
@@ -155,71 +166,27 @@
                         "Optic cup structure"
                     ]
                 },
-                "model_system": {
-                    "$ref": "/system/ontology",
-                    "description": "To which model system this organoid has been derived into.",
-                    "title": "Model system",
-                    "properties": {
-                        "ontology": {
-                            "title": "Model system - ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uberon"
-                                ],
-                                "classes": [
-                                    "UBERON:0000465"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": true
-                            },
-                            "examples": [
-                                "UBERON:0000006",
-                                "UBERON:0002371"
-                            ]
-                        },
-                        "text": {
-                            "title": "Model system",
-                            "examples": [
-                                "Neuroectoderm"
-                            ]
-                        }
-                    }
-                },
                 "size_unit": {
-                    "$ref": "/system/ontology",
-                    "title": "Age unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Age unit - Ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:0000001"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000015",
-                                "UO:0000016"
-                            ]
-                        },
-                        "text": {
-                            "title": "Age unit",
-                            "examples": [
-                                "centimeter",
-                                "millimeter"
-                            ]
-                        }
-                    }
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the size of the organoid was measured.",
+                    "title": "Size unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000001"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000015",
+                        "millimeter"
+                    ]
                 },
                 "size_value": {
                     "type": "number",

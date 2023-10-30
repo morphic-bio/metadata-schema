@@ -8,7 +8,7 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/system",
+            "$ref": "/system/document",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
@@ -42,18 +42,19 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id",
+                "label",
                 "terminally_differentiated",
                 "timepoint_unit",
                 "timepoint_value"
             ],
             "properties": {
-                "_id": {
-                    "$ref": "#/definitions/entity_id",
-                    "description": "A unique ID for the differentiated cell line.",
-                    "title": "Differentiated cell line ID",
+                "culture_medium": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
                     "examples": [
-                        "kolf2_2j_knockout_1_trophoblast"
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
                     ]
                 },
                 "description": {
@@ -64,47 +65,35 @@
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
                     ]
                 },
-                "culture_medium": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique label for the differentiated cell line.",
+                    "title": "Differentiated cell line label",
                     "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
+                        "kolf2_2j_knockout_1_trophoblast"
                     ]
                 },
                 "model_system": {
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
                     "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
-                    "properties": {
-                        "ontology": {
-                            "title": "Organ model system - ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uberon"
-                                ],
-                                "classes": [
-                                    "UBERON:0000465"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": true
-                            },
-                            "examples": [
-                                "UBERON:0000006",
-                                "UBERON:0002371"
-                            ]
-                        },
-                        "text": {
-                            "title": "Organ model system",
-                            "examples": [
-                                "Neuroectoderm"
-                            ]
-                        }
-                    }
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uberon"
+                        ],
+                        "classes": [
+                            "UBERON:0000465"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UBERON:0000006",
+                        "islet of Langerhans"
+                    ]
                 },
                 "terminally_differentiated": {
                     "type": "string",
@@ -122,38 +111,30 @@
                     ]
                 },
                 "timepoint_unit": {
-                    "$ref": "/system/ontology",
+                    "$ref": "#/definitions/non_empty_string",
                     "title": "Timepoint unit",
-                    "properties": {
-                        "ontology": {
-                            "title": "Timepoint unit - ontology ID",
-                            "graphRestriction": {
-                                "ontologies": [
-                                    "obo:uo"
-                                ],
-                                "classes": [
-                                    "UO:0000003",
-                                    "UO:0000149"
-                                ],
-                                "relations": [
-                                    "rdfs:subClassOf"
-                                ],
-                                "direct": false,
-                                "include_self": false
-                            },
-                            "examples": [
-                                "UO:0000010",
-                                "UO:0000034"
-                            ]
-                        },
-                        "text": {
-                            "title": "Timepoint unit",
-                            "examples": [
-                                "second",
-                                "week"
-                            ]
-                        }
-                    }
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000003",
+                            "UO:0000149"
+                        ],
+                        "relations": [
+                            "rdfs:subClassOf"
+                        ],
+                        "direct": false,
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000010",
+                        "second"
+                    ]
                 },
                 "timepoint_value": {
                     "type": "number",
