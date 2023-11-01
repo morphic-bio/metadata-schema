@@ -35,7 +35,8 @@ ROOT_PROPERTIES_IN_ORDER = ["$schema",
                             "classes",
                             "relations",
                             "direct",
-                            "include_self"]
+                            "includeSelf",
+                            "queryFields"]
 
 def define_parser():
     parser = argparse.ArgumentParser()
@@ -103,7 +104,7 @@ def sort_root_values(schema):
         not_in_keys = [key for key in schema.keys() if key not in ROOT_PROPERTIES_IN_ORDER]
         for key in not_in_keys:
             ordered_schema.update({key: schema[key]})
-        print(f"Keys missing!: {[key for key in schema.keys() if key not in ROOT_PROPERTIES_IN_ORDER]}")
+        print(f"Keys missing!: {not_in_keys}")
     return ordered_schema
 
 
