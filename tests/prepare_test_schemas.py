@@ -1,7 +1,6 @@
 import json
 import glob
 import os
-import jsonschema
 
 
 ROOT_PATH = os.path.join(*os.path.abspath(__file__).split("/")[:-2])
@@ -32,13 +31,13 @@ def solve_allof(schema):
     for subschema in allOf:
         if "$ref" not in subschema:
             continue
-        path = f"/{os.path.join(ROOT_PATH, 'json_schema/system/system.json')}"
+        path = f"/{os.path.join(ROOT_PATH, 'json_schema/system/document.json')}"
         with open(path, 'r') as f:
             system = json.load(f)
         # This function updates the restrictions from the system schema
         subschema = update(subschema, system)
     schema['allOf'][0] = subschema
-    # De
+    # Delete redundant info
     del schema['allOf'][0]['$ref']
     del schema['allOf'][0]['$schema']
     del schema['allOf'][0]['definitions']
