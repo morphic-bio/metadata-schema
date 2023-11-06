@@ -119,9 +119,6 @@ def main(json_path, output_path):
     # Sort root values of the whole document (Definitions)
     schema = traverse_and_apply_function(schema, sort_root_values)
 
-    # Sort all fields under 'properties' alphabetically
-    schema = find_key_and_apply_function('properties', schema, sort_schema)
-
     # sort all required properties
     schema = find_key_and_apply_function('required', schema, sort_list)
 
