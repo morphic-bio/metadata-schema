@@ -51,7 +51,7 @@
             "required": [
                 "biological_sample_types",
                 "cell_line_name",
-                "contact_email",
+                "contact_emails",
                 "contact_first_name",
                 "contact_surname",
                 "duo_codes",
@@ -64,57 +64,51 @@
                 "study_title",
                 "target_genes_hgnc"
             ],
-            "dependentRequired": {
-                "contact_first_name": [
-                    "contact_email"
-                ],
-                "contact_emails": [
-                    "contact_first_name",
-                    "contact_surname"
-                ]
-            },
             "properties": {
-                "biological_sample_types": {
-                    "$ref": "#/definitions/non_empty_array",
-                    "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
-                    "title": "Biological sample type(s)",
-                    "uniqueItems": true,
-                    "items": {
-                        "$ref": "#/definitions/non_empty_string",
-                        "enum": [
-                            "cell line",
-                            "organoid",
-                            "embryoid body"
-                        ]
-                    },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "maxLength": 50,
+                    "description": "A short label for the study. It should have no spaces and should be fewer than 50 characters.",
+                    "title": "Study label",
                     "examples": [
-                        "cell line",
-                        "embryoid body",
-                        "organoid"
+                        "CoolOrganStudy",
+                        "PAX2KOLFStudy"
                     ]
                 },
-                "cell_line_name": {
+                "study_title": {
                     "$ref": "#/definitions/non_empty_string",
-                    "description": "Name of the cell lines used for this study.",
-                    "title": "Cell line name",
+                    "maxLength": 150,
+                    "description": "An official title for the study. Should be fewer than 30 words.",
+                    "$comment": "150 characters is, generally, between 21 and 38 words https://capitalizemytitle.com/character-count/150-characters/",
+                    "title": "Study title",
+                    "examples": [
+                        "Study of single cells in the human body.",
+                        "Study of the effect of PAX2 in the KOLF2.2J cell line."
+                    ]
+                },
+                "study_description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "maxLength": 1500,
+                    "description": "A longer description of the study which includes research goals and experimental approach.",
+                    "$comment": "1500 characters is, generally, between 214 and 375 words https://capitalizemytitle.com/character-count/1500-characters/",
+                    "title": "Study description",
+                    "examples": [
+                        "A longer description with highlights of your experiment goes here, up to 300 words."
+                    ]
+                },
+                "institute": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Institute associated with the registered study.",
+                    "title": "Institute",
                     "enum": [
-                        "KOLF2.2J"
+                        "JAX",
+                        "MSK",
+                        "UCSF",
+                        "NWU"
                     ],
                     "examples": [
-                        "KOLF2.2J"
-                    ]
-                },
-                "contact_email": {
-                    "$ref": "#/definitions/non_empty_array",
-                    "description": "Email of the person/people to contact for queries about this study.",
-                    "title": "Contact email(s)",
-                    "items": {
-                        "$ref": "#/definitions/non_empty_string",
-                        "format": "email"
-                    },
-                    "examples": [
-                        "anotherfakemail@med.miami.edu",
-                        "fakemail@ebi.ac.uk"
+                        "JAX",
+                        "MSK"
                     ]
                 },
                 "contact_first_name": {
@@ -136,14 +130,57 @@
                         "Zucchi"
                     ]
                 },
+                "contact_emails": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Email of the person/people to contact for queries about this study.",
+                    "title": "Contact email(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "format": "email"
+                    },
+                    "examples": [
+                        "anotherfakemail@med.miami.edu",
+                        "fakemail@ebi.ac.uk"
+                    ]
+                },
                 "dracc_data_sharing_date": {
                     "$ref": "#/definitions/non_empty_string",
-                    "format": "date-time",
+                    "format": "date",
                     "description": "Estimated date of data release to the DRACC.",
                     "title": "Estimated DRACC data release date",
                     "examples": [
-                        "2018-11-13T20:20:39+00:00",
-                        "2019-11-13T20:20:39+00:00"
+                        "2018-11-13",
+                        "2019-11-13"
+                    ]
+                },
+                "biological_sample_types": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
+                    "title": "Biological sample type(s)",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "enum": [
+                            "cell line",
+                            "organoid",
+                            "embryoid body"
+                        ]
+                    },
+                    "examples": [
+                        "cell line",
+                        "embryoid body",
+                        "organoid"
+                    ]
+                },
+                "cell_line_names": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Name of the cell lines used for this study.",
+                    "title": "Cell line name",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "examples": [
+                        "KOLF2.2J"
                     ]
                 },
                 "duo_codes": {
@@ -173,31 +210,6 @@
                         ]
                     }
                 },
-                "institute": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "Institute associated with the registered study.",
-                    "title": "Institute",
-                    "enum": [
-                        "JAX",
-                        "MSK",
-                        "UCSF",
-                        "NWU"
-                    ],
-                    "examples": [
-                        "JAX",
-                        "MSK"
-                    ]
-                },
-                "label": {
-                    "$ref": "#/definitions/entity_id",
-                    "maxLength": 50,
-                    "description": "A short label for the study. It should have no spaces and should be fewer than 50 characters.",
-                    "title": "Study label",
-                    "examples": [
-                        "CoolOrganStudy",
-                        "PAX2KOLFStudy"
-                    ]
-                },
                 "model_organ_systems": {
                     "$ref": "#/definitions/non_empty_array",
                     "description": "Model organ system(s) being studied or modelled in this study.",
@@ -224,15 +236,6 @@
                             "islet of Langerhans"
                         ]
                     }
-                },
-                "other_comments": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "description": "Other comments from the contributor regarding this study.",
-                    "title": "Other comments",
-                    "examples": [
-                        "This study is in early access and is yet to be peer-reviewed",
-                        "This study was conducted under very specific conditions and may not apply to all ex vivo cases"
-                    ]
                 },
                 "perturbation_type": {
                     "$ref": "#/definitions/non_empty_array",
@@ -281,7 +284,7 @@
                                 "obo:efo"
                             ],
                             "classes": [
-                                "OBI:0000070"
+                                "OBI:0400103"
                             ],
                             "includeSelf": false,
                             "queryFields": [
@@ -290,30 +293,21 @@
                             ]
                         },
                         "examples": [
-                            "EFO:0008440",
-                            "EFO:0008441"
+                            "Illumina HiSeq 4000",
+                            "OBI:0002049"
                         ]
                     }
                 },
-                "study_description": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "maxLength": 1500,
-                    "description": "A longer description of the study which includes research goals and experimental approach.",
-                    "$comment": "1500 characters is, generally, between 214 and 375 words https://capitalizemytitle.com/character-count/1500-characters/",
-                    "title": "Study description",
+                "target_genes": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "List of target gene(s) for this study.",
+                    "title": "Target gene(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string"
+                    },
                     "examples": [
-                        "A longer description with highlights of your experiment goes here, up to 300 words."
-                    ]
-                },
-                "study_title": {
-                    "$ref": "#/definitions/non_empty_string",
-                    "maxLength": 150,
-                    "description": "An official title for the study. Should be fewer than 30 words.",
-                    "$comment": "150 characters is, generally, between 21 and 38 words https://capitalizemytitle.com/character-count/150-characters/",
-                    "title": "Study title",
-                    "examples": [
-                        "Study of single cells in the human body.",
-                        "Study of the effect of PAX2 in the KOLF2.2J cell line."
+                        "PAX2",
+                        "PAX6"
                     ]
                 },
                 "supplementary_links": {
@@ -329,43 +323,14 @@
                         "https://github.com/czbiohub/tabula-muris"
                     ]
                 },
-                "target_genes_hgnc": {
-                    "$ref": "#/definitions/non_empty_array",
-                    "description": "HGNC identifier(s) of the gene(s) that were studied in this study.",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "id"
-                        ],
-                        "dependentRequired": {
-                            "symbol": [
-                                "id"
-                            ]
-                        },
-                        "properties": {
-                            "id": {
-                                "$ref": "#/definitions/non_empty_string",
-                                "description": "HGNC identifier for the targetted gene, in the form of prefix:number",
-                                "title": "Target Gene HGNC ID",
-                                "isValidIdentifier": {
-                                    "prefix": "hgnc"
-                                },
-                                "examples": [
-                                    "HGNC:8616",
-                                    "HGNC:8620"
-                                ]
-                            },
-                            "symbol": {
-                                "$ref": "#/definitions/non_empty_string",
-                                "description": "HGNC symbol for the targetted gene",
-                                "title": "Target Gene HGNC symbol",
-                                "examples": [
-                                    "PAX2",
-                                    "PAX6"
-                                ]
-                            }
-                        }
-                    }
+                "other_comments": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Other comments from the contributor regarding this study.",
+                    "title": "Other comments",
+                    "examples": [
+                        "This study is in early access and is yet to be peer-reviewed",
+                        "This study was conducted under very specific conditions and may not apply to all ex vivo cases"
+                    ]
                 }
             }
         }
