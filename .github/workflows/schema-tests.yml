@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python 3
         uses: actions/setup-python@v3
         with:
-          python-version: "3.9"
+          python-version: "3.x"
       - name: Prepare test schemas
         run: python tests/prepare_tests_schemas.py
       - name: Commit and push latest schemas if different
@@ -29,6 +29,7 @@ jobs:
   validateSchemasAgainstTests:
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
+    needs: generateValidableSchemas
     steps:
       - uses: actions/checkout@v3
         name: Check out repo
