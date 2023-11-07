@@ -21,12 +21,12 @@ jobs:
           python-version: "3.x"
       - name: Format type schemas
         run: |
-          for $schema in $( find json_schema/type | grep ".json$";
+          for $schema in $( find json_schema/type | grep ".json$" );
           do python src/schema_formatter.py -j $schema -o $schema;
           done
       - name: Format system schema
         run: |
-          for $schema in $( find json_schema/system | grep ".json$";
+          for $schema in $( find json_schema/system | grep ".json$" );
           do python src/schema_formatter.py -j $schema -o $schema;
           done
       - name: Commit and push latest schemas if different
