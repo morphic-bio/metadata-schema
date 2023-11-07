@@ -1,4 +1,4 @@
-name: Schema Linting and Tests
+name: Schema Tests
 
 on:
   push:
@@ -40,7 +40,9 @@ jobs:
           run: |
             logs=$(
             for instance in $( ls /app/test_instances/ );
-            do sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance
+            do echo "$instance\n";
+            sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance;
+            echo "\n";
             done
             )
             if echo $logs | grep -q error; then
