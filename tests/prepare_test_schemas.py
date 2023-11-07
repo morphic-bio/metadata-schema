@@ -49,7 +49,7 @@ def main(path_to_type_folder):
         with open(schema_path, 'r') as f:
             schema = json.load(f)
         schema = solve_allof(schema)
-        with open(f"{schema['name']}.json", 'w') as f:
+        with open(f"test_schemas/{schema['name']}.json", 'w') as f:
             json.dump(schema, f, indent=4)
 
 if __name__ == '__main__':
