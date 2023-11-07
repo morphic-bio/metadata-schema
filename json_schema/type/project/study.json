@@ -62,7 +62,7 @@
                 "sequencing_platforms",
                 "study_description",
                 "study_title",
-                "target_genes_hgnc"
+                "target_genes"
             ],
             "properties": {
                 "label": {
