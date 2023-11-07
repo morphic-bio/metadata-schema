@@ -281,7 +281,7 @@
                         "title": "Sequencing platform",
                         "graphRestriction": {
                             "ontologies": [
-                                "obo:efo"
+                                "obo:obi"
                             ],
                             "classes": [
                                 "OBI:0400103"
