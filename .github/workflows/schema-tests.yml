@@ -12,6 +12,7 @@ permissions:
 jobs:
   generateValidableSchemas:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
     permissions:
       contents: write
     steps:
@@ -20,13 +21,14 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.9"
-      - name: Run prepare test schemas
+      - name: Prepare test schemas
         run: python tests/prepare_tests_schemas.py
       - name: Commit and push latest schemas if different
         uses: stefanzweifel/git-auto-commit-action@v5
 
   validateSchemasAgainstTests:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
     steps:
       - uses: actions/checkout@v3
         name: Check out repo
