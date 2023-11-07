@@ -39,5 +39,5 @@ jobs:
           options: -v ${{ github.workspace }}/tests:/app
           run: |
             for instance in $( ls /app/test_instances/ );
-            do sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance 2> >( tee /dev/stderr | grep --line-buffered error )
+            do sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance
             done
