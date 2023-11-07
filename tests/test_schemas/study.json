@@ -1,0 +1,416 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "description": "A study entity defines the fields needed for representing a study.",
+    "unevaluatedProperties": false,
+    "title": "Study",
+    "name": "study",
+    "required": [
+        "content"
+    ],
+    "allOf": [
+        {
+            "type": "object",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biostudies"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "ena.embl"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "geo"
+                                }
+                            }
+                        ],
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "$ref": "#/definitions/non_empty_array",
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/project/study$",
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uri",
+                    "description": "The URL reference to the schema."
+                },
+                "schema_type": {
+                    "const": "study",
+                    "default": "study",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The type of the metadata schema entity.",
+                    "$comment": "Please add enum to this property definition when you load this module as a reference."
+                },
+                "schema_version": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "description": "The version number of the schema in major.minor.patch format.",
+                    "examples": [
+                        "1.0.1",
+                        "4.6.1"
+                    ]
+                },
+                "submitted_at": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "date-time",
+                    "description": "Date the document was submitted, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "submitted_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that submitted this document."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the document was updated, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "updated_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that updated this document."
+                },
+                "uuid": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uuid",
+                    "description": "Universal Unique Identifier (UUID) for this document in the database.",
+                    "examples": [
+                        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+                        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+                    ]
+                }
+            },
+            "description": "A definition of the system-filled properties loaded by stand-alone documents.",
+            "title": "system",
+            "required": [
+                "described_by",
+                "schema_type",
+                "schema_version",
+                "submitted_at",
+                "submitted_by",
+                "uuid"
+            ]
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "title": "Content",
+            "required": [
+                "biological_sample_types",
+                "cell_line_name",
+                "contact_emails",
+                "contact_first_name",
+                "contact_surname",
+                "duo_codes",
+                "institute",
+                "label",
+                "perturbation_type",
+                "readout_assay",
+                "sequencing_platforms",
+                "study_description",
+                "study_title",
+                "target_genes_hgnc"
+            ],
+            "properties": {
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "maxLength": 50,
+                    "description": "A short label for the study. It should have no spaces and should be fewer than 50 characters.",
+                    "title": "Study label",
+                    "examples": [
+                        "CoolOrganStudy",
+                        "PAX2KOLFStudy"
+                    ]
+                },
+                "study_title": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "maxLength": 150,
+                    "description": "An official title for the study. Should be fewer than 30 words.",
+                    "$comment": "150 characters is, generally, between 21 and 38 words https://capitalizemytitle.com/character-count/150-characters/",
+                    "title": "Study title",
+                    "examples": [
+                        "Study of single cells in the human body.",
+                        "Study of the effect of PAX2 in the KOLF2.2J cell line."
+                    ]
+                },
+                "study_description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "maxLength": 1500,
+                    "description": "A longer description of the study which includes research goals and experimental approach.",
+                    "$comment": "1500 characters is, generally, between 214 and 375 words https://capitalizemytitle.com/character-count/1500-characters/",
+                    "title": "Study description",
+                    "examples": [
+                        "A longer description with highlights of your experiment goes here, up to 300 words."
+                    ]
+                },
+                "institute": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Institute associated with the registered study.",
+                    "title": "Institute",
+                    "enum": [
+                        "JAX",
+                        "MSK",
+                        "UCSF",
+                        "NWU"
+                    ],
+                    "examples": [
+                        "JAX",
+                        "MSK"
+                    ]
+                },
+                "contact_first_name": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "First name of the main person to contact for queries about this study.",
+                    "title": "Contact first name",
+                    "examples": [
+                        "Anu",
+                        "Enrique",
+                        "Galabina"
+                    ]
+                },
+                "contact_surname": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Surname of the main person to contact for queries about this study.",
+                    "title": "Contact surname",
+                    "examples": [
+                        "Koci",
+                        "Zucchi"
+                    ]
+                },
+                "contact_emails": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Email of the person/people to contact for queries about this study.",
+                    "title": "Contact email(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "format": "email"
+                    },
+                    "examples": [
+                        "anotherfakemail@med.miami.edu",
+                        "fakemail@ebi.ac.uk"
+                    ]
+                },
+                "dracc_data_sharing_date": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "date",
+                    "description": "Estimated date of data release to the DRACC.",
+                    "title": "Estimated DRACC data release date",
+                    "examples": [
+                        "2018-11-13",
+                        "2019-11-13"
+                    ]
+                },
+                "biological_sample_types": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
+                    "title": "Biological sample type(s)",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "enum": [
+                            "cell line",
+                            "organoid",
+                            "embryoid body"
+                        ]
+                    },
+                    "examples": [
+                        "cell line",
+                        "embryoid body",
+                        "organoid"
+                    ]
+                },
+                "cell_line_names": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Name of the cell lines used for this study.",
+                    "title": "Cell line name",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "examples": [
+                        "KOLF2.2J"
+                    ]
+                },
+                "duo_codes": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
+                    "title": "DUO label(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "description": "Data Usage Ontology code that describe the data sharing restrictions for this study.",
+                        "title": "DUO label",
+                        "graphRestriction": {
+                            "ontologies": [
+                                "obo:duo"
+                            ],
+                            "classes": [
+                                "DUO:0000017"
+                            ],
+                            "includeSelf": false,
+                            "queryFields": [
+                                "obo_id",
+                                "label"
+                            ]
+                        },
+                        "examples": [
+                            "DUO:0000046",
+                            "non-commercial use only"
+                        ]
+                    }
+                },
+                "model_organ_systems": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Model organ system(s) being studied or modelled in this study.",
+                    "title": "Model system(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "description": "Model organ system being studied or modelled in this study.",
+                        "title": "Model system",
+                        "graphRestriction": {
+                            "ontologies": [
+                                "obo:uberon"
+                            ],
+                            "classes": [
+                                "UBERON:0000465"
+                            ],
+                            "includeSelf": false,
+                            "queryFields": [
+                                "obo_id",
+                                "label"
+                            ]
+                        },
+                        "examples": [
+                            "UBERON:0000006",
+                            "islet of Langerhans"
+                        ]
+                    }
+                },
+                "perturbation_type": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Type of perturbation introduced by the gene expression alteration assay.",
+                    "title": "Perturbation type(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "examples": [
+                        "irreversible gene knockout",
+                        "reversible gene knockdown"
+                    ]
+                },
+                "readout_assay": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "High throughput readout assay used in the generation of the study.",
+                    "title": "Readout assay",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:efo"
+                        ],
+                        "classes": [
+                            "EFO:0002772"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "EFO:0008931",
+                        "EFO:0009310"
+                    ]
+                },
+                "sequencing_platforms": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "Sequencing platform(s) being used to sequence the samples.",
+                    "title": "Sequencing platform(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "description": "Sequencing platform being used to sequence the samples",
+                        "title": "Sequencing platform",
+                        "graphRestriction": {
+                            "ontologies": [
+                                "obo:efo"
+                            ],
+                            "classes": [
+                                "OBI:0400103"
+                            ],
+                            "includeSelf": false,
+                            "queryFields": [
+                                "obo_id",
+                                "label"
+                            ]
+                        },
+                        "examples": [
+                            "Illumina HiSeq 4000",
+                            "OBI:0002049"
+                        ]
+                    }
+                },
+                "target_genes": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "List of target gene(s) for this study.",
+                    "title": "Target gene(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "examples": [
+                        "PAX2",
+                        "PAX6"
+                    ]
+                },
+                "supplementary_links": {
+                    "$ref": "#/definitions/non_empty_array",
+                    "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
+                    "title": "Supplementary link(s)",
+                    "items": {
+                        "$ref": "#/definitions/non_empty_string",
+                        "format": "uri"
+                    },
+                    "examples": [
+                        "http://celltag.org/",
+                        "https://github.com/czbiohub/tabula-muris"
+                    ]
+                },
+                "other_comments": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Other comments from the contributor regarding this study.",
+                    "title": "Other comments",
+                    "examples": [
+                        "This study is in early access and is yet to be peer-reviewed",
+                        "This study was conducted under very specific conditions and may not apply to all ex vivo cases"
+                    ]
+                }
+            }
+        }
+    },
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
+    }
+}
