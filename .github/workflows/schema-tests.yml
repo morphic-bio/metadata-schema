@@ -38,6 +38,10 @@ jobs:
           image: quay.io/ebi-ait/biovalidator:2.2.1
           options: -v ${{ github.workspace }}/tests:/app
           run: |
+            logs=$(
             for instance in $( ls /app/test_instances/ );
             do sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance
             done
+            )
+            if grep -q error $logs; then
+            exit 1
