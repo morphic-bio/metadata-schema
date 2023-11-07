@@ -43,6 +43,6 @@ jobs:
             do sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance
             done
             )
-            if grep -q error $logs; then
+            if echo $logs | grep -q error; then
             exit 1;
             fi
