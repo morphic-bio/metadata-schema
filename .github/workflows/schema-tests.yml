@@ -44,4 +44,5 @@ jobs:
             done
             )
             if grep -q error $logs; then
-            exit 1
+            exit 1;
+            fi
