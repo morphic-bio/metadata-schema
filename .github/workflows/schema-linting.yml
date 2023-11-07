@@ -1,0 +1,36 @@
+name: Schema Linting/Formatting
+
+on:
+  pull_request:
+    branches: [ "main", "staging" ]
+    paths:
+      - json_schema/type/**/*.json
+      - json_schema/system/*.json
+
+permissions:
+  contents: write
+
+jobs:
+  formatSchemas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+      - name: Format type schemas
+        run: |
+          for schema in $( find json_schema/type | grep ".json$" );
+          do python src/schema_formatter.py -j $schema -o $schema;
+          done
+      - name: Format system schema
+        run: |
+          for schema in $( find json_schema/system | grep ".json$" );
+          do python src/schema_formatter.py -j $schema -o $schema;
+          done
+      - name: Commit and push latest schemas if different
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Formatting applied to schema
+          file_pattern: 'json_schema/**/*.json'

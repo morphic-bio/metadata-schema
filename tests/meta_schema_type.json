@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Meta-schema to validate all type schemas.",
+  "unevaluatedProperties": false,
+  "required": [
+    "$schema",
+    "type",
+    "description",
+    "unevaluatedProperties",
+    "title",
+    "name",
+    "allOf",
+    "properties",
+    "required"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://json-schema.org/draft/2019-09/schema"
+    },
+    "type": {
+      "type": "string",
+      "const": "object"
+    },
+    "description": {
+      "$ref": "#/definitions/non_empty_string"
+    },
+    "unevaluatedProperties": {
+      "type": "boolean",
+      "const": false
+    },
+    "title": {
+      "$ref": "#/definitions/non_empty_string"
+    },
+    "name": {
+      "$ref": "#/definitions/entity_id"
+    },
+    "allOf": {
+      "$ref": "#/definitions/non_empty_array",
+      "maxLength": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "$ref",
+          "properties"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "object"
+          },
+          "$ref": {
+            "$ref": "#/definitions/non_empty_string",
+            "format": "regex",
+            "pattern": "^.*/system/system$"
+          },
+          "$comment": {
+            "$ref": "#/definitions/non_empty_string"
+          },
+          "properties": {
+            "type": "object",
+            "required": [
+              "accessions",
+              "described_by",
+              "schema_type"
+            ],
+            "properties": {
+              "accessions": {
+                "type": "object",
+                "required": [
+                  "items"
+                ],
+                "properties": {
+                  "items": {
+                    "type": "object",
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "anyOf"
+                        ],
+                        "properties": {
+                          "anyOf": {
+                            "$ref": "#/definitions/non_empty_array",
+                            "items": {
+                              "$ref": "#/definitions/identifiers"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "$ref": "#/definitions/identifiers"
+                      }
+                    ]
+                  }
+                }
+              },
+              "described_by": {
+                "type": "object",
+                "required": [
+                  "pattern"
+                ],
+                "properties": {
+                  "pattern": {
+                    "$ref": "#/definitions/non_empty_string"
+                  }
+                }
+              },
+              "schema_type": {
+                "type": "object",
+                "required": [
+                  "const",
+                  "default"
+                ],
+                "properties": {
+                  "const": {
+                    "$ref": "#/definitions/non_empty_string"
+                  },
+                  "default": {
+                    "$ref": "#/definitions/non_empty_string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/non_empty_string"
+      },
+      "contains": {
+        "const": "content"
+      }
+    },
+    "properties": {
+      "type": "object",
+      "required": [
+        "content"
+      ],
+      "properties": {
+        "content": {
+          "type": "object",
+          "required": [
+            "type",
+            "title",
+            "required",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "$ref": "#/definitions/non_empty_string",
+              "const": "object"
+            },
+            "title": {
+              "$ref": "#/definitions/non_empty_string",
+              "const": "Content"
+            },
+            "required": {
+              "$ref": "#/definitions/non_empty_array",
+              "items": {
+                "$ref": "#/definitions/non_empty_string"
+              },
+              "contains": {
+                "const": "_id"
+              }
+            },
+            "properties": {
+              "type": "object",
+              "patternProperties": {
+                "^_id$": {
+                  "type": "object",
+                  "required": [
+                    "$ref"
+                  ],
+                  "properties": {
+                    "$ref": {
+                      "$ref": "#/definitions/non_empty_string",
+                      "const": "#/definitions/entity_id"
+                    }
+                  }
+                },
+                ".+": {
+                  "$ref": "#/definitions/basic_property",
+                  "required": [
+                    "title",
+                    "description"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1
+    },
+    "non_empty_array": {
+      "type": "array",
+      "minItems": 1
+    },
+    "entity_id": {
+      "type": "string",
+      "format": "regex",
+      "pattern": "^[a-zA-Z0-9_]*$",
+      "minLength": 1
+    },
+    "identifiers": {
+      "type": "object",
+      "required": [
+        "isValidIdentifier"
+      ],
+      "properties": {
+        "isValidIdentifier": {
+          "type": "object",
+          "anyOf": [
+            {
+              "required": [
+                "prefix"
+              ],
+              "properties": {
+                "prefix": {
+                  "$ref": "#/definitions/non_empty_string"
+                }
+              }
+            },
+            {
+              "required": [
+                "prefixes"
+              ],
+              "properties": {
+                "prefixes": {
+                  "$ref": "#/definitions/non_empty_array",
+                  "items": {
+                    "$ref": "#/definitions/non_empty_string"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+      "basic_property": {
+        "type": "object",
+        "required": [
+          "title",
+          "description"
+        ],
+        "anyOf": [
+          {
+            "required": [
+              "type"
+            ]
+          },
+          {
+            "required": [
+              "$ref"
+            ]
+          }
+        ],
+        "allOf": [
+          {
+            "if": {
+              "not": {
+                "properties": {
+                  "$ref": {
+                    "const": "/system/ontology"
+                  }
+                }
+              },
+              "properties": {
+                "type": "object"
+              }
+            },
+            "then": {
+              "required": [
+                "examples"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "object"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "properties": {
+                  "$ref": "#/definitions/basic_property"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "array"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "items"
+              ],
+              "properties": {
+                "items": {
+                  "$ref": "#/definitions/basic_property"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "title": {
+            "$ref": "#/definitions/non_empty_string"
+          },
+          "description": {
+            "$ref": "#/definitions/non_empty_string"
+          },
+          "examples": {
+            "$ref": "#/definitions/non_empty_array",
+            "items": {
+              "$ref": "#/definitions/non_empty_string"
+            }
+          },
+          "$ref": {
+            "$ref": "#/definitions/non_empty_string"
+          },
+          "items": {
+            "type": "object"
+        }
+      }
+    }
+  }
+}

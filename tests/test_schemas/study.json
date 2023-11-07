@@ -10,7 +10,6 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/system",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
@@ -31,17 +30,80 @@
                                     "prefix": "geo"
                                 }
                             }
-                        ]
-                    }
+                        ],
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "$ref": "#/definitions/non_empty_array",
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
                 },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/project/study$"
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/project/study$",
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uri",
+                    "description": "The URL reference to the schema."
                 },
                 "schema_type": {
                     "const": "study",
-                    "default": "study"
+                    "default": "study",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The type of the metadata schema entity.",
+                    "$comment": "Please add enum to this property definition when you load this module as a reference."
+                },
+                "schema_version": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "description": "The version number of the schema in major.minor.patch format.",
+                    "examples": [
+                        "1.0.1",
+                        "4.6.1"
+                    ]
+                },
+                "submitted_at": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "date-time",
+                    "description": "Date the document was submitted, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "submitted_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that submitted this document."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the document was updated, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "updated_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that updated this document."
+                },
+                "uuid": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uuid",
+                    "description": "Universal Unique Identifier (UUID) for this document in the database.",
+                    "examples": [
+                        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+                        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+                    ]
                 }
-            }
+            },
+            "description": "A definition of the system-filled properties loaded by stand-alone documents.",
+            "title": "system",
+            "required": [
+                "described_by",
+                "schema_type",
+                "schema_version",
+                "submitted_at",
+                "submitted_by",
+                "uuid"
+            ]
         }
     ],
     "properties": {

@@ -1,0 +1,230 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "Information about the differentiated cell line.",
+    "unevaluatedProperties": false,
+    "title": "Differentiated cell line",
+    "name": "differentiated_cell_line",
+    "allOf": [
+        {
+            "type": "object",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biosample"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            }
+                        ],
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "$ref": "#/definitions/non_empty_array",
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$",
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uri",
+                    "description": "The URL reference to the schema."
+                },
+                "schema_type": {
+                    "const": "differentiated_cell_line",
+                    "default": "differentiated_cell_line",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The type of the metadata schema entity.",
+                    "$comment": "Please add enum to this property definition when you load this module as a reference."
+                },
+                "schema_version": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "description": "The version number of the schema in major.minor.patch format.",
+                    "examples": [
+                        "1.0.1",
+                        "4.6.1"
+                    ]
+                },
+                "submitted_at": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "date-time",
+                    "description": "Date the document was submitted, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "submitted_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that submitted this document."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the document was updated, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "updated_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that updated this document."
+                },
+                "uuid": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uuid",
+                    "description": "Universal Unique Identifier (UUID) for this document in the database.",
+                    "examples": [
+                        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+                        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+                    ]
+                }
+            },
+            "description": "A definition of the system-filled properties loaded by stand-alone documents.",
+            "title": "system",
+            "required": [
+                "described_by",
+                "schema_type",
+                "schema_version",
+                "submitted_at",
+                "submitted_by",
+                "uuid"
+            ]
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "title": "Content",
+            "required": [
+                "label",
+                "terminally_differentiated",
+                "timepoint_unit",
+                "timepoint_value"
+            ],
+            "properties": {
+                "culture_medium": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
+                    "examples": [
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
+                    ]
+                },
+                "description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "A general description of the differentiated cell line.",
+                    "title": "Differentiated cell line description",
+                    "examples": [
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+                    ]
+                },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique label for the differentiated cell line.",
+                    "title": "Differentiated cell line label",
+                    "examples": [
+                        "kolf2_2j_knockout_1_trophoblast"
+                    ]
+                },
+                "model_system": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "To which model system this differentiated cell line has been derived into",
+                    "title": "Model system",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uberon"
+                        ],
+                        "classes": [
+                            "UBERON:0000465"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UBERON:0000006",
+                        "islet of Langerhans"
+                    ]
+                },
+                "terminally_differentiated": {
+                    "type": "string",
+                    "description": "Is the cell line terminally differentiated.",
+                    "title": "Terminally differentiated?",
+                    "enum": [
+                        "yes",
+                        "no",
+                        "unknown"
+                    ],
+                    "examples": [
+                        "no",
+                        "unknown",
+                        "yes"
+                    ]
+                },
+                "timepoint_unit": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "title": "Timepoint unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000003",
+                            "UO:0000149"
+                        ],
+                        "relations": [
+                            "rdfs:subClassOf"
+                        ],
+                        "direct": false,
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000010",
+                        "second"
+                    ]
+                },
+                "timepoint_value": {
+                    "type": "number",
+                    "description": "Value of the timepoint.",
+                    "title": "Timepoint value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                }
+            }
+        }
+    },
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
+    }
+}

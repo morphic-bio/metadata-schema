@@ -1,0 +1,31 @@
+{
+    "accessions": ["SRP00000"],
+    "described_by": "https://fake-location/type/1.0.0/project/study",
+    "schema_type": "study",
+    "schema_version": "1.0.0",
+    "submitted_at": "2018-11-13T20:20:39+00:00",
+    "submitted_by": "fake_submitter",
+    "updated_at": "2018-11-13T20:20:39+00:00",
+    "updated_by": "fake_second_submitter",
+    "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
+    "content": {
+        "biological_sample_types": ["cell line", "embryoid body"],
+        "cell_line_name": "KOLF2.2J",
+        "contact_emails": ["fakemail@123.com"],
+        "contact_first_name": "Bob",
+        "contact_surname": "Lorem Ipsum",
+        "dracc_data_sharing_date": "2018-11-13",
+        "duo_codes": ["DUO:0000046"],
+        "institute": "NWU",
+        "label": "PAX2KOLFStudy",
+        "model_organ_systems": ["UBERON:0000006"],
+        "other_comments": "This is not a comment",
+        "perturbation_type": ["irreversible gene knockout"],
+        "readout_assay": "EFO:0008931",
+        "sequencing_platforms": ["OBI:0002002"],
+        "study_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "study_title": "PAX2 Knockout impairs eye development in embryoid bodies.",
+        "supplementary_links": ["https://medlineplus.gov/genetics/gene/pax2/"],
+        "target_genes": ["PAX2"]
+    }
+}

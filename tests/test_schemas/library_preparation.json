@@ -1,0 +1,279 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "Information about the library preparation.",
+    "unevaluatedProperties": false,
+    "title": "Library preparation",
+    "name": "library_preparation",
+    "allOf": [
+        {
+            "type": "object",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biosample"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            }
+                        ],
+                        "$ref": "#/definitions/non_empty_string"
+                    },
+                    "$ref": "#/definitions/non_empty_array",
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/library_preparation$",
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uri",
+                    "description": "The URL reference to the schema."
+                },
+                "schema_type": {
+                    "const": "library_preparation",
+                    "default": "library_preparation",
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "The type of the metadata schema entity.",
+                    "$comment": "Please add enum to this property definition when you load this module as a reference."
+                },
+                "schema_version": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "description": "The version number of the schema in major.minor.patch format.",
+                    "examples": [
+                        "1.0.1",
+                        "4.6.1"
+                    ]
+                },
+                "submitted_at": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "date-time",
+                    "description": "Date the document was submitted, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "submitted_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that submitted this document."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the document was updated, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "updated_by": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "User that updated this document."
+                },
+                "uuid": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "format": "uuid",
+                    "description": "Universal Unique Identifier (UUID) for this document in the database.",
+                    "examples": [
+                        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+                        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+                    ]
+                }
+            },
+            "description": "A definition of the system-filled properties loaded by stand-alone documents.",
+            "title": "system",
+            "required": [
+                "described_by",
+                "schema_type",
+                "schema_version",
+                "submitted_at",
+                "submitted_by",
+                "uuid"
+            ]
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "title": "Content",
+            "required": [
+                "label"
+            ],
+            "dependentRequired": {
+                "library_concentration_unit": [
+                    "library_concentration_value"
+                ],
+                "library_concentration_value": [
+                    "library_concentration_unit"
+                ],
+                "library_final_yield_unit": [
+                    "library_final_yield_value"
+                ],
+                "library_final_yield_value": [
+                    "library_final_yield_unit"
+                ],
+                "library_input_amount_unit": [
+                    "library_input_amount_value"
+                ],
+                "library_input_amount_value": [
+                    "library_input_amount_unit"
+                ]
+            },
+            "properties": {
+                "average_fragment_size": {
+                    "type": "integer",
+                    "description": "Average fragment size for the transcripts in the library preparation.",
+                    "title": "Average fragment size",
+                    "examples": [
+                        150,
+                        256
+                    ]
+                },
+                "description": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "A general description of the library preparation.",
+                    "title": "Library preparation description",
+                    "examples": [
+                        "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
+                    ]
+                },
+                "label": {
+                    "$ref": "#/definitions/entity_id",
+                    "description": "A unique label for the library preparation.",
+                    "title": "Library preparation label",
+                    "examples": [
+                        "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
+                    ]
+                },
+                "library_concentration_unit": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the library concentration was measured.",
+                    "title": "Library concentration unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000052"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000275",
+                        "nanogram per mililiter"
+                    ]
+                },
+                "library_concentration_value": {
+                    "type": "number",
+                    "description": "Value of the library concentration.",
+                    "title": "Library concentration value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                },
+                "library_final_yield_unit": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the final yield of the library preparation was measured.",
+                    "title": "Library final yield unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:1000021"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000024",
+                        "microliter"
+                    ]
+                },
+                "library_final_yield_value": {
+                    "type": "number",
+                    "description": "Value of the library final yield.",
+                    "title": "Library final yield value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                },
+                "library_input_amount_unit": {
+                    "$ref": "#/definitions/non_empty_string",
+                    "description": "Unit by which the value of the library input was measured.",
+                    "title": "Library input amount unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000095"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000010",
+                        "UO:0000034"
+                    ]
+                },
+                "library_input_amount_value": {
+                    "type": "number",
+                    "description": "Value of the library input amount.",
+                    "title": "Library input amount value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                },
+                "library_pcr_cycles": {
+                    "type": "integer",
+                    "description": "Number of PCR cycles performed for this library.",
+                    "title": "Library PCR cycles",
+                    "examples": [
+                        150,
+                        256
+                    ]
+                }
+            }
+        }
+    },
+    "definitions": {
+        "non_empty_string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "non_empty_array": {
+            "type": "array",
+            "minItems": 1
+        },
+        "entity_id": {
+            "type": "string",
+            "format": "regex",
+            "pattern": "^[a-zA-Z0-9_]*$",
+            "minLength": 1
+        }
+    }
+}
