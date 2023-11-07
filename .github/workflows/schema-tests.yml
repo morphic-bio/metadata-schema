@@ -10,17 +10,32 @@ permissions:
   contents: read
 
 jobs:
-  linting:
+  generateValidableSchemas:
+    runs-on: ubuntu-latest
+    permissions:
+      content: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+      - name: Run prepare test schemas
+        run: python ./tests/prepare_tests_schemas.py
+      - name: Commit and push latest schemas if different
+        uses: stefanzweifel/git-auto-commit-action@v5
+
+  validateSchemasAgainstTests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.x"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Run schema linter
-      run: python ./src/schema_linter.py
+      - uses: actions/checkout@v3
+        name: Check out repo
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
+        with:
+          image: quay.io/ebi-ait/biovalidator:2.2.1
+          options: -v ${{ github.workspace }}/tests:/app
+          run: |
+            for instance in $( ls /app/test_instances/ );
+                        do sh start.sh --schema /app/test_schemas/$instance --data /app/test_instances/$instance & tee /dev/stderr | grep error
+            done
