@@ -1,6 +1,7 @@
 import json
 import glob
 import os
+import sys
 
 
 ROOT_PATH = os.path.join(*os.path.abspath(__file__).split("/")[:-2])
@@ -18,7 +19,7 @@ def update(d, u):
 
 def return_schemas_paths(path_to_type_folder):
     schemas = glob.glob(os.path.join(path_to_type_folder, "**", "*.json"), recursive=True)
-    return [os.path.join(path_to_type_folder, schema) for schema in schemas]
+    return schemas
 
 
 def solve_allof(schema):
@@ -43,14 +44,16 @@ def solve_allof(schema):
     del schema['allOf'][0]['definitions']
     return schema
 
-def main(path_to_type_folder):
+
+def main(path_to_type_folder, output):
     schemas = return_schemas_paths(path_to_type_folder)
     for schema_path in schemas:
         with open(schema_path, 'r') as f:
             schema = json.load(f)
         schema = solve_allof(schema)
-        with open(f"test_schemas/{schema['name']}.json", 'w') as f:
+        with open(f"{output}/test_schemas/{schema['name']}.json", 'w') as f:
             json.dump(schema, f, indent=4)
 
+
 if __name__ == '__main__':
-    main("/Users/enrique/PycharmProjects/metadata-schema/json_schema/type")
+    main(sys.argv[1], sys.argv[2])
