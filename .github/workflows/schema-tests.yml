@@ -7,7 +7,7 @@ on:
     branches: [ "main", "staging" ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   generateValidableSchemas:
@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Prepare test schemas
-        run: python ./tests/prepare_tests_schemas.py
+        run: python ./tests/prepare_test_schemas.py
       - name: Commit and push latest schemas if different
         uses: stefanzweifel/git-auto-commit-action@v5
 
