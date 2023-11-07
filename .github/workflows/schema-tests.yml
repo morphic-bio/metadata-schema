@@ -12,7 +12,6 @@ permissions:
 jobs:
   generateValidableSchemas:
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python 3
@@ -30,7 +29,6 @@ jobs:
 
   validateSchemasAgainstTests:
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
     needs: generateValidableSchemas
     steps:
       - uses: actions/checkout@v4
