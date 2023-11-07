@@ -7,16 +7,14 @@ on:
     branches: [ "main", "staging" ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   generateValidableSchemas:
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python 3
         uses: actions/setup-python@v3
         with:
@@ -31,7 +29,7 @@ jobs:
     concurrency: ci-${{ github.ref }}
     needs: generateValidableSchemas
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         name: Check out repo
       - name: Run the build process with Docker
         uses: addnab/docker-run-action@v3
