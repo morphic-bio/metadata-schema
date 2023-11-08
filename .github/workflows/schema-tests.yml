@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: Check out repo
-      - name: Run the build process with Docker
+      - name: Build biovalidator and test schemas
         uses: addnab/docker-run-action@v3
         with:
           image: quay.io/ebi-ait/biovalidator:2.2.1
