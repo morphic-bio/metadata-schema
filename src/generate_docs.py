@@ -29,7 +29,7 @@ def retrieve_schemas(schema_path):
             del schema['allOf']
             schema['required'] = schema['properties']['content'].get('required', [])
             schema['properties'] = schema['properties']['content']['properties']
-        pre_loaded_schemas[path] = deepcopy(schema)
+        pre_loaded_schemas[os.path.abspath(path)] = deepcopy(schema)
     return pre_loaded_schemas
 
 
