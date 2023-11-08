@@ -1,0 +1,31 @@
+name: Generate schema human-readable documentation
+
+on:
+  pull_request:
+    branches: [ "main", "staging" ]
+    paths:
+      - json_schema/type/**/*.json
+
+permissions:
+  contents: write
+
+jobs:
+  formatSchemas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          pip3 install ./src/requirements.txt
+      - name: Format type schemas
+        run: |
+          python3 ./src/generate_docs.py -s ./json_schema/type -o ./human_readable_schemas
+      - name: Commit and push latest schemas if different
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Formatting applied to schema
+          file_pattern: 'json_schema/**/*.json'

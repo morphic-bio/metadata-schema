@@ -1,1 +1,2 @@
 flatten-json
+json-schema-for-humans==0.46

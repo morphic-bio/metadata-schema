@@ -50,7 +50,7 @@
             "title": "Content",
             "required": [
                 "biological_sample_types",
-                "cell_line_name",
+                "cell_line_names",
                 "contact_emails",
                 "contact_first_name",
                 "contact_surname",
