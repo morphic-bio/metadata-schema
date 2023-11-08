@@ -10,7 +10,7 @@
     "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
     "content": {
         "biological_sample_types": ["cell line", "embryoid body"],
-        "cell_line_name": "KOLF2.2J",
+        "cell_line_names": ["KOLF2.2J"],
         "contact_emails": ["fakemail@123.com"],
         "contact_first_name": "Bob",
         "contact_surname": "Lorem Ipsum",
