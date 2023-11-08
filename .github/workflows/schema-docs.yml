@@ -20,7 +20,7 @@ jobs:
           python-version: "3.x"
       - name: Install dependencies
         run: |
-          pip3 install ./src/requirements.txt
+          pip3 install -r ./src/requirements.txt
       - name: Format type schemas
         run: |
           python3 ./src/generate_docs.py -s ./json_schema/type -o ./human_readable_schemas
