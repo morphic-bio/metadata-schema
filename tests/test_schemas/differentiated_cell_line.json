@@ -24,27 +24,32 @@
                                 }
                             }
                         ],
-                        "$ref": "#/definitions/non_empty_string"
+                        "type": "string",
+                        "minLength": 1
                     },
-                    "$ref": "#/definitions/non_empty_array",
+                    "type": "array",
+                    "minItems": 1,
                     "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
                 },
                 "described_by": {
                     "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$",
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "format": "uri",
+                    "minLength": 1,
                     "description": "The URL reference to the schema."
                 },
                 "schema_type": {
                     "const": "differentiated_cell_line",
                     "default": "differentiated_cell_line",
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "The type of the metadata schema entity.",
                     "$comment": "Please add enum to this property definition when you load this module as a reference."
                 },
                 "schema_version": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "minLength": 1,
                     "description": "The version number of the schema in major.minor.patch format.",
                     "examples": [
                         "1.0.1",
@@ -52,8 +57,9 @@
                     ]
                 },
                 "submitted_at": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "format": "date-time",
+                    "minLength": 1,
                     "description": "Date the document was submitted, in ISO8601 format.",
                     "examples": [
                         "2018-11-13T20:20:39+00:00",
@@ -61,7 +67,8 @@
                     ]
                 },
                 "submitted_by": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "User that submitted this document."
                 },
                 "updated_at": {
@@ -74,12 +81,14 @@
                     ]
                 },
                 "updated_by": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "User that updated this document."
                 },
                 "uuid": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "format": "uuid",
+                    "minLength": 1,
                     "description": "Universal Unique Identifier (UUID) for this document in the database.",
                     "examples": [
                         "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
@@ -111,36 +120,38 @@
             ],
             "properties": {
                 "culture_medium": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "The solid, liquid, or semi-solid medium used to support growth.",
                     "title": "Culture medium",
                     "examples": [
                         "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
                         "human placental cord serum"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "description": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "A general description of the differentiated cell line.",
                     "title": "Differentiated cell line description",
                     "examples": [
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "description": "A unique label for the differentiated cell line.",
                     "title": "Differentiated cell line label",
                     "examples": [
                         "kolf2_2j_knockout_1_trophoblast"
-                    ],
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1
+                    ]
                 },
                 "model_system": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
                     "graphRestriction": {
@@ -159,9 +170,7 @@
                     "examples": [
                         "UBERON:0000006",
                         "islet of Langerhans"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "terminally_differentiated": {
                     "type": "string",
@@ -179,6 +188,8 @@
                     ]
                 },
                 "timepoint_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "title": "Timepoint unit",
                     "graphRestriction": {
                         "ontologies": [
@@ -201,9 +212,7 @@
                     "examples": [
                         "UO:0000010",
                         "second"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "timepoint_value": {
                     "type": "number",

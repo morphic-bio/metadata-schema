@@ -29,31 +29,36 @@
                                 }
                             }
                         ],
-                        "$ref": "#/definitions/non_empty_string"
+                        "type": "string",
+                        "minLength": 1
                     },
                     "examples": [
                         "SAMEA2397676",
                         "SRS000000"
                     ],
-                    "$ref": "#/definitions/non_empty_array",
+                    "type": "array",
+                    "minItems": 1,
                     "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
                 },
                 "described_by": {
                     "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/organoid$",
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "format": "uri",
+                    "minLength": 1,
                     "description": "The URL reference to the schema."
                 },
                 "schema_type": {
                     "const": "organoid",
                     "default": "organoid",
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "The type of the metadata schema entity.",
                     "$comment": "Please add enum to this property definition when you load this module as a reference."
                 },
                 "schema_version": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "minLength": 1,
                     "description": "The version number of the schema in major.minor.patch format.",
                     "examples": [
                         "1.0.1",
@@ -61,8 +66,9 @@
                     ]
                 },
                 "submitted_at": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "format": "date-time",
+                    "minLength": 1,
                     "description": "Date the document was submitted, in ISO8601 format.",
                     "examples": [
                         "2018-11-13T20:20:39+00:00",
@@ -70,7 +76,8 @@
                     ]
                 },
                 "submitted_by": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "User that submitted this document."
                 },
                 "updated_at": {
@@ -83,12 +90,14 @@
                     ]
                 },
                 "updated_by": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "User that updated this document."
                 },
                 "uuid": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "format": "uuid",
+                    "minLength": 1,
                     "description": "Universal Unique Identifier (UUID) for this document in the database.",
                     "examples": [
                         "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
@@ -132,6 +141,8 @@
             },
             "properties": {
                 "age_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Unit by which the age of the organoid was measured",
                     "title": "Age unit",
                     "graphRestriction": {
@@ -150,9 +161,7 @@
                     "examples": [
                         "UO:0000033",
                         "week"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "age_value": {
                     "type": "number",
@@ -164,13 +173,13 @@
                     ]
                 },
                 "description": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "A general description of the organoid.",
                     "title": "Organoid description",
                     "examples": [
                         "Neuroectoderm organoid, derived from kolf2_2j DKO"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "embedded_in_matrigel": {
                     "type": "boolean",
@@ -182,28 +191,30 @@
                     ]
                 },
                 "growth_environment": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Growth environment in which the organoid is grown.",
                     "title": "Growth environment",
                     "examples": [
                         "adherent",
                         "liquid suspension",
                         "matrigel"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "description": "A unique label for the organoid.",
                     "title": "Organoid label",
                     "examples": [
                         "kolf2_2j_knockout_1"
-                    ],
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1
+                    ]
                 },
                 "model_system": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
                     "graphRestriction": {
@@ -222,21 +233,21 @@
                     "examples": [
                         "UBERON:0000006",
                         "islet of Langerhans"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "morphology": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "General description of the organoid morphology.",
                     "title": "Organoid morphology",
                     "examples": [
                         "Epithelial monolayer with budding crypt-like domains",
                         "Optic cup structure"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "size_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Unit by which the size of the organoid was measured.",
                     "title": "Size unit",
                     "graphRestriction": {
@@ -255,9 +266,7 @@
                     "examples": [
                         "UO:0000015",
                         "millimeter"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "size_value": {
                     "type": "number",
