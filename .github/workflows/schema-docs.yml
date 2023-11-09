@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ "main", "staging" ]
     paths:
-      - json_schema/type/**/*.json
+      - human_readable_schemas/*.json
 
 permissions:
   contents: write
