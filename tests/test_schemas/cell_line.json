@@ -120,25 +120,26 @@
             ],
             "properties": {
                 "culture_environment": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "Cell culture environment in which cells are grown.",
                     "title": "Culture environment",
                     "examples": [
                         "Adherent cell culture",
                         "Suspension cell culture"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "culture_medium": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "The solid, liquid, or semi-solid medium used to support growth.",
                     "title": "Culture medium",
                     "examples": [
                         "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
                         "human placental cord serum"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "date_established": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "Date when the cell line was established.",
                     "title": "Date established",
                     "oneOf": [
@@ -152,55 +153,62 @@
                     "examples": [
                         "2017-03-19",
                         "2018-11-13T20:20:39+00:00"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "derived_from_cell_line": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "A cell line name that references the original cell line from which this cell line/clone was derived.",
                     "title": "Derived from cell line",
                     "examples": [
                         "H1",
                         "KOLF2.2J"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "description": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "A general description of the cell line.",
                     "title": "Cell line description",
                     "examples": [
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "drug_treatment": {
-                    "$ref": "#/definitions/non_empty_array",
                     "description": "Drugs added to the growth medium.",
                     "title": "Drug treatment",
                     "uniqueItems": true,
                     "items": {
-                        "$ref": "#/definitions/non_empty_string"
+                        "type": "string",
+                        "minLength": 1
                     },
                     "examples": [
                         "100 ug/mL ampicillin",
                         "15 ug/mL tetracycline"
-                    ]
+                    ],
+                    "type": "array",
+                    "minItems": 1
                 },
                 "genotyping_accessions": {
-                    "$ref": "#/definitions/non_empty_array",
                     "description": "A GenBank assembly accession identifier for the cell line.",
                     "title": "Genotyping accession(s)",
                     "uniqueItems": true,
                     "items": {
-                        "$ref": "#/definitions/non_empty_string",
                         "isValidIdentifier": {
                             "prefix": "insdc.gca"
-                        }
+                        },
+                        "type": "string",
+                        "minLength": 1
                     },
                     "examples": [
                         "GCA_000001405.29"
-                    ]
+                    ],
+                    "type": "array",
+                    "minItems": 1
                 },
                 "induction_method": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
                     "title": "Induction method",
                     "enum": [
@@ -216,27 +224,32 @@
                     "examples": [
                         "Gun particle",
                         "sendai virus"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "label": {
-                    "$ref": "#/definitions/entity_id",
                     "description": "A unique label for the cell line.",
                     "title": "Cell line ID",
                     "examples": [
                         "kolf2_2j_knockout_1"
-                    ]
+                    ],
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1
                 },
                 "supplier": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "The supplier of the cell line.",
                     "title": "Cell line supplier",
                     "examples": [
                         "ATCC",
                         "JAX"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "type": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "The type of cell line.",
                     "title": "Cell line type",
                     "enum": [
@@ -250,10 +263,11 @@
                     "examples": [
                         "immortalized",
                         "primary"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "zygosity": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "Known zygosity of the gene expression alteration in the cell line",
                     "title": "Zygosity",
                     "enum": [
@@ -265,25 +279,11 @@
                     "examples": [
                         "hererozygous",
                         "homozygous"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 }
             }
-        }
-    },
-    "definitions": {
-        "non_empty_string": {
-            "type": "string",
-            "minLength": 1
-        },
-        "non_empty_array": {
-            "type": "array",
-            "minItems": 1
-        },
-        "entity_id": {
-            "type": "string",
-            "format": "regex",
-            "pattern": "^[a-zA-Z0-9_]*$",
-            "minLength": 1
         }
     }
 }

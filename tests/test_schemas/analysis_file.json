@@ -123,25 +123,26 @@
             ],
             "properties": {
                 "checksum": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "MD5 checksum of the file.",
                     "title": "Checksum",
                     "examples": [
                         "e09a986c2e630130b1849d4bf9a94c06"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "extension": {
-                    "$ref": "#/definitions/non_empty_string",
                     "pattern": "^[^.].*",
                     "description": "The extension of the file. Please indicate the full file extension including compression extensions.",
                     "title": "File extension",
                     "examples": [
                         "h5",
                         "mtx"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "genome_assembly_version": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "Name of the genome assembly used to generate this file. Please use the name as defined in the Genome Reference Consortium (https://www.ncbi.nlm.nih.gov/grc).",
                     "title": "Genome version",
                     "enum": [
@@ -153,43 +154,33 @@
                         "GRCh37",
                         "GRCh38",
                         "Not applicable"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "genome_patch_version": {
-                    "$ref": "#/definitions/non_empty_string",
                     "description": "Patch version of the genome assembly used to generate this file.",
                     "title": "Patch version",
                     "examples": [
                         "p11",
                         "p14"
-                    ]
+                    ],
+                    "type": "string",
+                    "minLength": 1
                 },
                 "label": {
-                    "$ref": "#/definitions/entity_id",
                     "description": "The name of the file. Please include the file extension in the file name.",
                     "title": "File name",
                     "examples": [
                         "R1.fastq.gz",
                         "R2.fastq.gz"
-                    ]
+                    ],
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1
                 }
             }
-        }
-    },
-    "definitions": {
-        "non_empty_string": {
-            "type": "string",
-            "minLength": 1
-        },
-        "non_empty_array": {
-            "type": "array",
-            "minItems": 1
-        },
-        "entity_id": {
-            "type": "string",
-            "format": "regex",
-            "pattern": "^[a-zA-Z0-9_]*$",
-            "minLength": 1
         }
     }
 }
