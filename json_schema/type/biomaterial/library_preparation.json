@@ -75,26 +75,28 @@
                     ]
                 },
                 "description": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "A general description of the library preparation.",
                     "title": "Library preparation description",
                     "examples": [
                         "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "description": "A unique label for the library preparation.",
                     "title": "Library preparation label",
                     "examples": [
                         "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
-                    ],
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1
+                    ]
                 },
                 "library_concentration_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Unit by which the library concentration was measured.",
                     "title": "Library concentration unit",
                     "graphRestriction": {
@@ -113,9 +115,7 @@
                     "examples": [
                         "UO:0000275",
                         "nanogram per mililiter"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "library_concentration_value": {
                     "type": "number",
@@ -128,6 +128,8 @@
                     ]
                 },
                 "library_final_yield_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Unit by which the final yield of the library preparation was measured.",
                     "title": "Library final yield unit",
                     "graphRestriction": {
@@ -146,9 +148,7 @@
                     "examples": [
                         "UO:0000024",
                         "microliter"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "library_final_yield_value": {
                     "type": "number",
@@ -161,6 +161,8 @@
                     ]
                 },
                 "library_input_amount_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Unit by which the value of the library input was measured.",
                     "title": "Library input amount unit",
                     "graphRestriction": {
@@ -179,9 +181,7 @@
                     "examples": [
                         "UO:0000010",
                         "UO:0000034"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "library_input_amount_value": {
                     "type": "number",

@@ -13,50 +13,50 @@
     ],
     "properties": {
         "accessions": {
+            "type": "array",
+            "minItems": 1,
             "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module.",
             "items": {
                 "type": "string",
                 "minLength": 1
-            },
-            "type": "array",
-            "minItems": 1
+            }
         },
         "described_by": {
-            "format": "uri",
-            "description": "The URL reference to the schema.",
             "type": "string",
-            "minLength": 1
+            "format": "uri",
+            "minLength": 1,
+            "description": "The URL reference to the schema."
         },
         "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "$comment": "Please add enum to this property definition when you load this module as a reference.",
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "description": "The type of the metadata schema entity.",
+            "$comment": "Please add enum to this property definition when you load this module as a reference."
         },
         "schema_version": {
+            "type": "string",
             "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+            "minLength": 1,
             "description": "The version number of the schema in major.minor.patch format.",
             "examples": [
                 "1.0.1",
                 "4.6.1"
-            ],
-            "type": "string",
-            "minLength": 1
+            ]
         },
         "submitted_at": {
+            "type": "string",
             "format": "date-time",
+            "minLength": 1,
             "description": "Date the document was submitted, in ISO8601 format.",
             "examples": [
                 "2018-11-13T20:20:39+00:00",
                 "2019-11-13T20:20:39+00:00"
-            ],
-            "type": "string",
-            "minLength": 1
+            ]
         },
         "submitted_by": {
-            "description": "User that submitted this document.",
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "description": "User that submitted this document."
         },
         "updated_at": {
             "type": "string",
@@ -68,19 +68,19 @@
             ]
         },
         "updated_by": {
-            "description": "User that updated this document.",
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "description": "User that updated this document."
         },
         "uuid": {
+            "type": "string",
             "format": "uuid",
+            "minLength": 1,
             "description": "Universal Unique Identifier (UUID) for this document in the database.",
             "examples": [
                 "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
                 "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
-            ],
-            "type": "string",
-            "minLength": 1
+            ]
         }
     }
 }

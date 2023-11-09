@@ -49,36 +49,38 @@
             ],
             "properties": {
                 "culture_medium": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "The solid, liquid, or semi-solid medium used to support growth.",
                     "title": "Culture medium",
                     "examples": [
                         "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
                         "human placental cord serum"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "description": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "A general description of the differentiated cell line.",
                     "title": "Differentiated cell line description",
                     "examples": [
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "description": "A unique label for the differentiated cell line.",
                     "title": "Differentiated cell line label",
                     "examples": [
                         "kolf2_2j_knockout_1_trophoblast"
-                    ],
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1
+                    ]
                 },
                 "model_system": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
                     "graphRestriction": {
@@ -97,9 +99,7 @@
                     "examples": [
                         "UBERON:0000006",
                         "islet of Langerhans"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "terminally_differentiated": {
                     "type": "string",
@@ -117,6 +117,8 @@
                     ]
                 },
                 "timepoint_unit": {
+                    "type": "string",
+                    "minLength": 1,
                     "title": "Timepoint unit",
                     "graphRestriction": {
                         "ontologies": [
@@ -139,9 +141,7 @@
                     "examples": [
                         "UO:0000010",
                         "second"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "timepoint_value": {
                     "type": "number",

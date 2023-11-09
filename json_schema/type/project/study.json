@@ -66,19 +66,21 @@
             ],
             "properties": {
                 "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "maxLength": 50,
                     "description": "A short label for the study. It should have no spaces and should be fewer than 50 characters.",
                     "title": "Study label",
                     "examples": [
                         "CoolOrganStudy",
                         "PAX2KOLFStudy"
-                    ],
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1
+                    ]
                 },
                 "study_title": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 150,
                     "description": "An official title for the study. Should be fewer than 30 words.",
                     "$comment": "150 characters is, generally, between 21 and 38 words https://capitalizemytitle.com/character-count/150-characters/",
@@ -86,22 +88,22 @@
                     "examples": [
                         "Study of single cells in the human body.",
                         "Study of the effect of PAX2 in the KOLF2.2J cell line."
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "study_description": {
+                    "type": "string",
+                    "minLength": 1,
                     "maxLength": 1500,
                     "description": "A longer description of the study which includes research goals and experimental approach.",
                     "$comment": "1500 characters is, generally, between 214 and 375 words https://capitalizemytitle.com/character-count/1500-characters/",
                     "title": "Study description",
                     "examples": [
                         "A longer description with highlights of your experiment goes here, up to 300 words."
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "institute": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Institute associated with the registered study.",
                     "title": "Institute",
                     "enum": [
@@ -113,79 +115,79 @@
                     "examples": [
                         "JAX",
                         "MSK"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "contact_first_name": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "First name of the main person to contact for queries about this study.",
                     "title": "Contact first name",
                     "examples": [
                         "Anu",
                         "Enrique",
                         "Wei"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "contact_surname": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Surname of the main person to contact for queries about this study.",
                     "title": "Contact surname",
                     "examples": [
                         "Koci",
                         "Zucchi"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "contact_emails": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Email of the person/people to contact for queries about this study.",
                     "title": "Contact email(s)",
                     "items": {
-                        "format": "email",
                         "type": "string",
+                        "format": "email",
                         "minLength": 1
                     },
                     "examples": [
                         "anotherfakemail@med.miami.edu",
                         "fakemail@ebi.ac.uk"
-                    ],
-                    "type": "array",
-                    "minItems": 1
+                    ]
                 },
                 "dracc_data_sharing_date": {
+                    "type": "string",
                     "format": "date",
+                    "minLength": 1,
                     "description": "Estimated date of data release to the DRACC.",
                     "title": "Estimated DRACC data release date",
                     "examples": [
                         "2018-11-13",
                         "2019-11-13"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "biological_sample_types": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Does the study contain data extracted from cell lines, organoids and/or embryoid bodies?",
                     "title": "Biological sample type(s)",
                     "uniqueItems": true,
                     "items": {
+                        "type": "string",
+                        "minLength": 1,
                         "enum": [
                             "cell line",
                             "organoid",
                             "embryoid body"
-                        ],
-                        "type": "string",
-                        "minLength": 1
+                        ]
                     },
                     "examples": [
                         "cell line",
                         "embryoid body",
                         "organoid"
-                    ],
-                    "type": "array",
-                    "minItems": 1
+                    ]
                 },
                 "cell_line_names": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Name of the cell lines used for this study.",
                     "title": "Cell line name",
                     "items": {
@@ -194,14 +196,16 @@
                     },
                     "examples": [
                         "KOLF2.2J"
-                    ],
-                    "type": "array",
-                    "minItems": 1
+                    ]
                 },
                 "duo_codes": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Data Usage Ontology code(s) that describe the data sharing restrictions for this study.",
                     "title": "DUO label(s)",
                     "items": {
+                        "type": "string",
+                        "minLength": 1,
                         "description": "Data Usage Ontology code that describe the data sharing restrictions for this study.",
                         "title": "DUO label",
                         "graphRestriction": {
@@ -216,21 +220,21 @@
                                 "obo_id",
                                 "label"
                             ]
-                        },
-                        "type": "string",
-                        "minLength": 1
+                        }
                     },
-                    "type": "array",
-                    "minItems": 1,
                     "examples": [
                         "DUO:0000046",
                         "non-commercial use only"
                     ]
                 },
                 "model_organ_systems": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Model organ system(s) being studied or modelled in this study.",
                     "title": "Model system(s)",
                     "items": {
+                        "type": "string",
+                        "minLength": 1,
                         "description": "Model organ system being studied or modelled in this study.",
                         "title": "Model system",
                         "graphRestriction": {
@@ -245,18 +249,16 @@
                                 "obo_id",
                                 "label"
                             ]
-                        },
-                        "type": "string",
-                        "minLength": 1
+                        }
                     },
-                    "type": "array",
-                    "minItems": 1,
                     "examples": [
                         "UBERON:0000006",
                         "islet of Langerhans"
                     ]
                 },
                 "perturbation_type": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Type of perturbation introduced by the gene expression alteration assay.",
                     "title": "Perturbation type(s)",
                     "items": {
@@ -266,11 +268,11 @@
                     "examples": [
                         "irreversible gene knockout",
                         "reversible gene knockdown"
-                    ],
-                    "type": "array",
-                    "minItems": 1
+                    ]
                 },
                 "readout_assay": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "High throughput readout assay used in the generation of the study.",
                     "title": "Readout assay",
                     "graphRestriction": {
@@ -289,14 +291,16 @@
                     "examples": [
                         "EFO:0008931",
                         "EFO:0009310"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 },
                 "sequencing_platforms": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "Sequencing platform(s) being used to sequence the samples.",
                     "title": "Sequencing platform(s)",
                     "items": {
+                        "type": "string",
+                        "minLength": 1,
                         "description": "Sequencing platform being used to sequence the samples",
                         "title": "Sequencing platform",
                         "graphRestriction": {
@@ -311,18 +315,16 @@
                                 "obo_id",
                                 "label"
                             ]
-                        },
-                        "type": "string",
-                        "minLength": 1
+                        }
                     },
-                    "type": "array",
-                    "minItems": 1,
                     "examples": [
                         "Illumina HiSeq 4000",
                         "OBI:0002049"
                     ]
                 },
                 "target_genes": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "List of target gene(s) for this study.",
                     "title": "Target gene(s)",
                     "items": {
@@ -332,34 +334,32 @@
                     "examples": [
                         "PAX2",
                         "PAX6"
-                    ],
-                    "type": "array",
-                    "minItems": 1
+                    ]
                 },
                 "supplementary_links": {
+                    "type": "array",
+                    "minItems": 1,
                     "description": "External link(s) pointing to code, supplementary data files, or analysis files associated with the study which will not be uploaded.",
                     "title": "Supplementary link(s)",
                     "items": {
-                        "format": "uri",
                         "type": "string",
+                        "format": "uri",
                         "minLength": 1
                     },
                     "examples": [
                         "http://celltag.org/",
                         "https://github.com/czbiohub/tabula-muris"
-                    ],
-                    "type": "array",
-                    "minItems": 1
+                    ]
                 },
                 "other_comments": {
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Other comments from the contributor regarding this study.",
                     "title": "Other comments",
                     "examples": [
                         "This study is in early access and is yet to be peer-reviewed",
                         "This study was conducted under very specific conditions and may not apply to all ex vivo cases"
-                    ],
-                    "type": "string",
-                    "minLength": 1
+                    ]
                 }
             }
         }
