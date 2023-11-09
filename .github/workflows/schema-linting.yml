@@ -28,6 +28,7 @@ jobs:
         run: |
           for schema in $( find json_schema/system | grep ".json$" );
           do python src/schema_formatter.py -j $schema -o $schema;
+          echo "Formatted schema " $schema
           done
       - name: Commit and push latest schemas if different
         uses: stefanzweifel/git-auto-commit-action@v5

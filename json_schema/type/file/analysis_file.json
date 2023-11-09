@@ -61,7 +61,8 @@
             ],
             "properties": {
                 "checksum": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "MD5 checksum of the file.",
                     "title": "Checksum",
                     "examples": [
@@ -69,8 +70,9 @@
                     ]
                 },
                 "extension": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
                     "pattern": "^[^.].*",
+                    "minLength": 1,
                     "description": "The extension of the file. Please indicate the full file extension including compression extensions.",
                     "title": "File extension",
                     "examples": [
@@ -79,7 +81,8 @@
                     ]
                 },
                 "genome_assembly_version": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Name of the genome assembly used to generate this file. Please use the name as defined in the Genome Reference Consortium (https://www.ncbi.nlm.nih.gov/grc).",
                     "title": "Genome version",
                     "enum": [
@@ -94,7 +97,8 @@
                     ]
                 },
                 "genome_patch_version": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "Patch version of the genome assembly used to generate this file.",
                     "title": "Patch version",
                     "examples": [
@@ -103,7 +107,10 @@
                     ]
                 },
                 "label": {
-                    "$ref": "#/definitions/entity_id",
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "description": "The name of the file. Please include the file extension in the file name.",
                     "title": "File name",
                     "examples": [
@@ -112,22 +119,6 @@
                     ]
                 }
             }
-        }
-    },
-    "definitions": {
-        "non_empty_string": {
-            "type": "string",
-            "minLength": 1
-        },
-        "non_empty_array": {
-            "type": "array",
-            "minItems": 1
-        },
-        "entity_id": {
-            "type": "string",
-            "format": "regex",
-            "pattern": "^[a-zA-Z0-9_]*$",
-            "minLength": 1
         }
     }
 }

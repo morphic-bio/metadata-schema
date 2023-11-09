@@ -49,7 +49,8 @@
             ],
             "properties": {
                 "culture_medium": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "The solid, liquid, or semi-solid medium used to support growth.",
                     "title": "Culture medium",
                     "examples": [
@@ -58,7 +59,8 @@
                     ]
                 },
                 "description": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "A general description of the differentiated cell line.",
                     "title": "Differentiated cell line description",
                     "examples": [
@@ -66,7 +68,10 @@
                     ]
                 },
                 "label": {
-                    "$ref": "#/definitions/entity_id",
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
                     "description": "A unique label for the differentiated cell line.",
                     "title": "Differentiated cell line label",
                     "examples": [
@@ -74,7 +79,8 @@
                     ]
                 },
                 "model_system": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
                     "graphRestriction": {
@@ -111,7 +117,8 @@
                     ]
                 },
                 "timepoint_unit": {
-                    "$ref": "#/definitions/non_empty_string",
+                    "type": "string",
+                    "minLength": 1,
                     "title": "Timepoint unit",
                     "graphRestriction": {
                         "ontologies": [
@@ -147,22 +154,6 @@
                     ]
                 }
             }
-        }
-    },
-    "definitions": {
-        "non_empty_string": {
-            "type": "string",
-            "minLength": 1
-        },
-        "non_empty_array": {
-            "type": "array",
-            "minItems": 1
-        },
-        "entity_id": {
-            "type": "string",
-            "format": "regex",
-            "pattern": "^[a-zA-Z0-9_]*$",
-            "minLength": 1
         }
     }
 }
