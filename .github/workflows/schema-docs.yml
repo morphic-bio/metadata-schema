@@ -5,6 +5,10 @@ on:
     branches: [ "main", "staging" ]
     paths:
       - json_schema/type/**/*.json
+  workflow_run:
+    workflows: [ "Schema Linting/Formatting" ]
+    types:
+      - completed
 
 permissions:
   contents: write
