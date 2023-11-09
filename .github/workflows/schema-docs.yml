@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ "main", "staging" ]
     paths:
-      - human_readable_schemas/*.json
+      - json_schema/type/**/*.json
 
 permissions:
   contents: write
@@ -28,4 +28,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Pushed latest schema updates
-          file_pattern: 'human_readable_schemas/*.json'
+          file_pattern: 'human_readable_schemas/*.md'
