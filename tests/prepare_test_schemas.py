@@ -41,7 +41,6 @@ def solve_allof(schema):
     # Delete redundant info
     del schema['allOf'][0]['$ref']
     del schema['allOf'][0]['$schema']
-    del schema['allOf'][0]['definitions']
     return schema
 
 
