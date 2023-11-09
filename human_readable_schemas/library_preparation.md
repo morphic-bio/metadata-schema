@@ -21,18 +21,18 @@
 
 **Description:** Information about the library preparation.
 
-| Property                                                       | Pattern | Type    | Deprecated | Definition                           | Title/Description               |
-| -------------------------------------------------------------- | ------- | ------- | ---------- | ------------------------------------ | ------------------------------- |
-| - [average_fragment_size](#average_fragment_size )             | No      | integer | No         | -                                    | Average fragment size           |
-| - [description](#description )                                 | No      | string  | No         | In #/definitions/non_empty_string    | Library preparation description |
-| + [label](#label )                                             | No      | string  | No         | In #/definitions/entity_id           | Library preparation label       |
-| - [library_concentration_unit](#library_concentration_unit )   | No      | string  | No         | Same as [description](#description ) | Library concentration unit      |
-| - [library_concentration_value](#library_concentration_value ) | No      | number  | No         | -                                    | Library concentration value     |
-| - [library_final_yield_unit](#library_final_yield_unit )       | No      | string  | No         | Same as [description](#description ) | Library final yield unit        |
-| - [library_final_yield_value](#library_final_yield_value )     | No      | number  | No         | -                                    | Library final yield value       |
-| - [library_input_amount_unit](#library_input_amount_unit )     | No      | string  | No         | Same as [description](#description ) | Library input amount unit       |
-| - [library_input_amount_value](#library_input_amount_value )   | No      | number  | No         | -                                    | Library input amount value      |
-| - [library_pcr_cycles](#library_pcr_cycles )                   | No      | integer | No         | -                                    | Library PCR cycles              |
+| Property                                                       | Pattern | Type    | Deprecated | Definition | Title/Description               |
+| -------------------------------------------------------------- | ------- | ------- | ---------- | ---------- | ------------------------------- |
+| - [average_fragment_size](#average_fragment_size )             | No      | integer | No         | -          | Average fragment size           |
+| - [description](#description )                                 | No      | string  | No         | -          | Library preparation description |
+| + [label](#label )                                             | No      | string  | No         | -          | Library preparation label       |
+| - [library_concentration_unit](#library_concentration_unit )   | No      | string  | No         | -          | Library concentration unit      |
+| - [library_concentration_value](#library_concentration_value ) | No      | number  | No         | -          | Library concentration value     |
+| - [library_final_yield_unit](#library_final_yield_unit )       | No      | string  | No         | -          | Library final yield unit        |
+| - [library_final_yield_value](#library_final_yield_value )     | No      | number  | No         | -          | Library final yield value       |
+| - [library_input_amount_unit](#library_input_amount_unit )     | No      | string  | No         | -          | Library input amount unit       |
+| - [library_input_amount_value](#library_input_amount_value )   | No      | number  | No         | -          | Library input amount value      |
+| - [library_pcr_cycles](#library_pcr_cycles )                   | No      | integer | No         | -          | Library PCR cycles              |
 
 ## <a name="average_fragment_size"></a>1. Property `Library preparation > average_fragment_size`
 
@@ -59,19 +59,12 @@
 
 **Title:** Library preparation description
 
-|                |                                |
-| -------------- | ------------------------------ |
-| **Type**       | `string`                       |
-| **Required**   | No                             |
-| **Defined in** | #/definitions/non_empty_string |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** A general description of the library preparation.
-
-**Example:** 
-
-```json
-"Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
-```
 
 **Example:** 
 
@@ -87,19 +80,13 @@
 
 **Title:** Library preparation label
 
-|                |                         |
-| -------------- | ----------------------- |
-| **Type**       | `string`                |
-| **Required**   | Yes                     |
-| **Defined in** | #/definitions/entity_id |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+| **Format**   | `regex`  |
 
 **Description:** A unique label for the library preparation.
-
-**Example:** 
-
-```json
-"kolf2_2j_knockout_1_trophoblast_library_preparation1S"
-```
 
 **Example:** 
 
@@ -116,11 +103,10 @@
 
 **Title:** Library concentration unit
 
-|                        |                             |
-| ---------------------- | --------------------------- |
-| **Type**               | `string`                    |
-| **Required**           | No                          |
-| **Same definition as** | [description](#description) |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** Unit by which the library concentration was measured.
 
@@ -133,6 +119,10 @@
 ```json
 "nanogram per mililiter"
 ```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ## <a name="library_concentration_value"></a>5. Property `Library preparation > library_concentration_value`
 
@@ -163,11 +153,10 @@
 
 **Title:** Library final yield unit
 
-|                        |                             |
-| ---------------------- | --------------------------- |
-| **Type**               | `string`                    |
-| **Required**           | No                          |
-| **Same definition as** | [description](#description) |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** Unit by which the final yield of the library preparation was measured.
 
@@ -180,6 +169,10 @@
 ```json
 "microliter"
 ```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ## <a name="library_final_yield_value"></a>7. Property `Library preparation > library_final_yield_value`
 
@@ -210,11 +203,10 @@
 
 **Title:** Library input amount unit
 
-|                        |                             |
-| ---------------------- | --------------------------- |
-| **Type**               | `string`                    |
-| **Required**           | No                          |
-| **Same definition as** | [description](#description) |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** Unit by which the value of the library input was measured.
 
@@ -227,6 +219,10 @@
 ```json
 "UO:0000034"
 ```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ## <a name="library_input_amount_value"></a>9. Property `Library preparation > library_input_amount_value`
 
@@ -275,4 +271,4 @@
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-08 at 15:14:06 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-09 at 11:44:14 +0000

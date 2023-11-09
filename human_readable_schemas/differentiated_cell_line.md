@@ -18,37 +18,26 @@
 
 **Description:** Information about the differentiated cell line.
 
-| Property                                                   | Pattern | Type             | Deprecated | Definition                                 | Title/Description                    |
-| ---------------------------------------------------------- | ------- | ---------------- | ---------- | ------------------------------------------ | ------------------------------------ |
-| - [culture_medium](#culture_medium )                       | No      | string           | No         | In #/definitions/non_empty_string          | Culture medium                       |
-| - [description](#description )                             | No      | string           | No         | Same as [culture_medium](#culture_medium ) | Differentiated cell line description |
-| + [label](#label )                                         | No      | string           | No         | In #/definitions/entity_id                 | Differentiated cell line label       |
-| - [model_system](#model_system )                           | No      | string           | No         | Same as [culture_medium](#culture_medium ) | Model system                         |
-| + [terminally_differentiated](#terminally_differentiated ) | No      | enum (of string) | No         | -                                          | Terminally differentiated?           |
-| + [timepoint_unit](#timepoint_unit )                       | No      | string           | No         | Same as [culture_medium](#culture_medium ) | Timepoint unit                       |
-| + [timepoint_value](#timepoint_value )                     | No      | number           | No         | -                                          | Timepoint value                      |
+| Property                                                   | Pattern | Type             | Deprecated | Definition | Title/Description                    |
+| ---------------------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------ |
+| - [culture_medium](#culture_medium )                       | No      | string           | No         | -          | Culture medium                       |
+| - [description](#description )                             | No      | string           | No         | -          | Differentiated cell line description |
+| + [label](#label )                                         | No      | string           | No         | -          | Differentiated cell line label       |
+| - [model_system](#model_system )                           | No      | string           | No         | -          | Model system                         |
+| + [terminally_differentiated](#terminally_differentiated ) | No      | enum (of string) | No         | -          | Terminally differentiated?           |
+| + [timepoint_unit](#timepoint_unit )                       | No      | string           | No         | -          | Timepoint unit                       |
+| + [timepoint_value](#timepoint_value )                     | No      | number           | No         | -          | Timepoint value                      |
 
 ## <a name="culture_medium"></a>1. Property `Differentiated cell line > culture_medium`
 
 **Title:** Culture medium
 
-|                |                                |
-| -------------- | ------------------------------ |
-| **Type**       | `string`                       |
-| **Required**   | No                             |
-| **Defined in** | #/definitions/non_empty_string |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** The solid, liquid, or semi-solid medium used to support growth.
-
-**Examples:** 
-
-```json
-"RPMI 1640 + 2mM Glutamine + 10-20% FBS"
-```
-
-```json
-"human placental cord serum"
-```
 
 **Examples:** 
 
@@ -68,11 +57,10 @@
 
 **Title:** Differentiated cell line description
 
-|                        |                                   |
-| ---------------------- | --------------------------------- |
-| **Type**               | `string`                          |
-| **Required**           | No                                |
-| **Same definition as** | [culture_medium](#culture_medium) |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** A general description of the differentiated cell line.
 
@@ -82,23 +70,21 @@
 "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
 ```
 
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
 ## <a name="label"></a>3. Property `Differentiated cell line > label`
 
 **Title:** Differentiated cell line label
 
-|                |                         |
-| -------------- | ----------------------- |
-| **Type**       | `string`                |
-| **Required**   | Yes                     |
-| **Defined in** | #/definitions/entity_id |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+| **Format**   | `regex`  |
 
 **Description:** A unique label for the differentiated cell line.
-
-**Example:** 
-
-```json
-"kolf2_2j_knockout_1_trophoblast"
-```
 
 **Example:** 
 
@@ -115,11 +101,10 @@
 
 **Title:** Model system
 
-|                        |                                   |
-| ---------------------- | --------------------------------- |
-| **Type**               | `string`                          |
-| **Required**           | No                                |
-| **Same definition as** | [culture_medium](#culture_medium) |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 **Description:** To which model system this differentiated cell line has been derived into
 
@@ -132,6 +117,10 @@
 ```json
 "islet of Langerhans"
 ```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ## <a name="terminally_differentiated"></a>5. Property `Differentiated cell line > terminally_differentiated`
 
@@ -167,11 +156,10 @@ Must be one of:
 
 **Title:** Timepoint unit
 
-|                        |                                   |
-| ---------------------- | --------------------------------- |
-| **Type**               | `string`                          |
-| **Required**           | Yes                               |
-| **Same definition as** | [culture_medium](#culture_medium) |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
 
 **Examples:** 
 
@@ -182,6 +170,10 @@ Must be one of:
 ```json
 "second"
 ```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ## <a name="timepoint_value"></a>7. Property `Differentiated cell line > timepoint_value`
 
@@ -209,4 +201,4 @@ Must be one of:
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-08 at 15:14:06 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-09 at 11:44:14 +0000
