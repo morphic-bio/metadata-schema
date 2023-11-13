@@ -23,6 +23,7 @@ jobs:
         run: |
           for schema in $( find json_schema/type | grep ".json$" );
           do python src/schema_formatter.py -j $schema -o $schema;
+          echo "Formatted schema " $schema
           done
       - name: Format system schema
         run: |
@@ -34,4 +35,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Formatting applied to schema
-          file_pattern: 'json_schema/**/*.json'
+          file_pattern: json_schema/**/*.json
