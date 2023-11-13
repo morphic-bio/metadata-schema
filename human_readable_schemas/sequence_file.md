@@ -1,11 +1,11 @@
 # Sequence file
 
-- [1. Property `Sequence file > checksum`](#checksum)
+- [1. Property `Sequence file > label`](#label)
 - [2. Property `Sequence file > extension`](#extension)
-- [3. Property `Sequence file > label`](#label)
-- [4. Property `Sequence file > lane_index`](#lane_index)
-- [5. Property `Sequence file > read_index`](#read_index)
-- [6. Property `Sequence file > read_length`](#read_length)
+- [3. Property `Sequence file > lane_index`](#lane_index)
+- [4. Property `Sequence file > read_index`](#read_index)
+- [5. Property `Sequence file > read_length`](#read_length)
+- [6. Property `Sequence file > checksum`](#checksum)
 
 **Title:** Sequence file
 
@@ -19,60 +19,14 @@
 
 | Property                       | Pattern | Type             | Deprecated | Definition | Title/Description |
 | ------------------------------ | ------- | ---------------- | ---------- | ---------- | ----------------- |
-| - [checksum](#checksum )       | No      | string           | No         | -          | Checksum          |
-| + [extension](#extension )     | No      | string           | No         | -          | File extension    |
 | + [label](#label )             | No      | string           | No         | -          | File name         |
+| + [extension](#extension )     | No      | string           | No         | -          | File extension    |
 | - [lane_index](#lane_index )   | No      | integer          | No         | -          | Lane index        |
 | + [read_index](#read_index )   | No      | enum (of string) | No         | -          | Read index        |
 | - [read_length](#read_length ) | No      | integer          | No         | -          | Read length       |
+| - [checksum](#checksum )       | No      | string           | No         | -          | Checksum          |
 
-## <a name="checksum"></a>1. Property `Sequence file > checksum`
-
-**Title:** Checksum
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** MD5 checksum of the file.
-
-**Example:** 
-
-```json
-"e09a986c2e630130b1849d4bf9a94c06"
-```
-
-| Restrictions   |   |
-| -------------- | - |
-| **Min length** | 1 |
-
-## <a name="extension"></a>2. Property `Sequence file > extension`
-
-**Title:** File extension
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | Yes      |
-
-**Description:** The extension of the file. Please indicate the full file extension including compression extensions.
-
-**Examples:** 
-
-```json
-"fastq.gz"
-```
-
-```json
-"tif"
-```
-
-| Restrictions   |   |
-| -------------- | - |
-| **Min length** | 1 |
-
-## <a name="label"></a>3. Property `Sequence file > label`
+## <a name="label"></a>1. Property `Sequence file > label`
 
 **Title:** File name
 
@@ -99,7 +53,32 @@
 | **Min length**                    | 1                                                                                                                |
 | **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22R1.fastq.gz%22) |
 
-## <a name="lane_index"></a>4. Property `Sequence file > lane_index`
+## <a name="extension"></a>2. Property `Sequence file > extension`
+
+**Title:** File extension
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+
+**Description:** The extension of the file. Please indicate the full file extension including compression extensions.
+
+**Examples:** 
+
+```json
+"fastq.gz"
+```
+
+```json
+"tif"
+```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
+## <a name="lane_index"></a>3. Property `Sequence file > lane_index`
 
 **Title:** Lane index
 
@@ -120,7 +99,7 @@
 4
 ```
 
-## <a name="read_index"></a>5. Property `Sequence file > read_index`
+## <a name="read_index"></a>4. Property `Sequence file > read_index`
 
 **Title:** Read index
 
@@ -154,7 +133,7 @@ Must be one of:
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="read_length"></a>6. Property `Sequence file > read_length`
+## <a name="read_length"></a>5. Property `Sequence file > read_length`
 
 **Title:** Read length
 
@@ -175,5 +154,26 @@ Must be one of:
 150
 ```
 
+## <a name="checksum"></a>6. Property `Sequence file > checksum`
+
+**Title:** Checksum
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** MD5 checksum of the file.
+
+**Example:** 
+
+```json
+"e09a986c2e630130b1849d4bf9a94c06"
+```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-09 at 15:30:53 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-13 at 15:01:23 +0000

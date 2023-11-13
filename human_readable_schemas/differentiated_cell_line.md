@@ -1,12 +1,12 @@
 # Differentiated cell line
 
-- [1. Property `Differentiated cell line > culture_medium`](#culture_medium)
+- [1. Property `Differentiated cell line > label`](#label)
 - [2. Property `Differentiated cell line > description`](#description)
-- [3. Property `Differentiated cell line > label`](#label)
-- [4. Property `Differentiated cell line > model_system`](#model_system)
-- [5. Property `Differentiated cell line > terminally_differentiated`](#terminally_differentiated)
-- [6. Property `Differentiated cell line > timepoint_unit`](#timepoint_unit)
-- [7. Property `Differentiated cell line > timepoint_value`](#timepoint_value)
+- [3. Property `Differentiated cell line > culture_medium`](#culture_medium)
+- [4. Property `Differentiated cell line > terminally_differentiated`](#terminally_differentiated)
+- [5. Property `Differentiated cell line > model_system`](#model_system)
+- [6. Property `Differentiated cell line > timepoint_value`](#timepoint_value)
+- [7. Property `Differentiated cell line > timepoint_unit`](#timepoint_unit)
 
 **Title:** Differentiated cell line
 
@@ -20,15 +20,59 @@
 
 | Property                                                   | Pattern | Type             | Deprecated | Definition | Title/Description                    |
 | ---------------------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------ |
-| - [culture_medium](#culture_medium )                       | No      | string           | No         | -          | Culture medium                       |
-| - [description](#description )                             | No      | string           | No         | -          | Differentiated cell line description |
 | + [label](#label )                                         | No      | string           | No         | -          | Differentiated cell line label       |
-| - [model_system](#model_system )                           | No      | string           | No         | -          | Model system                         |
+| - [description](#description )                             | No      | string           | No         | -          | Differentiated cell line description |
+| - [culture_medium](#culture_medium )                       | No      | string           | No         | -          | Culture medium                       |
 | + [terminally_differentiated](#terminally_differentiated ) | No      | enum (of string) | No         | -          | Terminally differentiated?           |
-| + [timepoint_unit](#timepoint_unit )                       | No      | string           | No         | -          | Timepoint unit                       |
+| - [model_system](#model_system )                           | No      | string           | No         | -          | Model system                         |
 | + [timepoint_value](#timepoint_value )                     | No      | number           | No         | -          | Timepoint value                      |
+| + [timepoint_unit](#timepoint_unit )                       | No      | string           | No         | -          | Timepoint unit                       |
 
-## <a name="culture_medium"></a>1. Property `Differentiated cell line > culture_medium`
+## <a name="label"></a>1. Property `Differentiated cell line > label`
+
+**Title:** Differentiated cell line label
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+| **Format**   | `regex`  |
+
+**Description:** A unique label for the differentiated cell line.
+
+**Example:** 
+
+```json
+"kolf2_2j_knockout_1_trophoblast"
+```
+
+| Restrictions                      |                                                                                                                                      |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Min length**                    | 1                                                                                                                                    |
+| **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22kolf2_2j_knockout_1_trophoblast%22) |
+
+## <a name="description"></a>2. Property `Differentiated cell line > description`
+
+**Title:** Differentiated cell line description
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** A general description of the differentiated cell line.
+
+**Example:** 
+
+```json
+"KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
+## <a name="culture_medium"></a>3. Property `Differentiated cell line > culture_medium`
 
 **Title:** Culture medium
 
@@ -53,76 +97,7 @@
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="description"></a>2. Property `Differentiated cell line > description`
-
-**Title:** Differentiated cell line description
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** A general description of the differentiated cell line.
-
-**Example:** 
-
-```json
-"KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
-```
-
-| Restrictions   |   |
-| -------------- | - |
-| **Min length** | 1 |
-
-## <a name="label"></a>3. Property `Differentiated cell line > label`
-
-**Title:** Differentiated cell line label
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | Yes      |
-| **Format**   | `regex`  |
-
-**Description:** A unique label for the differentiated cell line.
-
-**Example:** 
-
-```json
-"kolf2_2j_knockout_1_trophoblast"
-```
-
-| Restrictions                      |                                                                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **Min length**                    | 1                                                                                                                                    |
-| **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22kolf2_2j_knockout_1_trophoblast%22) |
-
-## <a name="model_system"></a>4. Property `Differentiated cell line > model_system`
-
-**Title:** Model system
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** To which model system this differentiated cell line has been derived into
-
-**Examples:** 
-
-```json
-"UBERON:0000006"
-```
-
-```json
-"islet of Langerhans"
-```
-
-| Restrictions   |   |
-| -------------- | - |
-| **Min length** | 1 |
-
-## <a name="terminally_differentiated"></a>5. Property `Differentiated cell line > terminally_differentiated`
+## <a name="terminally_differentiated"></a>4. Property `Differentiated cell line > terminally_differentiated`
 
 **Title:** Terminally differentiated?
 
@@ -152,30 +127,32 @@ Must be one of:
 * "no"
 * "unknown"
 
-## <a name="timepoint_unit"></a>6. Property `Differentiated cell line > timepoint_unit`
+## <a name="model_system"></a>5. Property `Differentiated cell line > model_system`
 
-**Title:** Timepoint unit
+**Title:** Model system
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
-| **Required** | Yes      |
+| **Required** | No       |
+
+**Description:** To which model system this differentiated cell line has been derived into
 
 **Examples:** 
 
 ```json
-"UO:0000010"
+"UBERON:0000006"
 ```
 
 ```json
-"second"
+"islet of Langerhans"
 ```
 
 | Restrictions   |   |
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="timepoint_value"></a>7. Property `Differentiated cell line > timepoint_value`
+## <a name="timepoint_value"></a>6. Property `Differentiated cell line > timepoint_value`
 
 **Title:** Timepoint value
 
@@ -200,5 +177,28 @@ Must be one of:
 9.1
 ```
 
+## <a name="timepoint_unit"></a>7. Property `Differentiated cell line > timepoint_unit`
+
+**Title:** Timepoint unit
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+
+**Examples:** 
+
+```json
+"UO:0000010"
+```
+
+```json
+"second"
+```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-09 at 15:30:53 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-13 at 15:01:23 +0000
