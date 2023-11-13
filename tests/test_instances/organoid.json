@@ -1,0 +1,24 @@
+{
+    "accessions": ["SAMEA2397676", "SRS000000"],
+    "described_by": "https://fake-location/type/1.0.0/biomaterial/organoid",
+    "schema_type": "organoid",
+    "schema_version": "1.0.0",
+    "submitted_at": "2018-11-13T20:20:39+00:00",
+    "submitted_by": "fake_submitter",
+    "updated_at": "2018-11-13T20:20:39+00:00",
+    "updated_by": "fake_second_submitter",
+    "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
+    "content": {
+        "age_unit": "UO:0000033",
+        "age_value": 55,
+        "description": "Neuroectoderm organoid, derived from kolf2_2j DKO",
+        "embedded_in_matrigel": false,
+        "growth_environment": "adherent",
+        "label": "kolf2_2j_knockout_1",
+        "model_system": "UBERON:0000006",
+        "morphology": "Epithelial monolayer with budding crypt-like domains",
+        "size_unit": "UO:0000015",
+        "size_value": 4,
+        "stored_oxygen_levels": 75
+    }
+}

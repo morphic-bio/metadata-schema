@@ -1,0 +1,20 @@
+{
+    "accessions": ["SAMEA2397676", "SRS000000"],
+    "described_by": "https://fake-location/type/1.0.0/biomaterial/differentiated_cell_line",
+    "schema_type": "differentiated_cell_line",
+    "schema_version": "1.0.0",
+    "submitted_at": "2018-11-13T20:20:39+00:00",
+    "submitted_by": "fake_submitter",
+    "updated_at": "2018-11-13T20:20:39+00:00",
+    "updated_by": "fake_second_submitter",
+    "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
+    "content": {
+        "culture_medium": "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+        "description": "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts",
+        "label": "kolf2_2j_knockout_1_trophoblast",
+        "model_system": "UBERON:0000006",
+        "terminally_differentiated": "no",
+        "timepoint_unit": "UO:0000010",
+        "timepoint_value": 7.5
+    }
+}
