@@ -13,7 +13,7 @@ def create_empty_instance_from_schema(schema):
     # System properties
     properties = {key: "" for key in schema['allOf'][0]['properties'].keys()}
     # Content properties
-    content = {"content": {prop: "" for prop in schema['properties']['content']['properties'].keys()}}
+    content = {"content": {prop: value.get('examples', [""])[0] for prop, value in schema['properties']['content']['properties'].items()}}
     properties.update(content)
     return properties
 
