@@ -65,24 +65,6 @@
                 ]
             },
             "properties": {
-                "average_fragment_size": {
-                    "type": "integer",
-                    "description": "Average fragment size for the transcripts in the library preparation.",
-                    "title": "Average fragment size",
-                    "examples": [
-                        150,
-                        256
-                    ]
-                },
-                "description": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A general description of the library preparation.",
-                    "title": "Library preparation description",
-                    "examples": [
-                        "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
-                    ]
-                },
                 "label": {
                     "type": "string",
                     "format": "regex",
@@ -94,66 +76,28 @@
                         "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
                     ]
                 },
-                "library_concentration_unit": {
+                "description": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Unit by which the library concentration was measured.",
-                    "title": "Library concentration unit",
-                    "graphRestriction": {
-                        "ontologies": [
-                            "obo:uo"
-                        ],
-                        "classes": [
-                            "UO:0000052"
-                        ],
-                        "includeSelf": false,
-                        "queryFields": [
-                            "obo_id",
-                            "label"
-                        ]
-                    },
+                    "description": "A general description of the library preparation.",
+                    "title": "Library preparation description",
                     "examples": [
-                        "UO:0000275",
-                        "nanogram per mililiter"
+                        "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
                     ]
                 },
-                "library_concentration_value": {
+                "average_fragment_size": {
+                    "type": "integer",
+                    "description": "Average fragment size for the transcripts in the library preparation.",
+                    "title": "Average fragment size",
+                    "examples": [
+                        150,
+                        256
+                    ]
+                },
+                "library_input_amount_value": {
                     "type": "number",
-                    "description": "Value of the library concentration.",
-                    "title": "Library concentration value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
-                    ]
-                },
-                "library_final_yield_unit": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Unit by which the final yield of the library preparation was measured.",
-                    "title": "Library final yield unit",
-                    "graphRestriction": {
-                        "ontologies": [
-                            "obo:uo"
-                        ],
-                        "classes": [
-                            "UO:1000021"
-                        ],
-                        "includeSelf": false,
-                        "queryFields": [
-                            "obo_id",
-                            "label"
-                        ]
-                    },
-                    "examples": [
-                        "UO:0000024",
-                        "microliter"
-                    ]
-                },
-                "library_final_yield_value": {
-                    "type": "number",
-                    "description": "Value of the library final yield.",
-                    "title": "Library final yield value",
+                    "description": "Value of the library input amount.",
+                    "title": "Library input amount value",
                     "examples": [
                         7.5,
                         8,
@@ -183,14 +127,70 @@
                         "UO:0000034"
                     ]
                 },
-                "library_input_amount_value": {
+                "library_concentration_value": {
                     "type": "number",
-                    "description": "Value of the library input amount.",
-                    "title": "Library input amount value",
+                    "description": "Value of the library concentration.",
+                    "title": "Library concentration value",
                     "examples": [
                         7.5,
                         8,
                         9.1
+                    ]
+                },
+                "library_concentration_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Unit by which the library concentration was measured.",
+                    "title": "Library concentration unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000052"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000275",
+                        "nanogram per mililiter"
+                    ]
+                },
+                "library_final_yield_value": {
+                    "type": "number",
+                    "description": "Value of the library final yield.",
+                    "title": "Library final yield value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                },
+                "library_final_yield_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Unit by which the final yield of the library preparation was measured.",
+                    "title": "Library final yield unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:1000021"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000024",
+                        "microliter"
                     ]
                 },
                 "library_pcr_cycles": {
