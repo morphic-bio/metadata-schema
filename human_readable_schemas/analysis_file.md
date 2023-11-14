@@ -1,10 +1,10 @@
 # Analysis file
 
-- [1. Property `Analysis file > checksum`](#checksum)
+- [1. Property `Analysis file > label`](#label)
 - [2. Property `Analysis file > extension`](#extension)
 - [3. Property `Analysis file > genome_assembly_version`](#genome_assembly_version)
 - [4. Property `Analysis file > genome_patch_version`](#genome_patch_version)
-- [5. Property `Analysis file > label`](#label)
+- [5. Property `Analysis file > checksum`](#checksum)
 
 **Title:** Analysis file
 
@@ -18,32 +18,38 @@
 
 | Property                                               | Pattern | Type             | Deprecated | Definition | Title/Description |
 | ------------------------------------------------------ | ------- | ---------------- | ---------- | ---------- | ----------------- |
-| - [checksum](#checksum )                               | No      | string           | No         | -          | Checksum          |
+| + [label](#label )                                     | No      | string           | No         | -          | File name         |
 | + [extension](#extension )                             | No      | string           | No         | -          | File extension    |
 | - [genome_assembly_version](#genome_assembly_version ) | No      | enum (of string) | No         | -          | Genome version    |
 | - [genome_patch_version](#genome_patch_version )       | No      | string           | No         | -          | Patch version     |
-| + [label](#label )                                     | No      | string           | No         | -          | File name         |
+| - [checksum](#checksum )                               | No      | string           | No         | -          | Checksum          |
 
-## <a name="checksum"></a>1. Property `Analysis file > checksum`
+## <a name="label"></a>1. Property `Analysis file > label`
 
-**Title:** Checksum
+**Title:** File name
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
-| **Required** | No       |
+| **Required** | Yes      |
+| **Format**   | `regex`  |
 
-**Description:** MD5 checksum of the file.
+**Description:** The name of the file. Please include the file extension in the file name.
 
-**Example:** 
+**Examples:** 
 
 ```json
-"e09a986c2e630130b1849d4bf9a94c06"
+"R1.fastq.gz"
 ```
 
-| Restrictions   |   |
-| -------------- | - |
-| **Min length** | 1 |
+```json
+"R2.fastq.gz"
+```
+
+| Restrictions                      |                                                                                                                  |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Min length**                    | 1                                                                                                                |
+| **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22R1.fastq.gz%22) |
 
 ## <a name="extension"></a>2. Property `Analysis file > extension`
 
@@ -130,32 +136,26 @@ Must be one of:
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="label"></a>5. Property `Analysis file > label`
+## <a name="checksum"></a>5. Property `Analysis file > checksum`
 
-**Title:** File name
+**Title:** Checksum
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
-| **Required** | Yes      |
-| **Format**   | `regex`  |
+| **Required** | No       |
 
-**Description:** The name of the file. Please include the file extension in the file name.
+**Description:** MD5 checksum of the file.
 
-**Examples:** 
-
-```json
-"R1.fastq.gz"
-```
+**Example:** 
 
 ```json
-"R2.fastq.gz"
+"e09a986c2e630130b1849d4bf9a94c06"
 ```
 
-| Restrictions                      |                                                                                                                  |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Min length**                    | 1                                                                                                                |
-| **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22R1.fastq.gz%22) |
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-14 at 11:32:11 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-14 at 11:34:56 +0000
