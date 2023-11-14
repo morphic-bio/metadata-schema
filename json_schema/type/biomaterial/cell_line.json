@@ -57,52 +57,15 @@
                 "type"
             ],
             "properties": {
-                "culture_environment": {
+                "label": {
                     "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "Cell culture environment in which cells are grown.",
-                    "title": "Culture environment",
+                    "description": "A unique label for the cell line.",
+                    "title": "Cell line ID",
                     "examples": [
-                        "Adherent cell culture",
-                        "Suspension cell culture"
-                    ]
-                },
-                "culture_medium": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
-                    "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
-                    ]
-                },
-                "date_established": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Date when the cell line was established.",
-                    "title": "Date established",
-                    "oneOf": [
-                        {
-                            "format": "date-time"
-                        },
-                        {
-                            "format": "date"
-                        }
-                    ],
-                    "examples": [
-                        "2017-03-19",
-                        "2018-11-13T20:20:39+00:00"
-                    ]
-                },
-                "derived_from_cell_line": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A cell line name that references the original cell line from which this cell line/clone was derived.",
-                    "title": "Derived from cell line",
-                    "examples": [
-                        "H1",
-                        "KOLF2.2J"
+                        "kolf2_2j_knockout_1"
                     ]
                 },
                 "description": {
@@ -114,67 +77,14 @@
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
                     ]
                 },
-                "drug_treatment": {
-                    "type": "array",
-                    "minItems": 1,
-                    "description": "Drugs added to the growth medium.",
-                    "title": "Drug treatment",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "examples": [
-                        "100 ug/mL ampicillin",
-                        "15 ug/mL tetracycline"
-                    ]
-                },
-                "genotyping_accessions": {
-                    "type": "array",
-                    "minItems": 1,
-                    "description": "A GenBank assembly accession identifier for the cell line.",
-                    "title": "Genotyping accession(s)",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string",
-                        "minLength": 1,
-                        "isValidIdentifier": {
-                            "prefix": "insdc.gca"
-                        }
-                    },
-                    "examples": [
-                        "GCA_000001405.29"
-                    ]
-                },
-                "induction_method": {
+                "derived_from_cell_line": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
-                    "title": "Induction method",
-                    "enum": [
-                        "sendai virus",
-                        "Gun particle",
-                        "piggyBac transposon",
-                        "miRNA viral",
-                        "adenovirus",
-                        "cre-loxP",
-                        "plasmid",
-                        "retroviral"
-                    ],
+                    "description": "A cell line name that references the original cell line from which this cell line/clone was derived.",
+                    "title": "Derived from cell line",
                     "examples": [
-                        "Gun particle",
-                        "sendai virus"
-                    ]
-                },
-                "label": {
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1,
-                    "description": "A unique label for the cell line.",
-                    "title": "Cell line ID",
-                    "examples": [
-                        "kolf2_2j_knockout_1"
+                        "H1",
+                        "KOLF2.2J"
                     ]
                 },
                 "supplier": {
@@ -205,6 +115,79 @@
                         "primary"
                     ]
                 },
+                "date_established": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Date when the cell line was established.",
+                    "title": "Date established",
+                    "oneOf": [
+                        {
+                            "format": "date-time"
+                        },
+                        {
+                            "format": "date"
+                        }
+                    ],
+                    "examples": [
+                        "2017-03-19",
+                        "2018-11-13T20:20:39+00:00"
+                    ]
+                },
+                "induction_method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
+                    "title": "Induction method",
+                    "enum": [
+                        "sendai virus",
+                        "Gun particle",
+                        "piggyBac transposon",
+                        "miRNA viral",
+                        "adenovirus",
+                        "cre-loxP",
+                        "plasmid",
+                        "retroviral"
+                    ],
+                    "examples": [
+                        "Gun particle",
+                        "sendai virus"
+                    ]
+                },
+                "culture_environment": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Cell culture environment in which cells are grown.",
+                    "title": "Culture environment",
+                    "examples": [
+                        "Adherent cell culture",
+                        "Suspension cell culture"
+                    ]
+                },
+                "culture_medium": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
+                    "examples": [
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
+                    ]
+                },
+                "drug_treatment": {
+                    "type": "array",
+                    "minItems": 1,
+                    "description": "Drugs added to the growth medium.",
+                    "title": "Drug treatment",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "examples": [
+                        "100 ug/mL ampicillin",
+                        "15 ug/mL tetracycline"
+                    ]
+                },
                 "zygosity": {
                     "type": "string",
                     "minLength": 1,
@@ -217,8 +200,25 @@
                         "unknown"
                     ],
                     "examples": [
-                        "hererozygous",
+                        "heterozygous",
                         "homozygous"
+                    ]
+                },
+                "genotyping_accessions": {
+                    "type": "array",
+                    "minItems": 1,
+                    "description": "A GenBank assembly accession identifier for the cell line.",
+                    "title": "Genotyping accession(s)",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "isValidIdentifier": {
+                            "prefix": "insdc.gca"
+                        }
+                    },
+                    "examples": [
+                        "GCA_000001405.29"
                     ]
                 }
             }

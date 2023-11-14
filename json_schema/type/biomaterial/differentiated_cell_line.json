@@ -48,14 +48,15 @@
                 "timepoint_value"
             ],
             "properties": {
-                "culture_medium": {
+                "label": {
                     "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
+                    "description": "A unique label for the differentiated cell line.",
+                    "title": "Differentiated cell line label",
                     "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
+                        "kolf2_2j_knockout_1_trophoblast"
                     ]
                 },
                 "description": {
@@ -67,15 +68,29 @@
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
                     ]
                 },
-                "label": {
+                "culture_medium": {
                     "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the differentiated cell line.",
-                    "title": "Differentiated cell line label",
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
                     "examples": [
-                        "kolf2_2j_knockout_1_trophoblast"
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
+                    ]
+                },
+                "terminally_differentiated": {
+                    "type": "string",
+                    "description": "Is the cell line terminally differentiated.",
+                    "title": "Terminally differentiated?",
+                    "enum": [
+                        "yes",
+                        "no",
+                        "unknown"
+                    ],
+                    "examples": [
+                        "no",
+                        "unknown",
+                        "yes"
                     ]
                 },
                 "model_system": {
@@ -101,19 +116,14 @@
                         "islet of Langerhans"
                     ]
                 },
-                "terminally_differentiated": {
-                    "type": "string",
-                    "description": "Is the cell line terminally differentiated.",
-                    "title": "Terminally differentiated?",
-                    "enum": [
-                        "yes",
-                        "no",
-                        "unknown"
-                    ],
+                "timepoint_value": {
+                    "type": "number",
+                    "description": "Value of the timepoint.",
+                    "title": "Timepoint value",
                     "examples": [
-                        "no",
-                        "unknown",
-                        "yes"
+                        7.5,
+                        8,
+                        9.1
                     ]
                 },
                 "timepoint_unit": {
@@ -141,16 +151,6 @@
                     "examples": [
                         "UO:0000010",
                         "second"
-                    ]
-                },
-                "timepoint_value": {
-                    "type": "number",
-                    "description": "Value of the timepoint.",
-                    "title": "Timepoint value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
                     ]
                 }
             }

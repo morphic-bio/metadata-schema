@@ -1,0 +1,25 @@
+{
+    "accessions": ["SAMEA2397676", "SRS000000"],
+    "described_by": "https://fake-location/type/1.0.0/biomaterial/cell_line",
+    "schema_type": "cell_line",
+    "schema_version": "1.0.0",
+    "submitted_at": "2018-11-13T20:20:39+00:00",
+    "submitted_by": "fake_submitter",
+    "updated_at": "2018-11-13T20:20:39+00:00",
+    "updated_by": "fake_second_submitter",
+    "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
+    "content": {
+        "culture_environment": "Adherent cell culture",
+        "culture_medium": "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+        "date_established": "2017-03-19",
+        "derived_from_cell_line": "H1",
+        "description": "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO",
+        "drug_treatment": "100 ug/mL ampicillin",
+        "genotyping_accessions": "GCA_000001405.29",
+        "induction_method": "Gun particle",
+        "label": "kolf2_2j_knockout_1",
+        "supplier": "ATCC",
+        "type": "immortalized",
+        "zygosity": "heterozygous"
+    }
+}

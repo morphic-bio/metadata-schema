@@ -1,0 +1,23 @@
+{
+    "accessions": ["SAMEA2397676", "SRS000000"],
+    "described_by": "https://fake-location/type/1.0.0/biomaterial/library_preparation",
+    "schema_type": "library_preparation",
+    "schema_version": "1.0.0",
+    "submitted_at": "2018-11-13T20:20:39+00:00",
+    "submitted_by": "fake_submitter",
+    "updated_at": "2018-11-13T20:20:39+00:00",
+    "updated_by": "fake_second_submitter",
+    "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
+    "content": {
+        "average_fragment_size": 150,
+        "description": "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts",
+        "label": "kolf2_2j_knockout_1_trophoblast_library_preparation1S",
+        "library_concentration_unit": "UO:0000275",
+        "library_concentration_value": 7.5,
+        "library_final_yield_unit": "UO:0000024",
+        "library_final_yield_value": 7.5,
+        "library_input_amount_unit": "UO:0000010",
+        "library_input_amount_value": 7.5,
+        "library_pcr_cycles": 150
+    }
+}

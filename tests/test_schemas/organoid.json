@@ -122,7 +122,7 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "_id",
+                "label",
                 "organ_model_system"
             ],
             "dependentRequired": {
@@ -140,6 +140,49 @@
                 ]
             },
             "properties": {
+                "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
+                    "description": "A unique label for the organoid.",
+                    "title": "Organoid label",
+                    "examples": [
+                        "kolf2_2j_knockout_1"
+                    ]
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A general description of the organoid.",
+                    "title": "Organoid description",
+                    "examples": [
+                        "Neuroectoderm organoid, derived from kolf2_2j DKO"
+                    ]
+                },
+                "model_system": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "To which model system this differentiated cell line has been derived into",
+                    "title": "Model system",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uberon"
+                        ],
+                        "classes": [
+                            "UBERON:0000465"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UBERON:0000006",
+                        "islet of Langerhans"
+                    ]
+                },
                 "age_unit": {
                     "type": "string",
                     "minLength": 1,
@@ -172,15 +215,6 @@
                         67
                     ]
                 },
-                "description": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A general description of the organoid.",
-                    "title": "Organoid description",
-                    "examples": [
-                        "Neuroectoderm organoid, derived from kolf2_2j DKO"
-                    ]
-                },
                 "embedded_in_matrigel": {
                     "type": "boolean",
                     "description": "Whether the organoid is embedded in a matrigel.",
@@ -201,40 +235,6 @@
                         "matrigel"
                     ]
                 },
-                "label": {
-                    "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
-                    "minLength": 1,
-                    "description": "A unique label for the organoid.",
-                    "title": "Organoid label",
-                    "examples": [
-                        "kolf2_2j_knockout_1"
-                    ]
-                },
-                "model_system": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "To which model system this differentiated cell line has been derived into",
-                    "title": "Model system",
-                    "graphRestriction": {
-                        "ontologies": [
-                            "obo:uberon"
-                        ],
-                        "classes": [
-                            "UBERON:0000465"
-                        ],
-                        "includeSelf": false,
-                        "queryFields": [
-                            "obo_id",
-                            "label"
-                        ]
-                    },
-                    "examples": [
-                        "UBERON:0000006",
-                        "islet of Langerhans"
-                    ]
-                },
                 "morphology": {
                     "type": "string",
                     "minLength": 1,
@@ -243,6 +243,15 @@
                     "examples": [
                         "Epithelial monolayer with budding crypt-like domains",
                         "Optic cup structure"
+                    ]
+                },
+                "size_value": {
+                    "type": "number",
+                    "description": "Size of the organoid in Organoid size unit.",
+                    "title": "Organoid size",
+                    "examples": [
+                        4,
+                        5
                     ]
                 },
                 "size_unit": {
@@ -266,15 +275,6 @@
                     "examples": [
                         "UO:0000015",
                         "millimeter"
-                    ]
-                },
-                "size_value": {
-                    "type": "number",
-                    "description": "Size of the organoid in Organoid size unit.",
-                    "title": "Organoid size",
-                    "examples": [
-                        4,
-                        5
                     ]
                 },
                 "stored_oxygen_levels": {

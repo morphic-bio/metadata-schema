@@ -1,0 +1,18 @@
+{
+    "accessions": ["ERR000001", "SRR111110"],
+    "described_by": "https://fake-location/type/1.0.0/file/analysis_file",
+    "schema_type": "analysis_file",
+    "schema_version": "1.0.0",
+    "submitted_at": "2018-11-13T20:20:39+00:00",
+    "submitted_by": "fake_submitter",
+    "updated_at": "2018-11-13T20:20:39+00:00",
+    "updated_by": "fake_second_submitter",
+    "uuid": "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58",
+    "content": {
+        "checksum": "e09a986c2e630130b1849d4bf9a94c06",
+        "extension": "h5",
+        "genome_assembly_version": "GRCh37",
+        "genome_patch_version": "p11",
+        "label": "R1.fastq.gz"
+    }
+}

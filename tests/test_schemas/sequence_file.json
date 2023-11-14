@@ -132,25 +132,6 @@
                 "read_index"
             ],
             "properties": {
-                "checksum": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "MD5 checksum of the file.",
-                    "title": "Checksum",
-                    "examples": [
-                        "e09a986c2e630130b1849d4bf9a94c06"
-                    ]
-                },
-                "extension": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "The extension of the file. Please indicate the full file extension including compression extensions.",
-                    "title": "File extension",
-                    "examples": [
-                        "fastq.gz",
-                        "tif"
-                    ]
-                },
                 "label": {
                     "type": "string",
                     "format": "regex",
@@ -161,6 +142,16 @@
                     "examples": [
                         "R1.fastq.gz",
                         "R2.fastq.gz"
+                    ]
+                },
+                "extension": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The extension of the file. Please indicate the full file extension including compression extensions.",
+                    "title": "File extension",
+                    "examples": [
+                        "fastq.gz",
+                        "tif"
                     ]
                 },
                 "lane_index": {
@@ -198,6 +189,15 @@
                     "examples": [
                         51,
                         150
+                    ]
+                },
+                "checksum": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "MD5 checksum of the file.",
+                    "title": "Checksum",
+                    "examples": [
+                        "e09a986c2e630130b1849d4bf9a94c06"
                     ]
                 }
             }

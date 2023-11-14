@@ -60,13 +60,16 @@
                 "label"
             ],
             "properties": {
-                "checksum": {
+                "label": {
                     "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "MD5 checksum of the file.",
-                    "title": "Checksum",
+                    "description": "The name of the file. Please include the file extension in the file name.",
+                    "title": "File name",
                     "examples": [
-                        "e09a986c2e630130b1849d4bf9a94c06"
+                        "R1.fastq.gz",
+                        "R2.fastq.gz"
                     ]
                 },
                 "extension": {
@@ -106,16 +109,13 @@
                         "p14"
                     ]
                 },
-                "label": {
+                "checksum": {
                     "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "The name of the file. Please include the file extension in the file name.",
-                    "title": "File name",
+                    "description": "MD5 checksum of the file.",
+                    "title": "Checksum",
                     "examples": [
-                        "R1.fastq.gz",
-                        "R2.fastq.gz"
+                        "e09a986c2e630130b1849d4bf9a94c06"
                     ]
                 }
             }
