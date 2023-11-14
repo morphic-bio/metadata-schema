@@ -32,7 +32,6 @@
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | Yes      |
-| **Format**   | `regex`  |
 
 **Description:** The name of the file. Please include the file extension in the file name.
 
@@ -46,10 +45,9 @@
 "R2.fastq.gz"
 ```
 
-| Restrictions                      |                                                                                                                  |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Min length**                    | 1                                                                                                                |
-| **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22R1.fastq.gz%22) |
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ## <a name="extension"></a>2. Property `Analysis file > extension`
 
@@ -158,4 +156,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-14 at 12:14:43 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-14 at 12:17:44 +0000
