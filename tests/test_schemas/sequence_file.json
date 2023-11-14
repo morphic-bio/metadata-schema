@@ -134,8 +134,6 @@
             "properties": {
                 "label": {
                     "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
                     "description": "The name of the file. Please include the file extension in the file name.",
                     "title": "File name",
