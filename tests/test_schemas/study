@@ -1,4 +1,5 @@
 {
+    "$id": "https://dev.schema.morphic.bio/type/project/0.1.0/study",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "description": "A study entity defines the fields needed for representing a study.",
     "unevaluatedProperties": false,

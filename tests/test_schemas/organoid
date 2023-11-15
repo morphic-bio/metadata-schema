@@ -1,10 +1,11 @@
 {
+    "$id": "https://dev.schema.morphic.bio/type/biomaterial/0.1.0/organoid",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
-    "description": "Information about the cell line or cell culture biomaterial.",
+    "description": "Information about the organoid.",
     "unevaluatedProperties": false,
-    "title": "Cell line",
-    "name": "cell_line",
+    "title": "Organoid",
+    "name": "organoid",
     "required": [
         "content"
     ],
@@ -41,15 +42,15 @@
                     "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
                 },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/cell_line$",
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/organoid$",
                     "type": "string",
                     "format": "uri",
                     "minLength": 1,
                     "description": "The URL reference to the schema."
                 },
                 "schema_type": {
-                    "const": "cell_line",
-                    "default": "cell_line",
+                    "const": "organoid",
+                    "default": "organoid",
                     "type": "string",
                     "minLength": 1,
                     "description": "The type of the metadata schema entity.",
@@ -122,19 +123,31 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "derived_from_cell_line",
                 "label",
-                "supplier",
-                "type"
+                "organ_model_system"
             ],
+            "dependentRequired": {
+                "age_value": [
+                    "age_unit"
+                ],
+                "age_unit": [
+                    "age_value"
+                ],
+                "size_value": [
+                    "size_unit"
+                ],
+                "size_unit": [
+                    "size_value"
+                ]
+            },
             "properties": {
                 "label": {
                     "type": "string",
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the cell line.",
-                    "title": "Cell line ID",
+                    "description": "A unique label for the organoid.",
+                    "title": "Organoid label",
                     "examples": [
                         "kolf2_2j_knockout_1"
                     ]
@@ -142,154 +155,136 @@
                 "description": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A general description of the cell line.",
-                    "title": "Cell line description",
+                    "description": "A general description of the organoid.",
+                    "title": "Organoid description",
                     "examples": [
-                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
+                        "Neuroectoderm organoid, derived from kolf2_2j DKO"
                     ]
                 },
-                "derived_from_cell_line": {
+                "model_system": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A cell line name that references the original cell line from which this cell line/clone was derived.",
-                    "title": "Derived from cell line",
-                    "examples": [
-                        "H1",
-                        "KOLF2.2J"
-                    ]
-                },
-                "supplier": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "The supplier of the cell line.",
-                    "title": "Cell line supplier",
-                    "examples": [
-                        "ATCC",
-                        "JAX"
-                    ]
-                },
-                "type": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "The type of cell line.",
-                    "title": "Cell line type",
-                    "enum": [
-                        "primary",
-                        "immortalized",
-                        "stem cell",
-                        "stem cell-derived",
-                        "induced pluripotent",
-                        "synthetic"
-                    ],
-                    "examples": [
-                        "immortalized",
-                        "primary"
-                    ]
-                },
-                "date_established": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Date when the cell line was established.",
-                    "title": "Date established",
-                    "oneOf": [
-                        {
-                            "format": "date-time"
-                        },
-                        {
-                            "format": "date"
-                        }
-                    ],
-                    "examples": [
-                        "2017-03-19",
-                        "2018-11-13T20:20:39+00:00"
-                    ]
-                },
-                "induction_method": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
-                    "title": "Induction method",
-                    "enum": [
-                        "sendai virus",
-                        "Gun particle",
-                        "piggyBac transposon",
-                        "miRNA viral",
-                        "adenovirus",
-                        "cre-loxP",
-                        "plasmid",
-                        "retroviral"
-                    ],
-                    "examples": [
-                        "Gun particle",
-                        "sendai virus"
-                    ]
-                },
-                "culture_environment": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Cell culture environment in which cells are grown.",
-                    "title": "Culture environment",
-                    "examples": [
-                        "Adherent cell culture",
-                        "Suspension cell culture"
-                    ]
-                },
-                "culture_medium": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
-                    "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
-                    ]
-                },
-                "drug_treatment": {
-                    "type": "array",
-                    "minItems": 1,
-                    "description": "Drugs added to the growth medium.",
-                    "title": "Drug treatment",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
+                    "description": "To which model system this differentiated cell line has been derived into",
+                    "title": "Model system",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uberon"
+                        ],
+                        "classes": [
+                            "UBERON:0000465"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
                     },
                     "examples": [
-                        "100 ug/mL ampicillin",
-                        "15 ug/mL tetracycline"
+                        "UBERON:0000006",
+                        "islet of Langerhans"
                     ]
                 },
-                "zygosity": {
+                "age_unit": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Known zygosity of the gene expression alteration in the cell line",
-                    "title": "Zygosity",
-                    "enum": [
-                        "homozygous",
-                        "heterozygous",
-                        "mixed",
-                        "unknown"
-                    ],
-                    "examples": [
-                        "heterozygous",
-                        "homozygous"
-                    ]
-                },
-                "genotyping_accessions": {
-                    "type": "array",
-                    "minItems": 1,
-                    "description": "A GenBank assembly accession identifier for the cell line.",
-                    "title": "Genotyping accession(s)",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string",
-                        "minLength": 1,
-                        "isValidIdentifier": {
-                            "prefix": "insdc.gca"
-                        }
+                    "description": "Unit by which the age of the organoid was measured",
+                    "title": "Age unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000003"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
                     },
                     "examples": [
-                        "GCA_000001405.29"
+                        "UO:0000033",
+                        "week"
+                    ]
+                },
+                "age_value": {
+                    "type": "number",
+                    "description": "Age of the organoid in Organoid age unit measured from when cell aggregates started differentiating to desired organoid model.",
+                    "title": "Organoid age",
+                    "examples": [
+                        55,
+                        67
+                    ]
+                },
+                "embedded_in_matrigel": {
+                    "type": "boolean",
+                    "description": "Whether the organoid is embedded in a matrigel.",
+                    "title": "Embeddded in matrigel",
+                    "examples": [
+                        false,
+                        true
+                    ]
+                },
+                "growth_environment": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Growth environment in which the organoid is grown.",
+                    "title": "Growth environment",
+                    "examples": [
+                        "adherent",
+                        "liquid suspension",
+                        "matrigel"
+                    ]
+                },
+                "morphology": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "General description of the organoid morphology.",
+                    "title": "Organoid morphology",
+                    "examples": [
+                        "Epithelial monolayer with budding crypt-like domains",
+                        "Optic cup structure"
+                    ]
+                },
+                "size_value": {
+                    "type": "number",
+                    "description": "Size of the organoid in Organoid size unit.",
+                    "title": "Organoid size",
+                    "examples": [
+                        4,
+                        5
+                    ]
+                },
+                "size_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Unit by which the size of the organoid was measured.",
+                    "title": "Size unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000001"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000015",
+                        "millimeter"
+                    ]
+                },
+                "stored_oxygen_levels": {
+                    "type": "number",
+                    "description": "Percent oxygen level organoid was stored in prior to sequencing.",
+                    "title": "Stored oxygen level",
+                    "examples": [
+                        75,
+                        80
                     ]
                 }
             }

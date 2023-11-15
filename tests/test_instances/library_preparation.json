@@ -16,7 +16,7 @@
         "library_concentration_value": 7.5,
         "library_final_yield_unit": "UO:0000024",
         "library_final_yield_value": 7.5,
-        "library_input_amount_unit": "UO:0000010",
+        "library_input_amount_unit": "UO:0000095",
         "library_input_amount_value": 7.5,
         "library_pcr_cycles": 150
     }
