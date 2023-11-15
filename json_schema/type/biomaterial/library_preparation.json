@@ -5,6 +5,9 @@
     "unevaluatedProperties": false,
     "title": "Library preparation",
     "name": "library_preparation",
+    "required": [
+        "content"
+    ],
     "allOf": [
         {
             "type": "object",
