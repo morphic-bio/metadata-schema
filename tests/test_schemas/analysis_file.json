@@ -1,11 +1,10 @@
 {
-    "$id": "https://dev.schema.morphic.bio/type/biomaterial/0.1.0/differentiated_cell_line",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
-    "description": "Information about the differentiated cell line.",
+    "description": "A file analysis results produced by an analysis pipeline.",
     "unevaluatedProperties": false,
-    "title": "Differentiated cell line",
-    "name": "differentiated_cell_line",
+    "title": "Analysis file",
+    "name": "analysis_file",
     "required": [
         "content"
     ],
@@ -15,36 +14,47 @@
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
+                    "description": "An accession regarding an analysis file.",
+                    "title": "Analysis file accession",
                     "items": {
                         "anyOf": [
                             {
                                 "isValidIdentifier": {
-                                    "prefix": "biosample"
+                                    "prefix": "insdc.sra"
                                 }
                             },
                             {
                                 "isValidIdentifier": {
-                                    "prefix": "insdc.sra"
+                                    "prefix": "ena.embl"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "geo"
                                 }
                             }
                         ],
                         "type": "string",
                         "minLength": 1
                     },
+                    "examples": [
+                        "ERR000001",
+                        "SRR111110"
+                    ],
                     "type": "array",
                     "minItems": 1,
                     "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
                 },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$",
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/file/analysis_file$",
                     "type": "string",
                     "format": "uri",
                     "minLength": 1,
                     "description": "The URL reference to the schema."
                 },
                 "schema_type": {
-                    "const": "differentiated_cell_line",
-                    "default": "differentiated_cell_line",
+                    "const": "analysis_file",
+                    "default": "analysis_file",
                     "type": "string",
                     "minLength": 1,
                     "description": "The type of the metadata schema entity.",
@@ -117,111 +127,64 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "label",
-                "terminally_differentiated",
-                "timepoint_unit",
-                "timepoint_value"
+                "extension",
+                "label"
             ],
             "properties": {
                 "label": {
                     "type": "string",
-                    "format": "regex",
-                    "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the differentiated cell line.",
-                    "title": "Differentiated cell line label",
+                    "description": "The name of the file. Please include the file extension in the file name.",
+                    "title": "File name",
                     "examples": [
-                        "kolf2_2j_knockout_1_trophoblast"
+                        "R1.fastq.gz",
+                        "R2.fastq.gz"
                     ]
                 },
-                "description": {
+                "extension": {
                     "type": "string",
+                    "pattern": "^[^.].*",
                     "minLength": 1,
-                    "description": "A general description of the differentiated cell line.",
-                    "title": "Differentiated cell line description",
+                    "description": "The extension of the file. Please indicate the full file extension including compression extensions.",
+                    "title": "File extension",
                     "examples": [
-                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+                        "h5",
+                        "mtx"
                     ]
                 },
-                "culture_medium": {
+                "genome_assembly_version": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
-                    "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
-                    ]
-                },
-                "terminally_differentiated": {
-                    "type": "string",
-                    "description": "Is the cell line terminally differentiated.",
-                    "title": "Terminally differentiated?",
+                    "description": "Name of the genome assembly used to generate this file. Please use the name as defined in the Genome Reference Consortium (https://www.ncbi.nlm.nih.gov/grc).",
+                    "title": "Genome version",
                     "enum": [
-                        "yes",
-                        "no",
-                        "unknown"
+                        "GRCh38",
+                        "GRCh37",
+                        "Not applicable"
                     ],
                     "examples": [
-                        "no",
-                        "unknown",
-                        "yes"
+                        "GRCh37",
+                        "GRCh38",
+                        "Not applicable"
                     ]
                 },
-                "model_system": {
+                "genome_patch_version": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "To which model system this differentiated cell line has been derived into",
-                    "title": "Model system",
-                    "graphRestriction": {
-                        "ontologies": [
-                            "obo:uberon"
-                        ],
-                        "classes": [
-                            "UBERON:0000465"
-                        ],
-                        "includeSelf": false,
-                        "queryFields": [
-                            "obo_id",
-                            "label"
-                        ]
-                    },
+                    "description": "Patch version of the genome assembly used to generate this file.",
+                    "title": "Patch version",
                     "examples": [
-                        "UBERON:0000006",
-                        "islet of Langerhans"
+                        "p11",
+                        "p14"
                     ]
                 },
-                "timepoint_value": {
-                    "type": "number",
-                    "description": "Value of the timepoint.",
-                    "title": "Timepoint value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
-                    ]
-                },
-                "timepoint_unit": {
+                "checksum": {
                     "type": "string",
                     "minLength": 1,
-                    "title": "Timepoint unit",
-                    "graphRestriction": {
-                        "ontologies": [
-                            "obo:uo"
-                        ],
-                        "classes": [
-                            "UO:0000003",
-                            "UO:0000149"
-                        ],
-                        "includeSelf": false,
-                        "queryFields": [
-                            "obo_id",
-                            "label"
-                        ]
-                    },
+                    "description": "MD5 checksum of the file.",
+                    "title": "Checksum",
                     "examples": [
-                        "UO:0000010",
-                        "second"
+                        "e09a986c2e630130b1849d4bf9a94c06"
                     ]
                 }
             }

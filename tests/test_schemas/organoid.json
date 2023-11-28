@@ -1,11 +1,10 @@
 {
-    "$id": "https://dev.schema.morphic.bio/type/biomaterial/0.1.0/library_preparation",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
-    "description": "Information about the library preparation.",
+    "description": "Information about the organoid.",
     "unevaluatedProperties": false,
-    "title": "Library preparation",
-    "name": "library_preparation",
+    "title": "Organoid",
+    "name": "organoid",
     "required": [
         "content"
     ],
@@ -15,6 +14,8 @@
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
+                    "description": "An International Nucleotide Sequence Database Collaboration (INSDC) or BioSamples (BSD) sample accession.",
+                    "title": "Sample accession",
                     "items": {
                         "anyOf": [
                             {
@@ -31,20 +32,24 @@
                         "type": "string",
                         "minLength": 1
                     },
+                    "examples": [
+                        "SAMEA2397676",
+                        "SRS000000"
+                    ],
                     "type": "array",
                     "minItems": 1,
                     "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
                 },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/library_preparation$",
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/organoid$",
                     "type": "string",
                     "format": "uri",
                     "minLength": 1,
                     "description": "The URL reference to the schema."
                 },
                 "schema_type": {
-                    "const": "library_preparation",
-                    "default": "library_preparation",
+                    "const": "organoid",
+                    "default": "organoid",
                     "type": "string",
                     "minLength": 1,
                     "description": "The type of the metadata schema entity.",
@@ -117,26 +122,21 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "label"
+                "label",
+                "model_system"
             ],
             "dependentRequired": {
-                "library_concentration_unit": [
-                    "library_concentration_value"
+                "age_value": [
+                    "age_unit"
                 ],
-                "library_concentration_value": [
-                    "library_concentration_unit"
+                "age_unit": [
+                    "age_value"
                 ],
-                "library_final_yield_unit": [
-                    "library_final_yield_value"
+                "size_value": [
+                    "size_unit"
                 ],
-                "library_final_yield_value": [
-                    "library_final_yield_unit"
-                ],
-                "library_input_amount_unit": [
-                    "library_input_amount_value"
-                ],
-                "library_input_amount_value": [
-                    "library_input_amount_unit"
+                "size_unit": [
+                    "size_value"
                 ]
             },
             "properties": {
@@ -145,51 +145,32 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the library preparation.",
-                    "title": "Library preparation label",
+                    "description": "A unique label for the organoid.",
+                    "title": "Organoid label",
                     "examples": [
-                        "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
+                        "kolf2_2j_knockout_1"
                     ]
                 },
                 "description": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A general description of the library preparation.",
-                    "title": "Library preparation description",
+                    "description": "A general description of the organoid.",
+                    "title": "Organoid description",
                     "examples": [
-                        "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
+                        "Neuroectoderm organoid, derived from kolf2_2j DKO"
                     ]
                 },
-                "average_fragment_size": {
-                    "type": "integer",
-                    "description": "Average fragment size for the transcripts in the library preparation.",
-                    "title": "Average fragment size",
-                    "examples": [
-                        150,
-                        256
-                    ]
-                },
-                "library_input_amount_value": {
-                    "type": "number",
-                    "description": "Value of the library input amount.",
-                    "title": "Library input amount value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
-                    ]
-                },
-                "library_input_amount_unit": {
+                "model_system": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Unit by which the value of the library input was measured.",
-                    "title": "Library input amount unit",
+                    "description": "To which model system this differentiated cell line has been derived into",
+                    "title": "Model system",
                     "graphRestriction": {
                         "ontologies": [
-                            "obo:uo"
+                            "obo:uberon"
                         ],
                         "classes": [
-                            "UO:0000095"
+                            "UBERON:0000465"
                         ],
                         "includeSelf": false,
                         "queryFields": [
@@ -198,31 +179,21 @@
                         ]
                     },
                     "examples": [
-                        "UO:0000010",
-                        "UO:0000034"
+                        "UBERON:0000006",
+                        "islet of Langerhans"
                     ]
                 },
-                "library_concentration_value": {
-                    "type": "number",
-                    "description": "Value of the library concentration.",
-                    "title": "Library concentration value",
-                    "examples": [
-                        7.5,
-                        8,
-                        9.1
-                    ]
-                },
-                "library_concentration_unit": {
+                "age_unit": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Unit by which the library concentration was measured.",
-                    "title": "Library concentration unit",
+                    "description": "Unit by which the age of the organoid was measured",
+                    "title": "Age unit",
                     "graphRestriction": {
                         "ontologies": [
                             "obo:uo"
                         ],
                         "classes": [
-                            "UO:0000052"
+                            "UO:0000003"
                         ],
                         "includeSelf": false,
                         "queryFields": [
@@ -231,31 +202,69 @@
                         ]
                     },
                     "examples": [
-                        "UO:0000275",
-                        "nanogram per mililiter"
+                        "UO:0000033",
+                        "week"
                     ]
                 },
-                "library_final_yield_value": {
+                "age_value": {
                     "type": "number",
-                    "description": "Value of the library final yield.",
-                    "title": "Library final yield value",
+                    "description": "Age of the organoid in Organoid age unit measured from when cell aggregates started differentiating to desired organoid model.",
+                    "title": "Organoid age",
                     "examples": [
-                        7.5,
-                        8,
-                        9.1
+                        55,
+                        67
                     ]
                 },
-                "library_final_yield_unit": {
+                "embedded_in_matrigel": {
+                    "type": "boolean",
+                    "description": "Whether the organoid is embedded in a matrigel.",
+                    "title": "Embeddded in matrigel",
+                    "examples": [
+                        false,
+                        true
+                    ]
+                },
+                "growth_environment": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Unit by which the final yield of the library preparation was measured.",
-                    "title": "Library final yield unit",
+                    "description": "Growth environment in which the organoid is grown.",
+                    "title": "Growth environment",
+                    "examples": [
+                        "adherent",
+                        "liquid suspension",
+                        "matrigel"
+                    ]
+                },
+                "morphology": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "General description of the organoid morphology.",
+                    "title": "Organoid morphology",
+                    "examples": [
+                        "Epithelial monolayer with budding crypt-like domains",
+                        "Optic cup structure"
+                    ]
+                },
+                "size_value": {
+                    "type": "number",
+                    "description": "Size of the organoid in Organoid size unit.",
+                    "title": "Organoid size",
+                    "examples": [
+                        4,
+                        5
+                    ]
+                },
+                "size_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Unit by which the size of the organoid was measured.",
+                    "title": "Size unit",
                     "graphRestriction": {
                         "ontologies": [
                             "obo:uo"
                         ],
                         "classes": [
-                            "UO:1000021"
+                            "UO:0000001"
                         ],
                         "includeSelf": false,
                         "queryFields": [
@@ -264,17 +273,17 @@
                         ]
                     },
                     "examples": [
-                        "UO:0000024",
-                        "microliter"
+                        "UO:0000015",
+                        "millimeter"
                     ]
                 },
-                "library_pcr_cycles": {
-                    "type": "integer",
-                    "description": "Number of PCR cycles performed for this library.",
-                    "title": "Library PCR cycles",
+                "stored_oxygen_levels": {
+                    "type": "number",
+                    "description": "Percent oxygen level organoid was stored in prior to sequencing.",
+                    "title": "Stored oxygen level",
                     "examples": [
-                        150,
-                        256
+                        75,
+                        80
                     ]
                 }
             }

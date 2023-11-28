@@ -1,5 +1,4 @@
 {
-    "$id": "https://dev.schema.morphic.bio/type/biomaterial/0.1.0/cell_line",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
     "description": "Information about the cell line or cell culture biomaterial.",
