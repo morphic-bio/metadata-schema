@@ -5,6 +5,9 @@
     "unevaluatedProperties": false,
     "title": "Library preparation",
     "name": "library_preparation",
+    "required": [
+        "content"
+    ],
     "allOf": [
         {
             "type": "object",
@@ -194,7 +197,7 @@
                         ]
                     },
                     "examples": [
-                        "UO:0000010",
+                        "UO:0000101",
                         "UO:0000034"
                     ]
                 },

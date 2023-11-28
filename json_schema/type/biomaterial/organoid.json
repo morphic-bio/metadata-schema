@@ -52,7 +52,7 @@
             "title": "Content",
             "required": [
                 "label",
-                "organ_model_system"
+                "model_system"
             ],
             "dependentRequired": {
                 "age_value": [

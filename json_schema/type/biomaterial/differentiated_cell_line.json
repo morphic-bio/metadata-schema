@@ -5,6 +5,9 @@
     "unevaluatedProperties": false,
     "title": "Differentiated cell line",
     "name": "differentiated_cell_line",
+    "required": [
+        "content"
+    ],
     "allOf": [
         {
             "type": "object",
@@ -138,10 +141,6 @@
                             "UO:0000003",
                             "UO:0000149"
                         ],
-                        "relations": [
-                            "rdfs:subClassOf"
-                        ],
-                        "direct": false,
                         "includeSelf": false,
                         "queryFields": [
                             "obo_id",

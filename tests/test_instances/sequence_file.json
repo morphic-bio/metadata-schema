@@ -1,6 +1,6 @@
 {
     "accessions": ["ERR000001", "SRR111110"],
-    "described_by": "https://fake-location/type/1.0.0/file/sequence_gile",
+    "described_by": "https://fake-location/type/1.0.0/file/sequence_file",
     "schema_type": "sequence_file",
     "schema_version": "1.0.0",
     "submitted_at": "2018-11-13T20:20:39+00:00",
