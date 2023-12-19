@@ -11,7 +11,7 @@
     "allOf": [
         {
             "type": "object",
-            "$ref": "/system/document",
+            "$ref": "system/document.json",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
                 "accessions": {
