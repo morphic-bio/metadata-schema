@@ -34,8 +34,8 @@
                     "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/library_preparation$"
                 },
                 "schema_type": {
-                    "const": "preparation",
-                    "default": "preparation"
+                    "const": "library_preparation",
+                    "default": "library_preparation"
                 }
             }
         }
