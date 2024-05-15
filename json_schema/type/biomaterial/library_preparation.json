@@ -4,7 +4,7 @@
     "description": "Information about the library preparation.",
     "unevaluatedProperties": false,
     "title": "Library preparation",
-    "name": "preparation",
+    "name": "library_preparation",
     "required": [
         "content"
     ],
