@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Information about the library preparation.",
+  "description": "Information about the gene expression alteration protocol.",
   "unevaluatedProperties": false,
-  "title": "Library preparation",
-  "name": "preparation",
+  "title": "Expression alteration protocol",
+  "name": "gene_expression_alteration_protocol",
   "required": [
     "content"
   ],
