@@ -1,0 +1,167 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "Information about the undifferentiated product.",
+    "unevaluatedProperties": false,
+    "title": "Undifferentiated product",
+    "name": "undifferentiated_product",
+    "required": [
+        "content"
+    ],
+    "allOf": [
+        {
+            "type": "object",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/undifferentiated_product$",
+                    "type": "string",
+                    "format": "uri",
+                    "minLength": 1,
+                    "description": "The URL reference to the schema."
+                },
+                "schema_type": {
+                    "const": "undifferentiated_product",
+                    "default": "undifferentiated_product",
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The type of the metadata schema entity.",
+                    "$comment": "Please add enum to this property definition when you load this module as a reference."
+                },
+                "accessions": {
+                    "type": "array",
+                    "minItems": 1,
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module.",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                "schema_version": {
+                    "type": "string",
+                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "minLength": 1,
+                    "description": "The version number of the schema in major.minor.patch format.",
+                    "examples": [
+                        "1.0.1",
+                        "4.6.1"
+                    ]
+                },
+                "submitted_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "minLength": 1,
+                    "description": "Date the document was submitted, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "submitted_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "User that submitted this document."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the document was updated, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "updated_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "User that updated this document."
+                },
+                "uuid": {
+                    "type": "string",
+                    "format": "uuid",
+                    "minLength": 1,
+                    "description": "Universal Unique Identifier (UUID) for this document in the database.",
+                    "examples": [
+                        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+                        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+                    ]
+                }
+            },
+            "description": "A definition of the system-filled properties loaded by stand-alone documents.",
+            "title": "system",
+            "required": [
+                "described_by",
+                "schema_type",
+                "schema_version",
+                "submitted_at",
+                "submitted_by",
+                "uuid"
+            ]
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "title": "Content",
+            "required": [
+                "label"
+            ],
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
+                    "description": "A unique ID for the undifferentiated product.",
+                    "title": "Undifferentiated product ID",
+                    "examples": [
+                        "Ocm108_Parent_Auxin_100um_24h_rep2",
+                        "kf201_GP_untreated"
+                    ]
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A general description of the differentiated cell line.",
+                    "title": "Differentiated cell line description",
+                    "examples": [
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+                    ]
+                },
+                "timepoint_value": {
+                    "type": "number",
+                    "description": "Value of the timepoint.",
+                    "title": "Timepoint value",
+                    "examples": [
+                        7.5,
+                        8,
+                        9.1
+                    ]
+                },
+                "timepoint_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Timepoint unit",
+                    "graphRestriction": {
+                        "ontologies": [
+                            "obo:uo"
+                        ],
+                        "classes": [
+                            "UO:0000003",
+                            "UO:0000149"
+                        ],
+                        "includeSelf": false,
+                        "queryFields": [
+                            "obo_id",
+                            "label"
+                        ]
+                    },
+                    "examples": [
+                        "UO:0000010",
+                        "second"
+                    ]
+                }
+            }
+        }
+    }
+}

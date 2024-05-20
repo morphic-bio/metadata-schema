@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Information about the undifferentiated product.",
+  "unevaluatedProperties": false,
+  "title": "Undifferentiated product",
+  "name": "undifferentiated_product",
+  "required": [
+    "content"
+  ],
+  "allOf": [
+    {
+      "type": "object",
+      "$ref": "/system/document",
+      "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+      "properties": {
+        "described_by": {
+          "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/undifferentiated_product$"
+        },
+        "schema_type": {
+          "const": "undifferentiated_product",
+          "default": "undifferentiated_product"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "content": {
+      "type": "object",
+      "title": "Content",
+      "required": [
+        "label"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_]*$",
+          "minLength": 1,
+          "description": "A unique ID for the undifferentiated product.",
+          "title": "Undifferentiated product ID",
+          "examples": [
+            "Ocm108_Parent_Auxin_100um_24h_rep2",
+            "kf201_GP_untreated"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A general description of the differentiated cell line.",
+          "title": "Differentiated cell line description",
+          "examples": [
+            "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+          ]
+        },
+        "timepoint_value": {
+          "type": "number",
+          "description": "Value of the timepoint.",
+          "title": "Timepoint value",
+          "examples": [
+            7.5,
+            8,
+            9.1
+          ]
+        },
+        "timepoint_unit": {
+          "type": "string",
+          "minLength": 1,
+          "title": "Timepoint unit",
+          "graphRestriction": {
+            "ontologies": [
+              "obo:uo"
+            ],
+            "classes": [
+              "UO:0000003",
+              "UO:0000149"
+            ],
+            "includeSelf": false,
+            "queryFields": [
+              "obo_id",
+              "label"
+            ]
+          },
+          "examples": [
+            "UO:0000010",
+            "second"
+          ]
+        }
+      }
+    }
+  }
+}
