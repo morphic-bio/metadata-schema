@@ -1,22 +1,26 @@
 {
-  "last_update_date": "2023-10-18T12:17:16Z",
+  "last_update_date": "2024-05-20T11:15:38Z",
   "version_numbers": {
     "system": {
-      "system": "0.0.1"
+      "document": "1.0.0"
     },
     "type": {
       "project": {
-        "study": "0.0.1"
+        "study": "1.0.0"
       },
       "biomaterial": {
-        "cell_line": "0.0.1",
-        "differentiated_cell_line": "0.0.1",
-        "library_preparation": "0.0.1",
-        "organoid": "0.0.1"
+        "cell_line": "1.0.0",
+        "differentiated_cell_line": "1.0.0",
+        "library_preparation": "1.0.0",
+        "organoid": "1.0.0",
+        "undifferentiated_product": "1.0.0"
       },
       "file": {
-        "analysis_file": "0.0.1",
-        "sequence_file": "0.0.1"
+        "analysis_file": "1.0.0",
+        "sequence_file": "1.0.0"
+      },
+      "protocol": {
+        "gene_expression_alteration_protocol": "1.0.0"
       }
     }
   }
