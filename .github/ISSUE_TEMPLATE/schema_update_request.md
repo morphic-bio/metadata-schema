@@ -1,7 +1,9 @@
 ---
 name: Schema update request
 about: Create a request for an update to the metadata schema.
-labels: schema_update
+labels: 
+  - schema_update
+  - FAIRification
 ---
 
 **For which schema is a change/update being suggested?**
