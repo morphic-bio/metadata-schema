@@ -6,7 +6,10 @@ This is a tentative first approach at metadata standardisation and validation fo
 
 As such, it will be constantly evolving and adapting to the community needs.
 
-Feel free to [open an issue!](https://github.com/morphic-bio/metadata-schema/issues/new)
+**To suggest updates**, please use the best option for yourself:
+- Single/Small request: [open an issue](https://github.com/morphic-bio/metadata-schema/issues/new) using the template for schema updates provided by the repository
+- Bulk request/Whole schema: Please download [this spreadsheet](https://docs.google.com/spreadsheets/d/1GhoIGanB5VgO3RotiJWev-q5E097IefpMaP7e2Ktyck/edit#gid=0) locally, fill it out,
+and send it to the [MorPhiC Helpdesk via e-mail](mailto:helpdesk@morphic.bio)
 
 # Metadata model
 

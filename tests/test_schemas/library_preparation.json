@@ -119,23 +119,23 @@
                 "label"
             ],
             "dependentRequired": {
-                "library_concentration_unit": [
-                    "library_concentration_value"
+                "concentration_unit": [
+                    "concentration_value"
                 ],
-                "library_concentration_value": [
-                    "library_concentration_unit"
+                "concentration_value": [
+                    "concentration_unit"
                 ],
-                "library_final_yield_unit": [
-                    "library_final_yield_value"
+                "total_yield_unit": [
+                    "total_yield_value"
                 ],
-                "library_final_yield_value": [
-                    "library_final_yield_unit"
+                "total_yield_value": [
+                    "total_yield_unit"
                 ],
-                "library_input_amount_unit": [
-                    "library_input_amount_value"
+                "input_amount_unit": [
+                    "input_amount_value"
                 ],
-                "library_input_amount_value": [
-                    "library_input_amount_unit"
+                "input_amount_value": [
+                    "input_amount_unit"
                 ]
             },
             "properties": {
@@ -161,24 +161,26 @@
                 },
                 "average_fragment_size": {
                     "type": "integer",
-                    "description": "Average fragment size for the transcripts in the library preparation.",
+                    "description": "Average fragment size for the transcripts in the library preparation, in base pairs.",
                     "title": "Average fragment size",
                     "examples": [
                         150,
-                        256
+                        256,
+                        450
                     ]
                 },
-                "library_input_amount_value": {
+                "input_amount_value": {
                     "type": "number",
-                    "description": "Value of the library input amount.",
+                    "description": "Volume or mass of nucleic acid material used as input to library generation.",
                     "title": "Library input amount value",
                     "examples": [
                         7.5,
                         8,
-                        9.1
+                        9.1,
+                        300
                     ]
                 },
-                "library_input_amount_unit": {
+                "input_amount_unit": {
                     "type": "string",
                     "minLength": 1,
                     "description": "Unit by which the value of the library input was measured.",
@@ -198,12 +200,12 @@
                     },
                     "examples": [
                         "UO:0000101",
-                        "UO:0000034"
+                        "microliter"
                     ]
                 },
-                "library_concentration_value": {
+                "concentration_value": {
                     "type": "number",
-                    "description": "Value of the library concentration.",
+                    "description": "Final concentration of the library.",
                     "title": "Library concentration value",
                     "examples": [
                         7.5,
@@ -211,7 +213,7 @@
                         9.1
                     ]
                 },
-                "library_concentration_unit": {
+                "concentration_unit": {
                     "type": "string",
                     "minLength": 1,
                     "description": "Unit by which the library concentration was measured.",
@@ -234,9 +236,9 @@
                         "nanogram per mililiter"
                     ]
                 },
-                "library_final_yield_value": {
+                "total_yield_value": {
                     "type": "number",
-                    "description": "Value of the library final yield.",
+                    "description": "Total yield of prepared library.",
                     "title": "Library final yield value",
                     "examples": [
                         7.5,
@@ -244,7 +246,7 @@
                         9.1
                     ]
                 },
-                "library_final_yield_unit": {
+                "total_yield_unit": {
                     "type": "string",
                     "minLength": 1,
                     "description": "Unit by which the final yield of the library preparation was measured.",
@@ -267,13 +269,22 @@
                         "microliter"
                     ]
                 },
-                "library_pcr_cycles": {
+                "pcr_cycles": {
                     "type": "integer",
-                    "description": "Number of PCR cycles performed for this library.",
+                    "description": "The number of PCR cycles to amplify initial template material used as input for library preparation.",
                     "title": "Library PCR cycles",
                     "examples": [
-                        150,
-                        256
+                        10,
+                        30
+                    ]
+                },
+                "pcr_cycles_for_sample_index": {
+                    "type": "integer",
+                    "description": "The number of PCR cycles to incorporate a single or dual sample index and sequencing adapters.",
+                    "title": "Library PCR cycles for sample index",
+                    "examples": [
+                        8,
+                        10
                     ]
                 }
             }
