@@ -22,6 +22,11 @@
       "protocol": {
         "gene_expression_alteration_protocol": "1.0.0"
       }
+    },
+    "registry": {
+      "biomaterial": {
+        "clonal_cell_line": "1.0.0"
+      }
     }
   }
 }
