@@ -1,0 +1,463 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Registration information about the a clonal cell line.",
+  "unevaluatedProperties": false,
+  "title": "Clonal cell line",
+  "name": "clonal_cell_line",
+  "required": [
+    "content"
+  ],
+  "allOf": [
+    {
+      "type": "object",
+      "$ref": "/system/document",
+      "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+      "properties": {
+        "accessions": {
+          "description": "An International Nucleotide Sequence Database Collaboration (INSDC) or BioSamples (BSD) sample accession.",
+          "title": "Sample accession",
+          "items": {
+            "anyOf": [
+              {
+                "isValidIdentifier": {
+                  "prefix": "biosample"
+                }
+              },
+              {
+                "isValidIdentifier": {
+                  "prefix": "insdc.sra"
+                }
+              }
+            ]
+          },
+          "examples": [
+            "SAMEA2397676",
+            "SRS000000"
+          ]
+        },
+        "described_by": {
+          "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/cell_line$"
+        },
+        "schema_type": {
+          "const": "cell_line",
+          "default": "cell_line"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "content": {
+      "type": "object",
+      "title": "Content",
+      "required": [
+        "label",
+        "generator_and_vendor",
+        "date_of_production",
+        "internal_project_id",
+        "parental_ipsc_line",
+        "target_gene",
+        "hgnc_id",
+        "variation_type",
+        "coordinates",
+        "allele_type",
+        "alteration_size",
+        "culture_medium",
+        "nuclease",
+        "guide_rna",
+        "ssodn",
+        "viability",
+        "mycoplasma",
+        "order_enquiry"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_\\-\\#]+$",
+          "minLength": 1,
+          "description": "A unique label for the clonal cell line. Must be the same as the MorPhiC identifier. Must contain the name of the project as a prefix.",
+          "title": "Clone ID",
+          "examples": [
+            "MOK20022W-C01",
+            "UM1_H1_1_EOMES_KO_#1"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A general description of the clonal cell line.",
+          "title": "Cell line description",
+          "examples": [
+            "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
+          ]
+        },
+        "internal_project_id": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "minLength": 1,
+          "description": "Original project ID for which the clone was generated.",
+          "title": "Internal project ID",
+          "examples": [
+            "MOK20022W",
+            "UM1_H1_1_EOMES_KO"
+          ]
+        },
+        "generator_and_vendor": {
+          "type": "string",
+          "enum": [
+            "JAX",
+            "MSK",
+            "UCSF",
+            "NW"
+          ],
+          "description": "Generator institute of the clonal cell line.",
+          "title": "Generator and vendor",
+          "examples": [
+            "JAX",
+            "MSK"
+          ]
+        },
+        "pipeline_for_generation": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minlength": 1
+          },
+          "minItems": 1,
+          "description": "Established pipeline for generation (if any)",
+          "title": "Pipeline for generation",
+          "examples": [
+            "JAX (link/protocols.io)",
+            "Knock in protocol: https://www.sciencedirect.com/science/article/pii/S2666166720300393; Pipeline will be drafted later."
+          ]
+        },
+        "date_of_production": {
+          "type": "string",
+          "format": "date",
+          "minLength": 1,
+          "description": "Date of production. Must adhere to ISO 8601 Date and time format standards.",
+          "title": "Date of production",
+          "examples": [
+            "14-07-2023",
+            "27-09-2023"
+          ]
+        },
+        "parental_ipsc_line": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The parental iPSC line used to generate the clone.",
+          "title": "Parental iPSC line",
+          "examples": [
+            "KOLF2.2J"
+          ]
+        },
+        "parental_ipsc_line_link": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "description": "Link pointing to parental iPSC line characteristics.",
+          "title": "Parental iPSC line repository link",
+          "examples": [
+            "http://jax.org/ipsc"
+          ]
+        },
+        "target_gene": {
+          "type": "string",
+          "minLength": 1,
+          "graphRestriction": {
+            "ontologies": [
+              "obo:ogg"
+            ],
+            "classes": [
+              "OGG:2000009606"
+            ],
+            "includeSelf": false,
+            "queryFields": [
+              "obo_id",
+              "label"
+            ]
+          },
+          "description": "Gene perturbed in the iPSC clone",
+          "title": "Target gene",
+          "examples": [
+            "GCM1",
+            "EOMES"
+          ]
+        },
+        "hgnc_id": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^HGNC:\\d+$",
+          "minLength": 1,
+          "description": "HGNC Identifier of the perturbed gene.",
+          "title": "HGNC ID",
+          "examples": [
+            "HGNC:4197",
+            "HGNC:3372"
+          ]
+        },
+        "variation_type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Perturbation location in the gene (e.g. KO, PTC, CE).",
+          "title": "Variation type",
+          "examples": [
+            "KO",
+            "Double allele Knock-in"
+          ]
+        },
+        "coordinates": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^chr\\d{,2}:\\d+-\\d+$",
+          "minLength": 1,
+          "description": "Genomic coordinates for the variation type (Genome Reference Consortium Human Build 38)",
+          "title": "Coordinates (GRCh38)",
+          "examples": [
+            "chr6:53127676-53145648",
+            "chr3:27719425-27719444"
+          ]
+        },
+        "allele_type": {
+          "type": "string",
+          "enum": [
+            "deletion",
+            "insertion"
+          ],
+          "minLength": 1,
+          "description": "Whether the allele was deleted or inserted.",
+          "title": "Allele type",
+          "examples": [
+            "deletion",
+            "insertion"
+          ]
+        },
+        "alteration_size": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer"
+          },
+          "description": "Size of the insertion or deletion in nucleotides. Use positive integers for insertions and negative integers for deletion.",
+          "title": "Insertion/Deletion size",
+          "examples": [
+            -17972,
+            1664
+          ]
+        },
+        "culture_medium": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "description": "Culture medium for the clone.",
+          "title": "Culture medium",
+          "examples": [
+            "StemFlex"
+          ]
+        },
+        "nuclease": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "description": "Nuclease used to generate the clone.",
+          "title": "Nuclease",
+          "examples": [
+            "Cas9"
+          ]
+        },
+        "guide_rna": {
+          "type": "object",
+          "properties": {
+            "first": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Guide RNA 1",
+              "title": "Guide RNA 1",
+              "examples": [
+                "TGATAAGGTCAGGCCAGCCA",
+                "TGGTTCCCACTGGATGAGAC"
+              ]
+            },
+            "second": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Guide RNA 2",
+              "title": "Guide RNA 2",
+              "examples": [
+                "TAGTATTTCCACCCTCAGTA"
+              ]
+            }
+          },
+          "required": ["first"]
+        },
+        "ssodn": {
+          "type": "object",
+          "properties": {
+            "first": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "ssODN 1",
+              "title": "ssODN 1",
+              "examples": [
+                "ACAAAATTCTCAAGCATTTCTGAGGGGAGTCGAATAGGTGAAAACCTTGHHTAAGGAATGGAAACCTGTCCCGTCTGGGGTGTGAAGTGCCCTCTGCTTT"
+              ]
+            },
+            "second": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "ssODN 2",
+              "title": "ssODN 2",
+              "examples": [
+                "ACAAAATTCTCAAGCATTTCTGAGGGGAGTCGAATAGGTGAAAACCTTGHHTAAGGAATGGAAACCTGTCCCGTCTGGGGTGTGAAGTGCCCTCTGCTTT"
+              ]
+            }
+          },
+          "required": ["first"]
+        },
+        "pcr": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "forward_primer": {
+                "type": "string",
+                "format": "regex",
+                "pattern": "^[ACGT]+$",
+                "minLength": 1,
+                "description": "PCR forward primer sequence.",
+                "title": "PCR forward primer"
+              },
+              "reverse_primer": {
+                "type": "string",
+                "format": "regex",
+                "pattern": "^[ACGT]+$",
+                "minLength": 1,
+                "description": "PCR reverse primer sequence.",
+                "title": "PCR reverse primer"
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Type of PCR performed. If performed to amplify a gene, please indicate name (e.g. Neo, Puro)",
+                "title": "PCR type"
+              }
+            }
+          }
+        },
+        "genotype": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Genotype (HOM, HET, NA).",
+          "title": "Genotype",
+          "examples": [
+            "HOM",
+            "Double allele Knock-in"
+          ]
+        },
+        "karyotype": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Karyotyping information (If available).",
+          "title": "Karyotype",
+          "examples": [
+            "not done"
+          ]
+        },
+        "viability_method": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Viability/Mycoplasma method.",
+          "title": "Viability/Mycoplasma method",
+          "examples": [
+            "JAX (link/protocols.io)",
+            "https://www.abmgood.com/pcr-mycoplasma-detection-kit-g238.html"
+          ]
+        },
+        "viability": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Viability status.",
+          "title": "Viability",
+          "examples": [
+            "+++",
+            "not done"
+          ]
+        },
+        "mycoplasma": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Mycoplasma.",
+          "title": "Mycoplasma",
+          "examples": [
+            "Negative"
+          ]
+        },
+        "sequence_maps": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "description": "Link to sequence maps.",
+          "title": "Sequence maps",
+          "examples": [
+            "https://fakeWebsite.com/GCM_KO_allele.gbk"
+          ]
+        },
+        "order_enquiry": {
+          "type": "string",
+          "format": "email",
+          "minLength": 1,
+          "description": "Order enquiry (email).",
+          "title": "Order enquiry (email)",
+          "examples": [
+            "enrique@ebi.ac.uk",
+            "enquiryEmail@gmail.com"
+          ]
+        },
+        "donor_plasmid": {
+          "type": "object",
+          "properties": {
+            "first_sequence": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Donor plasmid 1 sequence.",
+              "title": "Donor plasmid 1 sequence",
+              "examples": [
+                "TGATAAGGTCAGGCCAGCCA",
+                "TGGTTCCCACTGGATGAGAC"
+              ]
+            },
+            "second_sequence": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Donor plasmid 2 sequence.",
+              "title": "Donor plasmid 2 sequence",
+              "examples": [
+                "TAGTATTTCCACCCTCAGTA"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
