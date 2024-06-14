@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
     paths:
       - json_schema/type/**/*.json
+      - json_schema/registry/**/*.json
 
 permissions:
   contents: write
