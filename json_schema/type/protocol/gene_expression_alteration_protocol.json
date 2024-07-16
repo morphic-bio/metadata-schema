@@ -51,8 +51,8 @@
           "format": "regex",
           "pattern": "^[a-zA-Z0-9_]*$",
           "minLength": 1,
-          "description": "A unique ID for the gene expression alteration protocol.",
-          "title": "Gene expression alteration protocol ID",
+          "description": "An ID for the parent gene expression alteration protocol.",
+          "title": "Parent protocol ID",
           "examples": [
             "JAXPE000E_MEIS1",
             "MSKKI119_MEF2C"
