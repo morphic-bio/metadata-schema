@@ -2,10 +2,9 @@ name: Generate schema human-readable documentation
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
     paths:
       - json_schema/type/**/*.json
-      - json_schema/registry/**/*.json
 
 permissions:
   contents: write
@@ -25,7 +24,6 @@ jobs:
       - name: Generate human-readable documentation
         run: |
           python3 ./src/generate_docs.py -s json_schema/type -o human_readable_schemas
-          python3 ./src/generate_docs.py -s json_schema/registry/biomaterial -o human_readable_schemas
       - name: Commit and push docs if different
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
