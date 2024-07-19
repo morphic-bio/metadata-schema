@@ -2,7 +2,7 @@ name: Generate schema human-readable documentation
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
     paths:
       - json_schema/type/**/*.json
 

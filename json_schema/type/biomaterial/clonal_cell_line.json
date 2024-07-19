@@ -77,13 +77,108 @@
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
                     ]
                 },
-                "derived_from_cell_line": {
+                "distribution": {
+                    "type": "object",
+                    "title": "Distribution",
+                    "description": "Properties required to the distribution of cell lines",
+                    "required": [
+                        "generator_and_vendor",
+                        "date_of_production",
+                        "internal_project_id",
+                        "order_enquiry"
+                    ],
+                    "properties": {
+                        "internal_project_id": {
+                            "type": "string",
+                            "format": "regex",
+                            "pattern": "^[a-zA-Z0-9_-]+$",
+                            "minLength": 1,
+                            "description": "Original project ID for which the clone was generated.",
+                            "title": "Internal project ID",
+                            "examples": [
+                                "MOK20022W",
+                                "UM1_H1_1_EOMES_KO"
+                            ]
+                        },
+                        "generator_and_vendor": {
+                            "type": "string",
+                            "enum": [
+                                "JAX",
+                                "MSK",
+                                "UCSF",
+                                "NW"
+                            ],
+                            "description": "Generator institute of the clonal cell line.",
+                            "title": "Generator and vendor",
+                            "examples": [
+                                "JAX",
+                                "MSK"
+                            ]
+                        },
+                        "date_of_production": {
+                            "type": "string",
+                            "format": "date",
+                            "minLength": 1,
+                            "description": "Date of production. Must adhere to ISO 8601 Date and time format standards.",
+                            "title": "Date of production",
+                            "examples": [
+                                "14-07-2023",
+                                "27-09-2023"
+                            ]
+                        },
+                        "pipeline_for_generation": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "minlength": 1
+                            },
+                            "minItems": 1,
+                            "description": "Established pipeline for generation (if any)",
+                            "title": "Pipeline for generation",
+                            "examples": [
+                                "JAX (link/protocols.io)",
+                                "Knock in protocol: https://www.sciencedirect.com/science/article/pii/S2666166720300393; Pipeline will be drafted later."
+                            ]
+                        },
+                        "parental_ipsc_line_link": {
+                            "type": "string",
+                            "format": "uri",
+                            "minLength": 1,
+                            "description": "Link pointing to parental iPSC line characteristics.",
+                            "title": "Parental iPSC line repository link",
+                            "examples": [
+                                "http://jax.org/ipsc"
+                            ]
+                        },
+                        "sequence_maps": {
+                            "type": "string",
+                            "format": "uri",
+                            "minLength": 1,
+                            "description": "Link to sequence maps.",
+                            "title": "Sequence maps",
+                            "examples": [
+                                "https://fakeWebsite.com/GCM_KO_allele.gbk"
+                            ]
+                        },
+                        "order_enquiry": {
+                            "type": "string",
+                            "format": "email",
+                            "minLength": 1,
+                            "description": "Order enquiry (email).",
+                            "title": "Order enquiry (email)",
+                            "examples": [
+                                "enrique@ebi.ac.uk",
+                                "enquiryEmail@gmail.com"
+                            ]
+                        }
+                    }
+                },
+                "parental_ipsc_line": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A cell line name that references the original cell line from which this cell line/clone was derived.",
-                    "title": "Derived from cell line",
+                    "description": "The parental iPSC line used to generate the clone.",
+                    "title": "Parental iPSC line",
                     "examples": [
-                        "H1",
                         "KOLF2.2J"
                     ]
                 },
