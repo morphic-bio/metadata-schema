@@ -55,7 +55,7 @@
 | Property                                                 | Pattern | Type             | Deprecated | Definition | Title/Description                      |
 | -------------------------------------------------------- | ------- | ---------------- | ---------- | ---------- | -------------------------------------- |
 | + [label](#label )                                       | No      | string           | No         | -          | Gene expression alteration protocol ID |
-| - [parent_protocol_id](#parent_protocol_id )             | No      | string           | No         | -          | Gene expression alteration protocol ID |
+| - [parent_protocol_id](#parent_protocol_id )             | No      | string           | No         | -          | Parent protocol ID                     |
 | - [allele_specific](#allele_specific )                   | No      | boolean          | No         | -          | Allele-specific?                       |
 | - [target_gene_symbol](#target_gene_symbol )             | No      | string           | No         | -          | Target gene symbol                     |
 | - [target_gene_hgnc_id](#target_gene_hgnc_id )           | No      | string           | No         | -          | HGNC ID                                |
@@ -110,7 +110,7 @@
 
 ## <a name="parent_protocol_id"></a>2. Property `Expression alteration protocol > parent_protocol_id`
 
-**Title:** Gene expression alteration protocol ID
+**Title:** Parent protocol ID
 
 |              |          |
 | ------------ | -------- |
@@ -118,7 +118,7 @@
 | **Required** | No       |
 | **Format**   | `regex`  |
 
-**Description:** A unique ID for the gene expression alteration protocol.
+**Description:** An ID for the parent gene expression alteration protocol.
 
 **Examples:** 
 
@@ -996,4 +996,4 @@ Must be one of:
 | **Must match regular expression** | ```^[ACGT]+$``` [Test](https://regex101.com/?regex=%5E%5BACGT%5D%2B%24) |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-07-16 at 18:07:22 +0100
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-07-19 at 14:34:38 +0000
