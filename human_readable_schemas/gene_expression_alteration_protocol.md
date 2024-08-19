@@ -996,4 +996,4 @@ Must be one of:
 | **Must match regular expression** | ```^[ACGT]+$``` [Test](https://regex101.com/?regex=%5E%5BACGT%5D%2B%24) |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-07-19 at 14:34:38 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-19 at 09:45:08 +0000
