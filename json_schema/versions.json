@@ -11,10 +11,10 @@
       "biomaterial": {
         "cell_line": "1.0.0",
         "clonal_cell_line": "2.0.0",
-        "differentiated_cell_line": "1.0.0",
+        "differentiated_cell_line": "1.0.1",
         "library_preparation": "1.0.0",
         "organoid": "1.0.0",
-        "undifferentiated_product": "1.0.0"
+        "undifferentiated_product": "1.0.1"
       },
       "file": {
         "analysis_file": "1.0.0",
