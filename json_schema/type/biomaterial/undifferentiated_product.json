@@ -67,6 +67,7 @@
           "type": "string",
           "minLength": 1,
           "title": "Timepoint unit",
+          "description": "Unit of the timepoint.",
           "graphRestriction": {
             "ontologies": [
               "obo:uo"
