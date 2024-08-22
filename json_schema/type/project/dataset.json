@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "A dataset entity defines the fields needed for representing a dataset.",
+  "unevaluatedProperties": false,
+  "title": "Dataset",
+  "name": "dataset",
+  "required": [
+    "content"
+  ],
+  "allOf": [
+    {
+      "type": "object",
+      "$ref": "system/document.json",
+      "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+      "properties": {
+        "accessions": {
+          "items": {
+            "anyOf": [
+              {
+                "isValidIdentifier": {
+                  "prefix": "biostudies"
+                }
+              },
+              {
+                "isValidIdentifier": {
+                  "prefix": "ena.embl"
+                }
+              },
+              {
+                "isValidIdentifier": {
+                  "prefix": "geo"
+                }
+              }
+            ]
+          }
+        },
+        "described_by": {
+          "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/project/study$"
+        },
+        "schema_type": {
+          "const": "study",
+          "default": "study"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "content": {
+      "type": "object",
+      "title": "Content",
+      "required": [
+        "label",
+        "duo_code",
+        "release_date"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_]*$",
+          "minLength": 1,
+          "maxLength": 50,
+          "description": "A short label for the dataset. It should have no spaces and should be fewer than 50 characters.",
+          "title": "Dataset label",
+          "examples": [
+            "CoolOrganStudy",
+            "PAX2KOLFStudy"
+          ]
+        },
+        "duo_code": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Data Usage Ontology code that describe the data sharing restrictions for this study.",
+          "title": "DUO label",
+          "graphRestriction": {
+            "ontologies": [
+              "obo:duo"
+            ],
+            "classes": [
+              "DUO:0000017"
+            ],
+            "includeSelf": false,
+            "queryFields": [
+              "obo_id",
+              "label"
+            ]
+          },
+          "examples": [
+            "DUO:0000046",
+            "non-commercial use only"
+          ]
+        },
+        "release_date": {
+          "type": "string",
+          "format": "date",
+          "minLength": 1,
+          "description": "Estimated date of data release to the public.",
+          "title": "Release date",
+          "examples": [
+            "2025-11-13",
+            "2024-11-13"
+          ]
+        }
+      }
+    }
+  }
+}

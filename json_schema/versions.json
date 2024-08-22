@@ -6,7 +6,8 @@
     },
     "type": {
       "project": {
-        "study": "1.0.0"
+        "study": "1.0.0",
+        "dataset": "1.0.0"
       },
       "biomaterial": {
         "cell_line": "1.0.0",
