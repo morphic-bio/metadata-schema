@@ -21,7 +21,7 @@
         "sequence_file": "1.0.0"
       },
       "protocol": {
-        "gene_expression_alteration_protocol": "2.0.0"
+        "gene_expression_alteration_protocol": "3.0.0"
       }
     }
   }
