@@ -63,6 +63,7 @@
           "title": "Gene edition",
           "items": {
             "title": "Gene edition",
+            "type": "object",
             "name": "gene_edition",
             "description": "Information about the gene edition in a protocol.",
             "required": ["altered_locus"],
