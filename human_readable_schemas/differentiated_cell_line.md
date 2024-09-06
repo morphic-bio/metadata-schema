@@ -203,4 +203,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-28 at 14:14:06 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-06 at 15:22:35 +0000
