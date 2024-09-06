@@ -3,8 +3,8 @@
   "type": "object",
   "description": "Information about the gene expression alteration protocol.",
   "unevaluatedProperties": false,
-  "title": "Expression alteration protocol",
-  "name": "gene_expression_alteration_protocol",
+  "title": "Expression alteration",
+  "name": "expression_alteration",
   "required": [
     "content"
   ],
