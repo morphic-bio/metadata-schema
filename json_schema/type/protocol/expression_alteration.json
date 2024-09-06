@@ -15,11 +15,11 @@
       "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
       "properties": {
         "described_by": {
-          "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/protocol/gene_expression_alteration_protocol$"
+          "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/protocol/expression_alteration$"
         },
         "schema_type": {
-          "const": "gene_expression_alteration_protocol",
-          "default": "gene_expression_alteration_protocol"
+          "const": "expression_alteration",
+          "default": "expression_alteration"
         }
       }
     }
@@ -57,7 +57,7 @@
             "MSKKI119_MEF2C"
           ]
         },
-        "gene_edition": {
+        "genes": {
           "description": "Information about an array of gene edition objects.",
           "type": "array",
           "title": "Gene edition",
