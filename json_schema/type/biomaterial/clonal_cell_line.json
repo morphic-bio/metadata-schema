@@ -37,11 +37,11 @@
                     ]
                 },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/cell_line$"
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/clonal_cell_line$"
                 },
                 "schema_type": {
-                    "const": "cell_line",
-                    "default": "cell_line"
+                    "const": "clonal_cell_line",
+                    "default": "clonal_cell_line"
                 }
             }
         }
