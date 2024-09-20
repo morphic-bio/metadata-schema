@@ -69,12 +69,18 @@
             "required": ["altered_locus"],
             "properties": {
               "allele_specific": {
-                "type": "boolean",
+                "type": "string",
                 "description": "Indicate if the technique used to modify expression of the gene is allele-specific.",
                 "title": "Allele-specific?",
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ],
                 "examples": [
-                  false,
-                  true
+                  "yes",
+                  "no",
+                  "unknown"
                 ]
               },
               "altered_gene_symbol": {
