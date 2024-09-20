@@ -1,10 +1,10 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
-    "description": "Information about the differentiated cell line.",
+    "description": "Information about the differentiated product.",
     "unevaluatedProperties": false,
-    "title": "Differentiated cell line",
-    "name": "differentiated_cell_line",
+    "title": "Differentiated product",
+    "name": "differentiated_product",
     "required": [
         "content"
     ],
@@ -56,8 +56,8 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the differentiated cell line.",
-                    "title": "Differentiated cell line label",
+                    "description": "A unique label for the differentiated product. No spaces allowed.",
+                    "title": "Differentiated product ID",
                     "examples": [
                         "kolf2_2j_knockout_1_trophoblast"
                     ]
@@ -65,20 +65,10 @@
                 "description": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A general description of the differentiated cell line.",
-                    "title": "Differentiated cell line description",
+                    "description": "A general description of the differentiated product.",
+                    "title": "Differentiated product description",
                     "examples": [
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
-                    ]
-                },
-                "culture_medium": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
-                    "title": "Culture medium",
-                    "examples": [
-                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
-                        "human placental cord serum"
                     ]
                 },
                 "terminally_differentiated": {
@@ -101,32 +91,19 @@
                     "minLength": 1,
                     "description": "To which model system this differentiated cell line has been derived into",
                     "title": "Model system",
-                    "graphRestriction": {
-                        "ontologies": [
-                            "obo:uberon"
-                        ],
-                        "classes": [
-                            "UBERON:0000465"
-                        ],
-                        "includeSelf": false,
-                        "queryFields": [
-                            "obo_id",
-                            "label"
-                        ]
-                    },
                     "examples": [
-                        "UBERON:0000006",
-                        "islet of Langerhans"
+                        "cardioid",
+                        "neuroectoderm"
                     ]
                 },
                 "timepoint_value": {
-                    "type": "number",
-                    "description": "Value of the timepoint.",
+                    "type": "integer",
+                    "description": "Value of the timepoint. Please include the value only as a number.",
                     "title": "Timepoint value",
                     "examples": [
-                        7.5,
+                        7,
                         8,
-                        9.1
+                        9
                     ]
                 },
                 "timepoint_unit": {
@@ -151,6 +128,32 @@
                     "examples": [
                         "UO:0000010",
                         "second"
+                    ]
+                },
+                "treatment_condition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line. (if applicable)",
+                    "title": "Treatment/Condition",
+                    "examples": [
+                        "DMSO",
+                        "IAA",
+                        "6 hours",
+                        "Auxin_24h"
+                    ]
+                },
+                "wt_control_status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Indicate the controls used the experiment. (if applicable)",
+                    "title": "WT/Control status",
+                    "enum": [
+                        "WT",
+                        "control"
+                    ],
+                    "examples": [
+                        "WT",
+                        "control"
                     ]
                 }
             }

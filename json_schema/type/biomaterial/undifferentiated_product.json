@@ -37,7 +37,7 @@
           "format": "regex",
           "pattern": "^[a-zA-Z0-9_]*$",
           "minLength": 1,
-          "description": "A unique ID for the undifferentiated product.",
+          "description": "A unique label for the undifferentiated product. To be filled in only when differentiation has not been carried out and for undifferentiated products went into assaying.. No spaces allowed.",
           "title": "Undifferentiated product ID",
           "examples": [
             "Ocm108_Parent_Auxin_100um_24h_rep2",
@@ -47,20 +47,21 @@
         "description": {
           "type": "string",
           "minLength": 1,
-          "description": "A general description of the differentiated cell line.",
-          "title": "Differentiated cell line description",
+          "description": "A general description of the undifferentiated product.",
+          "title": "Undifferentiated product description",
           "examples": [
-            "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+            "KOLF2.2 \"Parent\" with OSTIR receptor expression treated with DMSO",
+            "Unmodified \"Grandparent\" KOLF2.2 treated with DMSO"
           ]
         },
         "timepoint_value": {
-          "type": "number",
-          "description": "Value of the timepoint.",
+          "type": "integer",
+          "description": "Value of the timepoint. Only integers accepted.",
           "title": "Timepoint value",
           "examples": [
-            7.5,
+            7,
             8,
-            9.1
+            9
           ]
         },
         "timepoint_unit": {
@@ -85,6 +86,32 @@
           "examples": [
             "UO:0000010",
             "second"
+          ]
+        },
+        "treatment_condition": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line. (if applicable)",
+          "title": "Treatment/Condition",
+          "examples": [
+            "DMSO",
+            "IAA",
+            "6 hours",
+            "Auxin_24h"
+          ]
+        },
+        "wt_control_status": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Indicate the controls used the experiment. (if applicable)",
+          "title": "WT/Control status",
+          "enum": [
+            "WT",
+            "control"
+          ],
+          "examples": [
+            "WT",
+            "control"
           ]
         }
       }
