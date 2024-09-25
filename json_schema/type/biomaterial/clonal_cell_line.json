@@ -3,8 +3,8 @@
     "type": "object",
     "description": "Information about the cell line or cell culture biomaterial.",
     "unevaluatedProperties": false,
-    "title": "Cell line",
-    "name": "cell_line",
+    "title": "Clonal cell line",
+    "name": "clonal_cell_line",
     "required": [
         "content"
     ],
@@ -51,7 +51,7 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "derived_from_cell_line",
+                "parental_cell_line_name",
                 "label",
                 "supplier",
                 "type"
@@ -62,10 +62,11 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the cell line.",
+                    "description": "A unique label for the cell line. No spaces allowed.",
                     "title": "Cell line ID",
                     "examples": [
-                        "kolf2_2j_knockout_1"
+                        "PRMT5_C-terminal_AID_DMSO",
+                        "OCM_108_Auxin_24h"
                     ]
                 },
                 "description": {
@@ -173,13 +174,24 @@
                         }
                     }
                 },
-                "parental_ipsc_line": {
+                "parental_cell_line_name": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "The parental iPSC line used to generate the clone.",
-                    "title": "Parental iPSC line",
+                    "description": "A cell line name that references the immediate cell line from which this cell line/clone was derived.",
+                    "title": "Parental cell line name",
                     "examples": [
-                        "KOLF2.2J"
+                        "KOLF2.2J",
+                        "OCM_108",
+                        "ADLI-0-2-011-1-13"
+                    ]
+                },
+                "clone_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A unique ID within the study to identify a clone.",
+                    "title": "Clone ID",
+                    "examples": [
+                        "kolf2_cloneA"
                     ]
                 },
                 "supplier": {
@@ -198,16 +210,14 @@
                     "description": "The type of cell line.",
                     "title": "Cell line type",
                     "enum": [
-                        "primary",
-                        "immortalized",
-                        "stem cell",
-                        "stem cell-derived",
-                        "induced pluripotent",
-                        "synthetic"
+                        "iPSC",
+                        "embryoid",
+                        "ESC"
                     ],
                     "examples": [
-                        "immortalized",
-                        "primary"
+                        "iPSC",
+                        "embryoid",
+                        "ESC"
                     ]
                 },
                 "date_established": {
@@ -314,6 +324,44 @@
                     },
                     "examples": [
                         "GCA_000001405.29"
+                    ]
+                },
+                "cell_line_generation_protocol": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Protocol for generating any derived cell line for the experiment (if applicable).",
+                    "title": "Cell line generation protocol",
+                    "examples": [
+                        "DMSO",
+                        "IAA",
+                        "6 hours",
+                        "Auxin_24h"
+                    ]
+                },
+                "treatment_condition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line (if applicable).",
+                    "title": "Treatment/Condition",
+                    "examples": [
+                        "DMSO",
+                        "IAA",
+                        "6 hours",
+                        "Auxin_24h"
+                    ]
+                },
+                "wt_control_status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Indicate the controls used the experiment (if applicable).",
+                    "title": "WT/Control status",
+                    "enum": [
+                        "WT",
+                        "control"
+                    ],
+                    "examples": [
+                        "WT",
+                        "control"
                     ]
                 }
             }

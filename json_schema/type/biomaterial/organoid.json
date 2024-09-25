@@ -74,7 +74,7 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the organoid.",
+                    "description": "A unique label for the organoid. No spaces allowed.",
                     "title": "Organoid label",
                     "examples": [
                         "kolf2_2j_knockout_1"

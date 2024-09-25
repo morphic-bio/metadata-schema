@@ -38,7 +38,7 @@
           "format": "regex",
           "pattern": "^[a-zA-Z0-9_]*$",
           "minLength": 1,
-          "description": "A unique ID for the gene expression alteration protocol.",
+          "description": "A unique ID for the gene expression alteration protocol. No spaces allowed.",
           "title": "Gene expression alteration protocol ID",
           "examples": [
             "JAXPE000E_MEIS1",
@@ -50,11 +50,11 @@
           "format": "regex",
           "pattern": "^[a-zA-Z0-9_]*$",
           "minLength": 1,
-          "description": "An ID for the parent gene expression alteration protocol.",
+          "description": "The protocol name used to modify the expression of the gene. Protocol ID should have no spaces.",
           "title": "Parent protocol ID",
           "examples": [
-            "JAXPE000E_MEIS1",
-            "MSKKI119_MEF2C"
+            "JAXPE0001",
+            "msk_crispr_perturb_seq"
           ]
         },
         "genes": {
@@ -69,17 +69,23 @@
             "required": ["altered_locus"],
             "properties": {
               "allele_specific": {
-                "type": "boolean",
+                "type": "string",
                 "description": "Indicate if the technique used to modify expression of the gene is allele-specific.",
                 "title": "Allele-specific?",
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ],
                 "examples": [
-                  false,
-                  true
+                  "yes",
+                  "no",
+                  "unknown"
                 ]
               },
-              "target_gene_symbol": {
+              "altered_gene_symbol": {
                 "description": "Gene whose transcription was modified with this protocol.",
-                "title": "Target gene symbol",
+                "title": "Altered gene symbol",
                 "type": "string",
                 "minLength": 1,
                 "graphRestriction": {
@@ -97,12 +103,11 @@
                 },
                 "examples": [
                   "MEIS1",
-                  "PAX6",
-                  "OGG:3000005080"
+                  "PAX6"
                 ]
               },
               "target_gene_hgnc_id": {
-                "description": "HGNC gene identifier for the genes whose transcription was modified with this protocol. Please use HGNC gene identifiers.",
+                "description": "HGNC gene identifier for the genes whose transcription was modified with this protocol.",
                 "title": "HGNC ID",
                 "type": "string",
                 "pattern": "^HGNC:\\d+$",
@@ -130,30 +135,38 @@
               },
               "expected_alteration_type": {
                 "type": "string",
-                "description": "How the expression for the gene(s) was altered.",
+                "description": "How the expression for the gene(s) or protein(s) was altered.",
                 "title": "Expected alteration type",
                 "enum": [
-                  "down-regulation",
-                  "up-regulation",
-                  "silencing"
+                  "RNA down-regulation",
+                  "RNA up-regulation",
+                  "gene silencing",
+                  "protein downregulation",
+                  "protein upregulation"
                 ],
                 "examples": [
-                  "down-regulation",
-                  "up-regulation"
+                  "RNA down-regulation",
+                  "RNA up-regulation",
+                  "gene silencing",
+                  "protein downregulation",
+                  "protein upregulation"
                 ]
               },
               "editing_strategy": {
                 "type": "string",
-                "description": "Editing strategy followed in the CRISPR protocol.",
+                "description": "Editing strategy followed if using a CRISPR protocol or a protein based strategy.",
                 "title": "Editing strategy",
                 "enum": [
                   "full coding length",
                   "critical exon",
-                  "termination codon"
+                  "termination codon",
+                  "knock-in of inducible C-terminal degron"
                 ],
                 "examples": [
                   "full coding length",
-                  "critical exon"
+                  "critical exon",
+                  "termination codon",
+                  "knock-in of inducible C-terminal degron"
                 ]
               },
               "altered_locus": {
@@ -432,22 +445,8 @@
           "minLength": 1,
           "description": "Method applied for alteration of the gene expression in the cell line.",
           "title": "Expression alteration method",
-          "graphRestriction": {
-              "ontologies": [
-                "obo:bao"
-              ],
-              "classes": [
-                "BAO:0002431"
-              ],
-              "includeSelf": false,
-              "queryFields": [
-                "obo_id",
-                "label"
-              ]
-          },
           "examples": [
             "CRISPR/Cas9 method",
-            "BAO:0010249",
             "gene knockdown by lentiviral shRNA transduction"
           ]
         }

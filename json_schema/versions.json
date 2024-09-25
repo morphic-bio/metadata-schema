@@ -9,19 +9,18 @@
         "study": "1.0.0"
       },
       "biomaterial": {
-        "cell_line": "1.0.0",
-        "clonal_cell_line": "2.0.0",
-        "differentiated_cell_line": "1.0.1",
+        "clonal_cell_line": "3.0.0",
+        "differentiated_product": "2.0.0",
         "library_preparation": "1.0.0",
         "organoid": "1.0.0",
-        "undifferentiated_product": "1.0.1"
+        "undifferentiated_product": "2.0.0"
       },
       "file": {
         "analysis_file": "1.0.0",
         "sequence_file": "1.0.0"
       },
       "protocol": {
-        "expression_alteration": "4.0.0"
+        "expression_alteration": "5.0.0"
       }
     }
   }

@@ -73,8 +73,8 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the library preparation.",
-                    "title": "Library preparation label",
+                    "description": "A unique label for the library preparation. No spaces allowed.",
+                    "title": "Library preparation ID",
                     "examples": [
                         "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
                     ]
