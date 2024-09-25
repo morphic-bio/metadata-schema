@@ -46,7 +46,7 @@
 | **Required** | Yes      |
 | **Format**   | `regex`  |
 
-**Description:** A unique label for the organoid.
+**Description:** A unique label for the organoid. No spaces allowed.
 
 **Example:** 
 
@@ -294,4 +294,4 @@ true
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-06 at 15:22:35 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-25 at 09:08:15 +0000

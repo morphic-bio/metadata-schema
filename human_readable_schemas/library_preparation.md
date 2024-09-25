@@ -24,7 +24,7 @@
 
 | Property                                                       | Pattern | Type    | Deprecated | Definition | Title/Description                   |
 | -------------------------------------------------------------- | ------- | ------- | ---------- | ---------- | ----------------------------------- |
-| + [label](#label )                                             | No      | string  | No         | -          | Library preparation label           |
+| + [label](#label )                                             | No      | string  | No         | -          | Library preparation ID              |
 | - [description](#description )                                 | No      | string  | No         | -          | Library preparation description     |
 | - [average_fragment_size](#average_fragment_size )             | No      | integer | No         | -          | Average fragment size               |
 | - [input_amount_value](#input_amount_value )                   | No      | number  | No         | -          | Library input amount value          |
@@ -38,7 +38,7 @@
 
 ## <a name="label"></a>1. Property `Library preparation > label`
 
-**Title:** Library preparation label
+**Title:** Library preparation ID
 
 |              |          |
 | ------------ | -------- |
@@ -46,7 +46,7 @@
 | **Required** | Yes      |
 | **Format**   | `regex`  |
 
-**Description:** A unique label for the library preparation.
+**Description:** A unique label for the library preparation. No spaces allowed.
 
 **Example:** 
 
@@ -302,4 +302,4 @@
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-06 at 15:22:35 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-25 at 09:08:15 +0000

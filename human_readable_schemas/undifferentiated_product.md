@@ -4,6 +4,8 @@
 - [2. Property `Undifferentiated product > description`](#description)
 - [3. Property `Undifferentiated product > timepoint_value`](#timepoint_value)
 - [4. Property `Undifferentiated product > timepoint_unit`](#timepoint_unit)
+- [5. Property `Undifferentiated product > treatment_condition`](#treatment_condition)
+- [6. Property `Undifferentiated product > wt_control_status`](#wt_control_status)
 
 **Title:** Undifferentiated product
 
@@ -15,12 +17,14 @@
 
 **Description:** Information about the undifferentiated product.
 
-| Property                               | Pattern | Type   | Deprecated | Definition | Title/Description                    |
-| -------------------------------------- | ------- | ------ | ---------- | ---------- | ------------------------------------ |
-| + [label](#label )                     | No      | string | No         | -          | Undifferentiated product ID          |
-| - [description](#description )         | No      | string | No         | -          | Differentiated cell line description |
-| - [timepoint_value](#timepoint_value ) | No      | number | No         | -          | Timepoint value                      |
-| - [timepoint_unit](#timepoint_unit )   | No      | string | No         | -          | Timepoint unit                       |
+| Property                                       | Pattern | Type             | Deprecated | Definition | Title/Description                    |
+| ---------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------ |
+| + [label](#label )                             | No      | string           | No         | -          | Undifferentiated product ID          |
+| - [description](#description )                 | No      | string           | No         | -          | Undifferentiated product description |
+| - [timepoint_value](#timepoint_value )         | No      | integer          | No         | -          | Timepoint value                      |
+| - [timepoint_unit](#timepoint_unit )           | No      | string           | No         | -          | Timepoint unit                       |
+| - [treatment_condition](#treatment_condition ) | No      | string           | No         | -          | Treatment/Condition                  |
+| - [wt_control_status](#wt_control_status )     | No      | enum (of string) | No         | -          | WT/Control status                    |
 
 ## <a name="label"></a>1. Property `Undifferentiated product > label`
 
@@ -32,7 +36,7 @@
 | **Required** | Yes      |
 | **Format**   | `regex`  |
 
-**Description:** A unique ID for the undifferentiated product.
+**Description:** A unique label for the undifferentiated product. To be filled in only when differentiation has not been carried out and for undifferentiated products went into assaying.. No spaces allowed.
 
 **Examples:** 
 
@@ -51,19 +55,23 @@
 
 ## <a name="description"></a>2. Property `Undifferentiated product > description`
 
-**Title:** Differentiated cell line description
+**Title:** Undifferentiated product description
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** A general description of the differentiated cell line.
+**Description:** A general description of the undifferentiated product.
 
-**Example:** 
+**Examples:** 
 
 ```json
-"KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
+"KOLF2.2 \"Parent\" with OSTIR receptor expression treated with DMSO"
+```
+
+```json
+"Unmodified \"Grandparent\" KOLF2.2 treated with DMSO"
 ```
 
 | Restrictions   |   |
@@ -74,17 +82,17 @@
 
 **Title:** Timepoint value
 
-|              |          |
-| ------------ | -------- |
-| **Type**     | `number` |
-| **Required** | No       |
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
 
-**Description:** Value of the timepoint.
+**Description:** Value of the timepoint. Only integers accepted.
 
 **Examples:** 
 
 ```json
-7.5
+7
 ```
 
 ```json
@@ -92,7 +100,7 @@
 ```
 
 ```json
-9.1
+9
 ```
 
 ## <a name="timepoint_unit"></a>4. Property `Undifferentiated product > timepoint_unit`
@@ -120,5 +128,67 @@
 | -------------- | - |
 | **Min length** | 1 |
 
+## <a name="treatment_condition"></a>5. Property `Undifferentiated product > treatment_condition`
+
+**Title:** Treatment/Condition
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line. (if applicable)
+
+**Examples:** 
+
+```json
+"DMSO"
+```
+
+```json
+"IAA"
+```
+
+```json
+"6 hours"
+```
+
+```json
+"Auxin_24h"
+```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
+## <a name="wt_control_status"></a>6. Property `Undifferentiated product > wt_control_status`
+
+**Title:** WT/Control status
+
+|              |                    |
+| ------------ | ------------------ |
+| **Type**     | `enum (of string)` |
+| **Required** | No                 |
+
+**Description:** Indicate the controls used the experiment. (if applicable)
+
+**Examples:** 
+
+```json
+"WT"
+```
+
+```json
+"control"
+```
+
+Must be one of:
+* "WT"
+* "control"
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-06 at 15:22:35 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-25 at 09:08:15 +0000
