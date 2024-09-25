@@ -445,19 +445,6 @@
           "minLength": 1,
           "description": "Method applied for alteration of the gene expression in the cell line.",
           "title": "Expression alteration method",
-          "graphRestriction": {
-              "ontologies": [
-                "obo:bao"
-              ],
-              "classes": [
-                "BAO:0002431"
-              ],
-              "includeSelf": false,
-              "queryFields": [
-                "obo_id",
-                "label"
-              ]
-          },
           "examples": [
             "CRISPR/Cas9 method",
             "gene knockdown by lentiviral shRNA transduction"
