@@ -712,4 +712,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-25 at 09:08:16 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-03 at 09:14:02 +0000

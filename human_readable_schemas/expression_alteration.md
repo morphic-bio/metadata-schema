@@ -54,31 +54,31 @@
 
 **Description:** Information about the gene expression alteration protocol.
 
-| Property                                     | Pattern | Type             | Deprecated | Definition | Title/Description                      |
-| -------------------------------------------- | ------- | ---------------- | ---------- | ---------- | -------------------------------------- |
-| + [label](#label )                           | No      | string           | No         | -          | Gene expression alteration protocol ID |
-| - [parent_protocol_id](#parent_protocol_id ) | No      | string           | No         | -          | Parent protocol ID                     |
-| - [genes](#genes )                           | No      | array of object  | No         | -          | Gene edition                           |
-| - [variation_type](#variation_type )         | No      | string           | No         | -          | Variation type                         |
-| - [coordinates](#coordinates )               | No      | string           | No         | -          | Coordinates (GRCh38)                   |
-| - [allele_type](#allele_type )               | No      | enum (of string) | No         | -          | Allele type                            |
-| - [alteration_size](#alteration_size )       | No      | array of integer | No         | -          | Insertion/Deletion size                |
-| - [culture_medium](#culture_medium )         | No      | array of string  | No         | -          | Culture medium                         |
-| - [nuclease](#nuclease )                     | No      | array of string  | No         | -          | Nuclease                               |
-| - [guide_rna](#guide_rna )                   | No      | object           | No         | -          | -                                      |
-| - [ssodn](#ssodn )                           | No      | object           | No         | -          | -                                      |
-| - [pcr](#pcr )                               | No      | array of object  | No         | -          | -                                      |
-| - [genotype](#genotype )                     | No      | string           | No         | -          | Genotype                               |
-| - [karyotype](#karyotype )                   | No      | string           | No         | -          | Karyotype                              |
-| - [viability_method](#viability_method )     | No      | string           | No         | -          | Viability/Mycoplasma method            |
-| - [viability](#viability )                   | No      | string           | No         | -          | Viability                              |
-| - [mycoplasma](#mycoplasma )                 | No      | string           | No         | -          | Mycoplasma                             |
-| - [donor_plasmid](#donor_plasmid )           | No      | object           | No         | -          | -                                      |
-| + [method](#method )                         | No      | string           | No         | -          | Expression alteration method           |
+| Property                                     | Pattern | Type             | Deprecated | Definition | Title/Description             |
+| -------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ----------------------------- |
+| + [label](#label )                           | No      | string           | No         | -          | Gene expression alteration ID |
+| - [parent_protocol_id](#parent_protocol_id ) | No      | string           | No         | -          | Parent protocol ID            |
+| - [genes](#genes )                           | No      | array of object  | No         | -          | Gene edition                  |
+| - [variation_type](#variation_type )         | No      | string           | No         | -          | Variation type                |
+| - [coordinates](#coordinates )               | No      | string           | No         | -          | Coordinates (GRCh38)          |
+| - [allele_type](#allele_type )               | No      | enum (of string) | No         | -          | Allele type                   |
+| - [alteration_size](#alteration_size )       | No      | array of integer | No         | -          | Insertion/Deletion size       |
+| - [culture_medium](#culture_medium )         | No      | array of string  | No         | -          | Culture medium                |
+| - [nuclease](#nuclease )                     | No      | array of string  | No         | -          | Nuclease                      |
+| - [guide_rna](#guide_rna )                   | No      | object           | No         | -          | -                             |
+| - [ssodn](#ssodn )                           | No      | object           | No         | -          | -                             |
+| - [pcr](#pcr )                               | No      | array of object  | No         | -          | -                             |
+| - [genotype](#genotype )                     | No      | string           | No         | -          | Genotype                      |
+| - [karyotype](#karyotype )                   | No      | string           | No         | -          | Karyotype                     |
+| - [viability_method](#viability_method )     | No      | string           | No         | -          | Viability/Mycoplasma method   |
+| - [viability](#viability )                   | No      | string           | No         | -          | Viability                     |
+| - [mycoplasma](#mycoplasma )                 | No      | string           | No         | -          | Mycoplasma                    |
+| - [donor_plasmid](#donor_plasmid )           | No      | object           | No         | -          | -                             |
+| + [method](#method )                         | No      | string           | No         | -          | Expression alteration method  |
 
 ## <a name="label"></a>1. Property `Expression alteration > label`
 
-**Title:** Gene expression alteration protocol ID
+**Title:** Gene expression alteration ID
 
 |              |          |
 | ------------ | -------- |
@@ -1061,4 +1061,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-25 at 09:08:16 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-03 at 09:14:02 +0000

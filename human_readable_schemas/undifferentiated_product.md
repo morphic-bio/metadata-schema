@@ -2,10 +2,11 @@
 
 - [1. Property `Undifferentiated product > label`](#label)
 - [2. Property `Undifferentiated product > description`](#description)
-- [3. Property `Undifferentiated product > timepoint_value`](#timepoint_value)
-- [4. Property `Undifferentiated product > timepoint_unit`](#timepoint_unit)
-- [5. Property `Undifferentiated product > treatment_condition`](#treatment_condition)
-- [6. Property `Undifferentiated product > wt_control_status`](#wt_control_status)
+- [3. Property `Undifferentiated product > undifferentiated_product_protocol_id`](#undifferentiated_product_protocol_id)
+- [4. Property `Undifferentiated product > timepoint_value`](#timepoint_value)
+- [5. Property `Undifferentiated product > timepoint_unit`](#timepoint_unit)
+- [6. Property `Undifferentiated product > treatment_condition`](#treatment_condition)
+- [7. Property `Undifferentiated product > wt_control_status`](#wt_control_status)
 
 **Title:** Undifferentiated product
 
@@ -17,14 +18,15 @@
 
 **Description:** Information about the undifferentiated product.
 
-| Property                                       | Pattern | Type             | Deprecated | Definition | Title/Description                    |
-| ---------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------ |
-| + [label](#label )                             | No      | string           | No         | -          | Undifferentiated product ID          |
-| - [description](#description )                 | No      | string           | No         | -          | Undifferentiated product description |
-| - [timepoint_value](#timepoint_value )         | No      | integer          | No         | -          | Timepoint value                      |
-| - [timepoint_unit](#timepoint_unit )           | No      | string           | No         | -          | Timepoint unit                       |
-| - [treatment_condition](#treatment_condition ) | No      | string           | No         | -          | Treatment/Condition                  |
-| - [wt_control_status](#wt_control_status )     | No      | enum (of string) | No         | -          | WT/Control status                    |
+| Property                                                                         | Pattern | Type             | Deprecated | Definition | Title/Description                    |
+| -------------------------------------------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------ |
+| + [label](#label )                                                               | No      | string           | No         | -          | Undifferentiated product ID          |
+| - [description](#description )                                                   | No      | string           | No         | -          | Undifferentiated product description |
+| + [undifferentiated_product_protocol_id](#undifferentiated_product_protocol_id ) | No      | string           | No         | -          | Undifferentiated product protocol ID |
+| - [timepoint_value](#timepoint_value )                                           | No      | integer          | No         | -          | Timepoint value                      |
+| - [timepoint_unit](#timepoint_unit )                                             | No      | string           | No         | -          | Timepoint unit                       |
+| - [treatment_condition](#treatment_condition )                                   | No      | string           | No         | -          | Treatment/Condition                  |
+| - [wt_control_status](#wt_control_status )                                       | No      | enum (of string) | No         | -          | WT/Control status                    |
 
 ## <a name="label"></a>1. Property `Undifferentiated product > label`
 
@@ -78,7 +80,34 @@
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="timepoint_value"></a>3. Property `Undifferentiated product > timepoint_value`
+## <a name="undifferentiated_product_protocol_id"></a>3. Property `Undifferentiated product > undifferentiated_product_protocol_id`
+
+**Title:** Undifferentiated product protocol ID
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+| **Format**   | `regex`  |
+
+**Description:** An ID for the protocol applied on the undifferentiated product (if applicable). No spaces allowed.
+
+**Examples:** 
+
+```json
+"Auxin_induction_cell_line"
+```
+
+```json
+"DMSO_treated_iPSC"
+```
+
+| Restrictions                      |                                                                                                                                |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Min length**                    | 1                                                                                                                              |
+| **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22Auxin_induction_cell_line%22) |
+
+## <a name="timepoint_value"></a>4. Property `Undifferentiated product > timepoint_value`
 
 **Title:** Timepoint value
 
@@ -103,7 +132,7 @@
 9
 ```
 
-## <a name="timepoint_unit"></a>4. Property `Undifferentiated product > timepoint_unit`
+## <a name="timepoint_unit"></a>5. Property `Undifferentiated product > timepoint_unit`
 
 **Title:** Timepoint unit
 
@@ -128,7 +157,7 @@
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="treatment_condition"></a>5. Property `Undifferentiated product > treatment_condition`
+## <a name="treatment_condition"></a>6. Property `Undifferentiated product > treatment_condition`
 
 **Title:** Treatment/Condition
 
@@ -161,7 +190,7 @@
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="wt_control_status"></a>6. Property `Undifferentiated product > wt_control_status`
+## <a name="wt_control_status"></a>7. Property `Undifferentiated product > wt_control_status`
 
 **Title:** WT/Control status
 
@@ -191,4 +220,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-25 at 09:08:15 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-03 at 09:14:01 +0000
