@@ -29,7 +29,8 @@
       "type": "object",
       "title": "Content",
       "required": [
-        "label"
+        "label",
+        "undifferentiated_product_protocol_id"
       ],
       "properties": {
         "label": {
@@ -52,6 +53,18 @@
           "examples": [
             "KOLF2.2 \"Parent\" with OSTIR receptor expression treated with DMSO",
             "Unmodified \"Grandparent\" KOLF2.2 treated with DMSO"
+          ]
+        },
+        "undifferentiated_product_protocol_id": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_]*$",
+          "minLength": 1,
+          "description": "An ID for the protocol applied on the undifferentiated product (if applicable). No spaces allowed.",
+          "title": "Undifferentiated product protocol ID",
+          "examples": [
+            "Auxin_induction_cell_line",
+            "DMSO_treated_iPSC"
           ]
         },
         "timepoint_value": {

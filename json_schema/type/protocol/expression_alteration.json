@@ -39,7 +39,7 @@
           "pattern": "^[a-zA-Z0-9_]*$",
           "minLength": 1,
           "description": "A unique ID for the gene expression alteration protocol. No spaces allowed.",
-          "title": "Gene expression alteration protocol ID",
+          "title": "Gene expression alteration ID",
           "examples": [
             "JAXPE000E_MEIS1",
             "MSKKI119_MEF2C"

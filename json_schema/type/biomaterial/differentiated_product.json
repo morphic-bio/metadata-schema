@@ -46,6 +46,7 @@
             "title": "Content",
             "required": [
                 "label",
+                "differentiated_product_protocol_id",
                 "terminally_differentiated",
                 "timepoint_unit",
                 "timepoint_value"
@@ -70,6 +71,19 @@
                     "examples": [
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
                     ]
+                },
+                "differentiated_product_protocol_id": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
+                    "description": "An ID for the differentiation protocol used. No spaces allowed.",
+                    "title": "Differentiated product protocol ID",
+                    "examples": [
+                        "JAXPD002",
+                        "EB_Protocol_Final_Merged.pdf",
+                        "msk_pancreatic_diff_protocol"
+                  ]
                 },
                 "terminally_differentiated": {
                     "type": "string",
