@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Information about the gene expression alteration protocol.",
+  "unevaluatedProperties": false,
+  "title": "Expression alteration",
+  "name": "expression_alteration",
+  "required": [
+    "content"
+  ],
+  "allOf": [
+    {
+      "type": "object",
+      "$ref": "/system/document",
+      "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+      "properties": {
+        "described_by": {
+          "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/protocol/expression_alteration$"
+        },
+        "schema_type": {
+          "const": "expression_alteration",
+          "default": "expression_alteration"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "content": {
+      "type": "object",
+      "title": "Content",
+      "required": [
+        "label",
+        "method"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_]*$",
+          "minLength": 1,
+          "description": "A unique ID for the gene expression alteration protocol. No spaces allowed.",
+          "title": "Gene expression alteration ID",
+          "examples": [
+            "JAXPE000E_MEIS1",
+            "MSKKI119_MEF2C"
+          ]
+        },
+        "parent_protocol_id": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^[a-zA-Z0-9_]*$",
+          "minLength": 1,
+          "description": "The protocol name used to modify the expression of the gene. Protocol ID should have no spaces.",
+          "title": "Parent protocol ID",
+          "examples": [
+            "JAXPE0001",
+            "msk_crispr_perturb_seq"
+          ]
+        },
+        "genes": {
+          "description": "Information about an array of gene edition objects.",
+          "type": "array",
+          "title": "Gene edition",
+          "items": {
+            "title": "Gene edition",
+            "type": "object",
+            "name": "gene_edition",
+            "description": "Information about the gene edition in a protocol.",
+            "required": ["altered_locus"],
+            "properties": {
+              "allele_specific": {
+                "type": "string",
+                "description": "Indicate if the technique used to modify expression of the gene is allele-specific.",
+                "title": "Allele-specific?",
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ],
+                "examples": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "altered_gene_symbol": {
+                "description": "Gene whose transcription was modified with this protocol.",
+                "title": "Altered gene symbol",
+                "type": "string",
+                "minLength": 1,
+                "graphRestriction": {
+                  "ontologies": [
+                    "obo:ogg"
+                  ],
+                  "classes": [
+                    "OGG:2000009606"
+                  ],
+                  "includeSelf": false,
+                  "queryFields": [
+                    "obo_id",
+                    "label"
+                  ]
+                },
+                "examples": [
+                  "MEIS1",
+                  "PAX6"
+                ]
+              },
+              "target_gene_hgnc_id": {
+                "description": "HGNC gene identifier for the genes whose transcription was modified with this protocol.",
+                "title": "HGNC ID",
+                "type": "string",
+                "pattern": "^HGNC:\\d+$",
+                "minLength": 1,
+                "examples": [
+                  "HGNC:7000",
+                  "HGNC:6761"
+                ]
+              },
+              "targeted_genomic_region": {
+                "type": "string",
+                "description": "Type of region that is targeted by the gene expression alteration protocol.",
+                "title": "Targeted genomic region",
+                "enum": [
+                  "exon",
+                  "intron",
+                  "promoter",
+                  "full coding region",
+                  "other"
+                ],
+                "examples": [
+                  "full coding region",
+                  "exon"
+                ]
+              },
+              "expected_alteration_type": {
+                "type": "string",
+                "description": "How the expression for the gene(s) or protein(s) was altered.",
+                "title": "Expected alteration type",
+                "enum": [
+                  "RNA down-regulation",
+                  "RNA up-regulation",
+                  "gene silencing",
+                  "protein downregulation",
+                  "protein upregulation"
+                ],
+                "examples": [
+                  "RNA down-regulation",
+                  "RNA up-regulation",
+                  "gene silencing",
+                  "protein downregulation",
+                  "protein upregulation"
+                ]
+              },
+              "editing_strategy": {
+                "type": "string",
+                "description": "Editing strategy followed if using a CRISPR protocol or a protein based strategy.",
+                "title": "Editing strategy",
+                "enum": [
+                  "full coding length",
+                  "critical exon",
+                  "termination codon",
+                  "knock-in of inducible C-terminal degron"
+                ],
+                "examples": [
+                  "full coding length",
+                  "critical exon",
+                  "termination codon",
+                  "knock-in of inducible C-terminal degron"
+                ]
+              },
+              "altered_locus": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Genomic coordiantes relative to GRCh38 of any genomic alterations made.",
+                "title": "Altered locus",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^chr\\d\\d{0,1}:\\d+-\\d+$"
+                },
+                "examples": [
+                  "chr2:66437727-66464411",
+                  "chr5:88751722-88752302"
+                ]
+              },
+              "guide_sequence": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Full nucleotide sequence(s) of guide sequences.",
+                "title": "Guide sequence(s)",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[ACGT]+$"
+                },
+                "examples": [
+                  "AAAGTCGATGTATCTTCTAC",
+                  "TTGGTGATAGACGATAGAGAAG"
+                ]
+              }
+            }
+          }
+        },
+        "variation_type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Perturbation location in the gene (e.g. KO, PTC, CE).",
+          "title": "Variation type",
+          "examples": [
+            "KO",
+            "Double allele Knock-in"
+          ]
+        },
+        "coordinates": {
+          "type": "string",
+          "format": "regex",
+          "pattern": "^chr\\d{,2}:\\d+-\\d+$",
+          "minLength": 1,
+          "description": "Genomic coordinates for the variation type (Genome Reference Consortium Human Build 38)",
+          "title": "Coordinates (GRCh38)",
+          "examples": [
+            "chr6:53127676-53145648",
+            "chr3:27719425-27719444"
+          ]
+        },
+        "allele_type": {
+          "type": "string",
+          "enum": [
+            "deletion",
+            "insertion"
+          ],
+          "minLength": 1,
+          "description": "Whether the allele was deleted or inserted.",
+          "title": "Allele type",
+          "examples": [
+            "deletion",
+            "insertion"
+          ]
+        },
+        "alteration_size": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer"
+          },
+          "description": "Size of the insertion or deletion in nucleotides. Use positive integers for insertions and negative integers for deletion.",
+          "title": "Insertion/Deletion size",
+          "examples": [
+            -17972,
+            1664
+          ]
+        },
+        "culture_medium": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "description": "Culture medium for the clone.",
+          "title": "Culture medium",
+          "examples": [
+            "StemFlex"
+          ]
+        },
+        "nuclease": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "description": "Nuclease used to generate the clone.",
+          "title": "Nuclease",
+          "examples": [
+            "Cas9"
+          ]
+        },
+        "guide_rna": {
+          "type": "object",
+          "properties": {
+            "first": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Guide RNA 1",
+              "title": "Guide RNA 1",
+              "examples": [
+                "TGATAAGGTCAGGCCAGCCA",
+                "TGGTTCCCACTGGATGAGAC"
+              ]
+            },
+            "second": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Guide RNA 2",
+              "title": "Guide RNA 2",
+              "examples": [
+                "TAGTATTTCCACCCTCAGTA"
+              ]
+            }
+          },
+          "required": ["first"]
+        },
+        "ssodn": {
+          "type": "object",
+          "properties": {
+            "first": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "ssODN 1",
+              "title": "ssODN 1",
+              "examples": [
+                "ACAAAATTCTCAAGCATTTCTGAGGGGAGTCGAATAGGTGAAAACCTTGHHTAAGGAATGGAAACCTGTCCCGTCTGGGGTGTGAAGTGCCCTCTGCTTT"
+              ]
+            },
+            "second": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "ssODN 2",
+              "title": "ssODN 2",
+              "examples": [
+                "ACAAAATTCTCAAGCATTTCTGAGGGGAGTCGAATAGGTGAAAACCTTGHHTAAGGAATGGAAACCTGTCCCGTCTGGGGTGTGAAGTGCCCTCTGCTTT"
+              ]
+            }
+          },
+          "required": ["first"]
+        },
+        "pcr": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "forward_primer": {
+                "type": "string",
+                "format": "regex",
+                "pattern": "^[ACGT]+$",
+                "minLength": 1,
+                "description": "PCR forward primer sequence.",
+                "title": "PCR forward primer"
+              },
+              "reverse_primer": {
+                "type": "string",
+                "format": "regex",
+                "pattern": "^[ACGT]+$",
+                "minLength": 1,
+                "description": "PCR reverse primer sequence.",
+                "title": "PCR reverse primer"
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Type of PCR performed. If performed to amplify a gene, please indicate name (e.g. Neo, Puro)",
+                "title": "PCR type"
+              }
+            }
+          }
+        },
+        "genotype": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Genotype (HOM, HET, NA).",
+          "title": "Genotype",
+          "examples": [
+            "HOM",
+            "Double allele Knock-in"
+          ]
+        },
+        "karyotype": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Karyotyping information (If available).",
+          "title": "Karyotype",
+          "examples": [
+            "not done"
+          ]
+        },
+        "viability_method": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Viability/Mycoplasma method.",
+          "title": "Viability/Mycoplasma method",
+          "examples": [
+            "JAX (link/protocols.io)",
+            "https://www.abmgood.com/pcr-mycoplasma-detection-kit-g238.html"
+          ]
+        },
+        "viability": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Viability status.",
+          "title": "Viability",
+          "examples": [
+            "+++",
+            "not done"
+          ]
+        },
+        "mycoplasma": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Mycoplasma.",
+          "title": "Mycoplasma",
+          "examples": [
+            "Negative"
+          ]
+        },
+        "donor_plasmid": {
+          "type": "object",
+          "properties": {
+            "first_sequence": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Donor plasmid 1 sequence.",
+              "title": "Donor plasmid 1 sequence",
+              "examples": [
+                "TGATAAGGTCAGGCCAGCCA",
+                "TGGTTCCCACTGGATGAGAC"
+              ]
+            },
+            "second_sequence": {
+              "type": "string",
+              "format": "regex",
+              "pattern": "^[ACGT]+$",
+              "minLength": 1,
+              "description": "Donor plasmid 2 sequence.",
+              "title": "Donor plasmid 2 sequence",
+              "examples": [
+                "TAGTATTTCCACCCTCAGTA"
+              ]
+            }
+          }
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Method applied for alteration of the gene expression in the cell line.",
+          "title": "Expression alteration method",
+          "examples": [
+            "CRISPR/Cas9 method",
+            "gene knockdown by lentiviral shRNA transduction"
+          ]
+        }
+      }
+    }
+  }
+}

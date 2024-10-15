@@ -1,5 +1,5 @@
 {
-  "last_update_date": "2024-05-20T11:15:38Z",
+  "last_update_date": "2024-10-15T13:43:00Z",
   "version_numbers": {
     "system": {
       "document": "1.0.0"
@@ -9,8 +9,8 @@
         "study": "1.0.0"
       },
       "biomaterial": {
-        "cell_line": "1.0.0",
-        "differentiated_cell_line": "1.0.0",
+        "clonal_cell_line": "1.0.0",
+        "differentiated_product": "1.0.0",
         "library_preparation": "1.0.0",
         "organoid": "1.0.0",
         "undifferentiated_product": "1.0.0"
@@ -20,7 +20,7 @@
         "sequence_file": "1.0.0"
       },
       "protocol": {
-        "gene_expression_alteration_protocol": "1.0.0"
+        "expression_alteration": "1.0.0"
       }
     }
   }

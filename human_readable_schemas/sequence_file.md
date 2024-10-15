@@ -5,7 +5,6 @@
 - [3. Property `Sequence file > lane_index`](#lane_index)
 - [4. Property `Sequence file > read_index`](#read_index)
 - [5. Property `Sequence file > read_length`](#read_length)
-- [6. Property `Sequence file > checksum`](#checksum)
 
 **Title:** Sequence file
 
@@ -24,7 +23,6 @@
 | - [lane_index](#lane_index )   | No      | integer          | No         | -          | Lane index        |
 | + [read_index](#read_index )   | No      | enum (of string) | No         | -          | Read index        |
 | - [read_length](#read_length ) | No      | integer          | No         | -          | Read length       |
-| - [checksum](#checksum )       | No      | string           | No         | -          | Checksum          |
 
 ## <a name="label"></a>1. Property `Sequence file > label`
 
@@ -152,26 +150,5 @@ Must be one of:
 150
 ```
 
-## <a name="checksum"></a>6. Property `Sequence file > checksum`
-
-**Title:** Checksum
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** MD5 checksum of the file.
-
-**Example:** 
-
-```json
-"e09a986c2e630130b1849d4bf9a94c06"
-```
-
-| Restrictions   |   |
-| -------------- | - |
-| **Min length** | 1 |
-
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-05-21 at 13:25:13 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-03 at 09:14:02 +0000

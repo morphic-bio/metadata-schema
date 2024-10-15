@@ -45,7 +45,8 @@
             "type": "object",
             "title": "Content",
             "required": [
-                "label"
+                "label",
+                "library_preparation_protocol_id"
             ],
             "dependentRequired": {
                 "concentration_unit": [
@@ -73,8 +74,8 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the library preparation.",
-                    "title": "Library preparation label",
+                    "description": "A unique label for the library preparation. No spaces allowed.",
+                    "title": "Library preparation ID",
                     "examples": [
                         "kolf2_2j_knockout_1_trophoblast_library_preparation1S"
                     ]
@@ -87,6 +88,19 @@
                     "examples": [
                         "Run 1, batch 1S, library preparation from KOLF2.2J derived trophoblasts"
                     ]
+                },
+                "library_preparation_protocol_id": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
+                    "description": "An ID for the library preparation protocol used. No spaces allowed.",
+                    "title": "Library preparation protocol ID",
+                    "examples": [
+                        "msk_pooled_wt_transcriptome",
+                        "Library_preparation_bulk.pdf",
+                        "JAXPL001"
+                  ]
                 },
                 "average_fragment_size": {
                     "type": "integer",

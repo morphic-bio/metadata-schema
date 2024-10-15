@@ -1,0 +1,441 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "description": "Information about the cell line or cell culture biomaterial.",
+    "unevaluatedProperties": false,
+    "title": "Clonal cell line",
+    "name": "clonal_cell_line",
+    "required": [
+        "content"
+    ],
+    "allOf": [
+        {
+            "type": "object",
+            "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
+            "properties": {
+                "accessions": {
+                    "description": "An International Nucleotide Sequence Database Collaboration (INSDC) or BioSamples (BSD) sample accession.",
+                    "title": "Sample accession",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biosample"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            }
+                        ],
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "examples": [
+                        "SAMEA2397676",
+                        "SRS000000"
+                    ],
+                    "type": "array",
+                    "minItems": 1,
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
+                },
+                "described_by": {
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/clonal_cell_line$",
+                    "type": "string",
+                    "format": "uri",
+                    "minLength": 1,
+                    "description": "The URL reference to the schema."
+                },
+                "schema_type": {
+                    "const": "clonal_cell_line",
+                    "default": "clonal_cell_line",
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The type of the metadata schema entity.",
+                    "$comment": "Please add enum to this property definition when you load this module as a reference."
+                },
+                "schema_version": {
+                    "type": "string",
+                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$",
+                    "minLength": 1,
+                    "description": "The version number of the schema in major.minor.patch format.",
+                    "examples": [
+                        "1.0.1",
+                        "4.6.1"
+                    ]
+                },
+                "submitted_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "minLength": 1,
+                    "description": "Date the document was submitted, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "submitted_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "User that submitted this document."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the document was updated, in ISO8601 format.",
+                    "examples": [
+                        "2018-11-13T20:20:39+00:00",
+                        "2019-11-13T20:20:39+00:00"
+                    ]
+                },
+                "updated_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "User that updated this document."
+                },
+                "uuid": {
+                    "type": "string",
+                    "format": "uuid",
+                    "minLength": 1,
+                    "description": "Universal Unique Identifier (UUID) for this document in the database.",
+                    "examples": [
+                        "1008b1ea-b3b7-4b0d-bfb9-a04c344bffdc",
+                        "1c32efbf-2f57-4ce5-bc2c-7b0b509a9e58"
+                    ]
+                }
+            },
+            "description": "A definition of the system-filled properties loaded by stand-alone documents.",
+            "title": "system",
+            "required": [
+                "described_by",
+                "schema_type",
+                "schema_version",
+                "submitted_at",
+                "submitted_by",
+                "uuid"
+            ]
+        }
+    ],
+    "properties": {
+        "content": {
+            "type": "object",
+            "title": "Content",
+            "required": [
+                "parental_cell_line_name",
+                "label",
+                "supplier",
+                "type"
+            ],
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^[a-zA-Z0-9_]*$",
+                    "minLength": 1,
+                    "description": "A unique label for the cell line. No spaces allowed.",
+                    "title": "Cell line ID",
+                    "examples": [
+                        "PRMT5_C-terminal_AID_DMSO",
+                        "OCM_108_Auxin_24h"
+                    ]
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A general description of the cell line.",
+                    "title": "Cell line description",
+                    "examples": [
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
+                    ]
+                },
+                "distribution": {
+                    "type": "object",
+                    "title": "Distribution",
+                    "description": "Properties required to the distribution of cell lines",
+                    "required": [
+                        "generator_and_vendor",
+                        "date_of_production",
+                        "internal_project_id",
+                        "order_enquiry"
+                    ],
+                    "properties": {
+                        "internal_project_id": {
+                            "type": "string",
+                            "format": "regex",
+                            "pattern": "^[a-zA-Z0-9_-]+$",
+                            "minLength": 1,
+                            "description": "Original project ID for which the clone was generated.",
+                            "title": "Internal project ID",
+                            "examples": [
+                                "MOK20022W",
+                                "UM1_H1_1_EOMES_KO"
+                            ]
+                        },
+                        "generator_and_vendor": {
+                            "type": "string",
+                            "enum": [
+                                "JAX",
+                                "MSK",
+                                "UCSF",
+                                "NW"
+                            ],
+                            "description": "Generator institute of the clonal cell line.",
+                            "title": "Generator and vendor",
+                            "examples": [
+                                "JAX",
+                                "MSK"
+                            ]
+                        },
+                        "date_of_production": {
+                            "type": "string",
+                            "format": "date",
+                            "minLength": 1,
+                            "description": "Date of production. Must adhere to ISO 8601 Date and time format standards.",
+                            "title": "Date of production",
+                            "examples": [
+                                "14-07-2023",
+                                "27-09-2023"
+                            ]
+                        },
+                        "pipeline_for_generation": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "minlength": 1
+                            },
+                            "minItems": 1,
+                            "description": "Established pipeline for generation (if any)",
+                            "title": "Pipeline for generation",
+                            "examples": [
+                                "JAX (link/protocols.io)",
+                                "Knock in protocol: https://www.sciencedirect.com/science/article/pii/S2666166720300393; Pipeline will be drafted later."
+                            ]
+                        },
+                        "parental_ipsc_line_link": {
+                            "type": "string",
+                            "format": "uri",
+                            "minLength": 1,
+                            "description": "Link pointing to parental iPSC line characteristics.",
+                            "title": "Parental iPSC line repository link",
+                            "examples": [
+                                "http://jax.org/ipsc"
+                            ]
+                        },
+                        "sequence_maps": {
+                            "type": "string",
+                            "format": "uri",
+                            "minLength": 1,
+                            "description": "Link to sequence maps.",
+                            "title": "Sequence maps",
+                            "examples": [
+                                "https://fakeWebsite.com/GCM_KO_allele.gbk"
+                            ]
+                        },
+                        "order_enquiry": {
+                            "type": "string",
+                            "format": "email",
+                            "minLength": 1,
+                            "description": "Order enquiry (email).",
+                            "title": "Order enquiry (email)",
+                            "examples": [
+                                "enrique@ebi.ac.uk",
+                                "enquiryEmail@gmail.com"
+                            ]
+                        }
+                    }
+                },
+                "parental_cell_line_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A cell line name that references the immediate cell line from which this cell line/clone was derived.",
+                    "title": "Parental cell line name",
+                    "examples": [
+                        "KOLF2.2J",
+                        "OCM_108",
+                        "ADLI-0-2-011-1-13"
+                    ]
+                },
+                "clone_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A unique ID within the study to identify a clone.",
+                    "title": "Clone ID",
+                    "examples": [
+                        "kolf2_cloneA"
+                    ]
+                },
+                "supplier": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The supplier of the cell line.",
+                    "title": "Cell line supplier",
+                    "examples": [
+                        "ATCC",
+                        "JAX"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The type of cell line.",
+                    "title": "Cell line type",
+                    "enum": [
+                        "iPSC",
+                        "embryoid",
+                        "ESC"
+                    ],
+                    "examples": [
+                        "iPSC",
+                        "embryoid",
+                        "ESC"
+                    ]
+                },
+                "date_established": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Date when the cell line was established.",
+                    "title": "Date established",
+                    "oneOf": [
+                        {
+                            "format": "date-time"
+                        },
+                        {
+                            "format": "date"
+                        }
+                    ],
+                    "examples": [
+                        "2017-03-19",
+                        "2018-11-13T20:20:39+00:00"
+                    ]
+                },
+                "induction_method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Induction method applied to primary cell culture to induce pluripotent stem cell generation.",
+                    "title": "Induction method",
+                    "enum": [
+                        "sendai virus",
+                        "Gun particle",
+                        "piggyBac transposon",
+                        "miRNA viral",
+                        "adenovirus",
+                        "cre-loxP",
+                        "plasmid",
+                        "retroviral"
+                    ],
+                    "examples": [
+                        "Gun particle",
+                        "sendai virus"
+                    ]
+                },
+                "culture_environment": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Cell culture environment in which cells are grown.",
+                    "title": "Culture environment",
+                    "examples": [
+                        "Adherent cell culture",
+                        "Suspension cell culture"
+                    ]
+                },
+                "culture_medium": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The solid, liquid, or semi-solid medium used to support growth.",
+                    "title": "Culture medium",
+                    "examples": [
+                        "RPMI 1640 + 2mM Glutamine + 10-20% FBS",
+                        "human placental cord serum"
+                    ]
+                },
+                "drug_treatment": {
+                    "type": "array",
+                    "minItems": 1,
+                    "description": "Drugs added to the growth medium.",
+                    "title": "Drug treatment",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "examples": [
+                        "100 ug/mL ampicillin",
+                        "15 ug/mL tetracycline"
+                    ]
+                },
+                "zygosity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Known zygosity of the gene expression alteration in the cell line",
+                    "title": "Zygosity",
+                    "enum": [
+                        "homozygous",
+                        "heterozygous",
+                        "mixed",
+                        "unknown"
+                    ],
+                    "examples": [
+                        "heterozygous",
+                        "homozygous"
+                    ]
+                },
+                "genotyping_accessions": {
+                    "type": "array",
+                    "minItems": 1,
+                    "description": "A GenBank assembly accession identifier for the cell line.",
+                    "title": "Genotyping accession(s)",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "isValidIdentifier": {
+                            "prefix": "insdc.gca"
+                        }
+                    },
+                    "examples": [
+                        "GCA_000001405.29"
+                    ]
+                },
+                "cell_line_generation_protocol": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Protocol for generating any derived cell line for the experiment (if applicable).",
+                    "title": "Cell line generation protocol",
+                    "examples": [
+                        "DMSO",
+                        "IAA",
+                        "6 hours",
+                        "Auxin_24h"
+                    ]
+                },
+                "treatment_condition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line (if applicable).",
+                    "title": "Treatment/Condition",
+                    "examples": [
+                        "DMSO",
+                        "IAA",
+                        "6 hours",
+                        "Auxin_24h"
+                    ]
+                },
+                "wt_control_status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Indicate the controls used the experiment (if applicable).",
+                    "title": "WT/Control status",
+                    "enum": [
+                        "WT",
+                        "control"
+                    ],
+                    "examples": [
+                        "WT",
+                        "control"
+                    ]
+                }
+            }
+        }
+    }
+}

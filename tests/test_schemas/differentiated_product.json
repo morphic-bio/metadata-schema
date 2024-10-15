@@ -1,10 +1,10 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "type": "object",
-    "description": "Information about the undifferentiated product.",
+    "description": "Information about the differentiated product.",
     "unevaluatedProperties": false,
-    "title": "Undifferentiated product",
-    "name": "undifferentiated_product",
+    "title": "Differentiated product",
+    "name": "differentiated_product",
     "required": [
         "content"
     ],
@@ -13,29 +13,41 @@
             "type": "object",
             "$comment": "This loads the system needed properties outside the 'content' field. For implementation outside of MorPhiC, please ensure the system properties satisfy your implementation. These properties are not meant for the user to see.",
             "properties": {
+                "accessions": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "biosample"
+                                }
+                            },
+                            {
+                                "isValidIdentifier": {
+                                    "prefix": "insdc.sra"
+                                }
+                            }
+                        ],
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "type": "array",
+                    "minItems": 1,
+                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module."
+                },
                 "described_by": {
-                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/undifferentiated_product$",
+                    "pattern": "^.*/type/[0-9]+.[0-9]+.[0-9]+/biomaterial/differentiated_cell_line$",
                     "type": "string",
                     "format": "uri",
                     "minLength": 1,
                     "description": "The URL reference to the schema."
                 },
                 "schema_type": {
-                    "const": "undifferentiated_product",
-                    "default": "undifferentiated_product",
+                    "const": "differentiated_cell_line",
+                    "default": "differentiated_cell_line",
                     "type": "string",
                     "minLength": 1,
                     "description": "The type of the metadata schema entity.",
                     "$comment": "Please add enum to this property definition when you load this module as a reference."
-                },
-                "accessions": {
-                    "type": "array",
-                    "minItems": 1,
-                    "$comment": "the value for 'prefixes' or 'prefix' must be added by the schemas that load this system module.",
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
-                    }
                 },
                 "schema_version": {
                     "type": "string",
@@ -105,7 +117,10 @@
             "title": "Content",
             "required": [
                 "label",
-                "undifferentiated_product_protocol_id"
+                "differentiated_product_protocol_id",
+                "terminally_differentiated",
+                "timepoint_unit",
+                "timepoint_value"
             ],
             "properties": {
                 "label": {
@@ -113,38 +128,62 @@
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "A unique label for the undifferentiated product. To be filled in only when differentiation has not been carried out and for undifferentiated products went into assaying.. No spaces allowed.",
-                    "title": "Undifferentiated product ID",
+                    "description": "A unique label for the differentiated product. No spaces allowed.",
+                    "title": "Differentiated product ID",
                     "examples": [
-                        "Ocm108_Parent_Auxin_100um_24h_rep2",
-                        "kf201_GP_untreated"
+                        "kolf2_2j_knockout_1_trophoblast"
                     ]
                 },
                 "description": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A general description of the undifferentiated product.",
-                    "title": "Undifferentiated product description",
+                    "description": "A general description of the differentiated product.",
+                    "title": "Differentiated product description",
                     "examples": [
-                        "KOLF2.2 \"Parent\" with OSTIR receptor expression treated with DMSO",
-                        "Unmodified \"Grandparent\" KOLF2.2 treated with DMSO"
+                        "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO, differentiated into trophoblasts"
                     ]
                 },
-                "undifferentiated_product_protocol_id": {
+                "differentiated_product_protocol_id": {
                     "type": "string",
                     "format": "regex",
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
-                    "description": "An ID for the protocol applied on the undifferentiated product (if applicable). No spaces allowed.",
-                    "title": "Undifferentiated product protocol ID",
+                    "description": "An ID for the differentiation protocol used. No spaces allowed.",
+                    "title": "Differentiated product protocol ID",
                     "examples": [
-                        "Auxin_induction_cell_line",
-                        "DMSO_treated_iPSC"
+                        "JAXPD002",
+                        "EB_Protocol_Final_Merged.pdf",
+                        "msk_pancreatic_diff_protocol"
+                    ]
+                },
+                "terminally_differentiated": {
+                    "type": "string",
+                    "description": "Is the cell line terminally differentiated.",
+                    "title": "Terminally differentiated?",
+                    "enum": [
+                        "yes",
+                        "no",
+                        "unknown"
+                    ],
+                    "examples": [
+                        "no",
+                        "unknown",
+                        "yes"
+                    ]
+                },
+                "model_system": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "To which model system this differentiated cell line has been derived into",
+                    "title": "Model system",
+                    "examples": [
+                        "cardioid",
+                        "pancreatic gut"
                     ]
                 },
                 "timepoint_value": {
                     "type": "integer",
-                    "description": "Value of the timepoint. Only integers accepted.",
+                    "description": "Value of the timepoint. Please include the value only as a number.",
                     "title": "Timepoint value",
                     "examples": [
                         7,
