@@ -44,6 +44,7 @@
   - [18.2. Property `Expression alteration protocol > donor_plasmid > second_sequence`](#donor_plasmid_second_sequence)
 - [19. Property `Expression alteration protocol > method`](#method)
 
+
 **Title:** Expression alteration protocol
 
 |                           |                                                                           |
@@ -333,6 +334,35 @@ Must be one of:
 * "termination codon"
 
 #### <a name="gene_edition_items_altered_locus"></a>3.1.7. Property `Expression alteration protocol > gene_edition > Gene edition > altered_locus`
+
+**Title:** Expression alteration method
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | Yes      |
+
+**Description:** Method applied for alteration of the gene expression in the cell line.
+
+**Examples:** 
+
+```json
+"CRISPR/Cas9 method"
+```
+
+```json
+"BAO:0010249"
+```
+
+```json
+"gene knockdown by lentiviral shRNA transduction"
+```
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
+
+## <a name="altered_locus"></a>9. Property `Expression alteration protocol > altered_locus`
 
 **Title:** Altered locus
 
@@ -1037,4 +1067,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-28 at 14:14:06 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-28 at 14:14:06 +0
