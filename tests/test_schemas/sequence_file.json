@@ -188,15 +188,6 @@
                         51,
                         150
                     ]
-                },
-                "checksum": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "MD5 checksum of the file.",
-                    "title": "Checksum",
-                    "examples": [
-                        "e09a986c2e630130b1849d4bf9a94c06"
-                    ]
                 }
             }
         }
