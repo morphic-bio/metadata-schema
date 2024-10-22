@@ -12,7 +12,6 @@
         "clonal_cell_line": "1.0.0",
         "differentiated_product": "1.0.0",
         "library_preparation": "1.0.0",
-        "organoid": "1.0.0",
         "undifferentiated_product": "1.0.0"
       },
       "file": {
