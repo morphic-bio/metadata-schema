@@ -1,0 +1,107 @@
+{
+  "last_update_date": "2024-10-15T13:43:00Z",
+  "system": {
+      "document": {
+        "current": "1.0.0",
+        "changes": []
+      }
+    },
+  "type": {
+    "project": {
+      "study": {
+        "current": "1.0.0",
+        "changes": []
+      }
+    },
+    "biomaterial": {
+      "clonal_cell_line": {
+        "current": "1.0.0",
+        "changes": []
+      },
+      "differentiated_product": {
+        "current": "2.0.0",
+        "changes": [
+          {
+            "from": "1.0.0",
+            "to": "2.0.0",
+            "minor": null,
+            "major": {
+              "addition": null,
+              "deletion": null,
+              "update": [
+                {
+                  "field": ["terminally_differentiated"],
+                  "type": "name",
+                  "new_value": "final_timepoint"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "library_preparation": {
+        "current": "2.0.0",
+        "changes": [
+          {
+            "from": "1.0.0",
+            "to": "2.0.0",
+            "minor": null,
+            "major": {
+              "addition": null,
+              "deletion": null,
+              "update": [
+                {
+                  "field": ["pcr_cycles"],
+                  "type": "name",
+                  "new_value": "cdna_pcr_cycles"
+                },
+                {
+                  "field": ["pcr_cycles_for_sample_index"],
+                  "type": "name",
+                  "new_value": "pcr_cycles_for_indexing"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "undifferentiated_product": {
+        "current": "1.0.0",
+        "changes": []
+      }
+    },
+    "file": {
+      "analysis_file": {
+        "current": "1.0.0",
+        "changes": []
+      },
+      "sequence_file": {
+        "current": "1.1.0",
+        "changes": [
+          {
+            "from": "1.0.0",
+            "to": "1.1.0",
+            "minor": {
+              "addition": [
+                {
+                  "field": ["run_id"],
+                  "type": "name"
+                }
+              ],
+              "deletion": null,
+              "update": null
+            },
+            "major": null
+          }
+        ]
+      }
+    },
+    "protocol": {
+      "expression_alteration": {
+        "current": "1.0.0",
+        "changes": []
+      }
+    }
+  }
+}
+
