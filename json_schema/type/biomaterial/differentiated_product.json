@@ -47,7 +47,7 @@
             "required": [
                 "label",
                 "differentiated_product_protocol_id",
-                "terminally_differentiated",
+                "final_timepoint",
                 "timepoint_unit",
                 "timepoint_value"
             ],
@@ -85,10 +85,10 @@
                         "msk_pancreatic_diff_protocol"
                   ]
                 },
-                "terminally_differentiated": {
+                "final_timepoint": {
                     "type": "string",
-                    "description": "Is the cell line terminally differentiated.",
-                    "title": "Terminally differentiated?",
+                    "description": "Is the product at its final differentiation stage in the experiment?",
+                    "title": "Final time point",
                     "enum": [
                         "yes",
                         "no",
