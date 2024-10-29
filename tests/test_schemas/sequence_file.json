@@ -188,6 +188,17 @@
                         51,
                         150
                     ]
+                },
+                "run_id": {
+                    "type": "string",
+                    "format": "regex",
+                    "pattern": "^(?!^0+$)[a-zA-Z0-9\\-_]+$",
+                    "description": "A grouping variable to denote which sequence files were generated on the same sequencer run.",
+                    "title": "Run ID",
+                    "examples": [
+                        "1",
+                        "HJKTJDSX7"
+                    ]
                 }
             }
         }

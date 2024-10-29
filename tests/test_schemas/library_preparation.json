@@ -283,19 +283,19 @@
                         "microliter"
                     ]
                 },
-                "pcr_cycles": {
+                "cdna_pcr_cycles": {
                     "type": "integer",
                     "description": "The number of PCR cycles to amplify initial template material used as input for library preparation.",
-                    "title": "Library PCR cycles",
+                    "title": "Number of iterations of cDNA amplification",
                     "examples": [
                         10,
                         30
                     ]
                 },
-                "pcr_cycles_for_sample_index": {
+                "pcr_cycles_for_indexing": {
                     "type": "integer",
                     "description": "The number of PCR cycles to incorporate a single or dual sample index and sequencing adapters.",
-                    "title": "Library PCR cycles for sample index",
+                    "title": "Number of PCR cycles for indexing",
                     "examples": [
                         8,
                         10

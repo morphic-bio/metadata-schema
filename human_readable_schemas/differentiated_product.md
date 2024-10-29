@@ -3,7 +3,7 @@
 - [1. Property `Differentiated product > label`](#label)
 - [2. Property `Differentiated product > description`](#description)
 - [3. Property `Differentiated product > differentiated_product_protocol_id`](#differentiated_product_protocol_id)
-- [4. Property `Differentiated product > terminally_differentiated`](#terminally_differentiated)
+- [4. Property `Differentiated product > final_timepoint`](#final_timepoint)
 - [5. Property `Differentiated product > model_system`](#model_system)
 - [6. Property `Differentiated product > timepoint_value`](#timepoint_value)
 - [7. Property `Differentiated product > timepoint_unit`](#timepoint_unit)
@@ -25,7 +25,7 @@
 | + [label](#label )                                                           | No      | string           | No         | -          | Differentiated product ID          |
 | - [description](#description )                                               | No      | string           | No         | -          | Differentiated product description |
 | + [differentiated_product_protocol_id](#differentiated_product_protocol_id ) | No      | string           | No         | -          | Differentiated product protocol ID |
-| + [terminally_differentiated](#terminally_differentiated )                   | No      | enum (of string) | No         | -          | Terminally differentiated?         |
+| + [final_timepoint](#final_timepoint )                                       | No      | enum (of string) | No         | -          | Final time point                   |
 | - [model_system](#model_system )                                             | No      | string           | No         | -          | Model system                       |
 | + [timepoint_value](#timepoint_value )                                       | No      | integer          | No         | -          | Timepoint value                    |
 | + [timepoint_unit](#timepoint_unit )                                         | No      | string           | No         | -          | Timepoint unit                     |
@@ -107,16 +107,16 @@
 | **Min length**                    | 1                                                                                                             |
 | **Must match regular expression** | ```^[a-zA-Z0-9_]*$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9_%5D%2A%24&testString=%22JAXPD002%22) |
 
-## <a name="terminally_differentiated"></a>4. Property `Differentiated product > terminally_differentiated`
+## <a name="final_timepoint"></a>4. Property `Differentiated product > final_timepoint`
 
-**Title:** Terminally differentiated?
+**Title:** Final time point
 
 |              |                    |
 | ------------ | ------------------ |
 | **Type**     | `enum (of string)` |
 | **Required** | Yes                |
 
-**Description:** Is the cell line terminally differentiated.
+**Description:** Is the product at its final differentiation stage in the experiment?
 
 **Examples:** 
 
@@ -275,4 +275,4 @@ Must be one of:
 | **Min length** | 1 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-15 at 13:00:36 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-29 at 09:29:09 +0000
