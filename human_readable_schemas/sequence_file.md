@@ -5,6 +5,7 @@
 - [3. Property `Sequence file > lane_index`](#lane_index)
 - [4. Property `Sequence file > read_index`](#read_index)
 - [5. Property `Sequence file > read_length`](#read_length)
+- [6. Property `Sequence file > run_id`](#run_id)
 
 **Title:** Sequence file
 
@@ -23,6 +24,7 @@
 | - [lane_index](#lane_index )   | No      | integer          | No         | -          | Lane index        |
 | + [read_index](#read_index )   | No      | enum (of string) | No         | -          | Read index        |
 | - [read_length](#read_length ) | No      | integer          | No         | -          | Read length       |
+| - [run_id](#run_id )           | No      | string           | No         | -          | Run ID            |
 
 ## <a name="label"></a>1. Property `Sequence file > label`
 
@@ -150,5 +152,31 @@ Must be one of:
 150
 ```
 
+## <a name="run_id"></a>6. Property `Sequence file > run_id`
+
+**Title:** Run ID
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+| **Format**   | `regex`  |
+
+**Description:** A grouping variable to denote which sequence files were generated on the same sequencer run.
+
+**Examples:** 
+
+```json
+"1"
+```
+
+```json
+"HJKTJDSX7"
+```
+
+| Restrictions                      |                                                                                                                                            |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Must match regular expression** | ```^(?!^0+$)[a-zA-Z0-9\-_]+$``` [Test](https://regex101.com/?regex=%5E%28%3F%21%5E0%2B%24%29%5Ba-zA-Z0-9%5C-_%5D%2B%24&testString=%221%22) |
+
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-03 at 09:14:02 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-29 at 09:29:09 +0000

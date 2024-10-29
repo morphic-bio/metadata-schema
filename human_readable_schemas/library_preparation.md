@@ -10,8 +10,8 @@
 - [8. Property `Library preparation > concentration_unit`](#concentration_unit)
 - [9. Property `Library preparation > total_yield_value`](#total_yield_value)
 - [10. Property `Library preparation > total_yield_unit`](#total_yield_unit)
-- [11. Property `Library preparation > pcr_cycles`](#pcr_cycles)
-- [12. Property `Library preparation > pcr_cycles_for_sample_index`](#pcr_cycles_for_sample_index)
+- [11. Property `Library preparation > cdna_pcr_cycles`](#cdna_pcr_cycles)
+- [12. Property `Library preparation > pcr_cycles_for_indexing`](#pcr_cycles_for_indexing)
 
 **Title:** Library preparation
 
@@ -23,20 +23,20 @@
 
 **Description:** Information about the library preparation.
 
-| Property                                                               | Pattern | Type    | Deprecated | Definition | Title/Description                   |
-| ---------------------------------------------------------------------- | ------- | ------- | ---------- | ---------- | ----------------------------------- |
-| + [label](#label )                                                     | No      | string  | No         | -          | Library preparation ID              |
-| - [description](#description )                                         | No      | string  | No         | -          | Library preparation description     |
-| + [library_preparation_protocol_id](#library_preparation_protocol_id ) | No      | string  | No         | -          | Library preparation protocol ID     |
-| - [average_fragment_size](#average_fragment_size )                     | No      | integer | No         | -          | Average fragment size               |
-| - [input_amount_value](#input_amount_value )                           | No      | number  | No         | -          | Library input amount value          |
-| - [input_amount_unit](#input_amount_unit )                             | No      | string  | No         | -          | Library input amount unit           |
-| - [concentration_value](#concentration_value )                         | No      | number  | No         | -          | Library concentration value         |
-| - [concentration_unit](#concentration_unit )                           | No      | string  | No         | -          | Library concentration unit          |
-| - [total_yield_value](#total_yield_value )                             | No      | number  | No         | -          | Library final yield value           |
-| - [total_yield_unit](#total_yield_unit )                               | No      | string  | No         | -          | Library final yield unit            |
-| - [pcr_cycles](#pcr_cycles )                                           | No      | integer | No         | -          | Library PCR cycles                  |
-| - [pcr_cycles_for_sample_index](#pcr_cycles_for_sample_index )         | No      | integer | No         | -          | Library PCR cycles for sample index |
+| Property                                                               | Pattern | Type    | Deprecated | Definition | Title/Description                          |
+| ---------------------------------------------------------------------- | ------- | ------- | ---------- | ---------- | ------------------------------------------ |
+| + [label](#label )                                                     | No      | string  | No         | -          | Library preparation ID                     |
+| - [description](#description )                                         | No      | string  | No         | -          | Library preparation description            |
+| + [library_preparation_protocol_id](#library_preparation_protocol_id ) | No      | string  | No         | -          | Library preparation protocol ID            |
+| - [average_fragment_size](#average_fragment_size )                     | No      | integer | No         | -          | Average fragment size                      |
+| - [input_amount_value](#input_amount_value )                           | No      | number  | No         | -          | Library input amount value                 |
+| - [input_amount_unit](#input_amount_unit )                             | No      | string  | No         | -          | Library input amount unit                  |
+| - [concentration_value](#concentration_value )                         | No      | number  | No         | -          | Library concentration value                |
+| - [concentration_unit](#concentration_unit )                           | No      | string  | No         | -          | Library concentration unit                 |
+| - [total_yield_value](#total_yield_value )                             | No      | number  | No         | -          | Library final yield value                  |
+| - [total_yield_unit](#total_yield_unit )                               | No      | string  | No         | -          | Library final yield unit                   |
+| - [cdna_pcr_cycles](#cdna_pcr_cycles )                                 | No      | integer | No         | -          | Number of iterations of cDNA amplification |
+| - [pcr_cycles_for_indexing](#pcr_cycles_for_indexing )                 | No      | integer | No         | -          | Number of PCR cycles for indexing          |
 
 ## <a name="label"></a>1. Property `Library preparation > label`
 
@@ -292,9 +292,9 @@
 | -------------- | - |
 | **Min length** | 1 |
 
-## <a name="pcr_cycles"></a>11. Property `Library preparation > pcr_cycles`
+## <a name="cdna_pcr_cycles"></a>11. Property `Library preparation > cdna_pcr_cycles`
 
-**Title:** Library PCR cycles
+**Title:** Number of iterations of cDNA amplification
 
 |              |           |
 | ------------ | --------- |
@@ -313,9 +313,9 @@
 30
 ```
 
-## <a name="pcr_cycles_for_sample_index"></a>12. Property `Library preparation > pcr_cycles_for_sample_index`
+## <a name="pcr_cycles_for_indexing"></a>12. Property `Library preparation > pcr_cycles_for_indexing`
 
-**Title:** Library PCR cycles for sample index
+**Title:** Number of PCR cycles for indexing
 
 |              |           |
 | ------------ | --------- |
@@ -335,4 +335,4 @@
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-03 at 09:14:02 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-29 at 09:29:09 +0000
