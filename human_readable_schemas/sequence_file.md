@@ -179,4 +179,4 @@ Must be one of:
 | **Must match regular expression** | ```^(?!^0+$)[a-zA-Z0-9\-_]+$``` [Test](https://regex101.com/?regex=%5E%28%3F%21%5E0%2B%24%29%5Ba-zA-Z0-9%5C-_%5D%2B%24&testString=%221%22) |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-29 at 09:29:09 +0000
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-10-29 at 09:57:57 +0000
