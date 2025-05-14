@@ -210,10 +210,10 @@
                                     "exon"
                                 ]
                             },
-                            "expected_alteration_type": {
+                            "expected_rna_alteration_phenotype": {
                                 "type": "string",
-                                "description": "How the expression for the gene(s) or protein(s) was altered.",
-                                "title": "Expected alteration type",
+                                "description": "How the expression for the RNA was altered.",
+                                "title": "Expected RNA alteration phenotype",
                                 "enum": [
                                     "RNA down-regulation",
                                     "RNA up-regulation",
@@ -224,9 +224,22 @@
                                 "examples": [
                                     "RNA down-regulation",
                                     "RNA up-regulation",
-                                    "gene silencing",
-                                    "protein downregulation",
-                                    "protein upregulation"
+                                    "not applicable"
+                                ]
+                            },
+                            "expected_protein_alteration_phenotype": {
+                                "type": "string",
+                                "description": "How the expression for the protein(s) was altered.",
+                                "title": "Expected protein alteration phenotype",
+                                "enum": [
+                                    "protein down-regulation",
+                                    "protein up-regulation",
+                                    "not applicable"
+                                ],
+                                "examples": [
+                                    "RNA down-regulation",
+                                    "RNA up-regulation",
+                                    "not applicable"
                                 ]
                             },
                             "editing_strategy": {
