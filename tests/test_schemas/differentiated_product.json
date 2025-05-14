@@ -218,7 +218,7 @@
                 "treatment_condition": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line. (if applicable)",
+                    "description": "Condition or multiple conditions used to generate the cell line. (if applicable)",
                     "title": "Treatment/Condition",
                     "examples": [
                         "DMSO",

@@ -63,7 +63,7 @@
                     "pattern": "^[a-zA-Z0-9_]*$",
                     "minLength": 1,
                     "description": "A unique label for the cell line. No spaces allowed.",
-                    "title": "Cell line ID",
+                    "title": "Clonal cell line ID",
                     "examples": [
                         "PRMT5_C-terminal_AID_DMSO",
                         "OCM_108_Auxin_24h"
@@ -72,8 +72,8 @@
                 "description": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A general description of the cell line.",
-                    "title": "Cell line description",
+                    "description": "A general description of the clonal cell line.",
+                    "title": "Clonal cell line description",
                     "examples": [
                         "KOLF2.2J derived knockout cell line, PAX6/STL2 DKO"
                     ]
@@ -207,8 +207,8 @@
                 "type": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "The type of cell line.",
-                    "title": "Cell line type",
+                    "description": "The type of clonal cell line.",
+                    "title": "Clonal cell line type",
                     "enum": [
                         "iPSC",
                         "embryoid",
@@ -341,7 +341,7 @@
                 "treatment_condition": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Protocol for generating cell line. e.g. condition or multiple conditions used to generate the cell line (if applicable).",
+                    "description": "Condition or multiple conditions used to generate the cell line (if applicable).",
                     "title": "Treatment/Condition",
                     "examples": [
                         "DMSO",
